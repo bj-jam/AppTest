@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/lookScore"
+        android:layout_width="@dimen/dp200"
+        android:layout_height="@dimen/dp45"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/shadow_selecter"
+        android:gravity="center"
+        android:text="查看证书"
+        android:textColor="@color/white" />
+
+    <Button
+        android:layout_width="@dimen/dp200"
+        android:layout_height="@dimen/dp45"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/shadow_selecter"
+        android:gravity="center"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="100"
+        android:text="查看证书"
+        android:textColor="@color/white" />
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp6" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp6" />
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.app.test.redenveloped.RedEnvelopesLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/rpfl_red_packet"
+    android:background="@color/_94c8f9"
+    android:layout_height="match_parent">
+
+
+
+</com.app.test.redenveloped.RedEnvelopesLayout>

@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.app.test.util.MainActivity"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginTop="@dimen/dp20"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_is_vip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_my_no_vip_back" />
+
+            <ImageView
+                android:id="@+id/to_open_vip_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="-25dp"
+                android:layout_marginRight="-10dp"
+                android:src="@drawable/icon_pic1" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/back_vip_bottom" />
+    </LinearLayout>
+
+
+    <com.app.test.view.CustomRel
+        android:id="@+id/container"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/pic0"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:riv_corner_radius="10dp"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            android:src="@color/blue"
+            android:scaleX="0"
+            android:scaleY="0"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/pic1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:riv_corner_radius="10dp"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            android:src="@color/green" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/pic2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:riv_corner_radius="10dp"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            android:src="@color/pink_color"
+            android:translationX="15dp"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/pic3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:riv_corner_radius="10dp"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            android:src="@color/red"
+            android:translationX="30dp"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/pic4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:riv_corner_radius="10dp"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            android:src="@color/white"
+            android:translationX="45dp" />
+
+    </com.app.test.view.CustomRel>
+
+
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="start"/>
+
+
+    <com.app.test.view.TeachTalkTogetherView
+        android:id="@+id/teach"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pink_color"/>
+</RelativeLayout>

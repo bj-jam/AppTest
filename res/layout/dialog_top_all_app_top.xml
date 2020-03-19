@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4D000000"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="150dp"
+            android:layout_height="151dp"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@drawable/ic_reward_dialog_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_rectangle_f2f2f2_20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="74dp"
+                android:text="喝水提醒"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp20"
+                android:text="能促进新陈代谢，增强人体的免疫功能"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_to_water"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_rectangle_039bff_20"
+                android:paddingLeft="@dimen/dp40"
+                android:paddingTop="@dimen/dp10"
+                android:paddingRight="@dimen/dp40"
+                android:paddingBottom="@dimen/dp10"
+                android:text="去喝水"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_star_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_reward_skinning_star" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_reward_dialog_value_bg" />
+
+
+        <ImageView
+            android:id="@+id/close_view"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="75dp"
+            android:src="@drawable/ads_video_close2" />
+    </FrameLayout>
+
+</RelativeLayout>

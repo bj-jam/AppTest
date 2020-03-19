@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="game_gold_scale">
+        <item>@drawable/ic_game_gold_01</item>
+        <item>@drawable/ic_game_gold_02</item>
+        <item>@drawable/ic_game_gold_03</item>
+        <item>@drawable/ic_game_gold_04</item>
+        <item>@drawable/ic_game_gold_05</item>
+        <item>@drawable/ic_game_gold_06</item>
+        <item>@drawable/ic_game_gold_07</item>
+        <item>@drawable/ic_game_gold_08</item>
+        <item>@drawable/ic_game_gold_09</item>
+        <item>@drawable/ic_game_gold_11</item>
+        <item>@drawable/ic_game_gold_12</item>
+        <item>@drawable/ic_game_gold_13</item>
+        <item>@drawable/ic_game_gold_14</item>
+        <item>@drawable/ic_game_gold_15</item>
+        <item>@drawable/ic_game_gold_16</item>
+        <item>@drawable/ic_game_gold_17</item>
+        <item>@drawable/ic_game_gold_18</item>
+        <item>@drawable/ic_game_gold_19</item>
+        <item>@drawable/ic_game_gold_20</item>
+        <item>@drawable/ic_game_gold_21</item>
+        <item>@drawable/ic_game_gold_22</item>
+        <item>@drawable/ic_game_gold_23</item>
+        <item>@drawable/ic_game_gold_24</item>
+        <item>@drawable/ic_game_gold_25</item>
+        <item>@drawable/ic_game_gold_26</item>
+        <item>@drawable/ic_game_gold_27</item>
+        <item>@drawable/ic_game_gold_28</item>
+        <item>@drawable/ic_game_gold_29</item>
+    </array>
+</resources>

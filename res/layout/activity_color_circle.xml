@@ -1,0 +1,54 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#60000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.app.test.circle.anim.color.ColorCirclePieView
+            android:id="@+id/cp"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <com.app.test.view.RoundProgressBar
+            android:id="@+id/roundProgressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:backColor="@color/common"
+            app:borderWidth="@dimen/dp6"
+            app:textColor="@color/common"
+            app:textSize="@dimen/dp30" />
+
+        <com.app.test.circle.CirclePicWidget
+            android:id="@+id/CirclePicWidget"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#ff00ff" />
+
+        <com.app.test.circle.SeekBarView
+            android:id="@+id/CustomSeekBar"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp50"
+            android:layout_centerInParent="true" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:progressDrawable="@drawable/progress_bar_drawable"
+            android:max="1000"
+            android:progress="10"
+            android:secondaryProgress="50" />
+
+        <include layout="@layout/activity_anim_chart" />
+
+
+    </LinearLayout>
+</ScrollView>

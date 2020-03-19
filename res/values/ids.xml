@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="tag_play_btn" type="id" />
+    <item name="color_main" type="color" />
+    <item name="circle_pic_center" type="id" />
+    <item name="fab_expand_menu_button" type="id"/>
+    <item name="fab_label" type="id"/>
+
+    <item type="id" name="id_circle_menu_item_image"/>
+
+    <item type="id" name="id_circle_menu_item_text"/>
+
+    <item type="id" name="id_circle_menu_item_center"/>
+</resources>

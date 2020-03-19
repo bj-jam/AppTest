@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="red_envelopes_top_anim">
+        <item>@drawable/ic_walk_top_anim_0</item>
+        <item>@drawable/ic_walk_top_anim_1</item>
+        <item>@drawable/ic_walk_top_anim_2</item>
+        <item>@drawable/ic_walk_top_anim_3</item>
+        <item>@drawable/ic_walk_top_anim_4</item>
+        <item>@drawable/ic_walk_top_anim_5</item>
+        <item>@drawable/ic_walk_top_anim_6</item>
+        <item>@drawable/ic_walk_top_anim_7</item>
+        <item>@drawable/ic_walk_top_anim_8</item>
+        <item>@drawable/ic_walk_top_anim_9</item>
+        <item>@drawable/ic_walk_top_anim_10</item>
+        <item>@drawable/ic_walk_top_anim_11</item>
+        <item>@drawable/ic_walk_top_anim_12</item>
+        <item>@drawable/ic_walk_top_anim_13</item>
+        <item>@drawable/ic_walk_top_anim_14</item>
+        <item>@drawable/ic_walk_top_anim_15</item>
+        <item>@drawable/ic_walk_top_anim_16</item>
+        <item>@drawable/ic_walk_top_anim_17</item>
+        <item>@drawable/ic_walk_top_anim_18</item>
+        <item>@drawable/ic_walk_top_anim_19</item>
+        <item>@drawable/ic_walk_top_anim_20</item>
+        <item>@drawable/ic_walk_top_anim_21</item>
+        <item>@drawable/ic_walk_top_anim_22</item>
+        <item>@drawable/ic_walk_top_anim_23</item>
+        <item>@drawable/ic_walk_top_anim_24</item>
+        <item>@drawable/ic_walk_top_anim_25</item>
+        <item>@drawable/ic_walk_top_anim_26</item>
+        <item>@drawable/ic_walk_top_anim_27</item>
+        <item>@drawable/ic_walk_top_anim_28</item>
+        <item>@drawable/ic_walk_top_anim_29</item>
+        <item>@drawable/ic_walk_top_anim_30</item>
+        <item>@drawable/ic_walk_top_anim_31</item>
+        <item>@drawable/ic_walk_top_anim_32</item>
+        <item>@drawable/ic_walk_top_anim_33</item>
+        <item>@drawable/ic_walk_top_anim_34</item>
+        <item>@drawable/ic_walk_top_anim_35</item>
+        <item>@drawable/ic_walk_top_anim_36</item>
+        <item>@drawable/ic_walk_top_anim_37</item>
+        <item>@drawable/ic_walk_top_anim_38</item>
+        <item>@drawable/ic_walk_top_anim_39</item>
+        <item>@drawable/ic_walk_top_anim_40</item>
+        <item>@drawable/ic_walk_top_anim_41</item>
+        <item>@drawable/ic_walk_top_anim_42</item>
+        <item>@drawable/ic_walk_top_anim_43</item>
+        <item>@drawable/ic_walk_top_anim_44</item>
+        <item>@drawable/ic_walk_top_anim_45</item>
+        <item>@drawable/ic_walk_top_anim_46</item>
+        <item>@drawable/ic_walk_top_anim_47</item>
+        <item>@drawable/ic_walk_top_anim_48</item>
+        <item>@drawable/ic_walk_top_anim_49</item>
+        <item>@drawable/ic_walk_top_anim_50</item>
+        <item>@drawable/ic_walk_top_anim_51</item>
+        <item>@drawable/ic_walk_top_anim_52</item>
+        <item>@drawable/ic_walk_top_anim_53</item>
+        <item>@drawable/ic_walk_top_anim_54</item>
+    </array>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_94c8f9"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie"
+        android:layout_width="wrap_content"
+        android:layout_height="187dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="5dp"
+        android:adjustViewBounds="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_lottie2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true" />
+
+    <Button
+        android:id="@+id/b_start_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始动画" />
+</RelativeLayout>

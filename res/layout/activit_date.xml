@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.app.test.util.MainActivity">
+
+    <com.app.test.date.DiamondBackView
+        android:id="@+id/dvb_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:padding="@dimen/dp_40"
+        app:dbv_show_mode="cut_bottom"
+        app:dbv_vertical_count="10" />
+
+    <com.app.test.date.BarrageView
+        android:id="@+id/barrageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:calendarViewShown="false" />
+
+
+    <com.app.test.date.SwitchButton
+        android:id="@+id/switchButton"
+        android:layout_width="90dp"
+        android:layout_height="@dimen/dp40"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        app:sb_background="#EFEFEF"
+        app:sb_button_color="#ffffff"
+        app:sb_checked_color="#37C4FF"
+        app:sb_shadow_effect="false"
+        app:sb_show_indicator="false"
+        app:sb_uncheck_color="#EFEFEF"
+        app:sb_uncheckcircle_color="#EFEFEF" />
+
+    <Button
+        android:id="@+id/permissionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="申请权限" />
+</RelativeLayout>

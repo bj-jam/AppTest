@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+
+    <com.app.test.circle.CirclePieView
+        android:id="@+id/cp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true" />
+
+    <com.app.test.circle.PieGraph
+        android:id="@+id/pie_graph"
+        android:layout_width="335dp"
+        android:layout_height="335dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:background="#ffffff"
+        app:pie_can_rotate="true"
+        app:pie_show_radio="false" />
+
+    <com.app.test.circle.CustomPieView
+        android:id="@+id/pv"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#ff0000" />
+
+    <com.app.test.circle.SeekBarView
+        android:id="@+id/mCustomSeekbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50" />
+</RelativeLayout>

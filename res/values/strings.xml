@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Upload">Upload</string>
+    <string name="Error">Error</string>
+    <string name="Complete">Complete</string>
+    <string name="IndeterminateProgressSample">Indeterminate Progress Sample</string>
+    <string name="IntegerProgressSample">Integer Progress Sample</string>
+    <string name="StateChangeSample">State Change Sample</string>
+    <string name="ProgressPaddingSample">Progress Padding Sample</string>
+    <string name="CustomSelectorSample">Custom Selector Sample</string>
+
+    <array name="sample_list">
+        <item>@string/IndeterminateProgressSample</item>
+        <item>@string/IntegerProgressSample</item>
+        <item>@string/StateChangeSample</item>
+        <item>@string/ProgressPaddingSample</item>
+        <item>@string/CustomSelectorSample</item>
+    </array>
+
+    <string name="app_name">AppTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="confirm_title">提示</string>
+    <string name="ensure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="content_description_icon">icon</string>
+    <string name="refresh">刷新</string>
+    <string name="processing">加载中</string>
+    <string name="download">下载</string>
+    <string name="download_fail">下载安装包失败</string>
+    <string name="cancel_install_msp">你已取消安装移动快捷支付服务</string>
+    <string name="cancel_install_alipay">你已取消安装支付宝钱包</string>
+    <string name="redo">重试</string>
+    <string name="install_msp">你尚未安装支付宝移动快捷支付服务，请立即安装</string>
+    <string name="install_alipay">你尚未安装支付宝钱包，请立即安装</string>
+    <string name="date_activity">日期选择器</string>
+    <string name="circle_activity">饼形图</string>
+    <string name="line_activity">折线形图</string>
+    <string name="expandablelist_activity">expandelistview</string>
+    <string name="showimage_activity">图片放大</string>
+    <string name="circle_anim_activity">有动画的圆圈</string>
+    <string name="column_activity">有动画的柱状</string>
+    <string name="mirror_activity">镜像</string>
+    <string name="ColorCircleActivity">有动画的饼形图</string>
+    <string name="ColorRingActivity">有动画边上的圆环</string>
+    <string name="glide_load_activity">Glide加载图片</string>
+    <string name="grid_refresh_activity">可以刷新的gird</string>
+    <string name="viewpager_activity">ViewPager</string>
+    <string name="download_activity">Activity和Service间的通信</string>
+    <string name="shadow_activity">控件有阴影，透明通知栏</string>
+    <string name="camera_activity">相机使用</string>
+    <string name="cut_camera_activity">自定义相机使用</string>
+    <string name="notice_activity">通知栏的问题</string>
+    <string name="recycler_activity">recyclerView的使用</string>
+    <string name="wave_activity">水波图形</string>
+    <string name="webview_activity">WebView使用</string>
+    <string name="cardView_activity">CardView使用</string>
+    <string name="list_view_activity">ListView的item动画</string>
+    <string name="keyboard_activity">键盘相关</string>
+    <string name="anim_activity">动画相关</string>
+    <string name="damping_activity">阻尼</string>
+    <string name="damping1_activity">阻尼1</string>
+    <string name="transition_activity">拿出来放大</string>
+    <string name="data_binding_activity">data_binding</string>
+    <string name="smart_refresh_activity">SmartRefresh</string>
+    <string name="move_activity">move</string>
+    <string name="lottie_activity">lottie动画</string>
+    <string name="red_envelopes_activity">红包雨</string>
+    <string name="new_ui_activity">新动效</string>
+    <string name="float_button_activity">悬浮button</string>
+    <string name="circular_progress_activity">CircularProgress</string>
+    <string name="number_progress_activity">有数字的进度条</string>
+    <string name="titanic_activity">titanic水波</string>
+    <string name="scroll_view_activity">scrollView动画</string>
+    <string name="Circle_Menu_Activity">CircleMenu</string>
+    <string name="SortListActivity">SortList</string>
+    <string name="SpannableActivity">Spannable的使用</string>
+    <string name="MatrixActivity">Matrix的使用</string>
+    <string name="ViewFlipperActivity">ViewFlipper的使用</string>
+    <string name="TimelyActivity">数字变化</string>
+    <string name="TargetActivity">未注册的activity</string>
+</resources>

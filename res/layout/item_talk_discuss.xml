@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/default_head" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="117dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="@dimen/dp6"
+            android:text="全部讨论（456）"
+            android:textColor="#FF2A2A2A"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_person"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp14"
+        android:scaleType="centerCrop"
+        android:src="@drawable/load"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_title" />
+
+    <TextView
+        android:id="@+id/tv_person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="#FF2A2A2A"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/iv_person"
+        app:layout_constraintTop_toTopOf="@id/iv_person" />
+
+    <TextView
+        android:id="@+id/tv_is_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp6"
+        android:paddingLeft="@dimen/dp3"
+        android:paddingRight="@dimen/dp3"
+        android:text="名师"
+        android:textColor="#FFFF6633"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_person_name"
+        app:layout_constraintStart_toEndOf="@id/tv_person_name"
+        app:layout_constraintTop_toTopOf="@id/tv_person_name" />
+
+    <TextView
+        android:id="@+id/tv_send_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:text="刚刚"
+        android:textColor="#FF909BA0"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_person"
+        app:layout_constraintStart_toEndOf="@id/iv_person" />
+
+    <TextView
+        android:id="@+id/tv_discuss_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="@dimen/dp15"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/dp5"
+        android:maxLines="5"
+        android:text=""
+        android:textColor="#FF2A2A2A"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_person" />
+
+    <LinearLayout
+        android:id="@+id/ll_show_all"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp5"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_discuss_content">
+
+        <TextView
+            android:id="@+id/tv_show_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="展开"
+            android:textColor="#FF2AB8FF"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iv_show_all"
+            android:layout_width="10dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="@dimen/dp6"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ll_reply_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_show_all" />
+
+    <LinearLayout
+        android:id="@+id/ll_reply"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginEnd="@dimen/dp15"
+        android:orientation="vertical"
+        android:padding="@dimen/dp12"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_reply_arrow">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_look_all_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看全部6条评论 >"
+            android:textColor="#FF2AB8FF"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp3"
+        android:layout_marginEnd="@dimen/dp15"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/dp20"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_reply">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp3"
+            android:paddingRight="@dimen/dp3"
+            android:paddingBottom="@dimen/dp3"
+            android:text="删除"
+            android:textColor="#FF264A60"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/ll_to_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp3">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp7"
+                android:text="回复"
+                android:textColor="#FF888888"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp30"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp5">
+
+            <ImageView
+                android:id="@+id/iv_praise"
+                android:layout_width="13dp"
+                android:layout_height="12dp" />
+
+            <TextView
+                android:id="@+id/tv_praise_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:text="35"
+                android:textColor="#FF888888"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#FFEFF1F6"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

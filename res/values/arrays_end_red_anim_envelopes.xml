@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="end_red_anim_envelopes">
+        <item>@drawable/ic_end_red_envelopes_0</item>
+        <item>@drawable/ic_end_red_envelopes_1</item>
+        <item>@drawable/ic_end_red_envelopes_2</item>
+        <item>@drawable/ic_end_red_envelopes_3</item>
+        <item>@drawable/ic_end_red_envelopes_4</item>
+        <item>@drawable/ic_end_red_envelopes_5</item>
+        <item>@drawable/ic_end_red_envelopes_6</item>
+        <item>@drawable/ic_end_red_envelopes_7</item>
+        <item>@drawable/ic_end_red_envelopes_8</item>
+        <item>@drawable/ic_end_red_envelopes_9</item>
+        <item>@drawable/ic_end_red_envelopes_10</item>
+        <item>@drawable/ic_end_red_envelopes_11</item>
+        <item>@drawable/ic_end_red_envelopes_12</item>
+        <item>@drawable/ic_end_red_envelopes_13</item>
+        <item>@drawable/ic_end_red_envelopes_14</item>
+        <item>@drawable/ic_end_red_envelopes_15</item>
+        <item>@drawable/ic_end_red_envelopes_16</item>
+        <item>@drawable/ic_end_red_envelopes_17</item>
+        <item>@drawable/ic_end_red_envelopes_18</item>
+        <item>@drawable/ic_end_red_envelopes_19</item>
+        <item>@drawable/ic_end_red_envelopes_20</item>
+        <item>@drawable/ic_end_red_envelopes_21</item>
+        <item>@drawable/ic_end_red_envelopes_22</item>
+        <item>@drawable/ic_end_red_envelopes_23</item>
+        <item>@drawable/ic_end_red_envelopes_24</item>
+        <item>@drawable/ic_end_red_envelopes_25</item>
+        <item>@drawable/ic_end_red_envelopes_26</item>
+        <item>@drawable/ic_end_red_envelopes_27</item>
+        <item>@drawable/ic_end_red_envelopes_28</item>
+    </array>
+</resources>

@@ -1,0 +1,31 @@
+<resources>
+    <declare-styleable name="DiamondBackView">
+        <!-- 一行几个菱形 -->
+        <attr name="dbv_horizontal_count" format="reference|integer" />
+        <!-- 一列几个菱形 -->
+        <attr name="dbv_vertical_count" format="reference|integer" />
+        <!-- 菱形颜色 -->
+        <attr name="dbv_color" format="reference|color" />
+
+        <!-- 是否需要边框 -->
+        <attr name="dbv_is_have_frame" format="reference|boolean" />
+        <!-- 边框颜色 -->
+        <attr name="dbv_frame_color" format="reference|color" />
+        <!-- 边框的宽度-->
+        <attr name="dbv_frame_width" format="reference|dimension" />
+
+        <attr name="dbv_show_mode">
+            <!-- 斜的正方形，但是底下会被截掉-->
+            <enum name="cut_bottom" value="0" />
+            <!-- 根据列的个数进行拉伸 配合dbv_vertical_count使用-->
+            <enum name="fit_y" value="1" />
+            <!-- 斜的正方形，顶部留白-->
+            <enum name="gap_top" value="2" />
+            <!-- 斜的正方形，底部留白-->
+            <enum name="gap_bottom" value="3" />
+            <!-- 斜的正方形，顶部底部都留白-->
+            <enum name="gap_bottom_top" value="4" />
+        </attr>
+
+    </declare-styleable>
+</resources>

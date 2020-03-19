@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- 1.颜色16进制字母用大写2.颜色名用小写，单词间用下划线分隔 -->
+    <color name="red">#fd5f5e</color>
+    <color name="green">#00FF00</color>
+    <color name="redvote">#df5d5d</color>
+    <color name="white">#FFFFFF</color>
+    <color name="sys_bg">#e8e8e8</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_color3">#262626</color>
+    <color name="text_color6">#666666</color>
+    <color name="bebebe">#C6C6C6</color>
+    <color name="text_color9">#999999</color>
+    <color name="bg_color">#f6f6f6</color>
+    <color name="dynamic_background">#eaeff4</color>
+    <color name="pink_color">#f5919d</color>
+    <color name="blue_color">#5e99e9</color>
+    <color name="orange_color">#FE9720</color>
+    <color name="light_green_color">#5FBE00</color>
+    <color name="light_blue_color">#3AACEF</color>
+    <color name="line_color">#DFDFDF</color>
+    <color name="grey_light">#DCDCDC</color>
+    <color name="state_red">#CF0000</color>
+    <color name="black">#000000</color>
+    <color name="lightblack">#c000</color>
+    <color name="text_colord">#C9C9C9</color>
+    <color name="yello">#FDC419</color>
+    <color name="blue">#96cdab</color>
+    <color name="blue_p">#FF01D3F6</color>
+    <color name="half_black_trans">#cc000000</color>
+    <color name="red_color">#DF5D5D</color>
+    <color name="grey">#969696</color>
+    <color name="state_grey">#BEBEBE</color>
+    <!-- 全局通用头部颜色 -->
+    <color name="common">#17B592</color>
+    <color name="course_text">#17B592</color>
+    <!-- 全局背景色 -->
+    <color name="back_ground">#F4F4F4</color>
+    <!-- 全局中黑字体色 -->
+    <color name="middle_black">#262626</color>
+    <!-- 全局细黑字体色 -->
+    <color name="small_black">#666666</color>
+    <!-- 最浅的999999 -->
+    <color name="min_black">#999999</color>
+    <!-- 全局细黑字体色 -->
+    <color name="line">#C6C6C6</color>
+    <!-- 宽的分隔线背景色 -->
+    <color name="wide_line">#E5E5E5</color>
+    <!-- 二维码扫描相关 -->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+
+    <!--app主色调-->
+    <color name="color_primary">#0077d9</color>
+    <color name="color_primary_light">#3392e1</color>
+    <color name="color_primary_dark">#006cc5</color>
+    <color name="trans_color_primary">#5503a9f4</color>
+    <color name="light_black">#424242</color>
+    <color name="_94c8f9">#94C8F9</color>
+
+    <color name="transparent_50">#80000000</color>
+    <color name="_fff4cc">#fff4cc</color>
+
+
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white1">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+
+
+    <color name="cpb_grey">#ffdedede</color>
+    <color name="cpb_blue">#ff0099cc</color>
+    <color name="cpb_blue_dark">#ff00719b</color>
+    <color name="cpb_red">#ffff4444</color>
+    <color name="cpb_red_dark">#ffcd3a3a</color>
+    <color name="cpb_green">#ff99cc00</color>
+    <color name="cpb_green_dark">#ff6d9b00</color>
+    <color name="cpb_white">@android:color/white</color>
+</resources>

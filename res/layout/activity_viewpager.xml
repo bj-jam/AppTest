@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:visibility="gone" />
+
+    <com.app.test.viewpager.StudyTopCenterView
+        android:id="@+id/studyTopCenter"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+</RelativeLayout>

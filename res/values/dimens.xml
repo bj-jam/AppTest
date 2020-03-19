@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 投票圆形图 -->
+    <!-- 圆形上下边距 -->
+    <dimen name="vote_circleTop">40dp</dimen>
+    <!-- 方形色区左边距 -->
+    <dimen name="vote_squareLeft">10dp</dimen>
+    <!-- 文字大小 -->
+    <dimen name="vote_textSize">16dp</dimen>
+    <!-- 文字大小 -->
+    <dimen name="vote_textSize_">13dp</dimen>
+    <!-- 上部百分比信息间距 -->
+    <dimen name="vote_infoDis">10dp</dimen>
+    <!-- 上部百分比信息间距 -->
+    <dimen name="vote_lineWidth">15dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+    <dimen name="dp170">170dp</dimen>
+    <dimen name="dp150">150dp</dimen>
+    <dimen name="dp123">123dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="dp58">58dp</dimen>
+    <dimen name="dp54">54dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp45">45dp</dimen>
+    <dimen name="dp40">40dp</dimen>
+    <dimen name="dp35">35dp</dimen>
+    <dimen name="dp30">30dp</dimen>
+    <dimen name="dp26">26dp</dimen>
+    <dimen name="dp25">25dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp23">23dp</dimen>
+    <dimen name="dp22">22dp</dimen>
+    <dimen name="dp21">21dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp18">18dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp13">13dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp9">9dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp7">7dp</dimen>
+    <dimen name="dp6">6dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp0">0dp</dimen>
+
+
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+
+    <dimen name="fab_icon_size">24dp</dimen>
+
+    <dimen name="fab_plus_icon_size">14dp</dimen>
+    <dimen name="fab_plus_icon_stroke">2dp</dimen>
+
+    <dimen name="fab_shadow_offset">3dp</dimen>
+    <dimen name="fab_shadow_radius">9dp</dimen>
+
+    <dimen name="fab_stroke_width">1dp</dimen>
+
+    <dimen name="fab_actions_spacing">16dp</dimen>
+    <dimen name="fab_labels_margin">8dp</dimen>
+
+
+    <dimen name="cpb_stroke_width">4dp</dimen>
+</resources>

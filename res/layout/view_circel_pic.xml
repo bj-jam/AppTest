@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#26000000">
+
+
+    <View
+        android:id="@+id/circle_pic_center1"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fab1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/code6"
+        android:visibility="gone"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/dp1"
+        app:layout_constraintCircle="@id/circle_pic_center1"
+        app:layout_constraintCircleAngle="0"
+        app:layout_constraintCircleRadius="11dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fab2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/code6"
+        android:visibility="gone"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/dp1"
+        app:layout_constraintCircle="@id/circle_pic_center1"
+        app:layout_constraintCircleAngle="72"
+        app:layout_constraintCircleRadius="11dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fab3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/code6"
+        android:visibility="gone"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/dp1"
+        app:layout_constraintCircle="@id/circle_pic_center1"
+        app:layout_constraintCircleAngle="144"
+        app:layout_constraintCircleRadius="11dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fab4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/code6"
+        android:visibility="gone"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/dp1"
+        app:layout_constraintCircle="@id/circle_pic_center1"
+        app:layout_constraintCircleAngle="216"
+        app:layout_constraintCircleRadius="11dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fab5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/code6"
+        android:visibility="gone"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/dp1"
+        app:layout_constraintCircle="@id/circle_pic_center1"
+        app:layout_constraintCircleAngle="281"
+        app:layout_constraintCircleRadius="11dp" />
+
+
+</android.support.constraint.ConstraintLayout>

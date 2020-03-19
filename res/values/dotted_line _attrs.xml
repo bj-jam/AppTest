@@ -1,0 +1,21 @@
+<resources>
+    <declare-styleable name="DottedLineView">
+        <!-- 线的宽度 -->
+        <attr name="dlv_line_width" format="reference|dimension" />
+        <!--线的颜色 -->
+        <attr name="dlv_line_color" format="reference|color" />
+        <!-- 一列几个菱形 -->
+        <attr name="dlv_dash_gap" format="reference|integer" />
+        <!-- 一列几个菱形 -->
+        <attr name="dlv_dash_width" format="reference|integer" />
+        <!-- 方向 -->
+        <attr name="dlv_orientation">
+            <!-- 水平-->
+            <enum name="horizontal" value="0" />
+            <!-- 垂直-->
+            <enum name="vertical" value="1" />
+
+        </attr>
+
+    </declare-styleable>
+</resources>
