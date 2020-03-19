@@ -1,0 +1,378 @@
+
+     * 获取圆形的图片
+     *
+     * @param bitmap
+     * @return
+     */
+    private Bitmap getCircularBitmap(Bitmap bitmap) {
+        int size = Math.min(bitmap.getWidth(), bitmap.getHeight());
+        int radius = size / 2;
+
+        Bitmap bitmap10 = Bitmap.createScaledBitmap(bitmap, radius, radius, false);
+
+        Bitmap output = Bitmap.createBitmap(bitmap10.getWidth(), bitmap10.getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        Paint paint = new Paint();
+        Rect rect = new Rect(0, 0, bitmap10.getWidth(), bitmap10.getHeight());
+
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(Color.BLACK);
+        canvas.drawCircle(bitmap10.getWidth() / 2, bitmap10.getHeight() / 2,
+                bitmap10.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap10, rect, rect, paint);
+        return output;
+    }
+	
+	
+	 if (myImage == null) {
+//            myImage = new BitmapDrawable(getCircularBitmap(
+//                    BitmapFactory.decodeResource(getResources(), R.drawable.load_default_img)));
+//        }
+//        canvas.save();
+//        // 设置扳手图像的旋转角度和旋转轴心坐标（后两个参数，注意这个坐标是相对于屏幕的），该轴心也是图像的正中心
+//        canvas.rotate(first + mSweepAnglePer, mRadius + circleWidth, mRadius + circleWidth);
+//        myImage.setBounds(circleWidth, circleWidth, min - circleWidth, min - circleWidth);
+//
+//        myImage.draw(canvas);
+//        canvas.restore();
+
+
+
+
+String sdfString = Html.fromHtml(messageInfo.content).toString();
+		float charaWidth = 0;
+		float chartCount = 0;
+//		for (int i = 0; i < sdfString.length(); i++) {
+//			charaWidth = getCharacterWidth(i, h.messageContent0) + 1;// 加上字间距
+//			chartCount += charaWidth;
+//			if (chartCount >= (AbleApplication.sWidth - DisplayUtil.dip2px(
+//					context, 80)) * 3) {// 去掉margin
+//				if (i <= Html.fromHtml(messageInfo.content).toString().length() - 1) {
+//					sdfString = sdfString.substring(0, i - 1);// 给...空位
+//					h.messageContent0.setText(sdfString + "...");
+//					// tv_more.setVisibility(View.VISIBLE);
+//				} else {
+//					h.messageContent0.setText(sdfString);
+//				}
+//				break;
+//			}
+//		}
+
+
+
+public float getCharacterWidth(int i, TextView tv) {
+		if (null == tv) {
+			return 0f;
+		}
+		String c = tv.getText().toString().substring(i, i + 1);
+		return getCharacterWidth(c, tv.getTextSize()) * tv.getScaleX();
+	}
+
+	public float getCharacterWidth(String text, float size) {
+		if (null == text || "".equals(text))
+			return 0;
+		float width = 0;
+		Paint paint = new Paint();
+		paint.setTextSize(size);
+		float text_width = paint.measureText(text);// 得到总体长度
+		width = text_width / text.length();// 每一个字符的长度
+		return width;
+	}
+
+	
+	registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+                mFinalCount++;
+//                //如果mFinalCount ==1，说明是从后台到前台
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+                mFinalCount--;
+//                //如果mFinalCount ==0，说明是前台到后台
+                if (mFinalCount == 0) {
+                    WindowUtils.getInstance(getApplicationContext()).hideWindow();
+                }
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+
+            }
+        });
+
+		
+		  private void initGesture() {
+//        mGestureRangeY = DisplayUtil.dip2px(mContext, 50);
+//        mGestureRangeX = DisplayUtil.dip2px(mContext, 100);
+//        gestureDetectorCompat = new GestureDetectorCompat(mContext, new GestureDetector.SimpleOnGestureListener() {
+//            @Override
+//            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+//                if (e2.getY() - e1.getY() > mGestureRangeY && Math.abs(e2.getX() - e1.getX()) < mGestureRangeX) { //向下划
+//                    if (isKeyShow) {
+//                        WindowUtils.getInstance(mContext).hideWindow();
+//                    } else {
+//                        WindowUtils.getInstance(mContext).showWindow(0,false);
+//                    }
+//                } else if (e1.getY() - e2.getY() > mGestureRangeY && Math.abs(e2.getX() - e1.getX()) < mGestureRangeX) { //向上滑.
+//                    WindowUtils.getInstance(mContext).hideWindow();
+//
+//                }
+//                return super.onFling(e1, e2, velocityX, velocityY);
+//            }
+//        });
+
+
+
+
+
+
+ 在android.webkit包中有个BrowserFrame私有类，该类中有个Native方法：
+
+public native String stringByEvaluatingJavaScriptFromString(String script)
+
+使用步骤
+
+1.扩展WebView添加方法，并使用反射实现。
+
+2.将布局文件中的WebView修改为自定义的WebView
+
+3.使用新的WebView调用方法，执行js方法获取返回值
+
+
+自定义WebView如下
+
+    public String dsfd(String script) {
+
+       try {
+
+           //由webview取到webviewcore
+
+           Field field_webviewcore = WebView.class.getDeclaredField("mWebViewCore");              
+
+           field_webviewcore.setAccessible(true);
+
+           Object obj_webviewcore = field_webviewcore.get(this);
+
+           //由webviewcore取到BrowserFrame
+
+           Field field_BrowserFrame = obj_webviewcore.getClass().getDeclaredField("mBrowserFrame");
+
+           field_BrowserFrame.setAccessible(true);
+
+           Object obj_frame = field_BrowserFrame.get(obj_webviewcore);       
+
+           //获取BrowserFrame对象的stringByEvaluatingJavaScriptFromString方法
+
+           Method method_stringByEvaluatingJavaScriptFromString = obj_frame.getClass().getMethod("stringByEvaluatingJavaScriptFromString", String.class);
+
+           //执行stringByEvaluatingJavaScriptFromString方法
+
+           Object obj_value = method_stringByEvaluatingJavaScriptFromString.invoke(obj_frame, script);
+
+           //返回执行结果
+
+           return String.valueOf(obj_value);
+
+       } catch (SecurityException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       } catch (NoSuchFieldException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       } catch (IllegalArgumentException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       } catch (IllegalAccessException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       } catch (NoSuchMethodException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       } catch (InvocationTargetException e) {
+
+           // TODO Auto-generated catch block
+
+           e.printStackTrace();
+
+       }
+
+       return null;
+
+    }
+
+}
+    }
+	
+	
+	
+	
+	public class ZhongWenComparator implements Comparator<School> {
+
+	@Override
+	public int compare(School one, School two) {
+		Collator ca = Collator.getInstance(Locale.CHINA);
+		int flags = 0;
+		if (ca.compare(one.name, two.name) < 0) {
+			flags = -1;
+		} else if (ca.compare(one.name, two.name) > 0) {
+			flags = 1;
+		} else {
+			flags = 0;
+		}
+		return flags;
+	}
+	
+	
+	 /**
+     * 获取验证码倒计时
+     */
+    private void startTimeDown() {
+        //验证码再次获取倒计时时手机号输入框不可编辑
+        //倒计时接受可以编辑
+        mCountDownTimer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                getCode.setClickable(false);
+                phoneNumber.setEnabled(false);//验证码再次获取倒计时时手机号输入框不可编辑
+                getCode.setText((millisUntilFinished / 1000 > 9 ? millisUntilFinished / 1000 : "0" + millisUntilFinished / 1000) + "秒获取");
+            }
+
+            @Override
+            public void onFinish() {
+                getCode.setClickable(true);
+                phoneNumber.setEnabled(true);//倒计时接受可以编辑
+                getCode.setText("获取验证码");
+                getCode.setTextColor(Color.parseColor("#17B592"));
+                getCode.setTag("1");
+            }
+        };
+        mCountDownTimer.start();
+
+    }
+}
+
+
+//		AnimatorSet animatorSet = new AnimatorSet();
+//		ObjectAnimator scaleX = ObjectAnimator.ofFloat(mOvalRing, "scaleX", 1f, 0.8f, 1f);
+//		ObjectAnimator scaleY = ObjectAnimator.ofFloat(mOvalRing, "scaleY", 1f, 0.8f, 1f);
+//
+//		animatorSet.setDuration(1500);
+//		scaleX.setRepeatCount(-1);
+//		scaleY.setRepeatCount(-1);
+//		animatorSet.play(scaleX).with(scaleY);//两个动画同时开始
+//		animatorSet.start();
+
+
+
+
+public void doAnimatior() {
+        //火箭显示
+        ViewCompat.animate(mHuoJianLayout).scaleX(1).scaleY(1).setDuration(huojianVisiableAnimationTime).setListener(mAnimatorListener).start();
+        //背景掉落
+        ViewCompat.animate(mBlueBg).translationY(AbleApplication.sHeight).setDuration(blueBgGoneTime).setStartDelay(blueBgStartDely).start();
+        //字体隐藏
+        setWorkLayoutVisiable(View.GONE);
+        setTimeLayoutVisiable(View.GONE);
+        //背景掉落到1/3处 readyGo显示
+        new Handler().postDelayed(mRunnable, blueBgGoneTime / 3 + blueBgStartDely);
+        ViewCompat.animate(mReadyGo).translationY(0).setDuration(500).setStartDelay(blueBgGoneTime / 3 + blueBgStartDely).setInterpolator(new OvershootInterpolator()).start();
+        //背景快掉完时 火箭起飞
+        ViewCompat.animate(mHuoJianLayout).translationY(-(AbleApplication.sHeight)).setDuration(huojianFlyTime).setStartDelay(blueBgGoneTime - blueBgGoneTime / 8).setInterpolator(new AnticipateInterpolator()).start();
+    }
+	
+	
+	
+JIT是"Just In Time Compiler"的缩写，就是"即时编译技术"，与Dalvik虚拟机相关。
+
+JIT是在2.2版本提出的，目的是为了提高Android的运行速度，一直存活到4.4版本，因为在4.4之后的ROM中，就不存在Dalvik虚拟机了。
+
+我们使用Java开发android，在编译打包APK文件时，会经过以下流程
+
+    Java编译器将应用中所有Java文件编译为class文件
+
+    dx工具将应用编译输出的类文件转换为Dalvik字节码，即dex文件
+
+    之后经过签名、对齐等操作变为APK文件。
+
+Dalvik虚拟机可以看做是一个Java VM，他负责解释dex文件为机器码，如果我们不做处理的话，每次执行代码，
+都需要Dalvik将dex代码翻译为微处理器指令，然后交给系统处理，这样效率不高。为了解决这个问题，
+Google在2.2版本添加了JIT编译器，当App运行时，每当遇到一个新类，JIT编译器就会对这个类进行编译，经过编译后的代码，
+会被优化成相当精简的原生型指令码（即native code），这样在下次执行到相同逻辑的时候，速度就会更快。
+
+当然使用JIT也不一定加快执行速度，如果大部分代码的执行次数很少，那么编译花费的时间不一定少于执行dex的时间。
+Google当然也知道这一点，所以JIT不对所有dex代码进行编译，而是只编译执行次数较多的dex为本地机器码。
+
+有一点需要注意，那就是dex字节码翻译成本地机器码是发生在应用程序的运行过程中的，并且应用程序每一次重新运行的时候，
+都要做重做这个翻译工作，所以这个工作并不是一劳永逸，每次重新打开App，都需要JIT编译。
+
+另外，Dalvik虚拟机从Android一出生一直活到4.4版本，而JIT在Android刚发布的时候并不存在，在2.2之后才被添加到Dalvik中。
+
+
+AOT是"Ahead Of Time"的缩写，指的就是ART(Anroid RunTime)这种运行方式
+
+面介绍过，JIT是运行时编译，这样可以对执行次数频繁的dex代码进行编译和优化，减少以后使用时的翻译时间，
+虽然可以加快Dalvik运行速度，但是还是有弊病，那就是将dex翻译为本地机器码也要占用时间，
+所以Google在4.4之后推出了ART，用来替换Dalvik。
+
+在4.4版本上，两种运行时环境共存，可以相互切换，但是在5.0+，Dalvik虚拟机则被彻底的丢弃，全部采用ART。
+
+ART的策略与Dalvik不同，在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，
+使其成为真正的本地应用。之后打开App的时候，不需要额外的翻译工作，直接使用本地机器码运行，因此运行速度提高。
+
+当然ART与Dalvik相比，还是有缺点的。
+
+    ART需要应用程序在安装时，就把程序代码转换成机器语言，所以这会消耗掉更多的存储空间，但消耗掉空间的增幅通常不会超过应用代码包大小的20%
+
+    由于有了一个转码的过程，所以应用安装时间难免会延长
+	
+
+    JIT代表运行时编译策略，也可以理解成一种运行时编译器，是为了加快Dalvik虚拟机解释dex速度提出的一种技术方案，来缓存频繁使用的本地机器码
+    .
+
+    ART和Dalvik都算是一种Android运行时环境，或者叫做虚拟机，用来解释dex类型文件。但是ART是安装时解释，Dalvik是运行时解释
+    .
+
+    AOT可以理解为一种编译策略，即运行前编译，ART虚拟机的主要特征就是AOT

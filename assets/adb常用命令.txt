@@ -1,0 +1,168 @@
+执行 adb shell ps | grep adbd ，可以找到该后台进程，windows 请使用 findstr 替代 grep    adb 使用的端口号，5037
+adb devices , 获取设备列表及设备状态
+adb get-state , 获取设备的状态
+adb kill-server , adb start-server , 结束 adb 服务， 启动 adb 服务，通常两个命令一起用
+adb logcat , 打印 Android 的系统日志   adb logcat -s   "-s"选项 : 设置默认的过滤器, 输出 “request-8" 标签的信息
+    输出日志信息到文件 : 
+	-- "-f"选项 : 该选项后面跟着输入日志的文件, 使用adb logcat -f /sdcard/log.txt  & 命令
+	（加入&表示后台运行，exit之后就可以拔掉数据线了，手机后台会一直运行这个logcat,并且该进程的ID为8278）
+	, 注意这个log文件是输出到手机上，需要指定合适的路径。Ctrl+c结束采集
+	（采集的过程是不显示的，Ctrl+c结束采集，其中下图中 ps | grep logcat表示查询过滤出在运行的logcat，当结束采集log时，一定要关闭掉这个PS，然后使用kill id 将其杀掉关闭）
+	-- "-v"和”>”选项 : 使用adb logcat -v time > D:/test.log命令, 可以看日志的输出时间和输出到什么位置;
+	 --”-b”选项：使用adb logcat -b radio 查看日志缓冲区包含radio 和 telephony信息
+adb bugreport , 打印dumpsys、dumpstate、logcat的输出，也是用于分析错误  adb bugreport > d:\bugreport.log
+adb install , 安装应用，覆盖安装是使用 -r 选项
+adb uninstall , 卸载应用，后面跟的参数是应用的包名，请区别于 apk 文件名  -k 选项，卸载时保存数据和缓存目录
+adb pull , 将 Android 设备上的文件或者文件夹复制到本地  adb pull sdcard/pull.txt d:\   如果需要重命名为 rename.txt：adb pull sdcard/pull.txt d:\rename.txt
+adb push , 推送本地文件至 Android 设备  adb push d:\push.txt sdcard/
+adb reboot , 重启 Android 设备  bootloader , 重启设备，进入 fastboot 模式，同 adb reboot-bootloader 命令
+adb forward , 将 宿主机上的某个端口重定向到设备的某个端口 adb forward tcp:1314 tcp :8888
+adb shell 
+pm list package  列出所有的应用的包名  -s：列出系统应用  -3：列出第三方应用 -f：列出应用包名及对应的apk名及存放位置 -i：列出应用包名及其安装来源，
+pm list package -f -3 -i zhihu   查找三方应用中知乎的包名、apk存放位置、安装来源：package:/data/app/com.zhihu.android-1.apk=com.zhihu.android  installer=com.xiaomi.market
+pm path 列出对应包名的 .apk 位置  adb shell pm path com.tencent.mobileqq
+pm list instrumentation , 列出含有单元测试 case 的应用，后面可跟参数 -f （与 pm list package 中一样），以及 [TARGET-PACKAGE]
+pm dump , 后跟包名，列出指定应用的 dump 信息，里面有各种信息，自行查看  adb shell pm dump com.tencent.mobileqq
+pm install , 安装应用
+pm uninstall , 卸载应用，同 adb uninstall , 后面跟的参数都是应用的包名
+pm clear , 清除应用数据
+pm set-install-location , pm get-install-location , 设置应用安装位置，获取应用安装位置[0/auto]：默认为自动[1/internal]：默认为安装在手机内部[2/external]：默认安装在外部存储
+am start , 启动一个 Activity，已启动系统相机应用为例 
+		adb shell am start -n com.android.camera/.Camera  Starting: Intent { cmp=com.android.camera/.Camera }
+		adb shell am start -a android.intent.action.VIEW -d http://testerhome.com
+		adb shell am start -a android.intent.action.CALL -d tel:10086 
+am instrument , 启动一个 instrumentation , 单元测试或者 Robotium 会用到
+am monitor , 监控 crash 与 ANR
+am force-stop , 后跟包名，结束应用
+am startservice , 启动一个服务
+am broadcast , 发送一个广播
+input text , 发送文本内容，不能发送中文  adb shell input text test123456
+input keyevent , 发送按键事件 adb shell input keyevent KEYCODE_HOME
+input tap , 对屏幕发送一个触摸事件   adb shell input tap 500 500  点击屏幕上坐标为 500 500 的位置
+input swipe , 滑动事件  adb shell input swipe 900 500 100 500
+	从右往左滑动屏幕如果版本不低于 4.4 , 可以模拟长按事件 adb shell input swipe 500 500 501 501 2000其实就是在小的距离内，在较长的持续时间内进行滑动，最后表现出来的结果就是长按动作
+adb shell screencap -p /sdcard/screen.png  截屏，保存至 sdcard 目录
+adb shell screenrecord sdcard/record.mp4 执行命令后操作手机，ctrl + c 结束录制，录制结果保存至 sdcard    执行命令后操作手机，ctrl + c 结束录制，录制结果保存至 sdcard
+adb shell uiautomator dump  执行 UI automation tests ， 获取当前界面的控件信息
+	runtest：executes UI automation tests RunTestCommand.java
+	dump：获取控件信息，DumpCommand.java
+	adb shell uiautomator dump   不加 [file] 选项时，默认存放在 sdcard 下
+adb shell ime list -s  列出设备上的输入法
+adb shell ime set com.baidu.input_mi/.ImeService  选择输入法
+adb shell wm size 获取设备分辨率
+adb shell log -p d -t xuxu "test adb shell log"   -p：优先级，-t：tag，标签，后面加上 message
+查看 Android 设备的参数信息，只运行 adb shell getprop，结果以 key : value 键值对的形式显示，如要获取某个 key 的值：adb shell getprop ro.build.version.sdk
+
+adb shell monkey -p com.android.settings 5000 > d:\monkey.log  在 PC 端执行 monkey 命令，将信息保存至 D 盘 monkey.log  
+adb shell "monkey -p com.android.settings 5000 > sdcard/monkey.log"
+adb shell settings get secure default_input_method获取系统默认输入法
+adb shell settings put secure default_input_method com.sohu.inputmethod.sogouoem/.SogouIME put命令更改默认输入法（将io.appium.android.ime/.UnicodeIME改为com.sohu.inputmethod.sogouoem/.SogouIME）
+db shell settings get system screen_brightness_mode  获取亮度是否为自动获取
+adb shell settings get system screen_brightness 获取当前亮度值
+adb shell settings put system screen_brightness 150更改亮度值（亮度值在0—255之间）
+adb shell settings get system screen_off_timeout 获取屏幕休眠时间
+adb shell settings put system screen_off_timeout 600000  更改休眠时间，10分钟
+adb shell settings get global auto_time获取日期时间选项中通过网络获取时间的状态，1为允许、0为不允许
+adb shell settings put global auto_time 0更改该状态，从1改
+
+adb shell dumpsys | findstr DUMP 默认打印出当前系统所有service信息，在后面可加上具体的服务名需要列出当前运行的服务
+adb shell dumpsys display | findstr DisplayDeviceInfo获取设备分辨率：
+adb shell dumpsys battery  获取设备电池信息：
+adb shell dumpsys cpuinfo 获取cpu信息：
+adb shell dumpsys meminfo 获取内存信息   要获取具体应用的内存信息，可加上包名adb shell dumpsys meminfo PACKAGE_NAME
+adb shell dumpsys activity加上-h可以获取帮助信息
+获取当前界面的UI信息，可以用：
+adb shell dumpsys activity top
+要获取当前界面的Activity：
+adb shell dumpsys activity top | findstr ACTIVITY
+adb shell dumpsys package
+加上-h可以获取帮助信息
+获取某个包的信息：
+adb shell dumpsys package PACKAGE_NAME
+获取通知信息：
+adb shell dumpsys notification
+
+adb shell dumpsys wifi
+可以获取到当前连接的wifi名、搜索到的wifi列表、wifi强度等
+
+adb shell dumpsys power
+可以获取到是否处于锁屏状态：mWakefulness=Asleep或者mScreenOn=false
+亮度值：mScreenBrightness=255
+屏幕休眠时间：Screen off timeout: 60000 ms
+屏幕分辨率：mDisplayWidth=1440，mDisplayHeight=2560等
+
+adb shell dumpsys telephony.registry
+可以获取到电话状态，例如
+mCallState值为0，表示待机状态、1表示来电未接听状态、2表示电话占线状态
+mCallForwarding=false #是否启用呼叫转移
+mDataConnectionState=2 #0：无数据连接 1：正在创建数据连接 2：已连接
+mDataConnectionPossible=true  #是否有数据连接
+mDataConnectionApn=   #APN名称
+等
+
+
+ ANRlog一般会有traces文件，需使用命令导出
+
+     第一步：adb shell
+
+     第二步：cd /data/anr(如果有anr目录继续执行第三步，如果没有会提示没有此 目录，那就不需要在去traces文件了)
+
+     第三步：ls(查看存在的traces 文件)
+
+     第四步：Ctrl+C退出，然后输入adb pull /data/anr/traces文件名.txt E:\ 把文 件导入到E盘
+	 
+
+    tombstone log (在/data/tombstones/"目录下)  死机LOG（很少使用）：
+    adb logcat -c  清空日志缓存信息命令, 可以将之前的日志信息清空, 重新开始输出日志信息;
+
+	
+	4.root手机
+
+  一般有些用户会卸载系统的一些应用，来减少手机内存的大小，那么我们使用命令来root手机后卸载应用，可以检测手机的稳定性是否在可控范围之内
+
+	1.adb reboot-bootloader（进入fastboot模式，打开OEM模式）
+
+	2.fastboot oem teston
+
+	3.fastboot reboot（重启手机）
+
+	4.adb root（root手机）
+
+	5.adb remount （重新挂载系统分区，使系统分区重新可写）
+
+ 
+
+5.删除系统应用（前提需root可和第4个结合使用）
+
+      1.adb remount
+
+      2.adb shell
+
+      3.cd system/app（进入到系统应用目录下）
+
+      4.rm *.apk（删除应用）
+
+ 
+
+6.安装软件
+
+   adb install <apk文件路径> :这个命令将指定的apk文件安装到设备上
+
+   使用此命令可以方便快捷的把第三方APK安装在设备上
+
+　　adb install     
+10.删除文件/文件夹（最好先root手机才可进入到系统）
+
+   一般在做自动化录制脚本测试时，会在data目录下新建文件，那么自动化完成后需要删除文件或文件夹时，就可用如下命令执行
+
+    1.adb shell
+
+	2.cd /data     //进入系统内指定文件夹
+
+	3.ls           //列表显示当前文件夹内容
+
+	4.rm -r xxx    / /删除名字为xxx的文件夹及其里面的所有文件
+
+	  rm xxx      //删除文件xxx
+
+	  rmdir xxx    //删除xxx的文件夹
