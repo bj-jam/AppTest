@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fab1"
+        android:id="@+id/civ1"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/code6"
@@ -28,7 +28,7 @@
         app:layout_constraintCircleRadius="11dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fab2"
+        android:id="@+id/civ2"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/code6"
@@ -40,7 +40,7 @@
         app:layout_constraintCircleRadius="11dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fab3"
+        android:id="@+id/civ3"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/code6"
@@ -52,7 +52,7 @@
         app:layout_constraintCircleRadius="11dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fab4"
+        android:id="@+id/civ4"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/code6"
@@ -64,7 +64,7 @@
         app:layout_constraintCircleRadius="11dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fab5"
+        android:id="@+id/civ5"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/code6"
