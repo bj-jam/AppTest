@@ -38,6 +38,10 @@ public class App extends Application {
     public static ImageLoader iLoader;
     public static Context context;
 
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
         // TODO Auto-generated method stub

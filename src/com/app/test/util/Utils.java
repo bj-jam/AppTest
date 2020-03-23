@@ -10,14 +10,32 @@ import android.support.annotation.ArrayRes;
  * Describe:
  */
 public class Utils {
+    /**
+     * 判断对象是否为空
+     *
+     * @param object
+     * @return
+     */
     public static boolean isEmpty(Object object) {
         return object == null;
     }
 
-    public static boolean isEmpty(CharSequence cs) {
-        return cs == null || cs.length() == 0;
+    /**
+     * 判断字符串是否为空
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isEmpty(CharSequence str) {
+        return str == null || str.length() == 0;
     }
 
+    /**
+     * 判断字符串去掉前后空格 是否为空且是否为“null”
+     *
+     * @param str
+     * @return
+     */
     public static boolean trimToEmptyNull(String str) {
         String trimToEmpty = StringUtils.trimToEmpty(str);
         return StringUtils.isEmpty(trimToEmpty) || StringUtils.equalsIgnoreCase(trimToEmpty, "null");

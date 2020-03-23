@@ -6,7 +6,6 @@ package com.app.test.util;
  * Describe:
  */
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
@@ -18,23 +17,6 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class StringUtils {
-    public static final String SPACE = " ";
-    public static final String EMPTY = "";
-    public static final String LF = "\n";
-    public static final String CR = "\r";
-    public static final int INDEX_NOT_FOUND = -1;
-    private static final int PAD_LIMIT = 8192;
-
-    public StringUtils() {
-    }
-
-    public static boolean isEmpty(CharSequence cs) {
-        return cs == null || cs.length() == 0;
-    }
-
-    public static boolean isNotEmpty(CharSequence cs) {
-        return !isEmpty(cs);
-    }
 
     public static boolean isAnyEmpty(CharSequence... css) {
         if (ArrayUtils.isEmpty(css)) {
@@ -54,10 +36,6 @@ public class StringUtils {
         }
     }
 
-    public static boolean isNoneEmpty(CharSequence... css) {
-        return !isAnyEmpty(css);
-    }
-
     public static boolean isBlank(CharSequence cs) {
         int strLen;
         if (cs != null && (strLen = cs.length()) != 0) {
@@ -71,10 +49,6 @@ public class StringUtils {
         } else {
             return true;
         }
-    }
-
-    public static boolean isNotBlank(CharSequence cs) {
-        return !isBlank(cs);
     }
 
     public static boolean isAnyBlank(CharSequence... css) {
@@ -95,27 +69,6 @@ public class StringUtils {
         }
     }
 
-    public static boolean isNoneBlank(CharSequence... css) {
-        return !isAnyBlank(css);
-    }
-
-    public static String trim(String str) {
-        return str == null ? null : str.trim();
-    }
-
-    public static String trimToNull(String str) {
-        String ts = trim(str);
-        return isEmpty(ts) ? null : ts;
-    }
-
-    public static String trimToEmpty(String str) {
-        return str == null ? "" : str.trim();
-    }
-
-    public static String strip(String str) {
-        return strip(str, (String) null);
-    }
-
     public static String stripToNull(String str) {
         if (str == null) {
             return null;
@@ -125,8 +78,9 @@ public class StringUtils {
         }
     }
 
-    public static String stripToEmpty(String str) {
-        return str == null ? "" : strip(str, (String) null);
+    public static String trimToNull(String str) {
+        String ts = trim(str);
+        return isEmpty(ts) ? null : ts;
     }
 
     public static String strip(String str, String stripChars) {
@@ -185,10 +139,6 @@ public class StringUtils {
         }
     }
 
-    public static String[] stripAll(String... strs) {
-        return stripAll(strs, (String) null);
-    }
-
     public static String[] stripAll(String[] strs, String stripChars) {
         int strsLen;
         if (strs != null && (strsLen = strs.length) != 0) {
@@ -235,6 +185,53 @@ public class StringUtils {
             return str1 == str2;
         }
     }
+
+
+    public static boolean isEmpty(CharSequence cs) {
+        return cs == null || cs.length() == 0;
+    }
+
+    public static boolean isNotEmpty(CharSequence cs) {
+        return !isEmpty(cs);
+    }
+
+    public static boolean isNoneEmpty(CharSequence... css) {
+        return !isAnyEmpty(css);
+    }
+
+
+    public static boolean isNotBlank(CharSequence cs) {
+        return !isBlank(cs);
+    }
+
+
+    public static boolean isNoneBlank(CharSequence... css) {
+        return !isAnyBlank(css);
+    }
+
+    public static String trim(String str) {
+        return str == null ? null : str.trim();
+    }
+
+
+    public static String trimToEmpty(String str) {
+        return str == null ? "" : str.trim();
+    }
+
+    public static String strip(String str) {
+        return strip(str, (String) null);
+    }
+
+
+    public static String stripToEmpty(String str) {
+        return str == null ? "" : strip(str, (String) null);
+    }
+
+
+    public static String[] stripAll(String... strs) {
+        return stripAll(strs, (String) null);
+    }
+
 
     public static int indexOf(CharSequence seq, int searchChar) {
         return isEmpty(seq) ? -1 : CharSequenceUtils.indexOf(seq, searchChar, 0);
@@ -2792,13 +2789,6 @@ public class StringUtils {
         return prependIfMissing(str, prefix, true, prefixes);
     }
 
-    /**
-     * @deprecated
-     */
-    @Deprecated
-    public static String toString(byte[] bytes, String charsetName) throws UnsupportedEncodingException {
-        return charsetName != null ? new String(bytes, charsetName) : new String(bytes, Charset.defaultCharset());
-    }
 
     public static String toEncodedString(byte[] bytes, Charset charset) {
         return new String(bytes, charset != null ? charset : Charset.defaultCharset());

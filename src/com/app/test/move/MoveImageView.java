@@ -30,7 +30,7 @@ public class MoveImageView extends android.support.v7.widget.AppCompatImageView 
     private FrameAnimationUtils getFrameAnimationUtilsConfig() {
         FrameAnimationUtils.Config config = new FrameAnimationUtils.Config();
         config.setImageView(this);
-        config.setFrameResArray(UIUtils.getRes(getContext(), R.array.game_gold_scale));
+        config.setFrameResArray(Utils.getRes(getContext(), R.array.game_gold_scale));
         config.setDuration(10);
         config.setRepeatCount(-1);
         return config.build();
