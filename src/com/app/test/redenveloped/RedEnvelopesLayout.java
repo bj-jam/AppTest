@@ -46,18 +46,17 @@ public class RedEnvelopesLayout extends FrameLayout {
     }
 
     private ActivityFinishInter inter;
-    private RedEnvelopesView rpvRedPacket;
-    private List<RedEnvelopes> redPacketList;
+    private RedEnvelopesView redEnvelopesView;
+    private List<RedEnvelopes> redEnvelopesList;
     //单位：秒
-    private int redPacketTime;
+    private int redEnvelopesTime;
 
-    //    private ImageView ivRedPacketBack;
     private TextView tvMoney;
     private TextView tvTime;
     private ImageView ivTimeDownPrompt;
     private ImageView ivReady;
-    private FrameLayout flRedPacketTop;
-    private final int redPacketEnd = 2000;
+    private FrameLayout flRedEnvelopesTop;
+    private final int redEnvelopesEnd = 2000;
     private int moneyTotal;
     private ValueAnimator valueAnimator;
     //用于动画参数
@@ -76,7 +75,7 @@ public class RedEnvelopesLayout extends FrameLayout {
             super.handleMessage(msg);
             switch (msg.what) {
                 case RED_PACKET_END:
-                    if (msg.arg1 == redPacketEnd) {
+                    if (msg.arg1 == redEnvelopesEnd) {
                         canBack = true;
                         autoReceiveMoney();
                     } else {
@@ -110,13 +109,13 @@ public class RedEnvelopesLayout extends FrameLayout {
 
     private void initView() {
         View.inflate(getContext(), R.layout.layout_redpacket, this);
-        rpvRedPacket = $(this, R.id.rpvRedPacket);
+        redEnvelopesView = $(this, R.id.rpvRedPacket);
 //        ivRedPacketBack = $(this, R.id.ivRedPacketBack);
         tvMoney = $(this, R.id.tvMoney);
         tvTime = $(this, R.id.tvTime);
         ivTimeDownPrompt = $(this, R.id.ivTimeDownPrompt);
         ivReady = $(this, R.id.ivReady);
-        flRedPacketTop = $(this, R.id.flRedPacketTop);
+        flRedEnvelopesTop = $(this, R.id.flRedPacketTop);
     }
 
 
@@ -130,10 +129,10 @@ public class RedEnvelopesLayout extends FrameLayout {
 
 
     public void setData(List<RedEnvelopes> list, int time) {
-        redPacketList = list;
-        redPacketTime = time;
+        redEnvelopesList = list;
+        redEnvelopesTime = time;
 
-        tvTime.setText(redPacketTime + "s");
+        tvTime.setText(redEnvelopesTime + "s");
         ivReady.setVisibility(VISIBLE);
 //        ivTimeDownPrompt.setVisibility(VISIBLE);
     }
@@ -250,10 +249,10 @@ public class RedEnvelopesLayout extends FrameLayout {
         if (isExit() || Utils.isEmpty(handler)) {
             return;
         }
-        if (!Utils.isEmpty(rpvRedPacket) && rpvRedPacket.isEnd()) {
+        if (!Utils.isEmpty(redEnvelopesView) && redEnvelopesView.isEnd()) {
             Message message = Message.obtain();
             message.what = RED_PACKET_END;
-            message.arg1 = redPacketEnd;
+            message.arg1 = redEnvelopesEnd;
             handler.sendMessage(message);
         } else {
             handler.sendEmptyMessageDelayed(RED_PACKET_END, 300);
@@ -267,10 +266,10 @@ public class RedEnvelopesLayout extends FrameLayout {
             handler.removeMessages(RED_PACKET_END);
         }
         if (!Utils.isEmpty(tvTime)) {
-            tvTime.setText(redPacketTime + "s");
+            tvTime.setText(redEnvelopesTime + "s");
         }
         timeCountDown = new TimeCountDown();
-        timeCountDown.start(redPacketTime, new TimeCountDown.TimeCallback() {
+        timeCountDown.start(redEnvelopesTime, new TimeCountDown.TimeCallback() {
             @Override
             public void onNext(int timeSecond) {
                 tvTime.setText(timeSecond + "s");
@@ -287,24 +286,24 @@ public class RedEnvelopesLayout extends FrameLayout {
             }
         });
 
-        if (Utils.isEmpty(rpvRedPacket) || Utils.isEmpty(handler)) {
+        if (Utils.isEmpty(redEnvelopesView) || Utils.isEmpty(handler)) {
             return;
         }
 
 
-        if (Utils.isEmpty(redPacketList)) {
+        if (Utils.isEmpty(redEnvelopesList)) {
             return;
         }
 
 
         //产生红包的间隔时间
-        final long interval = redPacketTime * 1000L / redPacketList.size();
+        final long interval = redEnvelopesTime * 1000L / redEnvelopesList.size();
 
 
-        final long tempIntervalTimeMillis = (getMaxMillis() - getMinMillis()) / redPacketList.size();
+        final long tempIntervalTimeMillis = (getMaxMillis() - getMinMillis()) / redEnvelopesList.size();
         checkBitmap();
         //因为4个红包宽高一致，这里获取一个图片的宽度就行了
-        final int redPacketWidth = getBitmapWidth(bitmap1, false);
+        final int redEnvelopesWidth = getBitmapWidth(bitmap1, false);
 //        final int goldWidth = getGoldBitmapWidth(goldBitmap);
         final int clickRedPacketWidth = getBitmapWidth(clickBitmap, true);
         final int clickRedPacketHeight = getClickBitmapHeight(clickBitmap);
@@ -312,7 +311,7 @@ public class RedEnvelopesLayout extends FrameLayout {
         final int dp10 = DisplayUtil.dip2px(getContext(), 10);
         final int screenWidth = getScreenWidth(getContext());
         final int screenHeight = getScreenHeight(getContext());
-        final int containerHeight = screenHeight + redPacketWidth;
+        final int containerHeight = screenHeight + redEnvelopesWidth;
 
 
         final int goldDismissXOffset = 17;
@@ -328,27 +327,26 @@ public class RedEnvelopesLayout extends FrameLayout {
                 if (isExit()) {
                     return true;
                 }
-                if (Utils.isEmpty(redPacketList)) {
+                if (Utils.isEmpty(redEnvelopesList)) {
                     return true;
                 }
 
                 int index = checkCount - 1;
                 if (index < 0) {
                     index = 0;
-                } else if (index >= redPacketList.size()) {
-                    index = redPacketList.size() - 1;
+                } else if (index >= redEnvelopesList.size()) {
+                    index = redEnvelopesList.size() - 1;
                 }
-                RedEnvelopes bean = redPacketList.get(index);
+                RedEnvelopes bean = redEnvelopesList.get(index);
 
                 final Bitmap randomRedPacket = RedEnvelopesLocation.get().getRandomRedPacket(bitmaps);
 
                 long durationTimeMillis = getMaxMillis() - tempIntervalTimeMillis * index;
                 //下一个红包的x方向位置
-                int nextRedPacketX = RedEnvelopesLocation.get().getNextRedPacketX(dp10, screenWidth, redPacketWidth);
+                int nextRedPacketX = RedEnvelopesLocation.get().getNextRedPacketX(dp10, screenWidth, redEnvelopesWidth);
 
-                RedEnvelopesHelper redPacketHelper = RedEnvelopesHelper.produceRedPacket(index, getContext(), redPacketWidth, redPacketWidth, clickRedPacketWidth, clickRedPacketHeight, nextRedPacketX, durationTimeMillis);
-//                redPacketHelper.setGoldBitmapWidth(goldWidth);
-//                redPacketHelper.setGoldBitmapHeight(goldWidth);
+                RedEnvelopesHelper redPacketHelper = RedEnvelopesHelper.produceRedPacket(index, getContext(), redEnvelopesWidth,
+                        redEnvelopesWidth, clickRedPacketWidth, clickRedPacketHeight, nextRedPacketX, durationTimeMillis);
 
                 if (!Utils.isEmpty(redPacketHelper)) {
                     redPacketHelper.setGoldDismissXOffset(goldDismissXOffset);
@@ -384,18 +382,18 @@ public class RedEnvelopesLayout extends FrameLayout {
                             return goldBitmap;
                         }
                     });
-                    if (Utils.isEmpty(rpvRedPacket)) {
+                    if (Utils.isEmpty(redEnvelopesView)) {
                         return true;
                     }
-                    rpvRedPacket.addRedPacketData(checkCount - 1, redPacketHelper);
+                    redEnvelopesView.addRedPacketData(checkCount - 1, redPacketHelper);
                     redPacketHelper.startDown(containerHeight);
 
                     if (checkCount == 1) {
-                        rpvRedPacket.startDraw();
+                        redEnvelopesView.startDraw();
                     }
                 }
 
-                if (checkCount >= redPacketList.size() || isExit()) {
+                if (checkCount >= redEnvelopesList.size() || isExit()) {
                     return true;
                 }
                 return false;
@@ -459,17 +457,6 @@ public class RedEnvelopesLayout extends FrameLayout {
         if (lastIndexOf != -1 && lastIndexOf == stringBuffer.length() - 1) {
             stringBuffer.deleteCharAt(lastIndexOf);
         }
-
-//        getPresenter().receiveMoney(stringBuffer.toString());
-    }
-
-    public void autoReceiveOnError(int type) {
-        hideOtherView();
-    }
-
-
-    public boolean canBack() {
-        return canBack;
     }
 
     public void finish() {
@@ -514,17 +501,17 @@ public class RedEnvelopesLayout extends FrameLayout {
 
 
     private void hideOtherView() {
-        if (Utils.isEmpty(flRedPacketTop)) {
+        if (Utils.isEmpty(flRedEnvelopesTop)) {
             return;
         }
-        if (flRedPacketTop.getVisibility() == INVISIBLE) {
+        if (flRedEnvelopesTop.getVisibility() == INVISIBLE) {
             return;
         }
         AlphaAnimation flRedPacketTopAnimation = new AlphaAnimation(1, 0);
         flRedPacketTopAnimation.setRepeatCount(0);
         flRedPacketTopAnimation.setDuration(400);
-        flRedPacketTop.setVisibility(INVISIBLE);
-        flRedPacketTop.startAnimation(flRedPacketTopAnimation);
+        flRedEnvelopesTop.setVisibility(INVISIBLE);
+        flRedEnvelopesTop.startAnimation(flRedPacketTopAnimation);
 
         AlphaAnimation ivRedPacketBottomAnimation = new AlphaAnimation(1, 0);
         ivRedPacketBottomAnimation.setRepeatCount(0);
@@ -532,20 +519,10 @@ public class RedEnvelopesLayout extends FrameLayout {
     }
 
     public void showOtherView() {
-        if (Utils.isEmpty(flRedPacketTop)) {
+        if (Utils.isEmpty(flRedEnvelopesTop)) {
             return;
         }
-//        AlphaAnimation flRedPacketTopAnimation=new AlphaAnimation(1,0);
-//        flRedPacketTopAnimation.setRepeatCount(0);
-//        flRedPacketTopAnimation.setDuration(400);
-        flRedPacketTop.setVisibility(VISIBLE);
-//        flRedPacketTop.startAnimation(flRedPacketTopAnimation);
-
-//        AlphaAnimation ivRedPacketBottomAnimation=new AlphaAnimation(1,0);
-//        ivRedPacketBottomAnimation.setRepeatCount(0);
-//        ivRedPacketBottomAnimation.setDuration(400);
-//        ivRedPacketBottom.setVisibility(VISIBLE);
-//        ivRedPacketBottom.startAnimation(ivRedPacketBottomAnimation);
+        flRedEnvelopesTop.setVisibility(VISIBLE);
     }
 
     protected final <E extends View> E $(@NonNull View view, @IdRes int id) {
@@ -571,11 +548,4 @@ public class RedEnvelopesLayout extends FrameLayout {
         return isDestroy;
     }
 
-    public boolean isNoMoneyFinish() {
-        return noMoneyFinish;
-    }
-
-    public void setNoMoneyFinish(boolean noMoneyFinish) {
-        this.noMoneyFinish = noMoneyFinish;
-    }
 }
