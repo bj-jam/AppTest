@@ -5,7 +5,6 @@ import android.graphics.PointF;
 
 import com.app.test.R;
 import com.app.test.util.FrameAnimationUtils;
-import com.app.test.util.UIUtils;
 import com.app.test.util.Utils;
 
 /**
