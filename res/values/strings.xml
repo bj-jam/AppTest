@@ -82,4 +82,5 @@
     <string name="RadarActivity">雷达扫描效果</string>
     <string name="LoadingActivity">加载框</string>
     <string name="BubbleActivity">气泡效果</string>
+    <string name="LikeSouGouActivity">仿搜狗</string>
 </resources>

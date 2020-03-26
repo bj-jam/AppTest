@@ -21,6 +21,7 @@ import com.app.test.floatbutton.FloatButtonActivity
 import com.app.test.glide.img.GlideLoadImgAcitvity
 import com.app.test.hook.ui.TargetActivity
 import com.app.test.keyboard.KeyboardActivity
+import com.app.test.likesougou.LikeSouGouActivity
 import com.app.test.line.LineActivity
 import com.app.test.listview.LiseViewActivity
 import com.app.test.loading.LoadingActivity
@@ -141,6 +142,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.RadarActivity)
         texts.add(R.string.LoadingActivity)
         texts.add(R.string.BubbleActivity)
+        texts.add(R.string.LikeSouGouActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -190,6 +192,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(RadarActivity::class.java) //
         clzs.add(LoadingActivity::class.java) //
         clzs.add(BubbleActivity::class.java) //
+        clzs.add(LikeSouGouActivity::class.java) //
     }
 
     interface OnLister {
