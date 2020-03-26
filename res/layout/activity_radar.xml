@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.app.test.radar.RadarView
+        android:id="@+id/radar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:circleColor="#565cd6"
+        app:circleNum="4"
+        app:flicker="3"
+        app:raindropNum="4"
+        app:showCross="true"
+        app:speed="5"
+        app:sweepColor="#565cd6" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫描" />
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止" />
+
+    <com.app.test.radar.PolygonView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        app:psv_color="@android:color/black"
+        app:psv_line_width="1.5dp"
+        app:psv_num="6" />
+
+    <com.app.test.radar.AnyCircleView
+        android:id="@+id/layout_ripple"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:clickable="true"
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:id="@+id/iv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/ads_video_close2" />
+
+        <ImageView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_plus"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/ads_video_close2" />
+    </com.app.test.radar.AnyCircleView>
+</LinearLayout>

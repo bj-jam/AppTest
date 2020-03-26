@@ -79,6 +79,7 @@
         <activity android:name="com.app.test.matrix.MatrixActivity" />
         <activity android:name="com.app.test.viewflipper.ViewFlipperActivity" />
         <activity android:name="com.app.test.timelytextview.TimelyActivity" />
+        <activity android:name="com.app.test.radar.RadarActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

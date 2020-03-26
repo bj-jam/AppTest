@@ -29,6 +29,7 @@ import com.app.test.move.MoveActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
 import com.app.test.numberprogressbar.NumberProgressActivity
+import com.app.test.radar.RadarActivity
 import com.app.test.recyclerview.Damping1Activity
 import com.app.test.recyclerview.DampingActivity
 import com.app.test.recyclerview.RecyclerViewActivity
@@ -135,6 +136,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.ViewFlipperActivity)
         texts.add(R.string.TimelyActivity)
         texts.add(R.string.TargetActivity)
+        texts.add(R.string.RadarActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -181,6 +183,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(ViewFlipperActivity::class.java) //
         clzs.add(TimelyActivity::class.java) //
         clzs.add(TargetActivity::class.java) //
+        clzs.add(RadarActivity::class.java) //
     }
 
     interface OnLister {
