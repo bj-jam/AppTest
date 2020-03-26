@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/loading_bg"
-    android:paddingLeft="3dp"
-    android:paddingTop="3dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
     android:scaleType="centerInside"
     android:src="@drawable/clip_loading" />

@@ -81,6 +81,7 @@
         <activity android:name="com.app.test.timelytextview.TimelyActivity" />
         <activity android:name="com.app.test.radar.RadarActivity" />
         <activity android:name="com.app.test.loading.LoadingActivity" />
+        <activity android:name="com.app.test.bubble.BubbleActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

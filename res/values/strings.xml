@@ -80,4 +80,6 @@
     <string name="TimelyActivity">数字变化</string>
     <string name="TargetActivity">未注册的activity</string>
     <string name="RadarActivity">雷达扫描效果</string>
+    <string name="LoadingActivity">加载框</string>
+    <string name="BubbleActivity">气泡效果</string>
 </resources>

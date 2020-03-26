@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.app.test.R
 import com.app.test.anim.AnimActivity
 import com.app.test.bezier.NewUiActivity
+import com.app.test.bubble.BubbleActivity
 import com.app.test.camera.CameraActivity
 import com.app.test.cardview.CardViewActivity
 import com.app.test.circle.CircleActivity
@@ -138,7 +139,8 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.TimelyActivity)
         texts.add(R.string.TargetActivity)
         texts.add(R.string.RadarActivity)
-        texts.add(R.string.RadarActivity)
+        texts.add(R.string.LoadingActivity)
+        texts.add(R.string.BubbleActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -187,6 +189,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(TargetActivity::class.java) //
         clzs.add(RadarActivity::class.java) //
         clzs.add(LoadingActivity::class.java) //
+        clzs.add(BubbleActivity::class.java) //
     }
 
     interface OnLister {
