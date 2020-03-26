@@ -183,4 +183,22 @@
         <!-- 边的线宽 -->
         <attr name="psv_line_width" format="float|dimension|reference" />
     </declare-styleable>
+
+
+    <declare-styleable name="ProgressWheel">
+        <attr name="textString" format="string" />
+        <attr name="textStringColor" format="color" />
+        <attr name="textStringSize" format="dimension" />
+        <attr name="barColor" format="color" />
+        <attr name="rimColor" format="color" />
+        <attr name="rimWidth" format="dimension" />
+        <attr name="spinSpeed" format="dimension" />
+        <attr name="delayMillis" format="integer" />
+        <attr name="barWidth" format="dimension" />
+        <attr name="barLength" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="PieProgress">
+        <attr name="foregroundColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
 </resources>

@@ -22,6 +22,7 @@ import com.app.test.hook.ui.TargetActivity
 import com.app.test.keyboard.KeyboardActivity
 import com.app.test.line.LineActivity
 import com.app.test.listview.LiseViewActivity
+import com.app.test.loading.LoadingActivity
 import com.app.test.lottie.LottieActivity
 import com.app.test.matrix.MatrixActivity
 import com.app.test.mirrorimage.MirrorImageActivity
@@ -137,6 +138,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.TimelyActivity)
         texts.add(R.string.TargetActivity)
         texts.add(R.string.RadarActivity)
+        texts.add(R.string.RadarActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -184,6 +186,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(TimelyActivity::class.java) //
         clzs.add(TargetActivity::class.java) //
         clzs.add(RadarActivity::class.java) //
+        clzs.add(LoadingActivity::class.java) //
     }
 
     interface OnLister {
