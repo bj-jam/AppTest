@@ -25,7 +25,7 @@ import com.app.test.game.bean.LogHelper;
 import com.app.test.game.bean.IdiomViewPosition;
 import com.app.test.game.bean.Proverb;
 import com.app.test.game.bean.ProverbCharacter;
-import com.app.test.game.bean.ProverbCharacterWrapper;
+import com.app.test.game.bean.IdiomWrapper;
 import com.app.test.game.bean.Question;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.helper.IdiomHelper;
@@ -104,7 +104,7 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
         }
     }
 
-    public void setProverbData(Question question, ProverbCharacterWrapper[][] proverbCharacters, Point point, int firstSelectPosition) {
+    public void setProverbData(Question question, IdiomWrapper[][] proverbCharacters, Point point, int firstSelectPosition) {
         if (Utils.isEmpty(point)) {
             point = new Point();
         }
@@ -335,19 +335,19 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
             if (Utils.isEmpty(idiomBoardAdapter)) {
                 return;
             }
-            ProverbCharacterWrapper[][] sourceWrapperData = idiomBoardAdapter.getSourceWrapperData();
+            IdiomWrapper[][] sourceWrapperData = idiomBoardAdapter.getSourceWrapperData();
             if (Utils.isEmpty(sourceWrapperData)) {
                 return;
             }
             int length = sourceWrapperData.length;
             for (int i = 0; i < length; i++) {
-                ProverbCharacterWrapper[] sourceWrapper = sourceWrapperData[i];
+                IdiomWrapper[] sourceWrapper = sourceWrapperData[i];
                 if (Utils.isEmpty(sourceWrapper)) {
                     continue;
                 }
                 int size = sourceWrapper.length;
                 for (int j = 0; j < size; j++) {
-                    ProverbCharacterWrapper wrapper = sourceWrapper[j];
+                    IdiomWrapper wrapper = sourceWrapper[j];
                     if (Utils.isEmpty(wrapper)) {
                         continue;
                     }
@@ -476,7 +476,7 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
             return;
         }
 
-        ProverbCharacterWrapper[][] strArray = new ProverbCharacterWrapper[question.getRelativeRow()][question.getRelativeColumn()];
+        IdiomWrapper[][] strArray = new IdiomWrapper[question.getRelativeRow()][question.getRelativeColumn()];
 
         /*记录进入答题第一个选择的成语所在下标，以及选择框所在坐标*/
         int firstPosition = -1;
@@ -495,10 +495,10 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                 int relativeX = proverbList.getRelativeX();
                 int relativeY = proverbList.getRelativeY();
 
-                ProverbCharacterWrapper existWrapper = strArray[relativeX][relativeY];
+                IdiomWrapper existWrapper = strArray[relativeX][relativeY];
 
                 if (Utils.isEmpty(existWrapper)) {
-                    existWrapper = new ProverbCharacterWrapper();
+                    existWrapper = new IdiomWrapper();
                     existWrapper.setProverbCharacter(proverbList);
                     strArray[relativeX][relativeY] = existWrapper;
                 } else {

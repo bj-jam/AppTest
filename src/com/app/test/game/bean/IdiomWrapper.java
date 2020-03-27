@@ -2,7 +2,7 @@ package com.app.test.game.bean;
 
 import android.os.Parcel;
 
-public class ProverbCharacterWrapper extends SuperType {
+public class IdiomWrapper extends SuperType {
     private ProverbCharacter proverbCharacter;
     /*一个成语是否全部填充完毕*/
     private boolean isAllFill;
@@ -11,11 +11,11 @@ public class ProverbCharacterWrapper extends SuperType {
     //该字所关联的成语所在集合的下标
     private int proverbIndex;
 
-    public ProverbCharacterWrapper() {
+    public IdiomWrapper() {
         super();
     }
 
-    public ProverbCharacterWrapper(Parcel sourceParcel) {
+    public IdiomWrapper(Parcel sourceParcel) {
         super(sourceParcel);
         proverbCharacter = (ProverbCharacter) sourceParcel.readParcelable(ProverbCharacter.class.getClassLoader());
 
@@ -24,15 +24,15 @@ public class ProverbCharacterWrapper extends SuperType {
         proverbIndex = sourceParcel.readInt();
     }
 
-    public static final Creator<ProverbCharacterWrapper> CREATOR = new Creator<ProverbCharacterWrapper>() {
+    public static final Creator<IdiomWrapper> CREATOR = new Creator<IdiomWrapper>() {
         @Override
-        public ProverbCharacterWrapper[] newArray(int size) {
-            return new ProverbCharacterWrapper[size];
+        public IdiomWrapper[] newArray(int size) {
+            return new IdiomWrapper[size];
         }
 
         @Override
-        public ProverbCharacterWrapper createFromParcel(Parcel source) {
-            return new ProverbCharacterWrapper(source);
+        public IdiomWrapper createFromParcel(Parcel source) {
+            return new IdiomWrapper(source);
         }
     };
 

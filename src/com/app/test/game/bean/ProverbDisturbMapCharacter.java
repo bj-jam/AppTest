@@ -20,15 +20,15 @@ public class ProverbDisturbMapCharacter implements Parcelable {
         disturb = sourceParcel.readString();
     }
 
-    public static final Creator<ProverbCharacterWrapper> CREATOR = new Creator<ProverbCharacterWrapper>() {
+    public static final Creator<IdiomWrapper> CREATOR = new Creator<IdiomWrapper>() {
         @Override
-        public ProverbCharacterWrapper[] newArray(int size) {
-            return new ProverbCharacterWrapper[size];
+        public IdiomWrapper[] newArray(int size) {
+            return new IdiomWrapper[size];
         }
 
         @Override
-        public ProverbCharacterWrapper createFromParcel(Parcel source) {
-            return new ProverbCharacterWrapper(source);
+        public IdiomWrapper createFromParcel(Parcel source) {
+            return new IdiomWrapper(source);
         }
     };
 
