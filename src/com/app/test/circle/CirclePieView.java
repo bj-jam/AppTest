@@ -80,9 +80,9 @@ public class CirclePieView extends View {
     private void init() {
         res = getResources();
         // 文字大小
-        textSize = res.getDimensionPixelSize(R.dimen.vote_infoDis);
-        textSize_ = res.getDimensionPixelSize(R.dimen.vote_textSize);
-        textSizeMin = res.getDimensionPixelSize(R.dimen.vote_infoDis);
+        textSize = res.getDimensionPixelSize(R.dimen.dp10);
+        textSize_ = res.getDimensionPixelSize(R.dimen.dp16);
+        textSizeMin = res.getDimensionPixelSize(R.dimen.dp10);
         dis = 10;
 
         textRect = new Rect();

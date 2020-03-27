@@ -86,9 +86,9 @@ public class FloatingActionsMenu extends ViewGroup {
   }
 
   private void init(Context context, AttributeSet attributeSet) {
-    mButtonSpacing = (int) (getResources().getDimension(R.dimen.fab_actions_spacing) - getResources().getDimension(R.dimen.fab_shadow_radius) - getResources().getDimension(R.dimen.fab_shadow_offset));
-    mLabelsMargin = getResources().getDimensionPixelSize(R.dimen.fab_labels_margin);
-    mLabelsVerticalOffset = getResources().getDimensionPixelSize(R.dimen.fab_shadow_offset);
+    mButtonSpacing = (int) (getResources().getDimension(R.dimen.dp16) - getResources().getDimension(R.dimen.dp9) - getResources().getDimension(R.dimen.dp3));
+    mLabelsMargin = getResources().getDimensionPixelSize(R.dimen.dp8);
+    mLabelsVerticalOffset = getResources().getDimensionPixelSize(R.dimen.dp3);
 
     mTouchDelegateGroup = new TouchDelegateGroup(this);
     setTouchDelegate(mTouchDelegateGroup);

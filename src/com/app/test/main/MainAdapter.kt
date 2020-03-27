@@ -18,6 +18,7 @@ import com.app.test.column.ColumnActivity
 import com.app.test.date.DateActivity
 import com.app.test.expandablelist.ExpandableListViewActivity
 import com.app.test.floatbutton.FloatButtonActivity
+import com.app.test.game.ui.AnswerActivity
 import com.app.test.glide.img.GlideLoadImgAcitvity
 import com.app.test.hook.ui.TargetActivity
 import com.app.test.keyboard.KeyboardActivity
@@ -143,6 +144,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.LoadingActivity)
         texts.add(R.string.BubbleActivity)
         texts.add(R.string.LikeSouGouActivity)
+        texts.add(R.string.GameReviewModeActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -193,6 +195,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(LoadingActivity::class.java) //
         clzs.add(BubbleActivity::class.java) //
         clzs.add(LikeSouGouActivity::class.java) //
+        clzs.add(AnswerActivity::class.java) //
     }
 
     interface OnLister {

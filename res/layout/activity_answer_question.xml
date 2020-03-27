@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dbv="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.app.test.date.DiamondBackView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="35dp"
+        dbv:dbv_color="#f5f8fc"
+        dbv:dbv_horizontal_count="6"
+        dbv:dbv_show_mode="cut_bottom" />
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="19.5dp"
+                android:layout_height="26dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_mine_back" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_answer_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_header"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ff525050"
+        android:textSize="15sp"
+        tools:text="本轮答题:0/10题" />
+
+    <FrameLayout
+        android:id="@+id/fl_question_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_answer_progress"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="@dimen/dp10">
+
+        <com.app.test.game.view.IdiomView
+            android:id="@+id/sgv_proverb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.app.test.game.view.SingleView
+            android:id="@+id/sgv_single"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <com.app.test.game.view.OpenDoorView
+        android:id="@+id/godv_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</RelativeLayout>

@@ -79,7 +79,7 @@ public class CircularProgressButton extends Button {
     }
 
     private void init(Context context, AttributeSet attributeSet) {
-        mStrokeWidth = (int) getContext().getResources().getDimension(R.dimen.cpb_stroke_width);
+        mStrokeWidth = (int) getContext().getResources().getDimension(R.dimen.dp4);
 
         initAttributes(context, attributeSet);
 

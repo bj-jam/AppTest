@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp45"
+    android:layout_height="@dimen/dp48"
+    android:orientation="vertical"
+    android:id="@+id/fl_game_proverb"
+    >
+    <View
+        android:id="@+id/v_select_idiom_word_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_idiom_select_empty_tips"
+        android:visibility="invisible"
+        />
+    <View
+        android:id="@+id/v_select_idiom_word"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_idiom_normal"
+        android:layout_margin="2dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_select_idiom_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:text="三" />
+
+</FrameLayout>

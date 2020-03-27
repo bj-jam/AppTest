@@ -44,4 +44,20 @@ public class NumberUtils {
                 throw new InvalidParameterException("Unsupported number requested");
         }
     }
+
+    public static int toInt(String str) {
+        return toInt(str, 0);
+    }
+
+    public static int toInt(String str, int defaultValue) {
+        if (str == null) {
+            return defaultValue;
+        } else {
+            try {
+                return Integer.parseInt(str);
+            } catch (NumberFormatException var3) {
+                return defaultValue;
+            }
+        }
+    }
 }

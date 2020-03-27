@@ -100,7 +100,7 @@ public class LineView1 extends View {
         calendarUtil = new CalendarUtil();
         res = getResources();
         // 文字大小
-        textSize = res.getDimensionPixelSize(R.dimen.vote_infoDis);
+        textSize = res.getDimensionPixelSize(R.dimen.dp10);
 
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.FILL);

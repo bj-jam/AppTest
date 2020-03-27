@@ -38,7 +38,7 @@ public class GameOpenDoorView extends RelativeLayout {
     }
 
     public void initView() {
-        View.inflate(getContext(), R.layout.view_game_open_door_anim, this);
+        View.inflate(getContext(), R.layout.view_open_door_anim, this);
         mLeft = findViewById(R.id.iv_left);
         mRight = findViewById(R.id.iv_right);
         setVisibility(INVISIBLE);
@@ -128,6 +128,9 @@ public class GameOpenDoorView extends RelativeLayout {
         if (closeAnimator != null && closeAnimator.isRunning()) {
             closeAnimator.cancel();
         }
+    }
+
+    public void onDestroy() {
     }
 
 
@@ -362,15 +365,17 @@ public class GameOpenDoorView extends RelativeLayout {
 //    }
 
 
-    public interface IGameOpenDoorListen {
-        void openAnimStart();
+    public static abstract class IGameOpenDoorListen {
+        public void openAnimStart() {
+        }
 
-        void openAnimEnd();
+        public void openAnimEnd() {
+        }
 
-        void closeAnimStart();
+        public void closeAnimStart() {
+        }
 
-        void closeAnimEnd();
-
-
+        public void closeAnimEnd() {
+        }
     }
 }

@@ -84,8 +84,8 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
     attr.recycle();
 
     updateCircleSize();
-    mShadowRadius = getDimension(R.dimen.fab_shadow_radius);
-    mShadowOffset = getDimension(R.dimen.fab_shadow_offset);
+    mShadowRadius = getDimension(R.dimen.dp9);
+    mShadowOffset = getDimension(R.dimen.dp3);
     updateDrawableSize();
 
     updateBackground();
@@ -96,7 +96,7 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
   }
 
   private void updateCircleSize() {
-    mCircleSize = getDimension(mSize == SIZE_NORMAL ? R.dimen.fab_size_normal : R.dimen.fab_size_mini);
+    mCircleSize = getDimension(mSize == SIZE_NORMAL ? R.dimen.dp56 : R.dimen.dp40);
   }
 
   public void setSize(@FAB_SIZE int size) {
@@ -229,7 +229,7 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
   }
 
   void updateBackground() {
-    final float strokeWidth = getDimension(R.dimen.fab_stroke_width);
+    final float strokeWidth = getDimension(R.dimen.dp1);
     final float halfStrokeWidth = strokeWidth / 2f;
 
     LayerDrawable layerDrawable = new LayerDrawable(
@@ -240,7 +240,7 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
             getIconDrawable()
         });
 
-    int iconOffset = (int) (mCircleSize - getDimension(R.dimen.fab_icon_size)) / 2;
+    int iconOffset = (int) (mCircleSize - getDimension(R.dimen.dp24)) / 2;
 
     int circleInsetHorizontal = (int) (mShadowRadius);
     int circleInsetTop = (int) (mShadowRadius - mShadowOffset);

@@ -63,11 +63,11 @@ public class AddFloatingActionButton extends FloatingActionButton {
 
   @Override
   Drawable getIconDrawable() {
-    final float iconSize = getDimension(R.dimen.fab_icon_size);
+    final float iconSize = getDimension(R.dimen.dp24);
     final float iconHalfSize = iconSize / 2f;
 
-    final float plusSize = getDimension(R.dimen.fab_plus_icon_size);
-    final float plusHalfStroke = getDimension(R.dimen.fab_plus_icon_stroke) / 2f;
+    final float plusSize = getDimension(R.dimen.dp14);
+    final float plusHalfStroke = getDimension(R.dimen.dp2) / 2f;
     final float plusOffset = (iconSize - plusSize) / 2f;
 
     final Shape shape = new Shape() {
