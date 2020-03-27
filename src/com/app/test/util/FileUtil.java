@@ -23,7 +23,6 @@ import android.os.Environment;
 import android.provider.MediaStore.MediaColumns;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.view.View;
 
 import com.app.test.R;
@@ -53,70 +52,19 @@ public class FileUtil {
     /**
      * SD卡路径
      */
-    public static final String SDCardPath = Environment
-            .getExternalStorageDirectory().getAbsolutePath();
-
-    /**
-     * 图片缓存目录
-     */
-    public static final String downFile = SDCardPath
-            + "/MyApp/image/";
-
-    /**
-     * 视频下载所在目录
-     */
-    public static final String downDir = SDCardPath
-            + "/MyApp/Download/4h7m2dds6ac09y4p81cltl/";
-
-    /**
-     * 附件图片所在目录
-     */
-    public static final String imageDir = SDCardPath
-            + "/MyApp/ImageFile/";
-
-    /**
-     * 图片完整路径和名称
-     */
-    private static String imagePath;
-
-    /**
-     * 图片名带后缀
-     */
-    private static String imageNameSuffix;
-
-    /**
-     * 图片名不带后缀
-     */
-    private static String imageName;
-
-    /**
-     * 图片后缀名
-     */
-    private static String imageSuffix = ".png";
-
-    /**
-     * 获取章节序号参数
-     */
-    public static final int numText = -1, chapter = 0, lesson = chapter + 1,
-            little = lesson + 1;
+    public static final String SDCardPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+    public static final String downFile = SDCardPath + "/AppTest/image/";
+    public static final String imageDir = SDCardPath + "/AppTest/ImageFile/";
+    public static final String imagePath = SDCardPath + "/AppTest/ImageFile/";
 
     public static void init() {
-        // FileUtil.deleteImages();
-        FileUtil.initImagePath(null);
-        FileUtil.makeFile(LocalCache.getInstance().getCache(
-                FileKey.ABOAT_PICTURE, Key.imageDir));
+        FileUtil.makeFile(LocalCache.getInstance().getCache(FileKey.ABOAT_PICTURE, Key.imageDir));
     }
 
-    /**
-     * SD卡是否存在,true为存在
-     */
     public static boolean isSDCard() {
         // TODO SD卡是否存在,true为存在
         String sdState = Environment.getExternalStorageState();
-        if (!Environment.MEDIA_MOUNTED.equals(sdState)) {
-            return false;
-        }
-        return true;
+        return Environment.MEDIA_MOUNTED.equals(sdState);
     }
 
     /**
@@ -132,34 +80,6 @@ public class FileUtil {
         }
     }
 
-    /**
-     * 获取图片名字
-     */
-    public static void initImagePath(String name) {
-        // TODO 获取图片名字
-        imageName = name;
-        if (TextUtils.isEmpty(imageName)) {
-            Date date = new Date(System.currentTimeMillis());
-            imageName = LocalCache.getInstance().getCache(FileKey.USERINFO,
-                    Key.ID)
-                    + "_" + DateFormat.format("yyyy-MM-dd kk-mm-ss", date);
-        }
-        makeFile(imageDir);
-        imageNameSuffix = imageName + imageSuffix;
-        imagePath = imageDir + imageNameSuffix;
-
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imageName,
-                imageName);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE,
-                Key.imageSuffix, imageSuffix);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE,
-                Key.imageNameSuffix, imageNameSuffix);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imageDir,
-                imageDir);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imagePath,
-                imagePath);
-        // return imagePath;
-    }
 
     /**
      * 删除文件
@@ -175,6 +95,8 @@ public class FileUtil {
     }
 
     private static void delete(File f) {
+        if (Utils.isEmpty(f))
+            return;
         if (f.isFile()) {
             f.delete();
         } else {
@@ -182,67 +104,31 @@ public class FileUtil {
             if (fs == null || fs.length == 0) {
                 f.delete();
             } else {
-                for (int i = 0; i < fs.length; i++) {
-                    delete(fs[i]);
+                for (File file : fs) {
+                    delete(file);
                 }
             }
             f.delete();
         }
     }
 
-    /**
-     * 删除所有本地存储的附件拍照图片
-     */
-    public static void deleteImages() {
-        // TODO 删除所有本地存储的附件拍照图片
-        File file = new File(imageDir);
-        if (file.exists()) {
-            File[] f = file.listFiles();
-            for (int i = 0; i < f.length; i++) {
-                if (!f[i].isDirectory()) {
-                    f[i].delete();
-                }
-            }
-        }
-    }
 
     /**
      * 根据系统返回的UIR查询图片库里的图片资源
      */
     public static String queryPicture(Context context, Intent data) {
-        // TODO 根据系统返回的UIR查询图片库里的图片资源
         Uri uri = data.getData();
         String path = uri.getPath();
-        if (path.indexOf(".") == -1) {
+        if (!Utils.isEmpty(path) && !path.contains(".")) {
             String[] paths = {MediaColumns.DATA};
             Cursor c = context.getContentResolver().query(uri, paths, null,
                     null, null);
-            c.moveToFirst();
-            path = c.getString(c.getColumnIndex(paths[0]));
-            // String imgNo = cursor.getString(0); // 图片编号 F
-            // String imgPath = cursor.getString(1); // 图片文件路径
-            // String imgSize = cursor.getString(2); // 图片大小
-            // String imgName = cursor.getString(3); // 图片文件名
-            c.close();
+            if (!Utils.isEmpty(c)) {
+                c.moveToFirst();
+                path = c.getString(c.getColumnIndex(paths[0]));
+                c.close();
+            }
         }
-
-        imagePath = path;
-        int start = path.lastIndexOf("/");
-        imageNameSuffix = path.substring(start + 1, path.length());
-        int end = path.lastIndexOf(".");
-        imageName = path.substring(start + 1, end);
-        imageSuffix = path.substring(end, path.length());
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imageName,
-                imageName);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE,
-                Key.imageSuffix, imageSuffix);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE,
-                Key.imageNameSuffix, imageNameSuffix);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imageDir,
-                imageDir);
-        LocalCache.getInstance().putCache(FileKey.ABOAT_PICTURE, Key.imagePath,
-                imagePath);
-
         return path;
     }
 
@@ -313,9 +199,7 @@ public class FileUtil {
                 return "";
             }
             Bitmap bm = getBitmap(path, w, h);
-            initImagePath(null);
-            BufferedOutputStream bos = new BufferedOutputStream(
-                    new FileOutputStream(imagePath));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(imagePath));
             bm.compress(CompressFormat.PNG, 100, bos);
             bos.flush();
             bos.close();
@@ -340,7 +224,6 @@ public class FileUtil {
                 return "";
             }
             Bitmap bm = getBitmap(path, w, h);
-            initImagePath(null);
             BufferedOutputStream bos = new BufferedOutputStream(
                     new FileOutputStream(imagePath));
             // ---------压缩后的新图片
@@ -491,27 +374,6 @@ public class FileUtil {
         return rbw;
     }
 
-    /**
-     * 获取章节排列序号
-     */
-    public static String getTextNumber(Context context, int type, int index) {
-        // TODO 获取章节排列序号
-        String number = getText4Num(index);
-        if (type == numText) {
-            return number;
-        } else {
-            if (type == chapter) {
-                return context.getResources()
-                        .getString(R.string.cancel, number);
-            } else if (type == lesson) {
-                return context.getResources()
-                        .getString(R.string.cancel, number);
-            } else {
-                return context.getResources()
-                        .getString(R.string.cancel, number);
-            }
-        }
-    }
 
     private static String[] num = {"一", "二", "三", "四", "五", "六", "七", "八", "九"};
 
@@ -610,13 +472,6 @@ public class FileUtil {
             return 0;
         }
         return 0;
-    }
-
-    public static boolean versionCode() {
-        if (android.os.Build.VERSION.RELEASE.startsWith("4.4")) {
-            return true;
-        }
-        return false;
     }
 
     private static ConnectivityManager manager;

@@ -181,10 +181,7 @@ public class ShowIamgeActivity extends Activity {
                 mGameMoveGoldView.startGoldAnim(10, v, button, button2, button4, button4);
             }
         });
-        App.iLoader
-                .displayImage(
-                        "http://image.test.com/test/createcourse/COURSE/201512/f92b2f46cf0c48b7a8997a0d124fc46e.png",
-                        mPhotoView);
+
     }
 
 

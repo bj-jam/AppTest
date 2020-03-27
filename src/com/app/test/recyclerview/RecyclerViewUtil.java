@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 /**
  * Created by Sick on 2016/8/10.
  */
-public class Util {
+public class RecyclerViewUtil {
     public static boolean isRecyclerViewToTop(RecyclerView recyclerView) {
         if (recyclerView != null) {
             RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();

@@ -16,26 +16,20 @@ public class DensityUtil {
         density = App.getContext().getResources().getDisplayMetrics().density;
     }
 
-    /**
-     * 将dip或dp值转换为px值
-     *
-     * @param dip
-     * @return
-     */
-    public static int dp2px(int dip) {
-        return (int) (dip * density + 0.5);
+    public static int dp2px(int dp) {
+        return (int) (dp * density + 0.5);
     }
 
-    public static int px2dp(float pxValue) {
-        return (int) (pxValue / density + 0.5f);
+    public static int px2dp(float px) {
+        return (int) (px / density + 0.5f);
     }
 
-    public static int px2sp(float pxValue) {
-        return (int) (pxValue / density + 0.5f);
+    public static int px2sp(float px) {
+        return (int) (px / density + 0.5f);
     }
 
-    public static int sp2px(float spValue) {
-        return (int) (spValue * density + 0.5f);
+    public static int sp2px(float sp) {
+        return (int) (sp * density + 0.5f);
     }
 
     public static int getScreenHeight(Context context) {

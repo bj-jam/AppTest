@@ -3,19 +3,13 @@ package com.app.test.util;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-public class FrameAnimationUtils {
+public class AnimUtils {
     private IAnimationListener mAnimationListener;
     private ImageView imageView;
     private int[] frameResArray;
-
-    /**
-     * 每帧动画的播放间隔数组
-     */
+    // 每帧动画的播放间隔数组
     private int[] durations;
-
-    /**
-     * 下一遍动画播放的延迟时间
-     */
+    // 下一遍动画播放的延迟时间
     private int delay;
     private int lastFrame;
     private boolean isNext;
@@ -26,11 +20,11 @@ public class FrameAnimationUtils {
     private int currentRepeatCount;
     private boolean isHasStarted = false;
 
-    private FrameAnimationUtils() {
+    private AnimUtils() {
         super();
     }
 
-    public FrameAnimationUtils(Config config) {
+    public AnimUtils(Config config) {
         if (Utils.isEmpty(config)) {
             throw new IllegalArgumentException("config maybe null!!!");
         }
@@ -248,8 +242,8 @@ public class FrameAnimationUtils {
             return this;
         }
 
-        public FrameAnimationUtils build() {
-            return new FrameAnimationUtils(this);
+        public AnimUtils build() {
+            return new AnimUtils(this);
         }
     }
 

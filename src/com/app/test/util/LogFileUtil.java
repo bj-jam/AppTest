@@ -16,23 +16,10 @@ public class LogFileUtil {
      */
     public final static String urlException = "URLEXCEPTION_";
 
-    private static LogFileUtil logFileUtil;
-
-    public LogFileUtil() {
-        // TODO Auto-generated constructor stub
-    }
-
-    public static LogFileUtil init() {
-        if (logFileUtil == null) {
-            logFileUtil = new LogFileUtil();
-        }
-        return logFileUtil;
-    }
-
     /**
      * 获取当前时间
      */
-    private String getTime(String format) {
+    private static String getTime(String format) {
         SimpleDateFormat df = new SimpleDateFormat(format);
         Date date = new Date(System.currentTimeMillis());
         return df.format(date);
@@ -43,17 +30,16 @@ public class LogFileUtil {
      * type 日志类型<br>
      * isEncrypt 是否加密
      */
-    public void writeLog(String content, String type, boolean isEncrypt) {
+    public static void writeLog(String content, String type, boolean isEncrypt) {
         FileOutputStream fos = null;
         try {
             // 文件名
             String name = getTime("yyyy-MM-dd");
             // 完整路径
-//			File logFile = new File(FileUtil.getPath4Log() + type + name);
             File logFile = new File(type + name);
 
             // 当前时间
-            String time = LogFileUtil.init().getTime("yyyy-MM-dd kk:mm:ss");
+            String time = getTime("yyyy-MM-dd kk:mm:ss");
             // 写入记录的内容
             fos = new FileOutputStream(logFile, true);
             if (isEncrypt) {// 需要加密
@@ -70,7 +56,6 @@ public class LogFileUtil {
             try {
                 if (fos != null) {
                     fos.close();
-                    fos = null;
                 }
             } catch (Exception e) {
                 e.printStackTrace();

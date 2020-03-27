@@ -7,31 +7,22 @@ package com.app.test.util;
  */
 
 import java.nio.charset.Charset;
-import java.text.Normalizer;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Pattern;
 
 public class StringUtils {
 
     public static boolean isAnyEmpty(CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
+        if (Utils.isEmpty(css)) {
             return true;
         } else {
-            CharSequence[] var1 = css;
-            int var2 = css.length;
-
-            for (int var3 = 0; var3 < var2; ++var3) {
-                CharSequence cs = var1[var3];
+            for (CharSequence cs : css)
                 if (isEmpty(cs)) {
                     return true;
                 }
-            }
-
             return false;
         }
     }
@@ -44,7 +35,6 @@ public class StringUtils {
                     return false;
                 }
             }
-
             return true;
         } else {
             return true;
@@ -52,31 +42,18 @@ public class StringUtils {
     }
 
     public static boolean isAnyBlank(CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
+        if (Utils.isEmpty(css)) {
             return true;
         } else {
-            CharSequence[] var1 = css;
-            int var2 = css.length;
-
-            for (int var3 = 0; var3 < var2; ++var3) {
-                CharSequence cs = var1[var3];
+            for (CharSequence cs : css) {
                 if (isBlank(cs)) {
                     return true;
                 }
             }
-
             return false;
         }
     }
 
-    public static String stripToNull(String str) {
-        if (str == null) {
-            return null;
-        } else {
-            str = strip(str, (String) null);
-            return str.isEmpty() ? null : str;
-        }
-    }
 
     public static String trimToNull(String str) {
         String ts = trim(str);
@@ -154,15 +131,6 @@ public class StringUtils {
         }
     }
 
-    public static String stripAccents(String input) {
-        if (input == null) {
-            return null;
-        } else {
-            Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-            String decomposed = Normalizer.normalize(input, Form.NFD);
-            return pattern.matcher(decomposed).replaceAll("");
-        }
-    }
 
     public static boolean equals(CharSequence cs1, CharSequence cs2) {
         if (cs1 == cs2) {
@@ -179,7 +147,7 @@ public class StringUtils {
             if (str1 == str2) {
                 return true;
             } else {
-                return str1.length() != str2.length() ? false : CharSequenceUtils.regionMatches(str1, true, 0, str2, 0, str1.length());
+                return str1.length() == str2.length() && CharSequenceUtils.regionMatches(str1, true, 0, str2, 0, str1.length());
             }
         } else {
             return str1 == str2;
@@ -191,23 +159,6 @@ public class StringUtils {
         return cs == null || cs.length() == 0;
     }
 
-    public static boolean isNotEmpty(CharSequence cs) {
-        return !isEmpty(cs);
-    }
-
-    public static boolean isNoneEmpty(CharSequence... css) {
-        return !isAnyEmpty(css);
-    }
-
-
-    public static boolean isNotBlank(CharSequence cs) {
-        return !isBlank(cs);
-    }
-
-
-    public static boolean isNoneBlank(CharSequence... css) {
-        return !isAnyBlank(css);
-    }
 
     public static String trim(String str) {
         return str == null ? null : str.trim();
@@ -409,7 +360,7 @@ public class StringUtils {
     }
 
     public static int indexOfAny(CharSequence cs, char... searchChars) {
-        if (!isEmpty(cs) && !ArrayUtils.isEmpty(searchChars)) {
+        if (!isEmpty(cs) && !Utils.isEmpty(searchChars)) {
             int csLen = cs.length();
             int csLast = csLen - 1;
             int searchLen = searchChars.length;
@@ -442,7 +393,7 @@ public class StringUtils {
     }
 
     public static boolean containsAny(CharSequence cs, char... searchChars) {
-        if (!isEmpty(cs) && !ArrayUtils.isEmpty(searchChars)) {
+        if (!isEmpty(cs) && !Utils.isEmpty(searchChars)) {
             int csLength = cs.length();
             int searchLength = searchChars.length;
             int csLast = csLength - 1;
@@ -475,11 +426,11 @@ public class StringUtils {
     }
 
     public static boolean containsAny(CharSequence cs, CharSequence searchChars) {
-        return searchChars == null ? false : containsAny(cs, CharSequenceUtils.toCharArray(searchChars));
+        return searchChars != null && containsAny(cs, CharSequenceUtils.toCharArray(searchChars));
     }
 
     public static boolean containsAny(CharSequence cs, CharSequence... searchCharSequences) {
-        if (!isEmpty(cs) && !ArrayUtils.isEmpty(searchCharSequences)) {
+        if (!isEmpty(cs) && !Utils.isEmpty(searchCharSequences)) {
             CharSequence[] var2 = searchCharSequences;
             int var3 = searchCharSequences.length;
 
@@ -497,7 +448,7 @@ public class StringUtils {
     }
 
     public static int indexOfAnyBut(CharSequence cs, char... searchChars) {
-        if (!isEmpty(cs) && !ArrayUtils.isEmpty(searchChars)) {
+        if (!isEmpty(cs) && !Utils.isEmpty(searchChars)) {
             int csLen = cs.length();
             int csLast = csLen - 1;
             int searchLen = searchChars.length;
@@ -560,7 +511,7 @@ public class StringUtils {
     }
 
     public static boolean containsOnly(CharSequence cs, String validChars) {
-        return cs != null && validChars != null ? containsOnly(cs, validChars.toCharArray()) : false;
+        return (cs != null && validChars != null) && containsOnly(cs, validChars.toCharArray());
     }
 
     public static boolean containsNone(CharSequence cs, char... searchChars) {
@@ -597,7 +548,7 @@ public class StringUtils {
     }
 
     public static boolean containsNone(CharSequence cs, String invalidChars) {
-        return cs != null && invalidChars != null ? containsNone(cs, invalidChars.toCharArray()) : true;
+        return cs == null || invalidChars == null || containsNone(cs, invalidChars.toCharArray());
     }
 
     public static int indexOfAny(CharSequence str, CharSequence... searchStrs) {
@@ -814,7 +765,7 @@ public class StringUtils {
                     list.add(str.substring(start, end));
                 }
 
-                return list.isEmpty() ? null : (String[]) list.toArray(new String[list.size()]);
+                return list.isEmpty() ? null : list.toArray(new String[list.size()]);
             }
         } else {
             return null;
@@ -1122,7 +1073,7 @@ public class StringUtils {
     }
 
     public static <T> String join(T... elements) {
-        return join((Object[]) elements, (String) null);
+        return join(elements, (String) null);
     }
 
     public static String join(Object[] array, char separator) {
@@ -1384,14 +1335,14 @@ public class StringUtils {
         } else {
             Object first = iterator.next();
             if (!iterator.hasNext()) {
-                String result = ObjectUtils.toString(first);
-                return result;
+                if (first == null)
+                    return "";
+                return first.toString();
             } else {
                 StringBuilder buf = new StringBuilder(256);
                 if (first != null) {
                     buf.append(first);
                 }
-
                 while (iterator.hasNext()) {
                     buf.append(separator);
                     Object obj = iterator.next();
@@ -1413,8 +1364,9 @@ public class StringUtils {
         } else {
             Object first = iterator.next();
             if (!iterator.hasNext()) {
-                String result = ObjectUtils.toString(first);
-                return result;
+                if (first == null)
+                    return "";
+                return first.toString();
             } else {
                 StringBuilder buf = new StringBuilder(256);
                 if (first != null) {
@@ -1520,17 +1472,6 @@ public class StringUtils {
         }
     }
 
-//    public static String replaceOnce(String text, String searchString, String replacement) {
-//        return replace(text, searchString, replacement, 1);
-//    }
-
-//    public static String replacePattern(String source, String regex, String replacement) {
-//        return Pattern.compile(regex, 32).matcher(source).replaceAll(replacement);
-//    }
-
-//    public static String removePattern(String source, String regex) {
-//        return replacePattern(source, regex, "");
-//    }
 
     public static String replace(String text, String searchString, String replacement) {
         return replace(text, searchString, replacement, -1);
@@ -2079,13 +2020,11 @@ public class StringUtils {
             return false;
         } else {
             int sz = cs.length();
-
             for (int i = 0; i < sz; ++i) {
                 if (!Character.isLetter(cs.charAt(i))) {
                     return false;
                 }
             }
-
             return true;
         }
     }
@@ -2138,21 +2077,6 @@ public class StringUtils {
         }
     }
 
-    public static boolean isAsciiPrintable(CharSequence cs) {
-        if (cs == null) {
-            return false;
-        } else {
-            int sz = cs.length();
-
-            for (int i = 0; i < sz; ++i) {
-                if (!CharUtils.isAsciiPrintable(cs.charAt(i))) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    }
 
     public static boolean isNumeric(CharSequence cs) {
         if (isEmpty(cs)) {
@@ -2643,7 +2567,7 @@ public class StringUtils {
     }
 
     public static boolean startsWithAny(CharSequence string, CharSequence... searchStrings) {
-        if (!isEmpty(string) && !ArrayUtils.isEmpty(searchStrings)) {
+        if (!isEmpty(string) && !Utils.isEmpty(searchStrings)) {
             CharSequence[] var2 = searchStrings;
             int var3 = searchStrings.length;
 
@@ -2716,7 +2640,7 @@ public class StringUtils {
     }
 
     public static boolean endsWithAny(CharSequence string, CharSequence... searchStrings) {
-        if (!isEmpty(string) && !ArrayUtils.isEmpty(searchStrings)) {
+        if (!isEmpty(string) && !Utils.isEmpty(searchStrings)) {
             CharSequence[] var2 = searchStrings;
             int var3 = searchStrings.length;
 

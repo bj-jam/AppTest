@@ -1,5 +1,8 @@
 package com.app.test.network;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -69,7 +72,7 @@ public class JsonCallback implements CommonCallback<String> {
      * 请求处理
      */
     public void request() {
-        if (NetWorkUtils.isNetworkAvailable(App.context)) {// 网络状态正常，主要是手机能够连接到路由器
+        if (isNetworkAvailable(App.context)) {// 网络状态正常，主要是手机能够连接到路由器
             if (params == null || params.isEmpty()) {// 无参请求
                 doGet();
             } else {// 有参请求
@@ -87,7 +90,7 @@ public class JsonCallback implements CommonCallback<String> {
     /**
      * 发送get无参请求
      */
-    public void doGet() {
+    private void doGet() {
         RequestParams rp = new RequestParams(url);
         // 插件工具默认为15000毫秒
         rp.setConnectTimeout(timeout * 1000);
@@ -99,30 +102,26 @@ public class JsonCallback implements CommonCallback<String> {
     /**
      * 发送post有参请求
      */
-    public void doPost() {
+    private void doPost() {
         RequestParams rp = new RequestParams(url);
         // 插件工具默认为15000毫秒
         rp.setConnectTimeout(timeout * 1000);
-
         Set<String> set = params.keySet();
         for (String str : set) {
             rp.addBodyParameter(str, params.get(str));
-            // rp.addQueryStringParameter(str, params.get(str));
         }
-
-        String param = url + "?";
+        StringBuilder param = new StringBuilder(url + "?");
         Object[] objs = set.toArray();
         for (int i = 0; i < objs.length; i++) {
-            param += objs[i] + "=" + params.get(objs[i]);
+            param.append(objs[i]).append("=").append(params.get(objs[i]));
             if (i != objs.length - 1) {
-                param += "&";
+                param.append("&");
             }
         }
         if (x.isDebug()) {
-            Log.v("net-" + timeout, param);
+            Log.v("net-" + timeout, param.toString());
         }
-
-        requestUrl = param;
+        requestUrl = param.toString();
         x.http().post(rp, this);
     }
 
@@ -146,7 +145,7 @@ public class JsonCallback implements CommonCallback<String> {
         handler.sendMessage(msg);
 
         // 记录请求内容
-        LogFileUtil.init().writeLog(requestUrl, LogFileUtil.urlException, true);
+        LogFileUtil.writeLog(requestUrl, LogFileUtil.urlException, true);
 
         // 记录异常内容
         String log = arg0.getMessage() + "\n";
@@ -154,7 +153,7 @@ public class JsonCallback implements CommonCallback<String> {
         for (StackTraceElement stackTrace : stackTraces) {
             log += stackTrace.toString() + "\n";
         }
-        LogFileUtil.init().writeLog(log, LogFileUtil.urlException, false);
+        LogFileUtil.writeLog(log, LogFileUtil.urlException, false);
 
         arg0.printStackTrace();
     }
@@ -172,8 +171,8 @@ public class JsonCallback implements CommonCallback<String> {
         Message msg = handler.obtainMessage();
         msg.arg1 = arg1;
         msg.arg2 = arg2;
-        if (TextUtils.isEmpty(result)) {// 返回值为空
-            msg.what = BaseUtil.jsonException;// 格式解析异常
+        if (TextUtils.isEmpty(result)) {
+            msg.what = BaseUtil.jsonException;
             handler.sendMessage(msg);
             return;
         }
@@ -182,13 +181,11 @@ public class JsonCallback implements CommonCallback<String> {
             if (result.startsWith("foo(")) {
                 result = result.subSequence(4, result.length() - 1).toString().replace("httpCode", "status");
             }
-            // 直播数据上报结果处理
             if ("success".equals(result)) {
                 msg.obj = result;
                 msg.what = what;
-            } else {// 正常结果处理
+            } else {
                 ResultResponse resultR = BaseUtil.initGson().fromJson(result, ResultResponse.class);
-
                 if (resultR == null) {
                     msg.what = BaseUtil.jsonException;// 格式解析异常
                 } else if ("200".equals(resultR.status)) {
@@ -210,8 +207,18 @@ public class JsonCallback implements CommonCallback<String> {
         }
     }
 
-    private class ResultResponse {
+    private static class ResultResponse {
         private String status;
         private String msg;
+    }
+
+    private boolean isNetworkAvailable(Context context) {
+        ConnectivityManager manager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (manager == null) {
+            return false;
+        }
+        NetworkInfo networkinfo = manager.getActiveNetworkInfo();
+        return networkinfo != null && networkinfo.isAvailable();
     }
 }

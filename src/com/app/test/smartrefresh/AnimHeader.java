@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.app.test.R;
 import com.app.test.util.DensityUtil;
-import com.app.test.util.FrameAnimationUtils;
+import com.app.test.util.AnimUtils;
 import com.app.test.util.Utils;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshKernel;
@@ -35,7 +35,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class WalkHeader extends FrameLayout implements RefreshHeader {
+public class AnimHeader extends FrameLayout implements RefreshHeader {
 
     private final int MSG_UPDATE_TIME_TXT = 10000000;
     //正的猫和红包
@@ -83,11 +83,11 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
     private Handler handler;
     private Handler handlerUpdateTxt;
 
-    private RedEnvelopesStatus redEnvelopesStatus;
+    private RedStatus redStatus;
     private StringBuilder sb;
     private ScheduledExecutorService executorService;
-    private FrameAnimationUtils frameAnimationUtils;
-    private FrameAnimationUtils topAnim;
+    private AnimUtils animUtils;
+    private AnimUtils topAnim;
 
     private boolean isClicked;
 
@@ -98,19 +98,19 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
     boolean isRefreshing;
 
 
-    public WalkHeader(Context context) {
+    public AnimHeader(Context context) {
         super(context);
         initView();
         initData();
     }
 
-    public WalkHeader(Context context, @Nullable AttributeSet attrs) {
+    public AnimHeader(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
         initData();
     }
 
-    public WalkHeader(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AnimHeader(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
         initData();
@@ -265,14 +265,14 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == MSG_UPDATE_TIME_TXT) {
-                    if (Utils.isEmpty(tv_time) || Utils.isEmpty(redEnvelopesStatus) || !redEnvelopesStatus.isEnd()) {
+                    if (Utils.isEmpty(tv_time) || Utils.isEmpty(redStatus) || !redStatus.isEnd()) {
                         releaseExecutorService();
                         return;
                     }
-                    redEnvelopesStatus.setCoolingTime(redEnvelopesStatus.getCoolingTime() - 1);
+                    redStatus.setCoolingTime(redStatus.getCoolingTime() - 1);
                     if (!Utils.isEmpty(tv_time))
-                        if (redEnvelopesStatus.getCoolingTime() > 0) {
-                            tv_time.setText(coolingTime(redEnvelopesStatus.getCoolingTime()));
+                        if (redStatus.getCoolingTime() > 0) {
+                            tv_time.setText(coolingTime(redStatus.getCoolingTime()));
                         } else {
                             getRerStatus();
                             releaseExecutorService();
@@ -285,8 +285,8 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
     }
 
     public void getRerStatus() {
-        RedEnvelopesStatus redEnvelopesStatus = new RedEnvelopesStatus();
-        onLoadDataSuccess(redEnvelopesStatus);
+        RedStatus redStatus = new RedStatus();
+        onLoadDataSuccess(redStatus);
     }
 
 
@@ -306,9 +306,9 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
         if (!Utils.isEmpty(handlerUpdateTxt)) {
             handlerUpdateTxt.removeCallbacksAndMessages(null);
         }
-        if (!Utils.isEmpty(frameAnimationUtils)) {
-            frameAnimationUtils.release();
-            frameAnimationUtils = null;
+        if (!Utils.isEmpty(animUtils)) {
+            animUtils.release();
+            animUtils = null;
         }
         if (!Utils.isEmpty(topAnim)) {
             topAnim.release();
@@ -349,14 +349,14 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
         maxMoveWidth = maxWidth - initWidth;
     }
 
-    public void onLoadDataSuccess(RedEnvelopesStatus dto) {
+    public void onLoadDataSuccess(RedStatus dto) {
         if (Utils.isEmpty(dto)) {
             releaseExecutorService();
             return;
         }
-        redEnvelopesStatus = dto;
+        redStatus = dto;
         //已结束
-        if (redEnvelopesStatus.isEnd() || redEnvelopesStatus.todayIsEnd()) {
+        if (redStatus.isEnd() || redStatus.todayIsEnd()) {
             if (!Utils.isEmpty(ll_end)) {
                 ll_end.setVisibility(VISIBLE);
             }
@@ -365,7 +365,7 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
             }
 
             //今天已结束
-            if (redEnvelopesStatus.todayIsEnd()) {
+            if (redStatus.todayIsEnd()) {
                 if (!Utils.isEmpty(tv_time)) {
                     tv_time.setVisibility(GONE);
                 }
@@ -382,8 +382,8 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
                         long time = SystemClock.elapsedRealtime() - initTime;
                         //有几率出现1001 1002的差值，在给放大15ms的差值
                         if (time > 1015) {
-                            redEnvelopesStatus.setCoolingTime(redEnvelopesStatus.getCoolingTime() - time / 1000);
-                            if (redEnvelopesStatus.getCoolingTime() <= 0) {
+                            redStatus.setCoolingTime(redStatus.getCoolingTime() - time / 1000);
+                            if (redStatus.getCoolingTime() <= 0) {
 //                                getPresenter().getStatus();
                                 releaseExecutorService();
                                 return;
@@ -552,20 +552,20 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
      */
     public void startAnim() {
         //状态空的或者时间冷却中
-        if (Utils.isEmpty(redEnvelopesStatus))
+        if (Utils.isEmpty(redStatus))
             return;
         if (moveMargin >= 0 || isClicked) {
             if (!Utils.isEmpty(iv_red_end)) {
                 iv_red_end.setVisibility(VISIBLE);
-                if (Utils.isEmpty(frameAnimationUtils)) {
-                    frameAnimationUtils = getFrameAnimationUtilsConfig();
+                if (Utils.isEmpty(animUtils)) {
+                    animUtils = getFrameAnimationUtilsConfig();
                 }
-                if (Utils.isEmpty(frameAnimationUtils)) {
+                if (Utils.isEmpty(animUtils)) {
                     toNewActivity();
                     return;
                 }
                 isMoving = true;
-                frameAnimationUtils.restartAnimation();
+                animUtils.restartAnimation();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -589,10 +589,10 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
     }
 
 
-    private FrameAnimationUtils getFrameAnimationUtilsConfig() {
+    private AnimUtils getFrameAnimationUtilsConfig() {
         if (Utils.isEmpty(iv_red_end))
             return null;
-        FrameAnimationUtils.Config config = new FrameAnimationUtils.Config();
+        AnimUtils.Config config = new AnimUtils.Config();
         config.setImageView(iv_red_end);
         config.setFrameResArray(Utils.getRes(getContext(), R.array.end_red_anim_envelopes));
         config.setDuration(36);
@@ -600,10 +600,10 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
         return config.build();
     }
 
-    private FrameAnimationUtils getTopAnim() {
+    private AnimUtils getTopAnim() {
         if (Utils.isEmpty(iv_top))
             return null;
-        FrameAnimationUtils.Config config = new FrameAnimationUtils.Config();
+        AnimUtils.Config config = new AnimUtils.Config();
         config.setImageView(iv_top);
         int[] frameResArray = Utils.getRes(getContext(), R.array.red_envelopes_top_anim);
         config.setFrameResArray(frameResArray);

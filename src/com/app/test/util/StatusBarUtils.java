@@ -40,7 +40,6 @@ public class StatusBarUtils {
         if (isFlymeOs4x()) {
             return 2 * statusBarHeight;
         }
-
         return statusBarHeight;
     }
 

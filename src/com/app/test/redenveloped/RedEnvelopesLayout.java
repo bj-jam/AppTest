@@ -11,8 +11,6 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -109,22 +107,17 @@ public class RedEnvelopesLayout extends FrameLayout {
 
     private void initView() {
         View.inflate(getContext(), R.layout.layout_redpacket, this);
-        redEnvelopesView = $(this, R.id.rpvRedPacket);
-//        ivRedPacketBack = $(this, R.id.ivRedPacketBack);
-        tvMoney = $(this, R.id.tvMoney);
-        tvTime = $(this, R.id.tvTime);
-        ivTimeDownPrompt = $(this, R.id.ivTimeDownPrompt);
-        ivReady = $(this, R.id.ivReady);
-        flRedEnvelopesTop = $(this, R.id.flRedPacketTop);
+        redEnvelopesView = findViewById(R.id.rpvRedPacket);
+        tvMoney = findViewById(R.id.tvMoney);
+        tvTime = findViewById(R.id.tvTime);
+        ivTimeDownPrompt = findViewById(R.id.ivTimeDownPrompt);
+        ivReady = findViewById(R.id.ivReady);
+        flRedEnvelopesTop = findViewById(R.id.flRedPacketTop);
     }
 
 
     protected void initData() {
         random = new Random();
-    }
-
-    public void setActivityFinish(ActivityFinishInter inter) {
-        this.inter = inter;
     }
 
 
@@ -134,7 +127,6 @@ public class RedEnvelopesLayout extends FrameLayout {
 
         tvTime.setText(redEnvelopesTime + "s");
         ivReady.setVisibility(VISIBLE);
-//        ivTimeDownPrompt.setVisibility(VISIBLE);
     }
 
     public void onDestroy() {
@@ -309,8 +301,8 @@ public class RedEnvelopesLayout extends FrameLayout {
         final int clickRedPacketHeight = getClickBitmapHeight(clickBitmap);
 
         final int dp10 = DensityUtil.dp2px(10);
-        final int screenWidth = getScreenWidth(getContext());
-        final int screenHeight = getScreenHeight(getContext());
+        final int screenWidth = DensityUtil.getScreenWidth(getContext());
+        final int screenHeight = DensityUtil.getScreenHeight(getContext());
         final int containerHeight = screenHeight + redEnvelopesWidth;
 
 
@@ -523,24 +515,6 @@ public class RedEnvelopesLayout extends FrameLayout {
             return;
         }
         flRedEnvelopesTop.setVisibility(VISIBLE);
-    }
-
-    protected final <E extends View> E $(@NonNull View view, @IdRes int id) {
-        return view.findViewById(id);
-    }
-
-    public static int getScreenHeight(Context context) {
-        if (context != null) {
-            return context.getResources().getDisplayMetrics().heightPixels;
-        }
-        return 0;
-    }
-
-    public static int getScreenWidth(Context context) {
-        if (context != null) {
-            return context.getResources().getDisplayMetrics().widthPixels;
-        }
-        return 0;
     }
 
 

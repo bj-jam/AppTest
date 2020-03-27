@@ -6,15 +6,15 @@ import android.os.Parcelable;
 /**
  * Created by lcx
  */
-public class RedEnvelopesStatus implements Parcelable {
+public class RedStatus implements Parcelable {
     private int todayEnd;// : 1,  //今日已经结束 1是 0否  2接口失败了
     private long coolingTime;//':0 //冷却时间 单位 s
 
-    public RedEnvelopesStatus() {
+    public RedStatus() {
         super();
     }
 
-    protected RedEnvelopesStatus(Parcel in) {
+    protected RedStatus(Parcel in) {
         todayEnd = in.readInt();
         coolingTime = in.readLong();
     }
@@ -30,15 +30,15 @@ public class RedEnvelopesStatus implements Parcelable {
         return 0;
     }
 
-    public static final Creator<RedEnvelopesStatus> CREATOR = new Creator<RedEnvelopesStatus>() {
+    public static final Creator<RedStatus> CREATOR = new Creator<RedStatus>() {
         @Override
-        public RedEnvelopesStatus createFromParcel(Parcel in) {
-            return new RedEnvelopesStatus(in);
+        public RedStatus createFromParcel(Parcel in) {
+            return new RedStatus(in);
         }
 
         @Override
-        public RedEnvelopesStatus[] newArray(int size) {
-            return new RedEnvelopesStatus[size];
+        public RedStatus[] newArray(int size) {
+            return new RedStatus[size];
         }
     };
 

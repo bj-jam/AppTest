@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 public class SmartRefreshActivity extends Activity {
     private final int MSG_UPDATE_TIME_TXT = 10000000;
     private RecyclerView recyclerView;
-    private WalkHeader walkHeader;
+    private AnimHeader animHeader;
     private SmartRefreshLayout smartRefreshLayout;
     private DampingAdapter adapter;
     private List<CourseInfo> list;
@@ -99,7 +99,7 @@ public class SmartRefreshActivity extends Activity {
     private void initView() {
         tvTime = findViewById(R.id.tvTime);
         tvTime1 = findViewById(R.id.tvTime1);
-        walkHeader = findViewById(R.id.walkHeader);
+        animHeader = findViewById(R.id.walkHeader);
         smartRefreshLayout = findViewById(R.id.smartRefreshLayout);
         smartRefreshLayout.setDragRate(0.8f);
         smartRefreshLayout.setEnableHeaderTranslationContent(false);
@@ -213,8 +213,8 @@ public class SmartRefreshActivity extends Activity {
     protected void onDestroy() {
         releaseExecutorService();
         unregister();
-        if (!Utils.isEmpty(walkHeader))
-            walkHeader.onDestroy();
+        if (!Utils.isEmpty(animHeader))
+            animHeader.onDestroy();
         super.onDestroy();
     }
 }

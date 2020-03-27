@@ -119,7 +119,7 @@ public class RVScrollLayout extends LinearLayout {
                  */
                 if (convertView instanceof RecyclerView) {
                     if (y - mLastY > 0) {
-                        if (Util.isRecyclerViewToTop(recyclerView)) {
+                        if (RecyclerViewUtil.isRecyclerViewToTop(recyclerView)) {
                             Log.d(TAG, "滑倒顶部时时间拦截成功");
                             return true;
                         }

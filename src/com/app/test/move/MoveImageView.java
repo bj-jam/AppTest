@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.PointF;
 
 import com.app.test.R;
-import com.app.test.util.FrameAnimationUtils;
+import com.app.test.util.AnimUtils;
 import com.app.test.util.Utils;
 
 /**
@@ -14,11 +14,11 @@ import com.app.test.util.Utils;
  */
 public class MoveImageView extends android.support.v7.widget.AppCompatImageView {
 
-    private FrameAnimationUtils frameAnimationUtils;
+    private AnimUtils animUtils;
 
     public MoveImageView(Context context) {
         super(context);
-        frameAnimationUtils = getFrameAnimationUtilsConfig();
+        animUtils = getFrameAnimationUtilsConfig();
     }
 
     public void setMPointF(PointF pointF) {
@@ -26,8 +26,8 @@ public class MoveImageView extends android.support.v7.widget.AppCompatImageView 
         setY(pointF.y);
     }
 
-    private FrameAnimationUtils getFrameAnimationUtilsConfig() {
-        FrameAnimationUtils.Config config = new FrameAnimationUtils.Config();
+    private AnimUtils getFrameAnimationUtilsConfig() {
+        AnimUtils.Config config = new AnimUtils.Config();
         config.setImageView(this);
         config.setFrameResArray(Utils.getRes(getContext(), R.array.game_gold_scale));
         config.setDuration(10);
@@ -36,12 +36,12 @@ public class MoveImageView extends android.support.v7.widget.AppCompatImageView 
     }
 
     public void stopAnim() {
-        if (!Utils.isEmpty(frameAnimationUtils))
-            frameAnimationUtils.release();
+        if (!Utils.isEmpty(animUtils))
+            animUtils.release();
     }
 
     public void startAnim() {
-        if (!Utils.isEmpty(frameAnimationUtils))
-            frameAnimationUtils.start();
+        if (!Utils.isEmpty(animUtils))
+            animUtils.start();
     }
 }
