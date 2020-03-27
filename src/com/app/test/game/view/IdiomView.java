@@ -16,16 +16,16 @@ import android.widget.Toast;
 import com.app.test.R;
 import com.app.test.game.adapter.IdiomBoardAdapter;
 import com.app.test.game.adapter.IdiomFreeAdapter;
-import com.app.test.game.api.AnswerListener;
 import com.app.test.game.api.AnswerControl;
+import com.app.test.game.api.AnswerListener;
 import com.app.test.game.api.ItemTypeListener;
 import com.app.test.game.api.NoFastClickListener;
 import com.app.test.game.bean.CharacterTips;
-import com.app.test.game.bean.LogHelper;
 import com.app.test.game.bean.IdiomViewPosition;
+import com.app.test.game.bean.IdiomWrapper;
+import com.app.test.game.bean.LogHelper;
 import com.app.test.game.bean.Proverb;
 import com.app.test.game.bean.ProverbCharacter;
-import com.app.test.game.bean.IdiomWrapper;
 import com.app.test.game.bean.Question;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.helper.IdiomHelper;
@@ -220,7 +220,6 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                         case IdiomType.SHOW_TOAST:
                             if (!Utils.isEmpty(obj) && obj instanceof String) {
                                 Toast.makeText(getContext(), (String) obj, Toast.LENGTH_LONG).show();
-                                ;
                             }
                             break;
                     }
@@ -302,7 +301,6 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
         }
         CharacterTips characterTips = (CharacterTips) obj;
         String title = characterTips.getTitle();
-//        String shortTitle = characterTips.getShortTitle();
 
         if (Utils.isEmpty(freeWordAdapter)) {
             return;

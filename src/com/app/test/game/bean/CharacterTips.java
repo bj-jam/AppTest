@@ -3,6 +3,9 @@ package com.app.test.game.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 成语提示
+ */
 public class CharacterTips implements Parcelable {
     private String title;
     private String shortTitle;

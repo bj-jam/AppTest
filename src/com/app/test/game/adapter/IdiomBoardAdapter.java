@@ -18,7 +18,7 @@ import com.app.test.game.bean.IdiomViewPosition;
 import com.app.test.game.bean.Proverb;
 import com.app.test.game.bean.ProverbCharacter;
 import com.app.test.game.bean.IdiomWrapper;
-import com.app.test.game.bean.ProverbDisturbMapCharacter;
+import com.app.test.game.bean.IdiomDisturbWord;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.helper.IdiomHelper;
 import com.app.test.game.source.IdiomType;
@@ -51,7 +51,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     private int row = 4;
     private int dp3 = 0;
     private int itemWidth;
-    private volatile Map<Integer, ProverbDisturbMapCharacter> characterMap = new ConcurrentHashMap<>();
+    private volatile Map<Integer, IdiomDisturbWord> characterMap = new ConcurrentHashMap<>();
     //记录点击的二维坐标
     private volatile Point selectPoint = new Point(-1, -1);
     /*上一个point坐标*/
@@ -387,8 +387,8 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         if (Utils.isEmpty(characterMap) || Utils.isEmpty(character)) {
             return null;
         }
-        for (Map.Entry<Integer, ProverbDisturbMapCharacter> entry : characterMap.entrySet()) {
-            ProverbDisturbMapCharacter value = entry.getValue();
+        for (Map.Entry<Integer, IdiomDisturbWord> entry : characterMap.entrySet()) {
+            IdiomDisturbWord value = entry.getValue();
             if (Utils.isEmpty(value)) {
                 continue;
             }
@@ -420,7 +420,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         if (Utils.isEmpty(character) || Utils.isEmpty(type) || Utils.trimToEmpty(type.getTitle())) {
             return;
         }
-        ProverbDisturbMapCharacter pmc = new ProverbDisturbMapCharacter();
+        IdiomDisturbWord pmc = new IdiomDisturbWord();
         pmc.setProverbCharacter(character);
         pmc.setProverbDisturbWord(type);
         pmc.setDisturb(type.getTitle());

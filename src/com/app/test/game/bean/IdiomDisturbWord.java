@@ -3,17 +3,20 @@ package com.app.test.game.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProverbDisturbMapCharacter implements Parcelable {
+/**
+ * 干扰
+ */
+public class IdiomDisturbWord implements Parcelable {
     private ProverbCharacter proverbCharacter;
     private SuperType proverbDisturbWord;
     private int proverbDisturbIndex;
     private String disturb;
 
-    public ProverbDisturbMapCharacter() {
+    public IdiomDisturbWord() {
         super();
     }
 
-    public ProverbDisturbMapCharacter(Parcel sourceParcel) {
+    public IdiomDisturbWord(Parcel sourceParcel) {
         proverbCharacter = (ProverbCharacter) sourceParcel.readParcelable(ProverbCharacter.class.getClassLoader());
         proverbDisturbWord = (SuperType) sourceParcel.readParcelable(SuperType.class.getClassLoader());
         proverbDisturbIndex = sourceParcel.readInt();

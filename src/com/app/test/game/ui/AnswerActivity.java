@@ -52,7 +52,7 @@ public class AnswerActivity extends Activity {
             finish();
             return;
         }
-        getPresenter().getBarrierList();
+        getPresenter().getCheckpointList();
     }
 
     private AnswerPresenter getPresenter() {

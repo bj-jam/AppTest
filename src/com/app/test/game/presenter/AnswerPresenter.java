@@ -7,10 +7,10 @@ import android.widget.Toast;
 import com.app.test.game.api.AnswerListener;
 import com.app.test.game.bean.Checkpoint;
 import com.app.test.game.bean.Question;
-import com.app.test.util.ContextUtils;
-import com.app.test.util.DataString;
 import com.app.test.game.source.AnswerType;
 import com.app.test.game.ui.AnswerActivity;
+import com.app.test.util.ContextUtils;
+import com.app.test.util.DataString;
 import com.app.test.util.Utils;
 import com.google.gson.Gson;
 
@@ -22,9 +22,17 @@ import java.util.ArrayList;
  * Describe:
  */
 public class AnswerPresenter implements AnswerListener {
-
-    private int currentPosition = 0;
+    /**
+     * 当前题目位置
+     */
+    private int currentIndex = 0;
+    /**
+     * 题目集合
+     */
     private ArrayList<Question> questionList;
+    /**
+     * 关卡
+     */
     private Checkpoint checkpoint;
     private AnswerActivity activity;
 
@@ -32,21 +40,20 @@ public class AnswerPresenter implements AnswerListener {
         this.activity = activity;
     }
 
-
-    public void checkAnswer(final int index, final Question question) {
+    private void checkAnswer(final int index, final Question question) {
         if (Utils.isEmpty(checkpoint) || Utils.isEmpty(question) || ContextUtils.isDestroyed(getView())) {
             return;
         }
         int questionType = question.getQuestionType();
         if (questionType == AnswerType.NONE) {
-            showToast(getView(), "未知类型");
+            showToast(getView(), "题目类型错误");
             return;
         }
         onAnswerChecked(index);
     }
 
-    private void showToast(Context context, String string) {
-        Toast.makeText(context, string, Toast.LENGTH_LONG).show();
+    private void showToast(Context context, String str) {
+        Toast.makeText(context, str, Toast.LENGTH_LONG).show();
 
     }
 
@@ -55,53 +62,59 @@ public class AnswerPresenter implements AnswerListener {
         if (Utils.isEmpty(questionList) || ContextUtils.isDestroyed(getView())) {
             return;
         }
-        currentPosition = index + 1;
+        currentIndex = index + 1;
         if (isAnswerEnd()) {
             getView().finish();
             return;
         }
-        if (Utils.isIllegalPosition(questionList, currentPosition)) {
+        if (Utils.isIllegalPosition(questionList, currentIndex)) {
             return;
         }
-        dispatchQuestion(currentPosition, questionList.get(currentPosition));
-        return;
+        dispatchQuestion(currentIndex, questionList.get(currentIndex));
     }
 
     private AnswerActivity getView() {
         return activity;
     }
 
-
-    public void getBarrierList() {
+    /**
+     * 获取题目关卡信息
+     */
+    public void getCheckpointList() {
         Checkpoint checkpoint = new Gson().fromJson(DataString.QUESTION_STRING, Checkpoint.class);
         if (Utils.isEmpty(checkpoint) || Utils.isEmpty(checkpoint.getQuestionList())) {
             return;
         }
-        initGameData(checkpoint);
+        initAnswerData(checkpoint);
     }
 
 
-    private void initGameData(Checkpoint checkpoint) {
+    private void initAnswerData(Checkpoint checkpoint) {
         if (ContextUtils.isDestroyed(getView()) || Utils.isEmpty(checkpoint) || Utils.isEmpty(checkpoint.getQuestionList())) {
             return;
         }
         this.checkpoint = checkpoint;
-        currentPosition = 0;
+        currentIndex = 0;
         questionList = checkpoint.getQuestionList();
-        if (Utils.isIllegalPosition(questionList, currentPosition)) {
+        if (Utils.isIllegalPosition(questionList, currentIndex)) {
             return;
         }
-        Question question = questionList.get(currentPosition);
-        dispatchQuestion(currentPosition, question);
+        Question question = questionList.get(currentIndex);
+        dispatchQuestion(currentIndex, question);
     }
 
+    /**
+     * 设置题目信息
+     *
+     * @param currentPosition
+     * @param question
+     */
     private void dispatchQuestion(int currentPosition, Question question) {
         if (Utils.isEmpty(getView())) {
             return;
         }
         getView().changeIndex(currentPosition, questionList.size());
         getView().dispatchQuestion(currentPosition, question);
-        resetProverErrorCharacterCount();
     }
 
 
@@ -115,8 +128,6 @@ public class AnswerPresenter implements AnswerListener {
     public void onRightCharacter(int count) {
     }
 
-    private void resetProverErrorCharacterCount() {
-    }
 
     @Override
     public void onErrorCharacter() {
@@ -133,7 +144,7 @@ public class AnswerPresenter implements AnswerListener {
     }
 
     private boolean isAnswerEnd() {
-        return questionList != null && currentPosition >= questionList.size();
+        return questionList != null && currentIndex >= questionList.size();
     }
 
 }

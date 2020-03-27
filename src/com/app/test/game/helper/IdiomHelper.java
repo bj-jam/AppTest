@@ -1,12 +1,9 @@
 package com.app.test.game.helper;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
-import android.support.v4.util.SparseArrayCompat;
 import android.util.SparseBooleanArray;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
@@ -19,7 +16,6 @@ import com.app.test.game.bean.ProverbCharacter;
 import com.app.test.game.bean.Question;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.source.AnswerType;
-import com.app.test.util.ContextUtils;
 import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
 
@@ -118,25 +114,7 @@ public class IdiomHelper {
         }
         return point;
     }
-
-
-    private SparseArrayCompat<View> array = new SparseArrayCompat();
-
-    public void removeTempView(Context context) {
-        Activity activity = ContextUtils.findActivity(context);
-        if (Utils.isEmpty(activity)) {
-            return;
-        }
-        if (Utils.isEmpty(array)) {
-            return;
-        }
-        ViewGroup contentView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-        for (int i = 0; i < array.size(); i++) {
-            contentView.removeView(array.valueAt(i));
-        }
-        array.clear();
-    }
-
+    
 
     public int getItemWidth(Context context, int column) {
         int ignore = 15 * 2 + 5 * 2 + column;
