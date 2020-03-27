@@ -12,7 +12,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 import com.app.test.view.TeachTalkTogetherView;
 
 /**
@@ -36,12 +36,8 @@ public class AnimActivity extends Activity {
     }
 
     private void initLineHeadAnima() {
-        final float offset = DisplayUtil.dip2px(this, 15);
-//        final int offset=DisplayUtil.dip2px(this,15);
-
-
+        final float offset = DensityUtil.dp2px(15);
         final ViewGroup container = findViewById(R.id.container);
-
         ImageView pic0 = findViewById(R.id.pic0);
         ImageView pic1 = findViewById(R.id.pic1);
         ImageView pic2 = findViewById(R.id.pic2);

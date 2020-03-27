@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,7 +119,7 @@ public class ImageBlisterView extends RelativeLayout implements Handler.Callback
 
 
     float[] x1 = new float[]{0, 20f, 0, -20f, 0};
-    float[] y1 = new float[]{0, -DisplayUtil.dip2px(getContext(), 50)};
+    float[] y1 = new float[]{0, - DensityUtil.dp2px( 50)};
 
     float[] x2 = new float[]{0, -20f, 0, 20f, 0};
 

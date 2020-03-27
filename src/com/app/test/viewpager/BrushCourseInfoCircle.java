@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * Created by dell on 2017/10/12.
@@ -75,37 +75,35 @@ public class BrushCourseInfoCircle extends View {
         mTrackingPaint = new Paint(mPaint);
         mTrackingPaint.setStyle(Paint.Style.STROKE);
         mTrackingPaint.setColor(Color.YELLOW);
-        mTrackingPaint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
-        mTrackingPaint.setPathEffect(new DashPathEffect(new float[]{DisplayUtil.getInstance().dip2px(2), DisplayUtil.getInstance().dip2px(2)}, 0));
+        mTrackingPaint.setStrokeWidth(DensityUtil.dp2px(1));
+        mTrackingPaint.setPathEffect(new DashPathEffect(new float[]{DensityUtil.dp2px(2), DensityUtil.dp2px(2)}, 0));
         mTrackingPath = new Path();
 
         //放大镜
-        mMirrorRadious = DisplayUtil.getInstance().dip2px(20);        //放大镜半斤
+        mMirrorRadious = DensityUtil.dp2px(20);        //放大镜半斤
         mMirrorRate = 1.5f;        //放大镜放大的倍速
         mMirrorPath = new Path();
 
         //整体缩放比率
         rate = 1;
         //指示器触摸偏差
-        mTouchIgnoreRadius = DisplayUtil.getInstance().dip2px(20);
+        mTouchIgnoreRadius = DensityUtil.dp2px(20);
         //刻度数
         KeduCount = 36;
         //刻度线长度
-        mKeduLength = DisplayUtil.getInstance().dip2px(5);
+        mKeduLength = DensityUtil.dp2px(5);
         //进度环厚度
-        mProgressRingThick = DisplayUtil.getInstance().dip2px(15);
+        mProgressRingThick = DensityUtil.dp2px(15);
 
         //视频点的半径
-        mPointRadio = DisplayUtil.getInstance().dip2px(5);
-        //视频点扩散的距离
-//        mPointDiscreteDistance = DisplayUtil.dip2px(getContext(),10);
+        mPointRadio = DensityUtil.dp2px(5);
         mPointDiscreteDistance = 0;
         //视频点圆形 到 最外灰圈的距离
-        mMPoint2EdgeDistance = DisplayUtil.getInstance().dip2px(7);
+        mMPoint2EdgeDistance = DensityUtil.dp2px(7);
         //最外圈灰线到刻度内圆边距的距离
-        mEdge2KeduDistance = DisplayUtil.getInstance().dip2px(5) + mKeduLength;
+        mEdge2KeduDistance = DensityUtil.dp2px(5) + mKeduLength;
         //刻度线内圆边距到进度环外圆边距的距离
-        mKedu2ProgressRingDistance = mProgressRingThick / 2 + DisplayUtil.getInstance().dip2px(3);
+        mKedu2ProgressRingDistance = mProgressRingThick / 2 + DensityUtil.dp2px(3);
         //进度指示器
         mIndicatorBmp = BitmapFactory.decodeResource(getResources(), R.drawable.cg_indicator);
         mThumbnailMatrix = new Matrix();
@@ -117,7 +115,7 @@ public class BrushCourseInfoCircle extends View {
         super.onDraw(canvas);
         mWidth = getMeasuredWidth();
         mHeight = getMeasuredHeight();
-        mMaxRadious = Math.min(mWidth, mHeight) / 2 * rate - DisplayUtil.getInstance().dip2px(20);//最大半径 (20:指示器超出的长度 )
+        mMaxRadious = Math.min(mWidth, mHeight) / 2 * rate - DensityUtil.dp2px(20);//最大半径 (20:指示器超出的长度 )
 
         canvas.translate(mWidth / 2, mHeight / 2);//平移圆心
         drawBg(canvas);
@@ -182,7 +180,7 @@ public class BrushCourseInfoCircle extends View {
 
     private void drawKeDu(Canvas canvas) {
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+        mPaint.setStrokeWidth(DensityUtil.dp2px(1));
 
         canvas.save();
         float startY = -(mMaxRadious - 2 * mPointRadio - mPointDiscreteDistance - mEdge2KeduDistance);
@@ -225,7 +223,7 @@ public class BrushCourseInfoCircle extends View {
 
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(Color.parseColor("#1affffff"));
-        mPaint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+        mPaint.setStrokeWidth(DensityUtil.dp2px(1));
 
         //话最外面的灰圈
         canvas.drawCircle(0, 0, mMaxRadious - 2 * mPointRadio - mPointDiscreteDistance, mPaint);

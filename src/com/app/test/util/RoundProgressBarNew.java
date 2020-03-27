@@ -97,7 +97,7 @@ public class RoundProgressBarNew extends View {
 	private void strokeRound(Canvas canvas) {
 		if (downState == state4) {
 			// 下载完成的打勾
-			paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+			paint.setStrokeWidth(DensityUtil.dp2px(1));
 			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(green);
 			// 474
@@ -113,7 +113,7 @@ public class RoundProgressBarNew extends View {
 //			canvas.drawBitmap(sr.get(), 0, 0, paint);
 		} else {
 			// 内层进度
-			int dis = DisplayUtil.getInstance().dip2px(3);
+			int dis = DensityUtil.dp2px(3);
 			paint.setColor(green);
 			paint.setStrokeWidth(dis);
 			paint.setStyle(Paint.Style.STROKE);
@@ -126,14 +126,14 @@ public class RoundProgressBarNew extends View {
 
 			if (downState == state2) {
 				// 外层圆圈
-				paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+				paint.setStrokeWidth(DensityUtil.dp2px(1));
 				paint.setStyle(Paint.Style.STROKE);
 				// if (downState == state4) {// 完成下载
 				paint.setColor(green);
 				// } else {// 未完成
 				// paint.setColor(gray);
 				// }
-				canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DisplayUtil.getInstance().dip2px(1), paint);
+				canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DensityUtil.dp2px(1), paint);
 				paint.setColor(green);// 设置绿色
 				paint.setStyle(Paint.Style.FILL);// 设置填满
 				int rectW = viewW / 4;
@@ -141,10 +141,10 @@ public class RoundProgressBarNew extends View {
 						viewW / 2 + rectW / 2, paint);// 正方形
 			} else if (downState == state3 || downState == state5) {
 				// 外层圆圈
-				paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+				paint.setStrokeWidth(DensityUtil.dp2px(1));
 				paint.setStyle(Paint.Style.STROKE);
 				paint.setColor(gray);
-				canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DisplayUtil.getInstance().dip2px(1), paint);
+				canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DensityUtil.dp2px(1), paint);
 				paint.setColor(gray);// 设置绿色
 				paint.setStyle(Paint.Style.FILL);// 设置填满
 				int rectW = viewW / 4;

@@ -96,14 +96,14 @@ public class RoundProgressBarNum extends View {
 		}
 
 		// 外层圆圈
-		paint.setStrokeWidth(DisplayUtil.getInstance().dip2px( 1));
+		paint.setStrokeWidth(DensityUtil.dp2px( 1));
 		paint.setStyle(Paint.Style.STROKE);
 		if (downState == state4) {// 完成下载
 			paint.setColor(green);
 		} else {// 未完成
 			paint.setColor(gray);
 		}
-		canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DisplayUtil.getInstance().dip2px( 1), paint);
+		canvas.drawCircle(viewW / 2, viewW / 2, viewW / 2 - DensityUtil.dp2px( 1), paint);
 
 		strokeRound(canvas);
 	}
@@ -111,7 +111,7 @@ public class RoundProgressBarNum extends View {
 	/** 下载进度信息 */
 	private void strokeRound(Canvas canvas) {
 		// 内层进度
-		int dis = DisplayUtil.getInstance().dip2px(3);
+		int dis = DensityUtil.dp2px(3);
 		paint.setColor(green);
 		paint.setStrokeWidth(dis);
 		paint.setStyle(Paint.Style.STROKE);
@@ -125,15 +125,15 @@ public class RoundProgressBarNum extends View {
 		if (downState == state2) {
 			// 里面进度值
 			Rect r = new Rect();
-			paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+			paint.setStrokeWidth(DensityUtil.dp2px(1));
 			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(black);
-			paint.setTextSize(DisplayUtil.getInstance().dip2px(8));
+			paint.setTextSize(DensityUtil.dp2px(8));
 			paint.getTextBounds(proText, 0, proText.length(), r);
 			canvas.drawText(proText, (viewW - r.width()) / 2, (viewW + r.height()) / 2, paint);
 		} else if (downState == state4) {
 			// 下载完成的打勾
-			paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(2));
+			paint.setStrokeWidth(DensityUtil.dp2px(2));
 			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(green);
 			// 474
@@ -144,13 +144,13 @@ public class RoundProgressBarNum extends View {
 			canvas.drawLine(viewW * 69 / 95, viewW * 32 / 95, viewW * 8 / 19, viewW * 62 / 95, paint);
 		} else {
 			// 下载箭头
-			paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(1));
+			paint.setStrokeWidth(DensityUtil.dp2px(1));
 			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(gray);
 			int ty = viewW / 5;
 			int by = viewW * 4 / 5;
 			int x = viewW / 2;
-			int point = DisplayUtil.getInstance().dip2px(5);
+			int point = DensityUtil.dp2px(5);
 			canvas.drawLine(x, ty, x, by, paint);
 			canvas.drawLine(x - point, by - point, x, by, paint);
 			canvas.drawLine(x + point, by - point, x, by, paint);

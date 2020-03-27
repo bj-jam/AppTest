@@ -22,8 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.test.R;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
-import com.app.test.utils.DisplayUtil;
 
 import java.util.List;
 import java.util.Random;
@@ -308,7 +308,7 @@ public class RedEnvelopesLayout extends FrameLayout {
         final int clickRedPacketWidth = getBitmapWidth(clickBitmap, true);
         final int clickRedPacketHeight = getClickBitmapHeight(clickBitmap);
 
-        final int dp10 = DisplayUtil.dip2px(getContext(), 10);
+        final int dp10 = DensityUtil.dp2px(10);
         final int screenWidth = getScreenWidth(getContext());
         final int screenHeight = getScreenHeight(getContext());
         final int containerHeight = screenHeight + redEnvelopesWidth;

@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 public class CameraTopRectView extends View {
 
@@ -32,9 +32,9 @@ public class CameraTopRectView extends View {
         super(context, attrs);
         // TODO Auto-generated constructor stub  
 
-        rectWidth = DisplayUtil.getInstance().dip2px(380);
-        rectHeight = DisplayUtil.getInstance().dip2px(235);
-        leftMargin = DisplayUtil.getInstance().dip2px(50);
+        rectWidth = DensityUtil.dp2px(380);
+        rectHeight = DensityUtil.dp2px(235);
+        leftMargin = DensityUtil.dp2px(50);
 
         linePaint = new Paint();
         linePaint.setAntiAlias(true);

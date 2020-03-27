@@ -735,9 +735,9 @@ public class FileUtil {
                                        String name) {
         try {
             // 扩展宽度
-            int disW = DisplayUtil.getInstance().dip2px(20);
+            int disW = DensityUtil.dp2px(20);
             // 扩展高度
-            int disH = DisplayUtil.getInstance().dip2px(100);
+            int disH = DensityUtil.dp2px(100);
             // 文字颜色
             int textColor = context.getResources()
                     .getColor(R.color.text_color3);
@@ -762,8 +762,8 @@ public class FileUtil {
             String text = "欢迎到此一游";
             Rect textRect = new Rect();
             paint.setColor(textColor);
-            paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(2));
-            paint.setTextSize(DisplayUtil.getInstance().dip2px(16));
+            paint.setStrokeWidth(DensityUtil.dp2px(2));
+            paint.setTextSize(DensityUtil.dp2px(16));
             paint.getTextBounds(text, 0, text.length(), textRect);
             // 文字左边距
             int x = (viewW + disW - textRect.width()) / 2;
@@ -775,8 +775,8 @@ public class FileUtil {
             text = "欢迎到此一游";
             textRect = new Rect();
             paint.setColor(textColor);
-            paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(2));
-            paint.setTextSize(DisplayUtil.getInstance().dip2px(16));
+            paint.setStrokeWidth(DensityUtil.dp2px(2));
+            paint.setTextSize(DensityUtil.dp2px(16));
             paint.getTextBounds(text, 0, text.length(), textRect);
             // 文字左边距
             x = (viewW + disW - textRect.width()) / 2;

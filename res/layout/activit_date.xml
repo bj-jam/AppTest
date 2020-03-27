@@ -6,8 +6,7 @@
     android:paddingLeft="@dimen/dp16"
     android:paddingTop="@dimen/dp16"
     android:paddingRight="@dimen/dp16"
-    android:paddingBottom="@dimen/dp16"
-    tools:context="com.app.test.util.MainActivity">
+    android:paddingBottom="@dimen/dp16">
 
     <com.app.test.date.DiamondBackView
         android:id="@+id/dvb_view"

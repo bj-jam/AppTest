@@ -16,7 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 
 /**
@@ -59,14 +59,14 @@ public class SeekBarView extends View {
 
         mPaint = new Paint(Paint.DITHER_FLAG);
         mPaint.setAntiAlias(true);//锯齿不显示
-        mPaint.setStrokeWidth(DisplayUtil.dip2px(getContext(), 7));
+        mPaint.setStrokeWidth(DensityUtil.dp2px(7));
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(0xffdddddd);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
 
         mColorPaint = new Paint(Paint.DITHER_FLAG);
         mColorPaint.setAntiAlias(true);//锯齿不显示
-        mColorPaint.setStrokeWidth(DisplayUtil.dip2px(getContext(), 7));
+        mColorPaint.setStrokeWidth(DensityUtil.dp2px(7));
         mColorPaint.setStyle(Paint.Style.FILL);
         mColorPaint.setStrokeCap(Paint.Cap.ROUND);
 
@@ -79,7 +79,7 @@ public class SeekBarView extends View {
         mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setTextAlign(Paint.Align.LEFT);
         mTextPaint.setColor(0xffffffff);
-        mTextPaint.setTextSize(DisplayUtil.dip2px(getContext(), 10));
+        mTextPaint.setTextSize(DensityUtil.dp2px(10));
 
         mTextRect = new Rect();
     }
@@ -142,10 +142,10 @@ public class SeekBarView extends View {
             mTextPaint.getTextBounds(textMarker, 0, textMarker.length(), mTextRect);
             //计算文字位置
             float textX = section * perWidth + thumb.getWidth() / 2f - textWidth / 2;
-            float textY = DisplayUtil.dip2px(getContext(), 8) + thumb.getHeight();
+            float textY = DensityUtil.dp2px(8) + thumb.getHeight();
 
             if (section == 4)
-                canvas.drawText(textMarker, textX - DisplayUtil.dip2px(getContext(), 2), textY, mTextPaint);
+                canvas.drawText(textMarker, textX - DensityUtil.dp2px(2), textY, mTextPaint);
             else
                 canvas.drawText(textMarker, textX, textY, mTextPaint);
         }

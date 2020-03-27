@@ -130,19 +130,19 @@
 //
 //    private int mChartHeight;// 折线图的高
 //    private int mChartWidth;// 折线图的
-//    private int startX = DisplayUtil.dip2px(getContext(), 10);// 开始绘制的x坐标
-//    private int startY = DisplayUtil.dip2px(getContext(), 5);// 开始绘制的y坐标
-//    private int chartMarginBottom = DisplayUtil.dip2px(getContext(), 30);// 折线图距离父控件底部距离
-//    private int chartMarginHorizontal = DisplayUtil.dip2px(getContext(), 12);// 折线图距离父控件左右的距离
-//    private int valueAlignLeft = DisplayUtil.dip2px(getContext(), 0);// value参数文本距离左边距离
-//    private int dateAlignLeft = DisplayUtil.dip2px(getContext(), 0);// date参数文本距离左边距离
-//    private int valueAlignBottom = DisplayUtil.dip2px(getContext(), 5);// value参数文本距离底部距离
-//    private int dateAlignBottom = DisplayUtil.dip2px(getContext(), 10);// date参数文本距离底部距离
-//    private int xAddedNum = DisplayUtil.dip2px(getContext(), 60);// 绘制折线图时每次移动的x轴距离
+//    private int startX =  DensityUtil.dp2px( 10);// 开始绘制的x坐标
+//    private int startY =  DensityUtil.dp2px( 5);// 开始绘制的y坐标
+//    private int chartMarginBottom =  DensityUtil.dp2px( 30);// 折线图距离父控件底部距离
+//    private int chartMarginHorizontal =  DensityUtil.dp2px( 12);// 折线图距离父控件左右的距离
+//    private int valueAlignLeft =  DensityUtil.dp2px(0);// value参数文本距离左边距离
+//    private int dateAlignLeft =  DensityUtil.dp2px( 0);// date参数文本距离左边距离
+//    private int valueAlignBottom = DensityUtil.dp2px( 5);// value参数文本距离底部距离
+//    private int dateAlignBottom =  DensityUtil.dp2px( 10);// date参数文本距离底部距离
+//    private int xAddedNum = DensityUtil.dp2px( 60);// 绘制折线图时每次移动的x轴距离
 //    private int yAddedNum;// 绘制折线图时每次移动的y轴距离
 //    private boolean isDrawFirst;// 是否是第一次绘制
-//    private float circleFilledRadius = DisplayUtil.dip2px(getContext(), 5);// 外圆半径
-//    private float circleRadius = DisplayUtil.dip2px(getContext(), 3);// 内圆半径
+//    private float circleFilledRadius = DensityUtil.dp2px( 5);// 外圆半径
+//    private float circleRadius =  DensityUtil.dp2px( 3);// 内圆半径
 //
 //    private float firstX;// 第一个点的x轴坐标
 //    private float firstY;// 第一个点的y轴坐标
@@ -170,7 +170,7 @@
 //            startX += xAddedNum;
 //        }
 //        //重新给startX赋值
-//        startX = DisplayUtil.dip2px(getContext(), 10);
+//        startX =  DensityUtil.dp2px( 10);
 //        //画出折线
 //        canvas.drawPath(path, mPaintDataLine);
 //        //画出折线以下部分的颜色
@@ -192,7 +192,7 @@
 //        }
 //
 //        //在次使startX回到初始值
-//        startX = DisplayUtil.dip2px(getContext(), 10);
+//        startX =  DensityUtil.dp2px( 10);
 //        /**
 //         * 画出网格
 //         */

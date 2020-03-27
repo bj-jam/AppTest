@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.FrameAnimationUtils;
 import com.app.test.util.Utils;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
@@ -257,8 +257,8 @@ public class WalkHeader extends FrameLayout implements RefreshHeader {
     }
 
     protected void initData() {
-        initMargin = -DisplayUtil.getInstance().dip2px(170);
-        firstMargin = -DisplayUtil.getInstance().dip2px(90);
+        initMargin = -DensityUtil.dp2px(170);
+        firstMargin = -DensityUtil.dp2px(90);
         moveDistance = 0 - firstMargin;
         handler = new Handler(Looper.getMainLooper());
         handlerUpdateTxt = new Handler(Looper.getMainLooper()) {

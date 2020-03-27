@@ -17,7 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 public class BrushCourseCircleBar extends View {
     private final String infoString = "本周累计学习";
@@ -258,8 +258,8 @@ public class BrushCourseCircleBar extends View {
      */
     private void drawThumbnail(Canvas canvas) {
         float p = mCurrentAngle - 135;
-        thumbX = mCircleX + getRealCosX(mCurrentAngle, mMaxRadius + DisplayUtil.getInstance().dip2px(5));
-        thumbY = mCircleY + getRealSinY(mCurrentAngle, mMaxRadius + DisplayUtil.getInstance().dip2px(5));
+        thumbX = mCircleX + getRealCosX(mCurrentAngle, mMaxRadius + DensityUtil.dp2px(5));
+        thumbY = mCircleY + getRealSinY(mCurrentAngle, mMaxRadius + DensityUtil.dp2px(5));
         if (mBitmap != null) {
             //计算
             int bmpWidth = mBitmap.getWidth();

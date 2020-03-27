@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * Created by jam on 2018/11/6.
@@ -46,11 +46,11 @@ public class BorderImageView extends View {
         paintBorder.setColor(Color.parseColor("#4cffffff"));
         paintBorder.setStyle(Paint.Style.STROKE);
         paintBorder.setAntiAlias(true);
-        borderWidth = DisplayUtil.dip2px(getContext(), 2f);
+        borderWidth = DensityUtil.dp2px(2);
         paintBorder.setStrokeWidth(borderWidth);
 
         textPaint = new TextPaint();
-        textPaint.setTextSize(DisplayUtil.sp2px(getContext(), 9));
+        textPaint.setTextSize(DensityUtil.sp2px(9));
         textPaint.setColor(Color.WHITE);
         textPaint.setAntiAlias(true);
     }

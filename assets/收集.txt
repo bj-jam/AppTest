@@ -51,8 +51,7 @@ String sdfString = Html.fromHtml(messageInfo.content).toString();
 //		for (int i = 0; i < sdfString.length(); i++) {
 //			charaWidth = getCharacterWidth(i, h.messageContent0) + 1;// 加上字间距
 //			chartCount += charaWidth;
-//			if (chartCount >= (AbleApplication.sWidth - DisplayUtil.dip2px(
-//					context, 80)) * 3) {// 去掉margin
+//			if (chartCount >= (AbleApplication.sWidth -  DensityUtil.dp2px( 80)) * 3) {// 去掉margin
 //				if (i <= Html.fromHtml(messageInfo.content).toString().length() - 1) {
 //					sdfString = sdfString.substring(0, i - 1);// 给...空位
 //					h.messageContent0.setText(sdfString + "...");
@@ -130,8 +129,8 @@ public float getCharacterWidth(int i, TextView tv) {
 
 		
 		  private void initGesture() {
-//        mGestureRangeY = DisplayUtil.dip2px(mContext, 50);
-//        mGestureRangeX = DisplayUtil.dip2px(mContext, 100);
+//        mGestureRangeY =  DensityUtil.dp2px( 50);
+//        mGestureRangeX =  DensityUtil.dp2px( 100);
 //        gestureDetectorCompat = new GestureDetectorCompat(mContext, new GestureDetector.SimpleOnGestureListener() {
 //            @Override
 //            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {

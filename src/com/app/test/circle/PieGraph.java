@@ -10,7 +10,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -179,13 +179,13 @@ public class PieGraph extends View {
      */
     private void initAttrs() {
 
-        mPieRadius = DisplayUtil.getInstance().dip2px(80);
-        mTextSize = DisplayUtil.getInstance().dip2px(14);
-        mBigSize = DisplayUtil.getInstance().dip2px(16);
-        mSmallSize = DisplayUtil.getInstance().dip2px(10);
+        mPieRadius = DensityUtil.dp2px(80);
+        mTextSize = DensityUtil.dp2px(14);
+        mBigSize = DensityUtil.dp2px(16);
+        mSmallSize = DensityUtil.dp2px(10);
         mTextColor = 0xff666666;
-        mMarkerLine1 = DisplayUtil.getInstance().dip2px(10);
-        mMarkerLine2 = DisplayUtil.getInstance().dip2px(65);
+        mMarkerLine1 = DensityUtil.dp2px(10);
+        mMarkerLine2 = DensityUtil.dp2px(65);
     }
 
     /**

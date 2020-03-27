@@ -26,6 +26,18 @@ public class DensityUtil {
         return (int) (dip * density + 0.5);
     }
 
+    public static int px2dp(float pxValue) {
+        return (int) (pxValue / density + 0.5f);
+    }
+
+    public static int px2sp(float pxValue) {
+        return (int) (pxValue / density + 0.5f);
+    }
+
+    public static int sp2px(float spValue) {
+        return (int) (spValue * density + 0.5f);
+    }
+
     public static int getScreenHeight(Context context) {
         if (context != null) {
             return context.getResources().getDisplayMetrics().heightPixels;

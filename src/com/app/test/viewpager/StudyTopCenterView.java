@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 public class StudyTopCenterView extends RelativeLayout implements OnPageChangeListener {
 
@@ -69,7 +69,7 @@ public class StudyTopCenterView extends RelativeLayout implements OnPageChangeLi
      * 设置圆点
      */
     private void setPoint(int size) {
-        int width = DisplayUtil.getInstance().dip2px(9);// 设置原点大小
+        int width = DensityUtil.dp2px(9);// 设置原点大小
         // 滑动的指示点图片
         views = new View[viewList.length];
         if (size != 0) {

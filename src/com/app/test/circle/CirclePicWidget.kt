@@ -5,7 +5,7 @@ import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.View
 import com.app.test.R
-import com.app.test.utils.DisplayUtil
+import com.app.test.util.DensityUtil
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -26,7 +26,7 @@ class CirclePicWidget : ConstraintLayout {
     private var initSize = 0
     private var initAngle = 0
     private var firstAngle = 0f
-    private val intWidth = DisplayUtil.dip2px(context, 40f)
+    private val intWidth = DensityUtil.dp2px(40)
     var radius = 0
 
     constructor(context: Context) : super(context) {
@@ -127,23 +127,23 @@ class CirclePicWidget : ConstraintLayout {
      */
     private fun handleCount(count: Int) {
         if (count == 0 || count == 1) {
-            initSize = DisplayUtil.dip2px(context, 40f)
+            initSize =  DensityUtil.dp2px( 40)
             initAngle = 0
             firstAngle = 0f
         } else if (count == 2) {
-            initSize = DisplayUtil.dip2px(context, 22f)
+            initSize =  DensityUtil.dp2px(22)
             initAngle = 180
             firstAngle = 90f
         } else if (count == 3) {
-            initSize = DisplayUtil.dip2px(context, 22f)
+            initSize =  DensityUtil.dp2px(22)
             initAngle = 120
             firstAngle = 120f
         } else if (count == 4) {
-            initSize = DisplayUtil.dip2px(context, 20f)
+            initSize =  DensityUtil.dp2px( 20)
             initAngle = 90
             firstAngle = 45f
         } else {
-            initSize = DisplayUtil.dip2px(context, 18f)
+            initSize =  DensityUtil.dp2px( 18)
             initAngle = 72
             firstAngle = 72f
         }

@@ -17,7 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * 饼图
@@ -128,7 +128,7 @@ public class ColorRingView extends View {
         textSize = res.getDimensionPixelSize(R.dimen.dp10);
         textSize_ = res.getDimensionPixelSize(R.dimen.dp16);
         textSizeMin = res.getDimensionPixelSize(R.dimen.dp10);
-        paintWidth = DisplayUtil.getInstance().dip2px(10);
+        paintWidth = DensityUtil.dp2px(10);
         dis = 10;
 
         textRect = new Rect();

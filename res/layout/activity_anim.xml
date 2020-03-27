@@ -1,14 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="@dimen/dp16"
+    android:background="@color/black"
     android:paddingLeft="@dimen/dp16"
-    android:paddingRight="@dimen/dp16"
     android:paddingTop="@dimen/dp16"
-    tools:context="com.app.test.util.MainActivity"
-    android:background="@color/black">
+    android:paddingRight="@dimen/dp16"
+    android:paddingBottom="@dimen/dp16">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,10 +33,10 @@
                 android:id="@+id/to_open_vip_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="-25dp"
+                android:layout_alignParentBottom="true"
                 android:layout_marginRight="-10dp"
+                android:layout_marginBottom="-25dp"
                 android:src="@drawable/icon_pic1" />
         </RelativeLayout>
 
@@ -59,51 +58,51 @@
             android:id="@+id/pic0"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:riv_corner_radius="10dp"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@color/blue"
             app:riv_border_color="@color/white"
             app:riv_border_width="1dp"
-            android:src="@color/blue"
-            android:scaleX="0"
-            android:scaleY="0"/>
+            app:riv_corner_radius="10dp" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/pic1"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:riv_corner_radius="10dp"
+            android:src="@color/green"
             app:riv_border_color="@color/white"
             app:riv_border_width="1dp"
-            android:src="@color/green" />
+            app:riv_corner_radius="10dp" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/pic2"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:riv_corner_radius="10dp"
+            android:src="@color/pink_color"
+            android:translationX="15dp"
             app:riv_border_color="@color/white"
             app:riv_border_width="1dp"
-            android:src="@color/pink_color"
-            android:translationX="15dp"/>
+            app:riv_corner_radius="10dp" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/pic3"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:riv_corner_radius="10dp"
+            android:src="@color/red"
+            android:translationX="30dp"
             app:riv_border_color="@color/white"
             app:riv_border_width="1dp"
-            android:src="@color/red"
-            android:translationX="30dp"/>
+            app:riv_corner_radius="10dp" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/pic4"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:riv_corner_radius="10dp"
+            android:src="@color/white"
+            android:translationX="45dp"
             app:riv_border_color="@color/white"
             app:riv_border_width="1dp"
-            android:src="@color/white"
-            android:translationX="45dp" />
+            app:riv_corner_radius="10dp" />
 
     </com.app.test.view.CustomRel>
 
@@ -113,12 +112,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="start"/>
+        android:text="start" />
 
 
     <com.app.test.view.TeachTalkTogetherView
         android:id="@+id/teach"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:background="@color/pink_color"/>
+        android:background="@color/pink_color" />
 </RelativeLayout>

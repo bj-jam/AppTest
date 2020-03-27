@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * 饼图
@@ -74,7 +74,7 @@ public class CirclePieView extends View {
 	/** 圆形图占控件的比数 */
 	private int grade = 3;
 
-	private int hae = DisplayUtil.getInstance().dip2px(20);
+	private int hae = DensityUtil.dp2px(20);
 
 	public CirclePieView(Context context) {
 		super(context);

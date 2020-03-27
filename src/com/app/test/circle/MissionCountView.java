@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 
 public class MissionCountView extends View {
@@ -149,10 +149,10 @@ public class MissionCountView extends View {
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        circleWidth = DisplayUtil.dip2px(getContext(), 5);
-        textWidth = DisplayUtil.dip2px(getContext(), 15);
-        infoWidth = DisplayUtil.dip2px(getContext(), 16);
-        mTimeSize = DisplayUtil.dip2px(getContext(), 54);
+        circleWidth = DensityUtil.dp2px(5);
+        textWidth = DensityUtil.dp2px(15);
+        infoWidth = DensityUtil.dp2px(16);
+        mTimeSize = DensityUtil.dp2px(54);
 
 
         mColorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

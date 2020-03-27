@@ -16,8 +16,8 @@ import android.widget.FrameLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.app.test.base.App;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
-import com.app.test.utils.DisplayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,7 +184,7 @@ public class GameOverHelper {
         final FrameLayout rootView = (FrameLayout) activity.getWindow().getDecorView();
         final LottieAnimationView lav = new LottieAnimationView(activity);
 
-        int dp100 = DisplayUtil.dip2px(activity, 150);
+        int dp100 = DensityUtil.dp2px(150);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp100);
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         lav.setLayoutParams(layoutParams);

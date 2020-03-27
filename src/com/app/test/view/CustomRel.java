@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 /**
@@ -13,9 +13,9 @@ import com.makeramen.roundedimageview.RoundedImageView;
  * description:
  */
 public class CustomRel extends RelativeLayout {
-    private int dp20 = DisplayUtil.dip2px(getContext(),20);
-    private int dp15 = DisplayUtil.dip2px(getContext(),15);
-    private int dp10 = DisplayUtil.dip2px(getContext(),10);
+    private int dp20 = DensityUtil.dp2px(20);
+    private int dp15 = DensityUtil.dp2px(15);
+    private int dp10 = DensityUtil.dp2px(10);
 
     public CustomRel(Context context) {
         super(context);
@@ -40,7 +40,7 @@ public class CustomRel extends RelativeLayout {
     private void init() {
         RoundedImageView pic1 = new RoundedImageView(getContext());
 
-        addView(pic1,new RecyclerView.LayoutParams(dp20,dp20));
+        addView(pic1, new RecyclerView.LayoutParams(dp20, dp20));
         RoundedImageView pic2 = new RoundedImageView(getContext());
         RoundedImageView pic3 = new RoundedImageView(getContext());
         RoundedImageView pic4 = new RoundedImageView(getContext());

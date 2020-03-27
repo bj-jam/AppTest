@@ -12,9 +12,9 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.text.TextUtils;
 
+import com.app.test.util.DensityUtil;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.app.test.R;
-import com.app.test.util.DisplayUtil;
 
 public class ImgUtil {
 
@@ -105,7 +105,7 @@ public class ImgUtil {
 		}
 
 		// 将dp转成px
-		dis = DisplayUtil.getInstance().dip2px(dis);
+		dis = DensityUtil.dp2px(dis);
 
 		// 带有外圈空白可绘制的位图
 		Bitmap colorWeak = Bitmap.createBitmap((radius + dis) * 2,
@@ -169,7 +169,7 @@ public class ImgUtil {
 		}
 
 		// 将dp转成px
-		dis = DisplayUtil.getInstance().dip2px(dis);
+		dis = DensityUtil.dp2px(dis);
 
 		// 带有外圈空白可绘制的位图
 		Bitmap colorWeak = Bitmap.createBitmap((radius + dis) * 2,

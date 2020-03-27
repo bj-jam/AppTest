@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * Created by Administrator on 2017/6/29.
@@ -61,7 +61,7 @@ public class MyView extends View {
     public void init() {
         mColorWheelRectangle = new RectF();
 
-        circleWidth = DisplayUtil.dip2px(getContext(), 2);
+        circleWidth = DensityUtil.dp2px( 2);
         circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         circlePaint.setColor(0xFF00c896);
         circlePaint.setStyle(Paint.Style.STROKE);

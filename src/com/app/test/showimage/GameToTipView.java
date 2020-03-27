@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * @author lcx
@@ -24,7 +24,7 @@ public class GameToTipView extends RelativeLayout {
 
     private View targetView;
     private ImageView iv_move;
-    private int margin = DisplayUtil.dip2px(getContext(), 5);
+    private int margin = DensityUtil.dp2px(5);
 
     public GameToTipView(Context context) {
         super(context);

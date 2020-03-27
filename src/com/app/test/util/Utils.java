@@ -27,10 +27,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author lcx
@@ -205,9 +208,9 @@ public class Utils {
     public static void initCacheBitmap(Context context, String path, View v) {
         try {
             // 扩展宽度
-            int disW = DisplayUtil.getInstance().dip2px(20);
+            int disW = DensityUtil.dp2px(20);
             // 扩展高度
-            int disH = DisplayUtil.getInstance().dip2px(100);
+            int disH = DensityUtil.dp2px(100);
             // 文字颜色
             int textColor = context.getResources()
                     .getColor(R.color.text_color3);
@@ -232,8 +235,8 @@ public class Utils {
             String text = "欢迎到此一游";
             Rect textRect = new Rect();
             paint.setColor(textColor);
-            paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(2));
-            paint.setTextSize(DisplayUtil.getInstance().dip2px(16));
+            paint.setStrokeWidth(DensityUtil.dp2px(2));
+            paint.setTextSize(DensityUtil.dp2px(16));
             paint.getTextBounds(text, 0, text.length(), textRect);
             // 文字左边距
             int x = (viewW + disW - textRect.width()) / 2;
@@ -245,8 +248,8 @@ public class Utils {
             text = "欢迎到此一游";
             textRect = new Rect();
             paint.setColor(textColor);
-            paint.setStrokeWidth(DisplayUtil.getInstance().dip2px(2));
-            paint.setTextSize(DisplayUtil.getInstance().dip2px(16));
+            paint.setStrokeWidth(DensityUtil.dp2px(2));
+            paint.setTextSize(DensityUtil.dp2px(16));
             paint.getTextBounds(text, 0, text.length(), textRect);
             // 文字左边距
             x = (viewW + disW - textRect.width()) / 2;
@@ -463,6 +466,31 @@ public class Utils {
         }
 
         return null;
+    }
+
+    private String[] getImgSrcs(String htmlStr) {
+        if (htmlStr == null) {
+            return null;
+        }
+        ArrayList<String> list = new ArrayList<String>();
+        String[] strs = null;
+
+        String imgRegex = "<img[^(>)(src)]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
+        Pattern p = Pattern.compile(imgRegex);
+        Matcher m = p.matcher(htmlStr);
+
+        while (m.find()) {
+            String str = m.group(1);
+            list.add(str);
+        }
+
+        if (list.size() != 0) {
+            strs = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                strs[i] = list.get(i);
+            }
+        }
+        return strs;
     }
 
 }

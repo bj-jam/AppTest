@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.app.test.R;
 import com.app.test.base.App;
 import com.app.test.rotate.MyView;
-import com.app.test.util.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * 弹窗辅助类
@@ -79,8 +79,6 @@ public class WindowUtils implements Handler.Callback, View.OnClickListener {
     private void init(Context context) {
         // 获取应用的Context
         mContext = context.getApplicationContext();
-//        maxSpace = DisplayUtil.getInstance().dip2px(50);
-//        handler = new Handler(this);
         // 获取WindowManager
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         //获取view
@@ -146,7 +144,7 @@ public class WindowUtils implements Handler.Callback, View.OnClickListener {
         if (y >= 0 && isShown && null != mView && mWindowManager != null && params != null) {
 //            this.y = y;
 //            mView.setVisibility(View.GONE);
-            params.y = DisplayUtil.getInstance().dip2px(y);
+            params.y = DensityUtil.dp2px(y);
             mWindowManager.updateViewLayout(mView, params);
 //            handler.sendEmptyMessageDelayed(1, 1500);
         }

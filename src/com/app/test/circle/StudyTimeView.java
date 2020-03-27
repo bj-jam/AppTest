@@ -17,7 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 
 public class StudyTimeView extends View {
@@ -159,10 +159,10 @@ public class StudyTimeView extends View {
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        circleWidth = DisplayUtil.dip2px(getContext(), 10);
-        textWidth = DisplayUtil.dip2px(getContext(), 14);
-        infoWidth = DisplayUtil.dip2px(getContext(), 14);
-        mTimeSize = DisplayUtil.dip2px(getContext(), 40);
+        circleWidth = DensityUtil.dp2px(10);
+        textWidth = DensityUtil.dp2px(14);
+        infoWidth = DensityUtil.dp2px(14);
+        mTimeSize = DensityUtil.dp2px(40);
 
 
         mColorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -258,8 +258,8 @@ public class StudyTimeView extends View {
      */
     private void drawThumbnail(Canvas canvas) {
         float p = mCurrentAngle - 135;
-        thumbX = mCircleX + getRealCosX(mCurrentAngle, mMaxRadius + DisplayUtil.dip2px(getContext(), 5));
-        thumbY = mCircleY + getRealSinY(mCurrentAngle, mMaxRadius + DisplayUtil.dip2px(getContext(), 5));
+        thumbX = mCircleX + getRealCosX(mCurrentAngle, mMaxRadius + DensityUtil.dp2px(5));
+        thumbY = mCircleY + getRealSinY(mCurrentAngle, mMaxRadius + DensityUtil.dp2px(5));
         if (mBitmap != null) {
             //计算
             int bmpWidth = mBitmap.getWidth();

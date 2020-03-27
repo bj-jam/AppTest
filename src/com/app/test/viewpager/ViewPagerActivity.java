@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.test.R;
-import com.app.test.utils.DisplayUtil;
+import com.app.test.util.DensityUtil;
 
 /**
  * Created by jam on 16/9/29.
@@ -34,7 +34,7 @@ public class ViewPagerActivity extends Activity {
         mViewPager = (ViewPager) findViewById(R.id.mViewPager);
         studyTopCenter = (StudyTopCenterView) findViewById(R.id.studyTopCenter);
         mViewPager.setOffscreenPageLimit(3);
-        mViewPager.setPageMargin(DisplayUtil.dip2px(this, -70));
+        mViewPager.setPageMargin(DensityUtil.dp2px(-70));
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
         mViewPager.setAdapter(adapter);
         studyTopCenter.initValue(viewList);

@@ -9,7 +9,6 @@ import android.view.WindowManager;
 
 import com.app.test.R;
 import com.app.test.hook.AMSPHookHelper;
-import com.app.test.util.DisplayUtil;
 import com.app.test.util.FileUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -47,8 +46,6 @@ public class App extends Application {
         // TODO Auto-generated method stub
         super.onCreate();
         context = this;
-        /** 初始化DP、SP 转换为 PX 的工具 */
-        DisplayUtil.getInstance().init(this);
         FileUtil.init();
         initImageLoader(this);
         // 获得屏幕宽度
