@@ -136,7 +136,7 @@ public class StringUtils {
         if (cs1 == cs2) {
             return true;
         } else if (cs1 != null && cs2 != null) {
-            return cs1 instanceof String && cs2 instanceof String ? cs1.equals(cs2) : CharSequenceUtils.regionMatches(cs1, false, 0, cs2, 0, Math.max(cs1.length(), cs2.length()));
+            return cs1 instanceof String && cs2 instanceof String ? cs1.equals(cs2) : CharUtils.regionMatches(cs1, false, 0, cs2, 0, Math.max(cs1.length(), cs2.length()));
         } else {
             return false;
         }
@@ -147,7 +147,7 @@ public class StringUtils {
             if (str1 == str2) {
                 return true;
             } else {
-                return str1.length() == str2.length() && CharSequenceUtils.regionMatches(str1, true, 0, str2, 0, str1.length());
+                return str1.length() == str2.length() && CharUtils.regionMatches(str1, true, 0, str2, 0, str1.length());
             }
         } else {
             return str1 == str2;
@@ -185,19 +185,19 @@ public class StringUtils {
 
 
     public static int indexOf(CharSequence seq, int searchChar) {
-        return isEmpty(seq) ? -1 : CharSequenceUtils.indexOf(seq, searchChar, 0);
+        return isEmpty(seq) ? -1 : CharUtils.indexOf(seq, searchChar, 0);
     }
 
     public static int indexOf(CharSequence seq, int searchChar, int startPos) {
-        return isEmpty(seq) ? -1 : CharSequenceUtils.indexOf(seq, searchChar, startPos);
+        return isEmpty(seq) ? -1 : CharUtils.indexOf(seq, searchChar, startPos);
     }
 
     public static int indexOf(CharSequence seq, CharSequence searchSeq) {
-        return seq != null && searchSeq != null ? CharSequenceUtils.indexOf(seq, searchSeq, 0) : -1;
+        return seq != null && searchSeq != null ? CharUtils.indexOf(seq, searchSeq, 0) : -1;
     }
 
     public static int indexOf(CharSequence seq, CharSequence searchSeq, int startPos) {
-        return seq != null && searchSeq != null ? CharSequenceUtils.indexOf(seq, searchSeq, startPos) : -1;
+        return seq != null && searchSeq != null ? CharUtils.indexOf(seq, searchSeq, startPos) : -1;
     }
 
     public static int ordinalIndexOf(CharSequence str, CharSequence searchStr, int ordinal) {
@@ -214,9 +214,9 @@ public class StringUtils {
 
                 do {
                     if (lastIndex) {
-                        index = CharSequenceUtils.lastIndexOf(str, searchStr, index - searchStr.length());
+                        index = CharUtils.lastIndexOf(str, searchStr, index - searchStr.length());
                     } else {
-                        index = CharSequenceUtils.indexOf(str, searchStr, index + searchStr.length());
+                        index = CharUtils.indexOf(str, searchStr, index + searchStr.length());
                     }
 
                     if (index < 0) {
@@ -250,7 +250,7 @@ public class StringUtils {
                 return startPos;
             } else {
                 for (int i = startPos; i < endLimit; ++i) {
-                    if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, searchStr.length())) {
+                    if (CharUtils.regionMatches(str, true, i, searchStr, 0, searchStr.length())) {
                         return i;
                     }
                 }
@@ -263,15 +263,15 @@ public class StringUtils {
     }
 
     public static int lastIndexOf(CharSequence seq, int searchChar) {
-        return isEmpty(seq) ? -1 : CharSequenceUtils.lastIndexOf(seq, searchChar, seq.length());
+        return isEmpty(seq) ? -1 : CharUtils.lastIndexOf(seq, searchChar, seq.length());
     }
 
     public static int lastIndexOf(CharSequence seq, int searchChar, int startPos) {
-        return isEmpty(seq) ? -1 : CharSequenceUtils.lastIndexOf(seq, searchChar, startPos);
+        return isEmpty(seq) ? -1 : CharUtils.lastIndexOf(seq, searchChar, startPos);
     }
 
     public static int lastIndexOf(CharSequence seq, CharSequence searchSeq) {
-        return seq != null && searchSeq != null ? CharSequenceUtils.lastIndexOf(seq, searchSeq, seq.length()) : -1;
+        return seq != null && searchSeq != null ? CharUtils.lastIndexOf(seq, searchSeq, seq.length()) : -1;
     }
 
     public static int lastOrdinalIndexOf(CharSequence str, CharSequence searchStr, int ordinal) {
@@ -279,7 +279,7 @@ public class StringUtils {
     }
 
     public static int lastIndexOf(CharSequence seq, CharSequence searchSeq, int startPos) {
-        return seq != null && searchSeq != null ? CharSequenceUtils.lastIndexOf(seq, searchSeq, startPos) : -1;
+        return seq != null && searchSeq != null ? CharUtils.lastIndexOf(seq, searchSeq, startPos) : -1;
     }
 
     public static int lastIndexOfIgnoreCase(CharSequence str, CharSequence searchStr) {
@@ -298,7 +298,7 @@ public class StringUtils {
                 return startPos;
             } else {
                 for (int i = startPos; i >= 0; --i) {
-                    if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, searchStr.length())) {
+                    if (CharUtils.regionMatches(str, true, i, searchStr, 0, searchStr.length())) {
                         return i;
                     }
                 }
@@ -314,13 +314,13 @@ public class StringUtils {
         if (isEmpty(seq)) {
             return false;
         } else {
-            return CharSequenceUtils.indexOf(seq, searchChar, 0) >= 0;
+            return CharUtils.indexOf(seq, searchChar, 0) >= 0;
         }
     }
 
     public static boolean contains(CharSequence seq, CharSequence searchSeq) {
         if (seq != null && searchSeq != null) {
-            return CharSequenceUtils.indexOf(seq, searchSeq, 0) >= 0;
+            return CharUtils.indexOf(seq, searchSeq, 0) >= 0;
         } else {
             return false;
         }
@@ -332,7 +332,7 @@ public class StringUtils {
             int max = str.length() - len;
 
             for (int i = 0; i <= max; ++i) {
-                if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, len)) {
+                if (CharUtils.regionMatches(str, true, i, searchStr, 0, len)) {
                     return true;
                 }
             }
@@ -426,7 +426,7 @@ public class StringUtils {
     }
 
     public static boolean containsAny(CharSequence cs, CharSequence searchChars) {
-        return searchChars != null && containsAny(cs, CharSequenceUtils.toCharArray(searchChars));
+        return searchChars != null && containsAny(cs, CharUtils.toCharArray(searchChars));
     }
 
     public static boolean containsAny(CharSequence cs, CharSequence... searchCharSequences) {
@@ -479,10 +479,10 @@ public class StringUtils {
 
             for (int i = 0; i < strLen; ++i) {
                 char ch = seq.charAt(i);
-                boolean chFound = CharSequenceUtils.indexOf(searchChars, ch, 0) >= 0;
+                boolean chFound = CharUtils.indexOf(searchChars, ch, 0) >= 0;
                 if (i + 1 < strLen && Character.isHighSurrogate(ch)) {
                     char ch2 = seq.charAt(i + 1);
-                    if (chFound && CharSequenceUtils.indexOf(searchChars, ch2, 0) < 0) {
+                    if (chFound && CharUtils.indexOf(searchChars, ch2, 0) < 0) {
                         return i;
                     }
                 } else if (!chFound) {
@@ -559,7 +559,7 @@ public class StringUtils {
             for (int i = 0; i < sz; ++i) {
                 CharSequence search = searchStrs[i];
                 if (search != null) {
-                    int tmp = CharSequenceUtils.indexOf(str, search, 0);
+                    int tmp = CharUtils.indexOf(str, search, 0);
                     if (tmp != -1 && tmp < ret) {
                         ret = tmp;
                     }
@@ -580,7 +580,7 @@ public class StringUtils {
             for (int i = 0; i < sz; ++i) {
                 CharSequence search = searchStrs[i];
                 if (search != null) {
-                    int tmp = CharSequenceUtils.lastIndexOf(str, search, str.length());
+                    int tmp = CharUtils.lastIndexOf(str, search, str.length());
                     if (tmp > ret) {
                         ret = tmp;
                     }
@@ -1989,7 +1989,7 @@ public class StringUtils {
         if (!isEmpty(str) && !isEmpty(sub)) {
             int count = 0;
 
-            for (int idx = 0; (idx = CharSequenceUtils.indexOf(str, sub, idx)) != -1; idx += sub.length()) {
+            for (int idx = 0; (idx = CharUtils.indexOf(str, sub, idx)) != -1; idx += sub.length()) {
                 ++count;
             }
 
@@ -2560,7 +2560,7 @@ public class StringUtils {
 
     private static boolean startsWith(CharSequence str, CharSequence prefix, boolean ignoreCase) {
         if (str != null && prefix != null) {
-            return prefix.length() > str.length() ? false : CharSequenceUtils.regionMatches(str, ignoreCase, 0, prefix, 0, prefix.length());
+            return prefix.length() > str.length() ? false : CharUtils.regionMatches(str, ignoreCase, 0, prefix, 0, prefix.length());
         } else {
             return str == null && prefix == null;
         }
@@ -2598,7 +2598,7 @@ public class StringUtils {
                 return false;
             } else {
                 int strOffset = str.length() - suffix.length();
-                return CharSequenceUtils.regionMatches(str, ignoreCase, strOffset, suffix, 0, suffix.length());
+                return CharUtils.regionMatches(str, ignoreCase, strOffset, suffix, 0, suffix.length());
             }
         } else {
             return str == null && suffix == null;

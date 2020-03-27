@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.test.R;
+import com.app.test.game.api.CheckIdiomListener;
 import com.app.test.game.api.ItemTypeListener;
 import com.app.test.game.api.NoDoubleClickListener;
 import com.app.test.game.bean.CharacterTips;
@@ -19,10 +20,9 @@ import com.app.test.game.bean.ProverbCharacter;
 import com.app.test.game.bean.ProverbCharacterWrapper;
 import com.app.test.game.bean.ProverbDisturbMapCharacter;
 import com.app.test.game.bean.SuperType;
-import com.app.test.util.DensityUtil;
 import com.app.test.game.helper.IdiomHelper;
-import com.app.test.game.api.CheckIdiomListener;
 import com.app.test.game.source.IdiomType;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.StringUtils;
 import com.app.test.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -36,6 +36,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static com.app.test.game.source.IdiomType.ALL_FILL_RIGHT;
 import static com.app.test.game.source.IdiomType.EACH_PROVERB_RIGHT_COLLECT;
 import static com.app.test.game.source.IdiomType.EACH_PROVERB_RIGHT_COUNT;
+
 /**
  * @author lcx
  * Created at 2020.3.27
@@ -43,7 +44,7 @@ import static com.app.test.game.source.IdiomType.EACH_PROVERB_RIGHT_COUNT;
  */
 public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
     //用来记录全部填对的成语所在下标
-    private volatile SparseBooleanArray allRightProverbIndex = new SparseBooleanArray();
+    private volatile SparseBooleanArray allRightIdiomIndex = new SparseBooleanArray();
     private ItemTypeListener<Integer> itemTypeListener;
     private ProverbCharacterWrapper[][] proverbCharacters;
     private int column = 5;
@@ -60,7 +61,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     private volatile ArrayList<Proverb> proverbList;
 
     /*记录填字时，所在成语对应的下标*/
-    private volatile int currentProverbIndex = -1;
+    private volatile int currentIdiomIndex = -1;
 
 
     /*记录开始答题的当前时间或者答对之后的时间，用于统计每次答对成语的间隔*/
@@ -74,7 +75,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         this.column = column;
         this.proverbCharacters = characters;
         this.itemWidth = 0;
-        allRightProverbIndex = new SparseBooleanArray();
+        allRightIdiomIndex = new SparseBooleanArray();
         prePoint = new Point(-1, -1);
     }
 
@@ -97,9 +98,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             if (Utils.isEmpty(wrapper)) {
                 return;
             }
-            currentProverbIndex = wrapper.getProverbIndex();
+            currentIdiomIndex = wrapper.getProverbIndex();
         } else {
-            currentProverbIndex = firstSelectPosition;
+            currentIdiomIndex = firstSelectPosition;
         }
 
     }
@@ -112,12 +113,12 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         proverbList = list;
     }
 
-    public int getCurrentProverbIndex() {
-        return currentProverbIndex;
+    public int getCurrentIdiomIndex() {
+        return currentIdiomIndex;
     }
 
-    public void setCurrentProverbIndex(int currentProverbIndex) {
-        this.currentProverbIndex = currentProverbIndex;
+    public void setCurrentIdiomIndex(int currentIdiomIndex) {
+        this.currentIdiomIndex = currentIdiomIndex;
     }
 
     public ArrayList<Proverb> getProverbList() {
@@ -246,9 +247,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 /*如果手动选择红框，如果上一个X坐标或Y坐标和当前选择的X或者Y坐标一致，那么还是在当前成语中*//*
                 //只有当x,y坐标都不一样的情况下，才取判断选择到哪个下标的成语
                */
-                int currentProverbIndexForChar = getCurrentProverbIndexForChar(getCurrentProverbIndex(), character);
+                int currentProverbIndexForChar = getCurrentProverbIndexForChar(getCurrentIdiomIndex(), character);
                 if (currentProverbIndexForChar >= 0) {
-                    setCurrentProverbIndex(currentProverbIndexForChar);
+                    setCurrentIdiomIndex(currentProverbIndexForChar);
                 }
 
             }
@@ -456,7 +457,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 }
             }
             //如果关联多个成语,如果成语已经全部正确则略过
-            if (allRightProverbIndex.get(index)) {
+            if (allRightIdiomIndex.get(index)) {
                 continue;
             }
             /*之前选择框的坐标*/
@@ -572,7 +573,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             return false;
         }
         for (int i = 0; i < getProverbList().size(); i++) {
-            if (allRightProverbIndex.get(i)) {
+            if (allRightIdiomIndex.get(i)) {
                 isAllFillAndRight = true;
             } else {
                 isAllFillAndRight = false;
@@ -654,7 +655,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             if (index >= sourceProverbList.size()) {
                 continue;
             }
-            if (allRightProverbIndex.get(index)) {
+            if (allRightIdiomIndex.get(index)) {
                 //填入的字有可能关联两个成语，而其中一个成语可能被全部填对了，这个时候就不需要处理这个成语了
                 continue;
             }
@@ -684,7 +685,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                     rightProverbIndex = index;
                 }
                 //可能同时有2个成语同时答完，所以不能提前break
-                allRightProverbIndex.put(index, true);
+                allRightIdiomIndex.put(index, true);
                 proverbRightNum = proverbRightNum + state.getRightCount();
                 /*此处由于外部需要动画，所以记录每个完成成语的最后一个字所在下标*/
                 idiomViewPosition = getEachViewPositionForIdiom(idiomViewPosition, proverbCharacterList);
@@ -715,13 +716,13 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             /*如果填的字只关联一个成语，那么下一个选择框所在位置，应该是在该完成成语中的某个字所关联的成语，如果该成语每个字所关联的成语填写正确，则找空格在最前的成语(初始化时的逻辑)*/
             /*如果填的字关联多个成语，那么下一个选择框则在所关联且未完成的成语上*/
             /*如果成语填对正确的数量和棋盘的成语数量一致，那么就不需要检查选择框的逻辑了*/
-            if (Utils.isEmpty(allRightProverbIndex) || allRightProverbIndex.size() != getProverbList().size()) {
+            if (Utils.isEmpty(allRightIdiomIndex) || allRightIdiomIndex.size() != getProverbList().size()) {
                 findNextProverbForCurrentProverb(character, rightProverbIndex);
             }
         } else if (!mappingProverbHasAllFill) {
             //如果mappingProverbHasRight==false,则说明该字关联的成语，没有一个答完和答正确
             // 则根据当前成语的下标设置红色选择框坐标
-            getNextProverbForIndex(getCurrentProverbIndex());
+            getNextProverbForIndex(getCurrentIdiomIndex());
         }
 
         //此处判断该成语填对了几个词，用于上报
@@ -761,7 +762,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             if (index >= sourceProverbList.size()) {
                 continue;
             }
-            if (allRightProverbIndex.get(index)) {
+            if (allRightIdiomIndex.get(index)) {
                 //填入的字有可能关联两个成语，而其中一个成语可能被全部填对了，这个时候就不需要处理这个成语了
                 continue;
             }
@@ -819,7 +820,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             return;
         }
         /*设置成语所在下标*/
-        setCurrentProverbIndex(needSelectProverbIndex);
+        setCurrentIdiomIndex(needSelectProverbIndex);
         /*根据成语下标，设置选择框在该成语中的位置*/
         getNextProverbForIndex(needSelectProverbIndex);
     }
@@ -841,7 +842,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             int proverbIndex = type.getIndex();
             /*该字关联的成语填对，忽略*/
-            if (allRightProverbIndex.get(proverbIndex)) {
+            if (allRightIdiomIndex.get(proverbIndex)) {
                 continue;
             }
             Proverb proverb = getProverbList().get(proverbIndex);
@@ -868,7 +869,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     private void autoFindNextProverb() {
         //如果有成语全部填对了，则遍历成语，找下个空格较少的成语
         IdiomFillState proverbFillState = IdiomHelper.get().getNextProverbIndex(getProverbList(),
-                allRightProverbIndex, new CheckIdiomListener() {
+                allRightIdiomIndex, new CheckIdiomListener() {
                     @Override
                     public boolean currentCharacterNeedFill(int relativeX, int relativeY) {
                         ProverbCharacter sourceData = getSourceData(relativeX, relativeY);
@@ -891,7 +892,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 getNextProverbForIndex(-1);
             } else {
                 setNextPoint(point.x, point.y);
-                setCurrentProverbIndex(proverbFillState.getPosition());
+                setCurrentIdiomIndex(proverbFillState.getPosition());
             }
         }
     }
@@ -913,14 +914,14 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         }
 
         for (int i = 0; i < sourceProverbList.size(); i++) {
-            if (allRightProverbIndex.get(i)) {
+            if (allRightIdiomIndex.get(i)) {
                 //如果该成语填充完毕和成功，则忽略
                 continue;
             }
             boolean nextCharForProverb = findNextCharForProverb(sourceProverbList.get(i).getProverbCharacterList());
             //如果找到下一个红框，则不用遍历成语了
             if (nextCharForProverb) {
-                setCurrentProverbIndex(i);
+                setCurrentIdiomIndex(i);
                 break;
             }
         }

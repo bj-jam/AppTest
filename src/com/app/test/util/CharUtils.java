@@ -5,10 +5,10 @@ package com.app.test.util;
  * Created at 2020.1.6
  * Describe:
  */
-public class CharSequenceUtils {
+public class CharUtils {
     private static final int NOT_FOUND = -1;
 
-    public CharSequenceUtils() {
+    public CharUtils() {
     }
 
     public static CharSequence subSequence(CharSequence cs, int start) {

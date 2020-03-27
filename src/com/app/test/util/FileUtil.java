@@ -25,7 +25,6 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.app.test.R;
 import com.app.test.util.LocalCache.FileKey;
 import com.app.test.util.LocalCache.Key;
 
@@ -581,103 +580,6 @@ public class FileUtil {
         int s = c.get(Calendar.SECOND);
         int m = c.get(Calendar.MILLISECOND);
         return h + mi + s + m;
-    }
-
-    /**
-     * 用画布的形式把一个View以图片的方式薄脆在本地
-     */
-    public static void initCacheBitmap(Context context, String path, View v,
-                                       String name) {
-        try {
-            // 扩展宽度
-            int disW = DensityUtil.dp2px(20);
-            // 扩展高度
-            int disH = DensityUtil.dp2px(100);
-            // 文字颜色
-            int textColor = context.getResources()
-                    .getColor(R.color.text_color3);
-
-            // 获取控件的屏幕截图
-            v.setDrawingCacheEnabled(true);
-            Bitmap viewBitmap = v.getDrawingCache();
-            int viewW = viewBitmap.getWidth();
-            int viewH = viewBitmap.getHeight();
-            Bitmap bm = Bitmap.createBitmap(viewW + disW, viewH + disH,
-                    viewBitmap.getConfig());
-
-            // 创建可修改的位图进行作图
-            Canvas canvas = new Canvas(bm);
-            // 设置背景颜色
-            canvas.drawColor(context.getResources().getColor(R.color.white));
-            Paint paint = new Paint();
-            paint.setAntiAlias(true);
-            canvas.drawBitmap(viewBitmap, disW / 2, disH * 2 / 5, paint);
-
-            // 画顶部文字
-            String text = "欢迎到此一游";
-            Rect textRect = new Rect();
-            paint.setColor(textColor);
-            paint.setStrokeWidth(DensityUtil.dp2px(2));
-            paint.setTextSize(DensityUtil.dp2px(16));
-            paint.getTextBounds(text, 0, text.length(), textRect);
-            // 文字左边距
-            int x = (viewW + disW - textRect.width()) / 2;
-            // 文字右边距
-            int y = (disH * 2 / 5 - textRect.height()) / 2 + textRect.height();
-            canvas.drawText(text, x, y, paint);
-
-            // 画底部文字
-            text = "欢迎到此一游";
-            textRect = new Rect();
-            paint.setColor(textColor);
-            paint.setStrokeWidth(DensityUtil.dp2px(2));
-            paint.setTextSize(DensityUtil.dp2px(16));
-            paint.getTextBounds(text, 0, text.length(), textRect);
-            // 文字左边距
-            x = (viewW + disW - textRect.width()) / 2;
-            // 文字右边距
-            y = disH
-                    * 2
-                    / 5
-                    + viewH
-                    + ((disH * 3 / 5 - textRect.height()) / 2 + textRect
-                    .height());
-            canvas.drawText(text, x, y, paint);
-
-            // 保存图片
-            File file = new File(path);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-            file = new File(path + name);
-            if (file.exists()) {
-                file.delete();
-            }
-            FileOutputStream fos = new FileOutputStream(file);
-            bm.compress(CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 获取网络类型，-1没网络，1WiFi，2手机网络
-     */
-    public static int getNetWork(Context context) {
-        // TODO 获取网络类型，-1没网络，1WiFi，2手机网络
-        ConnectivityManager cm = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo ni = cm.getActiveNetworkInfo();
-
-        if (ni == null) {// 没有任何网络
-            return -1;
-        } else if (ni.getType() == ConnectivityManager.TYPE_WIFI) {// 是否是wifi
-            return 1;
-        } else if (ni.getType() == ConnectivityManager.TYPE_MOBILE) {// 是否是手机网络
-            return 2;
-        } else {
-            return -1;
-        }
     }
 
     /**
