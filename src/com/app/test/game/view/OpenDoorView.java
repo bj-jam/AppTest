@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.app.test.R;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
 
 /**
@@ -20,7 +21,7 @@ public class OpenDoorView extends LinearLayout {
     private ImageView mLeft;
     private ImageView mRight;
     private OpenDoorListen openDoorListen;
-    private int width;
+    private int width = DensityUtil.getScreenWidth(getContext());
     private int animTime = 500;
     private ValueAnimator closeAnim;
     private ValueAnimator openAnim;
@@ -48,13 +49,6 @@ public class OpenDoorView extends LinearLayout {
         setClickable(false);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        if (w != oldw && h != oldh) {
-            width = w;
-        }
-    }
 
     public void setOpenDoorListen(OpenDoorListen openDoorListen) {
         this.openDoorListen = openDoorListen;

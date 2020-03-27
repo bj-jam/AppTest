@@ -2,15 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/anim_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/iv_left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_game_cloud_left"
-        android:visibility="gone" />
+        android:src="@drawable/ic_game_cloud_left" />
 
     <ImageView
         android:id="@+id/iv_right"

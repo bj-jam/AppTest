@@ -140,7 +140,7 @@ public class AnswerPresenter implements AnswerListener {
 
     @Override
     public boolean isPbRewardBoxSite() {
-        return true;
+        return false;
     }
 
     private boolean isAnswerEnd() {
