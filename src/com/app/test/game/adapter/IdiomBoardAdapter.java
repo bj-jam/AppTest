@@ -15,8 +15,8 @@ import com.app.test.game.api.NoDoubleClickListener;
 import com.app.test.game.bean.CharacterTips;
 import com.app.test.game.bean.IdiomFillState;
 import com.app.test.game.bean.IdiomViewPosition;
-import com.app.test.game.bean.Proverb;
-import com.app.test.game.bean.ProverbCharacter;
+import com.app.test.game.bean.Idiom;
+import com.app.test.game.bean.IdiomWord;
 import com.app.test.game.bean.IdiomWrapper;
 import com.app.test.game.bean.IdiomDisturbWord;
 import com.app.test.game.bean.SuperType;
@@ -58,7 +58,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     //手动移动红框时记录上一个二维坐标，利用两次不同的选择框判断是否在一个成语中，用于确定成语下标位置，填字时就重置
     private volatile Point prePoint;
     /*每个问题的成语集合*/
-    private volatile ArrayList<Proverb> proverbList;
+    private volatile ArrayList<Idiom> proverbList;
 
     /*记录填字时，所在成语对应的下标*/
     private volatile int currentIdiomIndex = -1;
@@ -109,7 +109,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         this.itemTypeListener = itemTypeListener;
     }
 
-    public void setProverList(ArrayList<Proverb> list) {
+    public void setProverList(ArrayList<Idiom> list) {
         proverbList = list;
     }
 
@@ -121,7 +121,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         this.currentIdiomIndex = currentIdiomIndex;
     }
 
-    public ArrayList<Proverb> getProverbList() {
+    public ArrayList<Idiom> getProverbList() {
         if (Utils.isEmpty(proverbList)) {
             return new ArrayList<>();
         }
@@ -132,7 +132,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         return proverbCharacters;
     }
 
-    private ProverbCharacter getSourceData(int x, int y) {
+    private IdiomWord getSourceData(int x, int y) {
         if (Utils.isEmpty(getSourceWrapperData())) {
             return null;
         }
@@ -175,7 +175,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             flGameProverb.setVisibility(View.INVISIBLE);
             return;
         }
-        final ProverbCharacter character = characterWrapper.getProverbCharacter();
+        final IdiomWord character = characterWrapper.getProverbCharacter();
         if (Utils.isEmpty(character)) {
             flGameProverb.setVisibility(View.INVISIBLE);
             return;
@@ -304,7 +304,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             return;
         }
         wrapper.setTakeDown();
-        ProverbCharacter sourceData = getSourceData(point.x, point.y);
+        IdiomWord sourceData = getSourceData(point.x, point.y);
         if (Utils.isEmpty(sourceData)) {
             return;
         }
@@ -321,7 +321,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     }
 
     /*从棋盘取下某个词*/
-    private void replaceDisturb(ProverbCharacter sourceData) {
+    private void replaceDisturb(IdiomWord sourceData) {
         if (!Utils.isEmpty(itemTypeListener)) {
             SuperType removeDisturb = getNeedRetrieveFreeWord(sourceData);
             if (Utils.isEmpty(removeDisturb)) {
@@ -331,7 +331,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         }
     }
 
-    public SuperType getNeedRetrieveFreeWord(ProverbCharacter sourceData) {
+    public SuperType getNeedRetrieveFreeWord(IdiomWord sourceData) {
         SuperType removeDisturb = findRemoveDisturb(sourceData);
         if (Utils.isEmpty(removeDisturb)) {
             return new SuperType();
@@ -354,7 +354,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             //如果棋盘上面有选择空格
             int x = getSelectPoint().x;
             int y = getSelectPoint().y;
-            ProverbCharacter character = getSourceData(x, y);
+            IdiomWord character = getSourceData(x, y);
             if (Utils.isEmpty(character)) {
                 return;
             }
@@ -383,7 +383,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         }
     }
 
-    private SuperType findRemoveDisturb(ProverbCharacter character) {
+    private SuperType findRemoveDisturb(IdiomWord character) {
         if (Utils.isEmpty(characterMap) || Utils.isEmpty(character)) {
             return null;
         }
@@ -392,11 +392,11 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             if (Utils.isEmpty(value)) {
                 continue;
             }
-            ProverbCharacter proverbCharacter = value.getProverbCharacter();
-            if (Utils.isEmpty(proverbCharacter)) {
+            IdiomWord idiomWord = value.getProverbCharacter();
+            if (Utils.isEmpty(idiomWord)) {
                 continue;
             }
-            if (proverbCharacter.equals(character)) {
+            if (idiomWord.equals(character)) {
                 SuperType proverbDisturbWord = value.getProverbDisturbWord();
                 if (!Utils.isEmpty(proverbDisturbWord) && !Utils.trimToEmpty(proverbDisturbWord.getTitle())) {
                     characterMap.remove(pointConvert(character.getRelativeX(), character.getRelativeY()));
@@ -416,7 +416,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         return (getSelectPoint().x >= 0 && getSelectPoint().y >= 0);
     }
 
-    private void putDisturb(int freeWordPosition, ProverbCharacter character, SuperType type) {
+    private void putDisturb(int freeWordPosition, IdiomWord character, SuperType type) {
         if (Utils.isEmpty(character) || Utils.isEmpty(type) || Utils.trimToEmpty(type.getTitle())) {
             return;
         }
@@ -432,7 +432,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
       如果有包含，这继续用之前的成语下标
       如果不包含，切换当前成语下标
       */
-    private int getCurrentProverbIndexForChar(int preIndex, ProverbCharacter character) {
+    private int getCurrentProverbIndexForChar(int preIndex, IdiomWord character) {
         if (Utils.isEmpty(character)) {
             return -1;
         }
@@ -449,9 +449,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             int index = type.getIndex();
             if (!Utils.isEmpty(getProverbList())) {
-                Proverb proverb = getProverbList().get(index);
+                Idiom idiom = getProverbList().get(index);
                 //如果该成语没有包含该坐标下的字，则忽略
-                boolean proverIncludeCharForXY = isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), proverb);
+                boolean proverIncludeCharForXY = isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), idiom);
                 if (!proverIncludeCharForXY) {
                     continue;
                 }
@@ -486,23 +486,23 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             /*如果上一个字和当前字X坐标或者Y坐标一样,但是当前字关联多个成语，需要判断多个成语哪个成语同时包含这两个字*/
             if (preX >= 0 && preY >= 0 && (nowX == preX || nowY == preY)) {
-                ArrayList<Proverb> sourceProverbList = getProverbList();
-                if (Utils.isEmpty(sourceProverbList)) {
+                ArrayList<Idiom> sourceIdiomList = getProverbList();
+                if (Utils.isEmpty(sourceIdiomList)) {
                     continue;
                 }
-                Proverb proverb = sourceProverbList.get(index);
-                if (Utils.isEmpty(proverb)) {
+                Idiom idiom = sourceIdiomList.get(index);
+                if (Utils.isEmpty(idiom)) {
                     continue;
                 }
                 //获取此时下标的成语
-                String title = proverb.getTitle();
+                String title = idiom.getTitle();
                 if (Utils.isEmpty(title)) {
                     continue;
                 }
                 if (Utils.isEmpty(character.getTitle())) {
                     continue;
                 }
-                ProverbCharacter preSourceData = getSourceData(preX, preY);
+                IdiomWord preSourceData = getSourceData(preX, preY);
                 if (Utils.isEmpty(preSourceData)) {
                     continue;
                 }
@@ -530,7 +530,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         if (Utils.isEmpty(sourceWrapper)) {
             return;
         }
-        ProverbCharacter character = getSourceData(getSelectPoint().x, getSelectPoint().y);
+        IdiomWord character = getSourceData(getSelectPoint().x, getSelectPoint().y);
         if (Utils.isEmpty(character)) {
             return;
         }
@@ -588,20 +588,20 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
 
 
     /*某个坐标下的字所关联的成语(可能存在不同位置的相同字关联不同的成语)，判断这个成语是否包含这个坐标的字*/
-    private boolean isProverIncludeCharForXY(int charX, int charY, Proverb proverb) {
+    private boolean isProverIncludeCharForXY(int charX, int charY, Idiom idiom) {
         if (charX < 0 || charY < 0) {
             return false;
         }
-        if (Utils.isEmpty(proverb)) {
+        if (Utils.isEmpty(idiom)) {
             return false;
         }
 
-        ArrayList<ProverbCharacter> proverbCharacterList = proverb.getProverbCharacterList();
-        if (Utils.isEmpty(proverbCharacterList)) {
+        ArrayList<IdiomWord> idiomWordList = idiom.getProverbCharacterList();
+        if (Utils.isEmpty(idiomWordList)) {
             return false;
         }
-        for (int i = 0; i < proverbCharacterList.size(); i++) {
-            ProverbCharacter character = proverbCharacterList.get(i);
+        for (int i = 0; i < idiomWordList.size(); i++) {
+            IdiomWord character = idiomWordList.get(i);
             if (Utils.isEmpty(character)) {
                 continue;
             }
@@ -613,7 +613,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     }
 
     //填入一个词之后，开始检查该词关联的所有成语是否填写完毕，如果完毕，则检查是否正确
-    private void checkProverbIsAllFill(ProverbCharacter character) {
+    private void checkProverbIsAllFill(IdiomWord character) {
         if (Utils.isEmpty(character)) {
             return;
         }
@@ -650,9 +650,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             //获取每个成语的下标
             int index = proverbTemp.getIndex();
-            ArrayList<Proverb> sourceProverbList = getProverbList();
+            ArrayList<Idiom> sourceIdiomList = getProverbList();
             //如果下标大于等于源数据的大小
-            if (index >= sourceProverbList.size()) {
+            if (index >= sourceIdiomList.size()) {
                 continue;
             }
             if (allRightIdiomIndex.get(index)) {
@@ -660,20 +660,20 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 continue;
             }
             //根据下标获取的成语
-            Proverb proverbForIndex = sourceProverbList.get(index);
-            if (Utils.isEmpty(proverbForIndex)) {
+            Idiom idiomForIndex = sourceIdiomList.get(index);
+            if (Utils.isEmpty(idiomForIndex)) {
                 continue;
             }
             //如果这个成语没有包含该坐标下的字，则忽略（有些题目存在不同位置具有相同字的情况）
-            if (!isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), proverbForIndex)) {
+            if (!isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), idiomForIndex)) {
                 continue;
             }
             //获取该成语下面的所有字，然后拿这些字对应的坐标去和棋盘对应坐标上的比较，判断该成语所有的字否填完
-            ArrayList<ProverbCharacter> proverbCharacterList = proverbForIndex.getProverbCharacterList();
-            if (Utils.isEmpty(proverbCharacterList)) {
+            ArrayList<IdiomWord> idiomWordList = idiomForIndex.getProverbCharacterList();
+            if (Utils.isEmpty(idiomWordList)) {
                 continue;
             }
-            IdiomFillState state = checkCharIsRightForProverb(proverbCharacterList);
+            IdiomFillState state = checkCharIsRightForProverb(idiomWordList);
             if (Utils.isEmpty(state)) {
                 continue;
             }
@@ -688,10 +688,10 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 allRightIdiomIndex.put(index, true);
                 proverbRightNum = proverbRightNum + state.getRightCount();
                 /*此处由于外部需要动画，所以记录每个完成成语的最后一个字所在下标*/
-                idiomViewPosition = getEachViewPositionForIdiom(idiomViewPosition, proverbCharacterList);
+                idiomViewPosition = getEachViewPositionForIdiom(idiomViewPosition, idiomWordList);
                 idiomViewPosition.setAllRight(true);
                 /*获取答对的成语*/
-                String title = proverbForIndex.getTitle();
+                String title = idiomForIndex.getTitle();
                 stringBuilder.append(title + ":" + intervalTime + ",");
 
                 //如果该字还继续关联其他成语，则红框移动至所关联的成语中
@@ -701,7 +701,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
 
                 /*此处由于外部需要动画，所以记录每个填完成语对应的view*/
 
-                idiomViewPosition = getEachViewPositionForIdiom(idiomViewPosition, proverbCharacterList);
+                idiomViewPosition = getEachViewPositionForIdiom(idiomViewPosition, idiomWordList);
                 idiomViewPosition.setAllRight(false);
 
                 //填充完但是没全部填对，此时不移动红框
@@ -742,8 +742,8 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
      * @param character           成语正确时所填的字
      * @param currentProverbIndex 正确时的下标
      */
-    private void findNextProverbForCurrentProverb(ProverbCharacter character, int currentProverbIndex) {
-        List<Proverb> validProverbList = new ArrayList<>();
+    private void findNextProverbForCurrentProverb(IdiomWord character, int currentProverbIndex) {
+        List<Idiom> validIdiomList = new ArrayList<>();
         /*首先检查该字所在位置关联多少个成语*/
         ArrayList<SuperType> proverbRelationList = character.getProverbRelationList();
         if (Utils.isEmpty(proverbRelationList) || currentProverbIndex == -1) {
@@ -757,9 +757,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             //获取每个成语的下标
             int index = proverbTemp.getIndex();
-            ArrayList<Proverb> sourceProverbList = getProverbList();
+            ArrayList<Idiom> sourceIdiomList = getProverbList();
             //如果下标大于等于源数据的大小
-            if (index >= sourceProverbList.size()) {
+            if (index >= sourceIdiomList.size()) {
                 continue;
             }
             if (allRightIdiomIndex.get(index)) {
@@ -767,49 +767,49 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 continue;
             }
             //根据下标获取的成语
-            Proverb proverbForIndex = sourceProverbList.get(index);
-            if (Utils.isEmpty(proverbForIndex)) {
+            Idiom idiomForIndex = sourceIdiomList.get(index);
+            if (Utils.isEmpty(idiomForIndex)) {
                 continue;
             }
             //如果这个成语没有包含该坐标下的字，则忽略（有些题目存在不同位置具有相同字的情况）
-            if (!isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), proverbForIndex)) {
+            if (!isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), idiomForIndex)) {
                 continue;
             }
             /*继续检测该字关联的成语是否填完*/
-            IdiomFillState state = checkCharIsRightForProverb(proverbForIndex.getProverbCharacterList());
+            IdiomFillState state = checkCharIsRightForProverb(idiomForIndex.getProverbCharacterList());
             if (state.isAllFill()) {
                 continue;
             }
-            validProverbList.add(proverbForIndex);
+            validIdiomList.add(idiomForIndex);
         }
         /*如果list不为空，说明所填字有关联其他还未填完的成语*/
-        if (!Utils.isEmpty(validProverbList)) {
-            Proverb proverb = validProverbList.get(0);
+        if (!Utils.isEmpty(validIdiomList)) {
+            Idiom idiom = validIdiomList.get(0);
             /*获取某个成语下需要填字的坐标*/
-            findNextCharForProverb(proverb.getProverbCharacterList());
+            findNextCharForProverb(idiom.getProverbCharacterList());
             return;
         }
 
         /*如果成语填写正确时，所填字没有关联其他成语,那么寻找该成语所关联的成语*/
-        ArrayList<Proverb> sourceProverbList = getProverbList();
-        if (Utils.isEmpty(sourceProverbList)) {
+        ArrayList<Idiom> sourceIdiomList = getProverbList();
+        if (Utils.isEmpty(sourceIdiomList)) {
             autoFindNextProverb();
             return;
         }
-        Proverb fillRightProverb = sourceProverbList.get(currentProverbIndex);
-        autoFindNextProverbForCurrentProverbEachCharacter(fillRightProverb);
+        Idiom fillRightIdiom = sourceIdiomList.get(currentProverbIndex);
+        autoFindNextProverbForCurrentProverbEachCharacter(fillRightIdiom);
     }
 
     /*根据当前完成的成语，寻找该成语每个字第一关联的成语，并将选择框定位至关联的成语空格上*/
-    private void autoFindNextProverbForCurrentProverbEachCharacter(Proverb fillRightProverb) {
-        if (Utils.isEmpty(fillRightProverb)) {
+    private void autoFindNextProverbForCurrentProverbEachCharacter(Idiom fillRightIdiom) {
+        if (Utils.isEmpty(fillRightIdiom)) {
             autoFindNextProverb();
             return;
         }
-        ArrayList<ProverbCharacter> proverbCharacterList = fillRightProverb.getProverbCharacterList();
+        ArrayList<IdiomWord> idiomWordList = fillRightIdiom.getProverbCharacterList();
         /*需要显示选择框的成语下标*/
         int needSelectProverbIndex = -1;
-        for (ProverbCharacter character : proverbCharacterList) {
+        for (IdiomWord character : idiomWordList) {
             needSelectProverbIndex = findNoAllFillProverbForCharacter(character);
             if (needSelectProverbIndex != -1) {
                 break;
@@ -826,7 +826,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     }
 
     /*根据某个字，找到该字所关联的成语中没填充完毕的成语所在下标*/
-    private int findNoAllFillProverbForCharacter(ProverbCharacter character) {
+    private int findNoAllFillProverbForCharacter(IdiomWord character) {
         int index = -1;
         if (Utils.isEmpty(character)) {
             return index;
@@ -845,17 +845,17 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             if (allRightIdiomIndex.get(proverbIndex)) {
                 continue;
             }
-            Proverb proverb = getProverbList().get(proverbIndex);
-            if (Utils.isEmpty(proverb)) {
+            Idiom idiom = getProverbList().get(proverbIndex);
+            if (Utils.isEmpty(idiom)) {
                 continue;
             }
             /*如果该字位置不在关联的成语上(存在不同位置有相同的字，这样这个字就会关联多个成语)，忽略*/
-            boolean proverIncludeCharForXY = isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), proverb);
+            boolean proverIncludeCharForXY = isProverIncludeCharForXY(character.getRelativeX(), character.getRelativeY(), idiom);
             if (!proverIncludeCharForXY) {
                 continue;
             }
             /*该字关联的成语没填完*/
-            boolean nextCharForProverb = findNextCharForProverb(proverb.getProverbCharacterList());
+            boolean nextCharForProverb = findNextCharForProverb(idiom.getProverbCharacterList());
             if (nextCharForProverb) {
                 /*如果在该成语找到可填的空格，则结束,返回该成语下标*/
                 index = proverbIndex;
@@ -872,7 +872,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 allRightIdiomIndex, new CheckIdiomListener() {
                     @Override
                     public boolean currentCharacterNeedFill(int relativeX, int relativeY) {
-                        ProverbCharacter sourceData = getSourceData(relativeX, relativeY);
+                        IdiomWord sourceData = getSourceData(relativeX, relativeY);
                         if (Utils.isEmpty(sourceData)) {
                             return false;
                         }
@@ -899,26 +899,26 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
 
     //根据下标获取下一个成语，如果下标小于0，则重新遍历数据源的成语，从没有填充成功的成语里面取
     private void getNextProverbForIndex(int index) {
-        ArrayList<Proverb> sourceProverbList = getProverbList();
-        if (Utils.isEmpty(sourceProverbList)) {
+        ArrayList<Idiom> sourceIdiomList = getProverbList();
+        if (Utils.isEmpty(sourceIdiomList)) {
             return;
         }
         //如果index不等于 -1 则代表该成语还有空格
-        if (index >= 0 && index < sourceProverbList.size()) {
-            Proverb proverb = sourceProverbList.get(index);
-            if (Utils.isEmpty(proverb)) {
+        if (index >= 0 && index < sourceIdiomList.size()) {
+            Idiom idiom = sourceIdiomList.get(index);
+            if (Utils.isEmpty(idiom)) {
                 return;
             }
-            findNextCharForProverb(proverb.getProverbCharacterList());
+            findNextCharForProverb(idiom.getProverbCharacterList());
             return;
         }
 
-        for (int i = 0; i < sourceProverbList.size(); i++) {
+        for (int i = 0; i < sourceIdiomList.size(); i++) {
             if (allRightIdiomIndex.get(i)) {
                 //如果该成语填充完毕和成功，则忽略
                 continue;
             }
-            boolean nextCharForProverb = findNextCharForProverb(sourceProverbList.get(i).getProverbCharacterList());
+            boolean nextCharForProverb = findNextCharForProverb(sourceIdiomList.get(i).getProverbCharacterList());
             //如果找到下一个红框，则不用遍历成语了
             if (nextCharForProverb) {
                 setCurrentIdiomIndex(i);
@@ -929,18 +929,18 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     }
 
     //获取某个成语下一个需要填词的point,如果找到，则返回true
-    private boolean findNextCharForProverb(ArrayList<ProverbCharacter> proverbCharacterList) {
-        if (Utils.isEmpty(proverbCharacterList)) {
+    private boolean findNextCharForProverb(ArrayList<IdiomWord> idiomWordList) {
+        if (Utils.isEmpty(idiomWordList)) {
             return false;
         }
-        for (int i = 0; i < proverbCharacterList.size(); i++) {
-            ProverbCharacter character = proverbCharacterList.get(i);
+        for (int i = 0; i < idiomWordList.size(); i++) {
+            IdiomWord character = idiomWordList.get(i);
             if (Utils.isEmpty(character)) {
                 continue;
             }
             int relativeX = character.getRelativeX();
             int relativeY = character.getRelativeY();
-            ProverbCharacter sourceData = getSourceData(relativeX, relativeY);
+            IdiomWord sourceData = getSourceData(relativeX, relativeY);
             if (Utils.isEmpty(sourceData)) {
                 continue;
             }
@@ -953,22 +953,22 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
     }
 
     /*获取每个成语下的view对应的下标*/
-    private IdiomViewPosition getEachViewPositionForIdiom(IdiomViewPosition idiomViewPosition, ArrayList<ProverbCharacter> proverbCharacterList) {
+    private IdiomViewPosition getEachViewPositionForIdiom(IdiomViewPosition idiomViewPosition, ArrayList<IdiomWord> idiomWordList) {
         if (Utils.isEmpty(idiomViewPosition)) {
             idiomViewPosition = new IdiomViewPosition();
         }
-        if (proverbCharacterList.size() - 1 >= 0) {
+        if (idiomWordList.size() - 1 >= 0) {
             /*记录答对成语的每个view下标*/
             List<Integer> wordViewPosition = new ArrayList<>();
-            for (int j = 0; j < proverbCharacterList.size(); j++) {
-                ProverbCharacter lastCharForProverb = proverbCharacterList.get(j);
+            for (int j = 0; j < idiomWordList.size(); j++) {
+                IdiomWord lastCharForProverb = idiomWordList.get(j);
                 if (Utils.isEmpty(lastCharForProverb)) {
                     continue;
                 }
                 int relativeX = lastCharForProverb.getRelativeX();
                 int relativeY = lastCharForProverb.getRelativeY();
                 int lastCharForProverbViewPosition = pointConvert(relativeX, relativeY);
-                if (j == (proverbCharacterList.size() - 1)) {
+                if (j == (idiomWordList.size() - 1)) {
                     //收集答对成语的最后一个字所在下标
                     idiomViewPosition.addLastViewPosition(lastCharForProverbViewPosition);
                 }
@@ -980,9 +980,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         return idiomViewPosition;
     }
 
-    private IdiomFillState checkCharIsRightForProverb(ArrayList<ProverbCharacter> proverbCharacterList) {
+    private IdiomFillState checkCharIsRightForProverb(ArrayList<IdiomWord> idiomWordList) {
         IdiomFillState state = new IdiomFillState();
-        if (Utils.isEmpty(proverbCharacterList)) {
+        if (Utils.isEmpty(idiomWordList)) {
             return state;
         }
         if (Utils.isEmpty(getSourceWrapperData())) {
@@ -998,8 +998,8 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         int eachProverRightCount = 0;
 
         //所填词所在的成语所含的每个字
-        for (int j = 0; j < proverbCharacterList.size(); j++) {
-            ProverbCharacter characterTemp = proverbCharacterList.get(j);
+        for (int j = 0; j < idiomWordList.size(); j++) {
+            IdiomWord characterTemp = idiomWordList.get(j);
             if (Utils.isEmpty(characterTemp)) {
                 continue;
             }
@@ -1017,9 +1017,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 }
                 continue;
             }
-            ProverbCharacter proverbCharacter = getSourceData(relativeX, relativeY);
+            IdiomWord idiomWord = getSourceData(relativeX, relativeY);
             //不需要填写的字不做判断
-            if (Utils.isEmpty(proverbCharacter) || proverbCharacter.isShow()) {
+            if (Utils.isEmpty(idiomWord) || idiomWord.isShow()) {
                 continue;
             }
             //记录的次数为该成语所需要填写词的数量
@@ -1028,10 +1028,10 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             }
             needFillCount++;
 
-            if (proverbCharacter.isFilled()) {
+            if (idiomWord.isFilled()) {
                 //记录填入的数量
                 fillCount++;
-                if (StringUtils.equals(proverbCharacter.getTitle(), proverbCharacter.getShortTitle())) {
+                if (StringUtils.equals(idiomWord.getTitle(), idiomWord.getShortTitle())) {
                     //记录填入且正确的数量
                     eachProverRightCount++;
                 }
@@ -1050,8 +1050,8 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
             allRight = true;
         }
         //循环，设置每个字所在成语是否全部填充完，和填对
-        for (int j = 0; j < proverbCharacterList.size(); j++) {
-            ProverbCharacter characterTemp = proverbCharacterList.get(j);
+        for (int j = 0; j < idiomWordList.size(); j++) {
+            IdiomWord characterTemp = idiomWordList.get(j);
             if (Utils.isEmpty(characterTemp)) {
                 continue;
             }
@@ -1153,7 +1153,7 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
                 if (Utils.isEmpty(idiomWrapper)) {
                     continue;
                 }
-                ProverbCharacter character = idiomWrapper.getProverbCharacter();
+                IdiomWord character = idiomWrapper.getProverbCharacter();
                 if (Utils.isEmpty(character)) {
                     continue;
                 }

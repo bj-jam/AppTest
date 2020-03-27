@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
  */
 
-public class ProverbCharacter extends SuperType {
+public class IdiomWord extends SuperType {
     /**
      * 改字关联的第几条成语及成语内容
      */
@@ -39,11 +39,11 @@ public class ProverbCharacter extends SuperType {
      */
     private boolean isFilled;
 
-    public ProverbCharacter() {
+    public IdiomWord() {
         super();
     }
 
-    public ProverbCharacter(Parcel sourceParcel) {
+    public IdiomWord(Parcel sourceParcel) {
         super(sourceParcel);
         rawX = sourceParcel.readInt();
         rawY = sourceParcel.readInt();
@@ -57,16 +57,16 @@ public class ProverbCharacter extends SuperType {
     }
 
 
-    public static final Creator<ProverbCharacter> CREATOR = new Creator<ProverbCharacter>() {
+    public static final Creator<IdiomWord> CREATOR = new Creator<IdiomWord>() {
 
         @Override
-        public ProverbCharacter[] newArray(int size) {
-            return new ProverbCharacter[size];
+        public IdiomWord[] newArray(int size) {
+            return new IdiomWord[size];
         }
 
         @Override
-        public ProverbCharacter createFromParcel(Parcel source) {
-            return new ProverbCharacter(source);
+        public IdiomWord createFromParcel(Parcel source) {
+            return new IdiomWord(source);
         }
     };
 

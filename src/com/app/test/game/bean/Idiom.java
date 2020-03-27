@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * 每个成语
  */
 
-public class Proverb extends SuperType {
-    private ArrayList<ProverbCharacter> proverbCharacterList = new ArrayList<>();
+public class Idiom extends SuperType {
+    private ArrayList<IdiomWord> proverbCharacterList = new ArrayList<>();
     /**
      * 分别表示各个字的出现与否 0代表需要用户填入  1代表正常的显示
      */
@@ -23,29 +23,29 @@ public class Proverb extends SuperType {
      */
     private boolean horizontal;
 
-    public Proverb() {
+    public Idiom() {
         super();
     }
 
-    public Proverb(Parcel sourceParcel) {
+    public Idiom(Parcel sourceParcel) {
         super(sourceParcel);
-        proverbCharacterList = sourceParcel.readArrayList(ProverbCharacter.class.getClassLoader());
+        proverbCharacterList = sourceParcel.readArrayList(IdiomWord.class.getClassLoader());
         blankIndex = sourceParcel.readArrayList(String.class.getClassLoader());
         startIndex = sourceParcel.readInt();
         horizontal = (Boolean) sourceParcel.readValue(ClassLoader.getSystemClassLoader());
     }
 
 
-    public static final Creator<Proverb> CREATOR = new Creator<Proverb>() {
+    public static final Creator<Idiom> CREATOR = new Creator<Idiom>() {
 
         @Override
-        public Proverb[] newArray(int size) {
-            return new Proverb[size];
+        public Idiom[] newArray(int size) {
+            return new Idiom[size];
         }
 
         @Override
-        public Proverb createFromParcel(Parcel source) {
-            return new Proverb(source);
+        public Idiom createFromParcel(Parcel source) {
+            return new Idiom(source);
         }
     };
 
@@ -63,12 +63,12 @@ public class Proverb extends SuperType {
         dest.writeValue(horizontal);
     }
 
-    public ArrayList<ProverbCharacter> getProverbCharacterList() {
+    public ArrayList<IdiomWord> getProverbCharacterList() {
         return proverbCharacterList;
     }
 
-    public void setProverbCharacterList(ArrayList<ProverbCharacter> proverbCharacterList) {
-        this.proverbCharacterList = proverbCharacterList;
+    public void setProverbCharacterList(ArrayList<IdiomWord> idiomWordList) {
+        this.proverbCharacterList = idiomWordList;
     }
 
     public ArrayList<String> getBlankIndex() {

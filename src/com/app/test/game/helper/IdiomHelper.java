@@ -11,8 +11,8 @@ import android.view.animation.TranslateAnimation;
 
 import com.app.test.game.api.CheckIdiomListener;
 import com.app.test.game.bean.IdiomFillState;
-import com.app.test.game.bean.Proverb;
-import com.app.test.game.bean.ProverbCharacter;
+import com.app.test.game.bean.Idiom;
+import com.app.test.game.bean.IdiomWord;
 import com.app.test.game.bean.Question;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.source.AnswerType;
@@ -40,7 +40,7 @@ public class IdiomHelper {
     }
 
     /*获取需要填空的下一个成语(空格从上到下的原则)取最上面空格所在成语的所在下标*/
-    public IdiomFillState getNextProverbIndex(ArrayList<Proverb> list, SparseBooleanArray allRightProverbIndex,
+    public IdiomFillState getNextProverbIndex(ArrayList<Idiom> list, SparseBooleanArray allRightProverbIndex,
                                               CheckIdiomListener listener) {
         if (Utils.isEmpty(list) || Utils.isEmpty(listener)) {
             return null;
@@ -59,12 +59,12 @@ public class IdiomHelper {
             if (allRightProverbIndex.get(i)) {
                 continue;
             }
-            Proverb proverb = list.get(i);
-            if (Utils.isEmpty(proverb) || Utils.isEmpty(proverb.getProverbCharacterList())) {
+            Idiom idiom = list.get(i);
+            if (Utils.isEmpty(idiom) || Utils.isEmpty(idiom.getProverbCharacterList())) {
                 continue;
             }
-            for (int j = 0; j < proverb.getProverbCharacterList().size(); j++) {
-                ProverbCharacter character = proverb.getProverbCharacterList().get(j);
+            for (int j = 0; j < idiom.getProverbCharacterList().size(); j++) {
+                IdiomWord character = idiom.getProverbCharacterList().get(j);
                 if (Utils.isEmpty(character)) {
                     continue;
                 }
@@ -93,13 +93,13 @@ public class IdiomHelper {
     }
 
 
-    public Point getNextCharacterXY(Proverb proverb, CheckIdiomListener listener) {
+    public Point getNextCharacterXY(Idiom idiom, CheckIdiomListener listener) {
         Point point = new Point(-1, -1);
-        if (Utils.isEmpty(proverb)) {
+        if (Utils.isEmpty(idiom)) {
             return point;
         }
-        for (int j = 0; j < proverb.getProverbCharacterList().size(); j++) {
-            ProverbCharacter character = proverb.getProverbCharacterList().get(j);
+        for (int j = 0; j < idiom.getProverbCharacterList().size(); j++) {
+            IdiomWord character = idiom.getProverbCharacterList().get(j);
             if (Utils.isEmpty(character)) {
                 continue;
             }
@@ -128,39 +128,39 @@ public class IdiomHelper {
     }
 
     /*生成测试数据*/
-    public ProverbCharacter[][] produceTestData() {
+    public IdiomWord[][] produceTestData() {
         Question question = new Question();
         question.setQuestionType(AnswerType.PROVER);
         question.setRelativeRow(4);
         question.setRelativeColumn(5);
-        ArrayList<Proverb> proverbList = new ArrayList<>();
+        ArrayList<Idiom> idiomList = new ArrayList<>();
 
-        Proverb proverb = new Proverb();
-        proverb.setTitle("聚沙成塔");
-        proverb.setHorizontal(true);
-        proverb.setStartIndex(39);
-        proverbList.add(proverb);
+        Idiom idiom = new Idiom();
+        idiom.setTitle("聚沙成塔");
+        idiom.setHorizontal(true);
+        idiom.setStartIndex(39);
+        idiomList.add(idiom);
 
-        String title = proverb.getTitle();
+        String title = idiom.getTitle();
         String[] strings = new String[]{"聚", "沙", "成", "塔"};
         Boolean[] show = new Boolean[]{true, true, false, true};
         Integer[] y = new Integer[]{0, 1, 2, 3};
         Integer[] x = new Integer[]{1, 1, 1, 1};
-        ArrayList<ProverbCharacter> charList = getCharList(
+        ArrayList<IdiomWord> charList = getCharList(
                 title,
                 strings,
                 show,
                 x,
                 y
         );
-        proverb.setProverbCharacterList(charList);
+        idiom.setProverbCharacterList(charList);
 
-        proverb = new Proverb();
-        proverb.setTitle("飞沙走石");
-        proverb.setHorizontal(false);
-        proverb.setStartIndex(31);
-        proverbList.add(proverb);
-        title = proverb.getTitle();
+        idiom = new Idiom();
+        idiom.setTitle("飞沙走石");
+        idiom.setHorizontal(false);
+        idiom.setStartIndex(31);
+        idiomList.add(idiom);
+        title = idiom.getTitle();
         strings = new String[]{"飞", "沙", "走", "石"};
         show = new Boolean[]{true, true, true, false};
         y = new Integer[]{1, 1, 1, 1};
@@ -172,15 +172,15 @@ public class IdiomHelper {
                 x,
                 y
         );
-        proverb.setProverbCharacterList(charList);
+        idiom.setProverbCharacterList(charList);
 
 
-        proverb = new Proverb();
-        proverb.setTitle("石破天惊");
-        proverb.setHorizontal(true);
-        proverb.setStartIndex(58);
-        proverbList.add(proverb);
-        title = proverb.getTitle();
+        idiom = new Idiom();
+        idiom.setTitle("石破天惊");
+        idiom.setHorizontal(true);
+        idiom.setStartIndex(58);
+        idiomList.add(idiom);
+        title = idiom.getTitle();
         strings = new String[]{"石", "破", "天", "惊"};
         show = new Boolean[]{false, true, false, true};
         y = new Integer[]{1, 2, 3, 4};
@@ -192,18 +192,18 @@ public class IdiomHelper {
                 x,
                 y
         );
-        proverb.setProverbCharacterList(charList);
+        idiom.setProverbCharacterList(charList);
 
-        question.setProverbList(proverbList);
+        question.setProverbList(idiomList);
 
         if (question == null || question.getProverbList() == null) {
             return null;
         }
-        ProverbCharacter[][] strArray = new ProverbCharacter[question.getRelativeRow()][question.getRelativeColumn()];
+        IdiomWord[][] strArray = new IdiomWord[question.getRelativeRow()][question.getRelativeColumn()];
         for (int i = 0; i < question.getProverbList().size(); i++) {
-            Proverb proverb1 = question.getProverbList().get(i);
-            for (int j = 0; j < proverb1.getProverbCharacterList().size(); j++) {
-                ProverbCharacter proverbList1 = proverb1.getProverbCharacterList().get(j);
+            Idiom idiom1 = question.getProverbList().get(i);
+            for (int j = 0; j < idiom1.getProverbCharacterList().size(); j++) {
+                IdiomWord proverbList1 = idiom1.getProverbCharacterList().get(j);
                 int relativeX = proverbList1.getRelativeX();
                 int relativeY = proverbList1.getRelativeY();
                 strArray[relativeX][relativeY] = proverbList1;
@@ -212,14 +212,14 @@ public class IdiomHelper {
         return strArray;
     }
 
-    public ArrayList<ProverbCharacter> getCharList(String pro, String[] strings, Boolean[] show, Integer[] x, Integer[] y) {
-        ArrayList<ProverbCharacter> charList = new ArrayList<>();
+    public ArrayList<IdiomWord> getCharList(String pro, String[] strings, Boolean[] show, Integer[] x, Integer[] y) {
+        ArrayList<IdiomWord> charList = new ArrayList<>();
         if (strings == null || show == null) {
             return charList;
         }
         int length = strings.length;
         for (int i = 0; i < length; i++) {
-            ProverbCharacter character = new ProverbCharacter();
+            IdiomWord character = new IdiomWord();
             character.setTitle(strings[i]);
             character.setShow(show[i]);
 //            character.setTitle(pro);
@@ -252,20 +252,20 @@ public class IdiomHelper {
         return type;
     }
 
-    public void logData(ProverbCharacter[][] proverbCharacters) {
-        if (proverbCharacters == null) {
+    public void logData(IdiomWord[][] idiomWords) {
+        if (idiomWords == null) {
             return;
         }
-        int length = proverbCharacters.length;
+        int length = idiomWords.length;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             sb.append("stem.out: \n");
-            int size = proverbCharacters[i].length;
+            int size = idiomWords[i].length;
             for (int j = 0; j < size; j++) {
-                if (proverbCharacters[i][j] == null) {
+                if (idiomWords[i][j] == null) {
                     sb.append("口");
                 } else {
-                    sb.append(proverbCharacters[i][j].getTitle() + "");
+                    sb.append(idiomWords[i][j].getTitle() + "");
                 }
             }
         }

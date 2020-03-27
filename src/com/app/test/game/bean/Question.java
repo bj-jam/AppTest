@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 public class Question extends SuperType {
-    private ArrayList<Proverb> proverbList = new ArrayList<>();
+    private ArrayList<Idiom> proverbList = new ArrayList<>();
 
     @AAnswerType
     private int questionType = AnswerType.NONE;
@@ -71,7 +71,7 @@ public class Question extends SuperType {
 
     public Question(Parcel sourceParcel) {
         super(sourceParcel);
-        proverbList = sourceParcel.readArrayList(Proverb.class.getClassLoader());
+        proverbList = sourceParcel.readArrayList(Idiom.class.getClassLoader());
         questionType = sourceParcel.readInt();
         during = sourceParcel.readLong();
         originJson = sourceParcel.readString();
@@ -139,12 +139,12 @@ public class Question extends SuperType {
                 || !(AnswerType.PROVER == question.getQuestionType() || AnswerType.NORMAL == question.getQuestionType());
     }
 
-    public ArrayList<Proverb> getProverbList() {
+    public ArrayList<Idiom> getProverbList() {
         return proverbList;
     }
 
-    public void setProverbList(ArrayList<Proverb> proverbList) {
-        this.proverbList = proverbList;
+    public void setProverbList(ArrayList<Idiom> idiomList) {
+        this.proverbList = idiomList;
     }
 
     public int getQuestionType() {

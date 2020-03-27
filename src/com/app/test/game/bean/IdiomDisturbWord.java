@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * 干扰
  */
 public class IdiomDisturbWord implements Parcelable {
-    private ProverbCharacter proverbCharacter;
+    private IdiomWord proverbCharacter;
     private SuperType proverbDisturbWord;
     private int proverbDisturbIndex;
     private String disturb;
@@ -17,7 +17,7 @@ public class IdiomDisturbWord implements Parcelable {
     }
 
     public IdiomDisturbWord(Parcel sourceParcel) {
-        proverbCharacter = (ProverbCharacter) sourceParcel.readParcelable(ProverbCharacter.class.getClassLoader());
+        proverbCharacter = (IdiomWord) sourceParcel.readParcelable(IdiomWord.class.getClassLoader());
         proverbDisturbWord = (SuperType) sourceParcel.readParcelable(SuperType.class.getClassLoader());
         proverbDisturbIndex = sourceParcel.readInt();
         disturb = sourceParcel.readString();
@@ -49,12 +49,12 @@ public class IdiomDisturbWord implements Parcelable {
     }
 
 
-    public ProverbCharacter getProverbCharacter() {
+    public IdiomWord getProverbCharacter() {
         return proverbCharacter;
     }
 
-    public void setProverbCharacter(ProverbCharacter proverbCharacter) {
-        this.proverbCharacter = proverbCharacter;
+    public void setProverbCharacter(IdiomWord idiomWord) {
+        this.proverbCharacter = idiomWord;
     }
 
     public SuperType getProverbDisturbWord() {

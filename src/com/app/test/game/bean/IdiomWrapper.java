@@ -3,7 +3,7 @@ package com.app.test.game.bean;
 import android.os.Parcel;
 
 public class IdiomWrapper extends SuperType {
-    private ProverbCharacter proverbCharacter;
+    private IdiomWord proverbCharacter;
     /*一个成语是否全部填充完毕*/
     private boolean isAllFill;
     /*是否全部填充成功*/
@@ -17,7 +17,7 @@ public class IdiomWrapper extends SuperType {
 
     public IdiomWrapper(Parcel sourceParcel) {
         super(sourceParcel);
-        proverbCharacter = (ProverbCharacter) sourceParcel.readParcelable(ProverbCharacter.class.getClassLoader());
+        proverbCharacter = (IdiomWord) sourceParcel.readParcelable(IdiomWord.class.getClassLoader());
 
         isAllFill = (Boolean) sourceParcel.readValue(ClassLoader.getSystemClassLoader());
         isAllRight = (Boolean) sourceParcel.readValue(ClassLoader.getSystemClassLoader());
@@ -51,12 +51,12 @@ public class IdiomWrapper extends SuperType {
         dest.writeInt(proverbIndex);
     }
 
-    public ProverbCharacter getProverbCharacter() {
+    public IdiomWord getProverbCharacter() {
         return proverbCharacter;
     }
 
-    public void setProverbCharacter(ProverbCharacter proverbCharacter) {
-        this.proverbCharacter = proverbCharacter;
+    public void setProverbCharacter(IdiomWord idiomWord) {
+        this.proverbCharacter = idiomWord;
     }
 
     public boolean isAllFill() {

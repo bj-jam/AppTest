@@ -24,8 +24,8 @@ import com.app.test.game.bean.CharacterTips;
 import com.app.test.game.bean.IdiomViewPosition;
 import com.app.test.game.bean.IdiomWrapper;
 import com.app.test.game.bean.LogHelper;
-import com.app.test.game.bean.Proverb;
-import com.app.test.game.bean.ProverbCharacter;
+import com.app.test.game.bean.Idiom;
+import com.app.test.game.bean.IdiomWord;
 import com.app.test.game.bean.Question;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.helper.IdiomHelper;
@@ -349,23 +349,23 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                     if (Utils.isEmpty(wrapper)) {
                         continue;
                     }
-                    ProverbCharacter proverbCharacter = wrapper.getProverbCharacter();
-                    if (Utils.isEmpty(proverbCharacter)) {
+                    IdiomWord idiomWord = wrapper.getProverbCharacter();
+                    if (Utils.isEmpty(idiomWord)) {
                         continue;
                     }
                     //如果不是需要填写的字，直接忽略
-                    if (proverbCharacter.isShow()) {
+                    if (idiomWord.isShow()) {
                         continue;
                     }
-                    String boardFillWord = proverbCharacter.getShortTitle();
+                    String boardFillWord = idiomWord.getShortTitle();
                     if (StringUtils.equals(title, boardFillWord)) {
                         //假设棋盘需要自动填写的地方需要A ，但是A在B处，则把B处的字隐藏掉，然后把A拿到此处，把此处错误的字放到备选面板
                         /*下面分两步完成，第一部，取下备选词，更改备选词未被选中属性，第二部，自动填充，将刚刚取下的词，替换上去*/
-                        proverbCharacter.setFilled(false);
-                        proverbCharacter.setShortTitle("");
-                        idiomBoardAdapter.notifyByXY(proverbCharacter.getRelativeX(), proverbCharacter.getRelativeY());
+                        idiomWord.setFilled(false);
+                        idiomWord.setShortTitle("");
+                        idiomBoardAdapter.notifyByXY(idiomWord.getRelativeX(), idiomWord.getRelativeY());
 
-                        SuperType needRetrieveFreeWord = idiomBoardAdapter.getNeedRetrieveFreeWord(proverbCharacter);
+                        SuperType needRetrieveFreeWord = idiomBoardAdapter.getNeedRetrieveFreeWord(idiomWord);
                         if (!Utils.isEmpty(needRetrieveFreeWord)) {
                             //设置备选面板未被选中属性，方便下面的补充
                             needRetrieveFreeWord.setSelected(false);
@@ -481,12 +481,12 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
         Point point = new Point(-1, -1);
         int tempX = 1000, tempY = 1000;
         for (int i = 0; i < question.getProverbList().size(); i++) {
-            Proverb proverb = question.getProverbList().get(i);
-            if (Utils.isEmpty(proverb)) {
+            Idiom idiom = question.getProverbList().get(i);
+            if (Utils.isEmpty(idiom)) {
                 continue;
             }
-            for (int j = 0; j < proverb.getProverbCharacterList().size(); j++) {
-                ProverbCharacter proverbList = proverb.getProverbCharacterList().get(j);
+            for (int j = 0; j < idiom.getProverbCharacterList().size(); j++) {
+                IdiomWord proverbList = idiom.getProverbCharacterList().get(j);
                 if (Utils.isEmpty(proverbList)) {
                     continue;
                 }
