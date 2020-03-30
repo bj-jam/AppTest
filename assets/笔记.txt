@@ -748,4 +748,8 @@
    6.OOM for small swap:Exception in thread "main": java.lang.OutOfMemoryError: request <size> bytes for <reason>. Out of swap space?,抛出这类错误，是由于从native堆中分配内存失败，并且堆内存可能接近耗尽
    7.OutOfMemoryError thrown while trying to throw OutOfMemoryError; no stack trace available,抛出这类错误，一般是由于方法重复调用、死循环引起，直至内存耗尽
 
-64、
+64、 zipAlignEnabled true //Zipalign优化
+     minifyEnabled true  //混淆
+     shrinkResources false // 移除无用的resource文件(混淆规则配置了-dontshrink，导致这里改成true无效，安卓默认会删除一些无用的包，可以用dontshrink来禁止这种行为。)
+     buildConfigField "boolean", "ISDEBUG", "false"
+     proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
