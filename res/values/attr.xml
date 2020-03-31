@@ -214,4 +214,14 @@
         <attr name="bezierFactor" format="integer" />
         <attr name="anim_duration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="CustomView">
+        <attr name="round_position">
+            <flag name="left-top" value="0x1" />
+            <flag name="right-top" value="0x4" />
+            <flag name="left-bottom" value="0x2" />
+            <flag name="right-bottom" value="0x8" />
+        </attr>
+        <attr name="round_radius" format="dimension" />
+    </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_all"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,4 +17,37 @@
         android:layout_width="@dimen/dp200"
         android:layout_height="@dimen/dp200"
         android:layout_centerInParent="true" />
+
+    <com.app.test.lamp.FlowerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.app.test.lamp.CustomView
+        android:id="@+id/cv"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        app:round_position="left-bottom|left-top|right-bottom|right-top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <SeekBar
+            android:id="@+id/sb_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginRight="@dimen/dp30"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
 </RelativeLayout>

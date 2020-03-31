@@ -94,6 +94,7 @@ dependencies {
     implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
     implementation 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
     implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.wkp:RandomLayout:1.0.3'
 
 }
 

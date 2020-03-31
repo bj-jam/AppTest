@@ -753,3 +753,29 @@
      shrinkResources false // 移除无用的resource文件(混淆规则配置了-dontshrink，导致这里改成true无效，安卓默认会删除一些无用的包，可以用dontshrink来禁止这种行为。)
      buildConfigField "boolean", "ISDEBUG", "false"
      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+65、moveTo：设置路径起始点
+   lineTo：添加直线到路径
+   arcTo：添加弧线到路径
+   rMoveTo：设置路径起始点，参数相对于当前绘制点
+   rLineTo：添加直线到路径，参数相对于当前绘制点
+   rArcTo：添加弧线到路径，参数相对于当前绘制点
+   close：闭合路径
+   addArc：添加一个圆弧到路径
+   addCircle：添加一个圆到路径
+   addOval：添加一个椭圆到路径
+   addRect：添加一个矩形到路径
+   reset：重置路径
+   offset：对路径进行偏移
+   op：两个路径组合操作
+
+   arcTo(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean forceMoveTo)构建一个弧线到Path
+   left,top,right,bottom：因为是弧线所以要构建一个矩形区域
+   left：矩形left的x坐标
+   top：矩形top的y坐标
+   right：矩形right的x坐标
+   bottom：矩形bottom的y坐标
+   startAngle：圆弧起始角度，单位为度 （0~360）
+   sweepAngle：圆弧扫过的角度，顺时针方向，单位为度 （0~360）
+   forceMoveTo：false代表弧线起点与上个绘制的最后一个点连接，true代表不连接。
