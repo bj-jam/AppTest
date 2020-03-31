@@ -3,11 +3,17 @@
     android:id="@+id/rl_all"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/_94c8f9"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="没有再AndroidManifest中注册的activity" />
+
+    <com.app.test.lamp.LampView
+        android:id="@+id/lv"
+        android:layout_width="@dimen/dp200"
+        android:layout_height="@dimen/dp200"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
