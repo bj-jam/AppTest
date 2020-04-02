@@ -85,4 +85,5 @@
     <string name="LikeSouGouActivity">仿搜狗</string>
     <string name="GameReviewModeActivity">成语</string>
     <string name="PathActivity">path</string>
+    <string name="FlexboxActivity">Flexbox</string>
 </resources>

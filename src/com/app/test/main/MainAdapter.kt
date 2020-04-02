@@ -17,6 +17,7 @@ import com.app.test.circularprogress.CircularProgressActivity
 import com.app.test.column.ColumnActivity
 import com.app.test.date.DateActivity
 import com.app.test.expandablelist.ExpandableListViewActivity
+import com.app.test.flexbox.FlexboxActivity
 import com.app.test.floatbutton.FloatButtonActivity
 import com.app.test.game.ui.AnswerActivity
 import com.app.test.glide.img.GlideLoadImgAcitvity
@@ -147,6 +148,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.LikeSouGouActivity)
         texts.add(R.string.GameReviewModeActivity)
         texts.add(R.string.PathActivity)
+        texts.add(R.string.FlexboxActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -199,6 +201,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(LikeSouGouActivity::class.java) //
         clzs.add(AnswerActivity::class.java) //
         clzs.add(PathActivity::class.java) //
+        clzs.add(FlexboxActivity::class.java) //
     }
 
     interface OnLister {

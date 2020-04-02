@@ -85,6 +85,7 @@
         <activity android:name="com.app.test.likesougou.LikeSouGouActivity" />
         <activity android:name="com.app.test.game.ui.AnswerActivity" />
         <activity android:name="com.app.test.path.PathActivity" />
+        <activity android:name="com.app.test.flexbox.FlexboxActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />
