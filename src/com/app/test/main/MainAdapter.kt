@@ -22,6 +22,7 @@ import com.app.test.floatbutton.FloatButtonActivity
 import com.app.test.game.ui.AnswerActivity
 import com.app.test.glide.img.GlideLoadImgAcitvity
 import com.app.test.hook.ui.TargetActivity
+import com.app.test.jbox.JBoxActivity
 import com.app.test.keyboard.KeyboardActivity
 import com.app.test.likesougou.LikeSouGouActivity
 import com.app.test.line.LineActivity
@@ -149,6 +150,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.GameReviewModeActivity)
         texts.add(R.string.PathActivity)
         texts.add(R.string.FlexboxActivity)
+        texts.add(R.string.JBoxActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -202,6 +204,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(AnswerActivity::class.java) //
         clzs.add(PathActivity::class.java) //
         clzs.add(FlexboxActivity::class.java) //
+        clzs.add(JBoxActivity::class.java) //
     }
 
     interface OnLister {

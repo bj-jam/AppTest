@@ -4,12 +4,15 @@
     <item name="tag_play_btn" type="id" />
     <item name="color_main" type="color" />
     <item name="circle_pic_center" type="id" />
-    <item name="fab_expand_menu_button" type="id"/>
-    <item name="fab_label" type="id"/>
+    <item name="fab_expand_menu_button" type="id" />
+    <item name="fab_label" type="id" />
 
-    <item type="id" name="id_circle_menu_item_image"/>
+    <item name="id_circle_menu_item_image" type="id" />
 
-    <item type="id" name="id_circle_menu_item_text"/>
+    <item name="id_circle_menu_item_text" type="id" />
 
-    <item type="id" name="id_circle_menu_item_center"/>
+    <item name="id_circle_menu_item_center" type="id" />
+
+    <item name="wd_view_circle_tag" type="id" />
+    <item name="wd_view_body_tag" type="id" />
 </resources>
