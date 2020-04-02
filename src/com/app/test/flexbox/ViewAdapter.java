@@ -30,7 +30,7 @@ public class ViewAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
         helper.setImageResource(R.id.iv_pic, item);
         if (helper.itemView.getLayoutParams() instanceof FlexboxLayoutManager.LayoutParams) {
             FlexboxLayoutManager.LayoutParams lp = (FlexboxLayoutManager.LayoutParams) helper.itemView.getLayoutParams();
-            lp.setFlexGrow(1.0f);
+            lp.setFlexGrow(10.0f);
             lp.setAlignSelf(type[random.nextInt(type.length)]);
         }
     }
