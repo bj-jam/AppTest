@@ -17,19 +17,22 @@ import java.util.Random;
  * Created at 2020.4.2
  * Describe:
  */
-public class ViewAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
+public class ViewAdapter extends BaseQuickAdapter<BoxBean, BaseViewHolder> {
     private int[] type = {AlignSelf.AUTO, AlignSelf.FLEX_START, AlignSelf.FLEX_END, AlignSelf.CENTER, AlignSelf.BASELINE, AlignSelf.BASELINE};
     private Random random = new Random();
 
-    public ViewAdapter(@Nullable List<Integer> data) {
+    public ViewAdapter(@Nullable List<BoxBean> data) {
         super(R.layout.item_flexbox_manager, data);
     }
 
     @Override
-    protected void convert(@NonNull BaseViewHolder helper, Integer item) {
-        helper.setImageResource(R.id.iv_pic, item);
+    protected void convert(@NonNull BaseViewHolder helper, BoxBean item) {
+        helper.setImageResource(R.id.iv_pic, item.id);
         if (helper.itemView.getLayoutParams() instanceof FlexboxLayoutManager.LayoutParams) {
             FlexboxLayoutManager.LayoutParams lp = (FlexboxLayoutManager.LayoutParams) helper.itemView.getLayoutParams();
+            lp.height = item.with;
+            lp.width = item.with;
+            helper.itemView.setPadding(10,10,10,10);
             lp.setFlexGrow(10.0f);
             lp.setAlignSelf(type[random.nextInt(type.length)]);
         }

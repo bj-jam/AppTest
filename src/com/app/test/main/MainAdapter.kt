@@ -35,6 +35,7 @@ import com.app.test.move.MoveActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
 import com.app.test.numberprogressbar.NumberProgressActivity
+import com.app.test.paint.PaintActivity
 import com.app.test.path.PathActivity
 import com.app.test.radar.RadarActivity
 import com.app.test.recyclerview.Damping1Activity
@@ -151,6 +152,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.PathActivity)
         texts.add(R.string.FlexboxActivity)
         texts.add(R.string.JBoxActivity)
+        texts.add(R.string.PaintActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -205,6 +207,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(PathActivity::class.java) //
         clzs.add(FlexboxActivity::class.java) //
         clzs.add(JBoxActivity::class.java) //
+        clzs.add(PaintActivity::class.java) //
     }
 
     interface OnLister {

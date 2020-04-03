@@ -87,6 +87,7 @@
         <activity android:name="com.app.test.path.PathActivity" />
         <activity android:name="com.app.test.flexbox.FlexboxActivity" />
         <activity android:name="com.app.test.jbox.JBoxActivity" />
+        <activity android:name="com.app.test.paint.PaintActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

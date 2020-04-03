@@ -224,4 +224,70 @@
         </attr>
         <attr name="round_radius" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="LineTwinkleLayout">
+        <attr name="dll_during" format="integer|reference" />
+        <attr name="dll_stroke_width" format="dimension" />
+        <attr name="dll_stroke_color" format="color|reference" />
+        <attr name="dll_stroke_radius" format="dimension" />
+
+        <attr name="dll_line_space" format="dimension" />
+
+        <attr name="dll_inner_stroke_width" format="dimension" />
+        <attr name="dll_inner_radius" format="dimension" />
+        <attr name="dll_inner_color" format="color|reference" />
+        <attr name="dll_inner_shadow_color" format="color|reference" />
+        <attr name="dll_inner_blur_mask_ratio" format="float" />
+        <attr name="dll_inner_shadow_width_ratio" format="float" />
+
+        <attr name="dll_out_stroke_width" format="dimension" />
+        <attr name="dll_out_radius" format="dimension" />
+        <attr name="dll_out_color" format="color|reference" />
+        <attr name="dll_out_shadow_color" format="color|reference" />
+        <attr name="dll_out_blur_mask_ratio" format="float" />
+        <attr name="dll_out_shadow_width_ratio" format="float" />
+
+    </declare-styleable>
+
+    <declare-styleable name="MarqueeLayout">
+        <attr name="ml_stroke_width" format="dimension" />
+        <attr name="ml_round_radius" format="dimension" />
+        <attr name="ml_percent_step" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="SpotMoveLayout">
+        <attr name="mdll_during" format="integer|reference" />
+
+        <attr name="mdll_stroke_width" format="dimension" />
+        <attr name="mdll_stroke_color" format="color|reference" />
+        <attr name="mdll_stroke_radius" format="dimension" />
+
+        <attr name="mdll_line_color" format="color|reference" />
+        <attr name="mdll_line_width" format="dimension" />
+
+        <attr name="mdll_ball_space" format="dimension" />
+        <attr name="mdll_ball_radius" format="dimension" />
+
+        <attr name="mdll_ball_inner_radius" format="dimension" />
+        <attr name="mdll_ball_inner_color" format="color|reference" />
+        <attr name="mdll_ball_inner_fellow_out" format="boolean" />
+
+
+    </declare-styleable>
+
+    <declare-styleable name="CircleLineLayout">
+        <attr name="mcll_during" format="integer|reference" />
+
+        <attr name="mcll_stroke_width" format="dimension" />
+        <attr name="mcll_stroke_color" format="color|reference" />
+        <attr name="mcll_stroke_radius" format="dimension" />
+
+        <attr name="mcll_line_color" format="color|reference" />
+        <attr name="mcll_line_width" format="dimension" />
+
+        <attr name="mcll_ball_space" format="dimension" />
+        <attr name="mcll_ball_radius" format="dimension" />
+
+
+    </declare-styleable>
 </resources>

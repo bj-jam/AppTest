@@ -87,4 +87,5 @@
     <string name="PathActivity">path</string>
     <string name="FlexboxActivity">Flexbox</string>
     <string name="JBoxActivity">JBox</string>
+    <string name="PaintActivity">Paint</string>
 </resources>
