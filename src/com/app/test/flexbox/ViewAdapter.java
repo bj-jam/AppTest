@@ -32,8 +32,7 @@ public class ViewAdapter extends BaseQuickAdapter<BoxBean, BaseViewHolder> {
             FlexboxLayoutManager.LayoutParams lp = (FlexboxLayoutManager.LayoutParams) helper.itemView.getLayoutParams();
             lp.height = item.with;
             lp.width = item.with;
-            helper.itemView.setPadding(10,10,10,10);
-            lp.setFlexGrow(10.0f);
+//            lp.setFlexGrow(10.0f);
             lp.setAlignSelf(type[random.nextInt(type.length)]);
         }
     }

@@ -35,22 +35,54 @@ class FlexboxManagerView : FrameLayout {
         initView()
     }
 
-    private val width = intArrayOf(30, 35, 40, 35, 40, 45, 50, 55, 35, 40, 60, 55, 35, 40, 60, 65, 70, 75, 80, 85, 100, 110, 120)
+    private val width = intArrayOf(  65, 70, 75, 80, 85, 100, 110, 120)
     private val image = intArrayOf(
-            R.drawable.share_fb,
-            R.drawable.share_kongjian,
-            R.drawable.share_pyq,
-            R.drawable.share_qq,
-            R.drawable.share_tw,
-            R.drawable.share_wechat,
-            R.drawable.a1,
-            R.drawable.a2,
-            R.drawable.a3,
-            R.drawable.a4,
-            R.drawable.a5,
-            R.drawable.a6,
-            R.drawable.a7,
-            R.drawable.a8
+            R.drawable.ic_01,
+            R.drawable.ic_02,
+            R.drawable.ic_03,
+            R.drawable.ic_04,
+            R.drawable.ic_05,
+            R.drawable.ic_06,
+            R.drawable.ic_07,
+            R.drawable.ic_08,
+            R.drawable.ic_09,
+            R.drawable.ic_10,
+            R.drawable.ic_11,
+            R.drawable.ic_12,
+            R.drawable.ic_13,
+            R.drawable.ic_14,
+            R.drawable.ic_15,
+            R.drawable.ic_16,
+            R.drawable.ic_17,
+            R.drawable.ic_18,
+            R.drawable.ic_19,
+            R.drawable.ic_20,
+            R.drawable.ic_21,
+            R.drawable.ic_22,
+            R.drawable.ic_23,
+            R.drawable.ic_24,
+            R.drawable.ic_25,
+            R.drawable.ic_26,
+            R.drawable.ic_27,
+            R.drawable.ic_28,
+            R.drawable.ic_29,
+            R.drawable.ic_30,
+            R.drawable.ic_31,
+            R.drawable.ic_32,
+            R.drawable.ic_33,
+            R.drawable.ic_34,
+            R.drawable.ic_35,
+            R.drawable.ic_36,
+            R.drawable.ic_37,
+            R.drawable.ic_38,
+            R.drawable.ic_39,
+            R.drawable.ic_40,
+            R.drawable.ic_41,
+            R.drawable.ic_42,
+            R.drawable.ic_43,
+            R.drawable.ic_44,
+            R.drawable.ic_45,
+            R.drawable.ic_46
     )
 
     private fun getList(): List<BoxBean>? {
@@ -82,7 +114,7 @@ class FlexboxManagerView : FrameLayout {
         layoutManager.flexWrap = FlexWrap.WRAP //设置是否换行
         layoutManager.flexDirection = FlexDirection.ROW // 设置主轴排列方式
         layoutManager.alignItems = AlignItems.CENTER
-        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
+//        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
         recyclerView?.layoutManager = layoutManager
         adapter = ViewAdapter(getList())
         recyclerView?.adapter = adapter
