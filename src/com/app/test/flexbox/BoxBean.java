@@ -11,4 +11,7 @@ public class BoxBean implements Serializable {
     public int id;
     public int with;
 
+    public boolean isShow;
+    public int position;
+
 }

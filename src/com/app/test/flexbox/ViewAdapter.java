@@ -33,7 +33,11 @@ public class ViewAdapter extends BaseQuickAdapter<BoxBean, BaseViewHolder> {
             lp.height = item.with;
             lp.width = item.with;
 //            lp.setFlexGrow(10.0f);
-            lp.setAlignSelf(type[random.nextInt(type.length)]);
+            if (item.isShow) {
+                item.position = type[random.nextInt(type.length)];
+                item.isShow = true;
+            }
+            lp.setAlignSelf(item.position);
         }
     }
 }

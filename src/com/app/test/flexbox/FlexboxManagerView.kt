@@ -35,7 +35,7 @@ class FlexboxManagerView : FrameLayout {
         initView()
     }
 
-    private val width = intArrayOf(  65, 70, 75, 80, 85, 100, 110, 120)
+    private val width = intArrayOf(  40, 43,45,48, 50, 55, 60, 65, 70,72, 75, 80, 85, 90)
     private val image = intArrayOf(
             R.drawable.ic_01,
             R.drawable.ic_02,
@@ -105,7 +105,7 @@ class FlexboxManagerView : FrameLayout {
         tvPosition = findViewById(R.id.tv_position)
         tvPosition?.setOnClickListener(OnClickListener {
             recyclerView?.also {
-                val index = Random().nextInt(150)
+                val index = Random().nextInt(100)
                 Toast.makeText(context, index.toString(), Toast.LENGTH_SHORT).show()
                 it.scrollToPosition(index)
             }

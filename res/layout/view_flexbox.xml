@@ -9,6 +9,7 @@
     app:flexWrap="wrap">
 
     <ImageView
+        android:id="@+id/iv_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_game_gold_00" />
@@ -64,6 +65,7 @@
         android:src="@drawable/icon_pic12" />
 
     <TextView
+        android:id="@+id/tv_two"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="@drawable/shape_idiom_select"
@@ -113,6 +115,7 @@
         app:layout_alignSelf="flex_start" />
 
     <TextView
+        android:id="@+id/tv_three"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="@drawable/shape_idiom_select"
@@ -145,6 +148,7 @@
         android:src="@drawable/ic_game_gold_00" />
 
     <ImageView
+        android:id="@+id/iv_forth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_pic12" />
@@ -177,6 +181,7 @@
         app:layout_alignSelf="flex_start" />
 
     <ImageView
+        android:id="@+id/iv_five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_game_gold_00" />
