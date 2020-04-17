@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.app.test.R;
 import com.app.test.path.ViewAdapter;
@@ -24,6 +27,8 @@ public class FlexboxActivity extends Activity {
     private ArrayList<View> dataList = new ArrayList<>();
     private FlexboxLayoutView flexboxLayoutView;
     private FlexboxManagerView flexboxManagerView;
+    private View view;
+    private BoxView boxView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +41,15 @@ public class FlexboxActivity extends Activity {
         vpView = (ViewPager) findViewById(R.id.vp_view);
         flexboxLayoutView = new FlexboxLayoutView(this);
         flexboxManagerView = new FlexboxManagerView(this);
+        view = View.inflate(this, R.layout.view_box, null);
+        boxView = view.findViewById(R.id.bv_image);
         dataList.add(flexboxLayoutView);
         dataList.add(flexboxManagerView);
+        dataList.add(view);
         adapter = new ViewAdapter(dataList);
         vpView.setAdapter(adapter);
+
+        boxView.setData();
     }
 
     private int[] width = {10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80,};

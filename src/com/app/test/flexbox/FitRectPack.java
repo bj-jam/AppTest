@@ -10,27 +10,25 @@ import java.util.Vector;
  * Created at 2020.4.15
  * Describe:
  */
-public class MaxRectsBinPack {
-    public int binWidth = 0;
-    public int binHeight = 0;
-    public boolean allowRotations = false;
+public class FitRectPack {
+    private int binWidth = 0;
+    private int binHeight = 0;
+    private boolean allowRotations = false;
 
     public Vector<Rectangle> usedRectangles = new Vector<>();
-    public Vector<Rectangle> freeRectangles = new Vector<>();
+    private Vector<Rectangle> freeRectangles = new Vector<>();
 
     private int score1 = 0; // Unused in this function. We don't need to know the score after finding the position.
     private int score2 = 0;
     private int bestShortSideFit;
     private int bestLongSideFit;
 
-    public MaxRectsBinPack(int width, int height, boolean rotations) {
+    public FitRectPack(int width, int height, boolean rotations) {
         init(width, height, rotations);
     }
 
 
     private void init(int width, int height, boolean rotations) {
-//        if (count(width) % 1 != 0 || count(height) % 1 != 0)
-//            throw new Error("Must be 2,4,8,16,32,...512,1024,...");
         binWidth = width;
         binHeight = height;
         allowRotations = rotations;
@@ -47,21 +45,14 @@ public class MaxRectsBinPack {
         freeRectangles.add(n);
     }
 
-//    private int count(int n) {
-//        if (n >= 2)
-//            return count(n / 2);
-//        return n;
-//    }
-
     /**
      * Insert a new Rectangle
      *
-     * @param width
-     * @param height
-     * @param method
-     * @return
+     * @param width  宽
+     * @param height 高
+     * @param method 摆放方式
      */
-    public Rectangle insert(int width, int height, int method) {
+    void insert(int width, int height, int method) {
         Rectangle newNode = new Rectangle();
         score1 = 0;
         score2 = 0;
@@ -82,13 +73,9 @@ public class MaxRectsBinPack {
                 newNode = findPositionForNewNodeBestAreaFit(width, height, score1, score2);
                 break;
         }
-
         if (newNode.height == 0)
-            return newNode;
-
+            return;
         placeRectangle(newNode);
-//        trace(newNode);
-        return newNode;
     }
 
     private void insert2(List<Rectangle> Rectangles, List<Rectangle> dst, int method) {
