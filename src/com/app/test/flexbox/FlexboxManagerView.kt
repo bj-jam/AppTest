@@ -114,7 +114,7 @@ class FlexboxManagerView : FrameLayout {
         layoutManager.flexWrap = FlexWrap.WRAP //设置是否换行
         layoutManager.flexDirection = FlexDirection.ROW // 设置主轴排列方式
         layoutManager.alignItems = AlignItems.CENTER
-//        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
+        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
         recyclerView?.layoutManager = layoutManager
         adapter = ViewAdapter(getList())
         recyclerView?.adapter = adapter
