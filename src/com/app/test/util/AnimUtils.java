@@ -4,15 +4,18 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 public class AnimUtils {
-    private IAnimationListener mAnimationListener;
+    private IAnimListener mAnimListener;
     private ImageView imageView;
     private int[] frameResArray;
     // 每帧动画的播放间隔数组
     private int[] durations;
     // 下一遍动画播放的延迟时间
     private int delay;
+    //最后一帧
     private int lastFrame;
+    //是否一下次
     private boolean isNext;
+    //是否一暂停
     private boolean isPause;
     private int currentFrame;
 
@@ -58,21 +61,21 @@ public class AnimUtils {
                 }
                 isHasStarted = true;
                 if (0 == i) {
-                    if (mAnimationListener != null) {
-                        mAnimationListener.onAnimationStart();
+                    if (mAnimListener != null) {
+                        mAnimListener.onAnimStart();
                     }
                 }
                 setImageDrawable(imageView, frameResArray[i]);
                 if (i == lastFrame) {
                     if (repeatCount < 0 || currentRepeatCount < repeatCount) {
-                        if (mAnimationListener != null) {
-                            mAnimationListener.onAnimationRepeat();
+                        if (mAnimListener != null) {
+                            mAnimListener.onAnimRepeat();
                         }
                         isNext = true;
                         playByDurations(0);
                     } else {
-                        if (mAnimationListener != null) {
-                            mAnimationListener.onAnimationEnd();
+                        if (mAnimListener != null) {
+                            mAnimListener.onAnimEnd();
                         }
                     }
                     ++currentRepeatCount;
@@ -138,34 +141,34 @@ public class AnimUtils {
         return this.isPause;
     }
 
-    public void setAnimationListener(IAnimationListener listener) {
-        this.mAnimationListener = listener;
+    public void setAnimationListener(IAnimListener listener) {
+        this.mAnimListener = listener;
     }
 
-    public static class AnimationListener implements IAnimationListener {
+    public static class AnimListener implements IAnimListener {
 
         @Override
-        public void onAnimationStart() {
+        public void onAnimStart() {
 
         }
 
         @Override
-        public void onAnimationEnd() {
+        public void onAnimEnd() {
 
         }
 
         @Override
-        public void onAnimationRepeat() {
+        public void onAnimRepeat() {
 
         }
     }
 
-    public interface IAnimationListener {
-        void onAnimationStart();
+    public interface IAnimListener {
+        void onAnimStart();
 
-        void onAnimationEnd();
+        void onAnimEnd();
 
-        void onAnimationRepeat();
+        void onAnimRepeat();
     }
 
     public static class Config {

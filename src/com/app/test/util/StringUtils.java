@@ -27,7 +27,7 @@ public class StringUtils {
         }
     }
 
-    public static boolean isBlank(CharSequence cs) {
+    private static boolean isBlank(CharSequence cs) {
         int strLen;
         if (cs != null && (strLen = cs.length()) != 0) {
             for (int i = 0; i < strLen; ++i) {
@@ -60,7 +60,7 @@ public class StringUtils {
         return isEmpty(ts) ? null : ts;
     }
 
-    public static String strip(String str, String stripChars) {
+    private static String strip(String str, String stripChars) {
         if (isEmpty(str)) {
             return str;
         } else {
@@ -69,7 +69,7 @@ public class StringUtils {
         }
     }
 
-    public static String stripStart(String str, String stripChars) {
+    private static String stripStart(String str, String stripChars) {
         int strLen;
         if (str != null && (strLen = str.length()) != 0) {
             int start = 0;
@@ -93,7 +93,7 @@ public class StringUtils {
         }
     }
 
-    public static String stripEnd(String str, String stripChars) {
+    private static String stripEnd(String str, String stripChars) {
         int end;
         if (str != null && (end = str.length()) != 0) {
             if (stripChars == null) {
@@ -116,7 +116,7 @@ public class StringUtils {
         }
     }
 
-    public static String[] stripAll(String[] strs, String stripChars) {
+    private static String[] stripAll(String[] strs, String stripChars) {
         int strsLen;
         if (strs != null && (strsLen = strs.length) != 0) {
             String[] newArr = new String[strsLen];
@@ -142,7 +142,7 @@ public class StringUtils {
         }
     }
 
-    public static boolean equalsIgnoreCase(CharSequence str1, CharSequence str2) {
+    static boolean equalsIgnoreCase(CharSequence str1, CharSequence str2) {
         if (str1 != null && str2 != null) {
             if (str1 == str2) {
                 return true;
@@ -160,7 +160,7 @@ public class StringUtils {
     }
 
 
-    public static String trim(String str) {
+    private static String trim(String str) {
         return str == null ? null : str.trim();
     }
 
@@ -237,7 +237,7 @@ public class StringUtils {
         return indexOfIgnoreCase(str, searchStr, 0);
     }
 
-    public static int indexOfIgnoreCase(CharSequence str, CharSequence searchStr, int startPos) {
+    private static int indexOfIgnoreCase(CharSequence str, CharSequence searchStr, int startPos) {
         if (str != null && searchStr != null) {
             if (startPos < 0) {
                 startPos = 0;
@@ -286,7 +286,7 @@ public class StringUtils {
         return str != null && searchStr != null ? lastIndexOfIgnoreCase(str, searchStr, str.length()) : -1;
     }
 
-    public static int lastIndexOfIgnoreCase(CharSequence str, CharSequence searchStr, int startPos) {
+    private static int lastIndexOfIgnoreCase(CharSequence str, CharSequence searchStr, int startPos) {
         if (str != null && searchStr != null) {
             if (startPos > str.length() - searchStr.length()) {
                 startPos = str.length() - searchStr.length();

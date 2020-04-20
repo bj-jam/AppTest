@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
-        android:src="@drawable/ic_redpacket_timedown3"
+        android:src="@drawable/ic_three"
         android:visibility="invisible" />
 
     <ImageView

@@ -16,7 +16,6 @@ public class RedEnvelopesView extends View {
     private Map<Integer, RedEnvelopesHelper> map = new ConcurrentHashMap<>();
 
     private int totalHeight;
-    private int redPacketHeight;
     private boolean fingerIsUp;
 
     public RedEnvelopesView(Context context) {
@@ -36,13 +35,6 @@ public class RedEnvelopesView extends View {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public void setRedPacketHeight(int height) {
-        this.redPacketHeight = height;
-    }
-
-    public int getRedPacketHeight() {
-        return redPacketHeight;
-    }
 
     public int getTotalHeight() {
         return totalHeight;
@@ -72,10 +64,7 @@ public class RedEnvelopesView extends View {
     }
 
     public boolean isEnd() {
-        if (map == null || map.size() == 0) {
-            return true;
-        }
-        return false;
+        return map == null || map.size() == 0;
     }
 
     @Override
@@ -110,9 +99,7 @@ public class RedEnvelopesView extends View {
                     }
                     break;
                 case RedEnvelopesHelper.status_0:
-                    if (redPacket != null) {
-                        clearRedPacketFromMap(map, redPacket);
-                    }
+                    clearRedPacketFromMap(map, redPacket);
                     break;
             }
 

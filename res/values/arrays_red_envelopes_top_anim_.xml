@@ -2,22 +2,22 @@
 <resources>
 
     <array name="red_envelopes_top_anim">
-        <item>@drawable/ic_walk_top_anim_0</item>
-        <item>@drawable/ic_walk_top_anim_1</item>
-        <item>@drawable/ic_walk_top_anim_2</item>
-        <item>@drawable/ic_walk_top_anim_3</item>
-        <item>@drawable/ic_walk_top_anim_4</item>
-        <item>@drawable/ic_walk_top_anim_5</item>
-        <item>@drawable/ic_walk_top_anim_6</item>
-        <item>@drawable/ic_walk_top_anim_7</item>
-        <item>@drawable/ic_walk_top_anim_8</item>
-        <item>@drawable/ic_walk_top_anim_9</item>
-        <item>@drawable/ic_walk_top_anim_10</item>
-        <item>@drawable/ic_walk_top_anim_11</item>
-        <item>@drawable/ic_walk_top_anim_12</item>
-        <item>@drawable/ic_walk_top_anim_13</item>
-        <item>@drawable/ic_walk_top_anim_14</item>
-        <item>@drawable/ic_walk_top_anim_15</item>
+        <item>@drawable/ic_anim_0</item>
+        <item>@drawable/ic_anim_1</item>
+        <item>@drawable/ic_anim_2</item>
+        <item>@drawable/ic_anim_3</item>
+        <item>@drawable/ic_anim_4</item>
+        <item>@drawable/ic_anim_5</item>
+        <item>@drawable/ic_anim_6</item>
+        <item>@drawable/ic_anim_7</item>
+        <item>@drawable/ic_anim_8</item>
+        <item>@drawable/ic_anim_9</item>
+        <item>@drawable/ic_anim_10</item>
+        <item>@drawable/ic_anim_11</item>
+        <item>@drawable/ic_anim_12</item>
+        <item>@drawable/ic_anim_13</item>
+        <item>@drawable/ic_anim_14</item>
+        <item>@drawable/ic_anim_15</item>
         <item>@drawable/ic_walk_top_anim_16</item>
         <item>@drawable/ic_walk_top_anim_17</item>
         <item>@drawable/ic_walk_top_anim_18</item>

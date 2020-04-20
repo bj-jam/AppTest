@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +15,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,12 +24,11 @@ import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
 
 import java.util.List;
-import java.util.Random;
 
 public class RedEnvelopesLayout extends FrameLayout {
 
     private TimeCountDown timeCountDown;
-    private PollingCheck pollingCheck;
+    private TimerUtil timerUtil;
 
     private Bitmap bitmap1;
     private Bitmap bitmap3;
@@ -51,22 +50,19 @@ public class RedEnvelopesLayout extends FrameLayout {
 
     private TextView tvMoney;
     private TextView tvTime;
-    private ImageView ivTimeDownPrompt;
+    private ImageView ivTime;
     private ImageView ivReady;
     private FrameLayout flRedEnvelopesTop;
     private final int redEnvelopesEnd = 2000;
     private int moneyTotal;
-    private ValueAnimator valueAnimator;
+    private ValueAnimator valueAnim;
     //用于动画参数
     private int showMoney;
-    //是否可以返回
-    private boolean canBack;
-    private Random random = new Random();
-    //如果没抢到金币，不再玩，关闭窗口或者退出页面 需要统计
-    private boolean noMoneyFinish;
-
-    private boolean isDestroy;
     public static final int RED_PACKET_END = 111;
+
+    private StringBuffer sb = new StringBuffer();
+
+
     private Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -74,7 +70,6 @@ public class RedEnvelopesLayout extends FrameLayout {
             switch (msg.what) {
                 case RED_PACKET_END:
                     if (msg.arg1 == redEnvelopesEnd) {
-                        canBack = true;
                         autoReceiveMoney();
                     } else {
                         checkIsEnd();
@@ -84,24 +79,20 @@ public class RedEnvelopesLayout extends FrameLayout {
         }
     };
 
-    private StringBuffer stringBuffer = new StringBuffer();
 
     public RedEnvelopesLayout(Context context) {
         super(context);
         initView();
-        initData();
     }
 
     public RedEnvelopesLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
-        initData();
     }
 
     public RedEnvelopesLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
-        initData();
     }
 
 
@@ -110,16 +101,10 @@ public class RedEnvelopesLayout extends FrameLayout {
         redEnvelopesView = findViewById(R.id.rpvRedPacket);
         tvMoney = findViewById(R.id.tvMoney);
         tvTime = findViewById(R.id.tvTime);
-        ivTimeDownPrompt = findViewById(R.id.ivTimeDownPrompt);
+        ivTime = findViewById(R.id.ivTimeDownPrompt);
         ivReady = findViewById(R.id.ivReady);
         flRedEnvelopesTop = findViewById(R.id.flRedPacketTop);
     }
-
-
-    protected void initData() {
-        random = new Random();
-    }
-
 
     public void setData(List<RedEnvelopes> list, int time) {
         redEnvelopesList = list;
@@ -130,24 +115,23 @@ public class RedEnvelopesLayout extends FrameLayout {
     }
 
     public void onDestroy() {
-        isDestroy = true;
         if (!Utils.isEmpty(timeCountDown)) {
             timeCountDown.onDestroy();
             timeCountDown = null;
         }
 
-        if (!Utils.isEmpty(valueAnimator)) {
-            valueAnimator.cancel();
-            valueAnimator = null;
+        if (!Utils.isEmpty(valueAnim)) {
+            valueAnim.cancel();
+            valueAnim = null;
         }
 
         if (!Utils.isEmpty(handler)) {
             handler.removeCallbacksAndMessages(null);
             handler = null;
         }
-        if (!Utils.isEmpty(pollingCheck)) {
-            pollingCheck.onDestroy();
-            pollingCheck = null;
+        if (!Utils.isEmpty(timerUtil)) {
+            timerUtil.onDestroy();
+            timerUtil = null;
         }
         if (!Utils.isEmpty(inter)) {
             inter = null;
@@ -176,51 +160,48 @@ public class RedEnvelopesLayout extends FrameLayout {
     }
 
     private void timeDownStart(int time) {
-        if (Utils.isEmpty(ivTimeDownPrompt)) {
+        if (Utils.isEmpty(ivTime)) {
             return;
         }
-        ivTimeDownPrompt.setVisibility(VISIBLE);
+        ivTime.setVisibility(VISIBLE);
         if (time >= 3 || time < 1) {
-            ivTimeDownPrompt.setImageResource(R.drawable.ic_redpacket_timedown3);
+            ivTime.setImageResource(R.drawable.ic_three);
             time = 3;
         }
-        ivTimeDownPrompt.setScaleX(0.5f);
-        ivTimeDownPrompt.setScaleX(0.5f);
+        ivTime.setScaleX(0.5f);
+        ivTime.setScaleX(0.5f);
 
         PropertyValuesHolder scaleXHolder = PropertyValuesHolder.ofFloat("scaleX", 1f, 1.6f);
         PropertyValuesHolder scaleYHolder = PropertyValuesHolder.ofFloat("scaleY", 1f, 1.6f);
 
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(ivTimeDownPrompt, scaleXHolder, scaleYHolder);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(ivTime, scaleXHolder, scaleYHolder);
 
         final int finalTime = time;
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
-                if (!Utils.isEmpty(ivTimeDownPrompt)) {
-                    ivTimeDownPrompt.setVisibility(View.VISIBLE);
+                if (!Utils.isEmpty(ivTime)) {
+                    ivTime.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                if (Utils.isEmpty(ivTimeDownPrompt)) {
+                if (Utils.isEmpty(ivTime)) {
                     return;
                 }
-                ivTimeDownPrompt.setVisibility(View.INVISIBLE);
+                ivTime.setVisibility(View.INVISIBLE);
                 switch (finalTime - 1) {
-                    case 3:
-                        ivTimeDownPrompt.setImageResource(R.drawable.ic_redpacket_timedown3);
-                        break;
                     case 2:
-                        ivTimeDownPrompt.setImageResource(R.drawable.ic_redpacket_timedown2);
+                        ivTime.setImageResource(R.drawable.ic_two);
                         break;
                     case 1:
-                        ivTimeDownPrompt.setImageResource(R.drawable.ic_redpacket_timedown1);
+                        ivTime.setImageResource(R.drawable.ic_one);
                         break;
                     default:
-                        ivTimeDownPrompt.setImageResource(R.drawable.ic_redpacket_timedown3);
+                        ivTime.setImageResource(R.drawable.ic_three);
                 }
                 if (finalTime == 1) {
                     if (!Utils.isEmpty(ivReady)) {
@@ -309,8 +290,8 @@ public class RedEnvelopesLayout extends FrameLayout {
         final int goldDismissXOffset = 17;
         final int goldDismissYOffset = 17;
 
-        pollingCheck = new PollingCheck();
-        pollingCheck.startForMillis(interval, new PollingCheck.CheckCallback() {
+        timerUtil = new TimerUtil();
+        timerUtil.startTime(interval, new TimerUtil.TimerCallback() {
             @Override
             public boolean onCheck(int checkCount) {
                 if (Utils.isEmpty(getContext())) {
@@ -346,14 +327,14 @@ public class RedEnvelopesLayout extends FrameLayout {
 
                     redPacketHelper.setMoney(bean.getMoney());
 
-                    redPacketHelper.setRedPacketInter(new RedEnvelopesHelper.RedPacketInter() {
+                    redPacketHelper.setRedPacketLister(new RedEnvelopesHelper.RedPacketLister() {
                         @Override
                         public void clickRedPacket(RedEnvelopesHelper bean) {
-                            if (Utils.isEmpty(stringBuffer)) {
-                                stringBuffer = new StringBuffer();
+                            if (Utils.isEmpty(sb)) {
+                                sb = new StringBuffer();
                             }
-                            stringBuffer.append(String.valueOf(bean.getIndex()));
-                            stringBuffer.append(",");
+                            sb.append(String.valueOf(bean.getIndex()));
+                            sb.append(",");
 
                             addMoney(bean.getMoney());
                             changeMoneyTextAnim();
@@ -392,7 +373,7 @@ public class RedEnvelopesLayout extends FrameLayout {
             }
 
             @Override
-            public void onComplete() {
+            public void onEnd() {
 
             }
         });
@@ -401,10 +382,10 @@ public class RedEnvelopesLayout extends FrameLayout {
     private void checkBitmap() {
 
         if (Utils.isEmptyAny(bitmap1, bitmap2, bitmap3, bitmap4)) {
-            bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_redpacket1);
-            bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_redpacket2);
-            bitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_redpacket3);
-            bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_redpacket4);
+            bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_14);
+            bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_16);
+            bitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_19);
+            bitmap4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_20);
             bitmaps = new Bitmap[]{bitmap1, bitmap2, bitmap3, bitmap4};
         }
         if (Utils.isEmpty(clickBitmap)) {
@@ -440,14 +421,13 @@ public class RedEnvelopesLayout extends FrameLayout {
         if (isExit()) {
             return;
         }
-        if (Utils.isEmpty(stringBuffer) || Utils.trimToEmpty(stringBuffer.toString())) {
-            /*PromptUtils.showToast(ctx,"无金币可领取");*/
+        if (Utils.isEmpty(sb) || Utils.trimToEmpty(sb.toString())) {
             finish();
             return;
         }
-        int lastIndexOf = stringBuffer.lastIndexOf(",");
-        if (lastIndexOf != -1 && lastIndexOf == stringBuffer.length() - 1) {
-            stringBuffer.deleteCharAt(lastIndexOf);
+        int lastIndexOf = sb.lastIndexOf(",");
+        if (lastIndexOf != -1 && lastIndexOf == sb.length() - 1) {
+            sb.deleteCharAt(lastIndexOf);
         }
     }
 
@@ -459,14 +439,14 @@ public class RedEnvelopesLayout extends FrameLayout {
 
     //获取金币数量改变动画
     private void changeMoneyTextAnim() {
-        if (Utils.isEmpty(valueAnimator)) {
-            valueAnimator = ValueAnimator.ofInt(0, getMoney());
+        if (Utils.isEmpty(valueAnim)) {
+            valueAnim = ValueAnimator.ofInt(0, getMoney());
         }
-        if (valueAnimator.isRunning()) {
-            valueAnimator.cancel();
+        if (valueAnim.isRunning()) {
+            valueAnim.cancel();
         }
-        valueAnimator = ValueAnimator.ofInt(showMoney, getMoney());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        valueAnim = ValueAnimator.ofInt(showMoney, getMoney());
+        valueAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 Integer animatedValue = (Integer) animation.getAnimatedValue();
@@ -476,8 +456,8 @@ public class RedEnvelopesLayout extends FrameLayout {
                 }
             }
         });
-        valueAnimator.setDuration(900);
-        valueAnimator.start();
+        valueAnim.setDuration(900);
+        valueAnim.start();
     }
 
 
@@ -492,24 +472,6 @@ public class RedEnvelopesLayout extends FrameLayout {
     }
 
 
-    private void hideOtherView() {
-        if (Utils.isEmpty(flRedEnvelopesTop)) {
-            return;
-        }
-        if (flRedEnvelopesTop.getVisibility() == INVISIBLE) {
-            return;
-        }
-        AlphaAnimation flRedPacketTopAnimation = new AlphaAnimation(1, 0);
-        flRedPacketTopAnimation.setRepeatCount(0);
-        flRedPacketTopAnimation.setDuration(400);
-        flRedEnvelopesTop.setVisibility(INVISIBLE);
-        flRedEnvelopesTop.startAnimation(flRedPacketTopAnimation);
-
-        AlphaAnimation ivRedPacketBottomAnimation = new AlphaAnimation(1, 0);
-        ivRedPacketBottomAnimation.setRepeatCount(0);
-        ivRedPacketBottomAnimation.setDuration(400);
-    }
-
     public void showOtherView() {
         if (Utils.isEmpty(flRedEnvelopesTop)) {
             return;
@@ -519,7 +481,11 @@ public class RedEnvelopesLayout extends FrameLayout {
 
 
     public boolean isExit() {
-        return isDestroy;
+        Activity activity = null;
+        if (!Utils.isEmpty(getContext()) && getContext() instanceof Activity) {
+            activity = (Activity) getContext();
+        }
+        return activity == null || activity.isDestroyed() || activity.isFinishing();
     }
 
 }

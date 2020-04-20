@@ -18,7 +18,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class RedEnvelopesHelper {
 
-    public interface RedPacketInter {
+    public interface RedPacketLister {
         void clickRedPacket(RedEnvelopesHelper bean);
 
         Bitmap getNormalBitmap();
@@ -28,14 +28,14 @@ public class RedEnvelopesHelper {
         Bitmap getGoldBitmap();
     }
 
-    private RedPacketInter redPacketInter;
+    private RedPacketLister redPacketLister;
 
-    public RedPacketInter getRedPacketInter() {
-        return redPacketInter;
+    public RedPacketLister getRedPacketLister() {
+        return redPacketLister;
     }
 
-    public void setRedPacketInter(RedPacketInter redPacketInter) {
-        this.redPacketInter = redPacketInter;
+    public void setRedPacketLister(RedPacketLister redPacketLister) {
+        this.redPacketLister = redPacketLister;
     }
 
     private RedEnvelopes redPacketBean;
@@ -165,15 +165,15 @@ public class RedEnvelopesHelper {
     }
 
     public Bitmap getBitmap() {
-        return getRedPacketInter() == null ? null : getRedPacketInter().getNormalBitmap();
+        return getRedPacketLister() == null ? null : getRedPacketLister().getNormalBitmap();
     }
 
     public Bitmap getClickBitmap() {
-        return getRedPacketInter() == null ? null : getRedPacketInter().getClickBitmap();
+        return getRedPacketLister() == null ? null : getRedPacketLister().getClickBitmap();
     }
 
     public Bitmap getGoldBitmap() {
-        return getRedPacketInter() == null ? null : getRedPacketInter().getGoldBitmap();
+        return getRedPacketLister() == null ? null : getRedPacketLister().getGoldBitmap();
     }
 
     public int getNormalWidth() {
@@ -386,8 +386,8 @@ public class RedEnvelopesHelper {
     }
 
     public void clickRedPacket() {
-        if (getRedPacketInter() != null) {
-            getRedPacketInter().clickRedPacket(this);
+        if (getRedPacketLister() != null) {
+            getRedPacketLister().clickRedPacket(this);
         }
         startChangeToRedPacket();
     }

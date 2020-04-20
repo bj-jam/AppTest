@@ -8,7 +8,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -26,12 +25,6 @@ public class JBoxActivity extends Activity implements SensorEventListener {
     Sensor sensor;
 
     private int[] imgs = {
-            R.drawable.share_fb,
-            R.drawable.share_kongjian,
-            R.drawable.share_pyq,
-            R.drawable.share_qq,
-            R.drawable.share_qq,
-            R.drawable.share_tw,
             R.drawable.ic_game_gold_00,
             R.drawable.ic_game_gold_01,
             R.drawable.ic_game_gold_02,
@@ -42,26 +35,15 @@ public class JBoxActivity extends Activity implements SensorEventListener {
             R.drawable.ic_game_gold_07,
             R.drawable.ic_game_gold_08,
             R.drawable.ic_game_gold_09,
-            R.drawable.share_wechat,
-            R.drawable.share_weibo,
-            R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
-            R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
-            R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
-            R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
-            R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
-            R.drawable.share_weibo,
             R.drawable.ic_game_gold_10,
             R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
             R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
             R.drawable.ic_game_gold_10,
-            R.drawable.share_weibo,
+            R.drawable.ic_game_gold_10,
+            R.drawable.ic_game_gold_10,
+            R.drawable.ic_game_gold_10,
+            R.drawable.ic_game_gold_10,
+            R.drawable.ic_game_gold_10,
             R.drawable.ic_game_gold_10,
             R.drawable.ic_game_gold_11,
             R.drawable.ic_game_gold_12,
@@ -70,8 +52,6 @@ public class JBoxActivity extends Activity implements SensorEventListener {
             R.drawable.ic_game_gold_15,
             R.drawable.ic_game_gold_16,
             R.drawable.ic_game_gold_17,
-            R.drawable.share_wechat,
-            R.drawable.share_weibo
     };
 
 

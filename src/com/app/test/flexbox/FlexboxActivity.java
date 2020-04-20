@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.app.test.R;
 import com.app.test.path.ViewAdapter;
@@ -54,12 +51,6 @@ public class FlexboxActivity extends Activity {
 
     private int[] width = {10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80,};
     private int[] image = {
-            R.drawable.share_fb,
-            R.drawable.share_kongjian,
-            R.drawable.share_pyq,
-            R.drawable.share_qq,
-            R.drawable.share_tw,
-            R.drawable.share_wechat,
             R.drawable.a1,
             R.drawable.a2,
             R.drawable.a3,
