@@ -38,11 +38,6 @@ public class RedEnvelopesLayout extends FrameLayout {
     private Bitmap goldBitmap;
     private Bitmap[] bitmaps;
 
-    public interface ActivityFinishInter {
-        void finish();
-    }
-
-    private ActivityFinishInter inter;
     private RedEnvelopesView redEnvelopesView;
     private List<RedEnvelopes> redEnvelopesList;
     //单位：秒
@@ -60,21 +55,14 @@ public class RedEnvelopesLayout extends FrameLayout {
     private int showMoney;
     public static final int RED_PACKET_END = 111;
 
-    private StringBuffer sb = new StringBuffer();
-
-
     private Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
-                case RED_PACKET_END:
-                    if (msg.arg1 == redEnvelopesEnd) {
-                        autoReceiveMoney();
-                    } else {
-                        checkIsEnd();
-                    }
-                    break;
+            if (msg.what == RED_PACKET_END) {
+                if (msg.arg1 != redEnvelopesEnd) {
+                    checkIsEnd();
+                }
             }
         }
     };
@@ -101,7 +89,7 @@ public class RedEnvelopesLayout extends FrameLayout {
         redEnvelopesView = findViewById(R.id.rpvRedPacket);
         tvMoney = findViewById(R.id.tvMoney);
         tvTime = findViewById(R.id.tvTime);
-        ivTime = findViewById(R.id.ivTimeDownPrompt);
+        ivTime = findViewById(R.id.ivTime);
         ivReady = findViewById(R.id.ivReady);
         flRedEnvelopesTop = findViewById(R.id.flRedPacketTop);
     }
@@ -132,9 +120,6 @@ public class RedEnvelopesLayout extends FrameLayout {
         if (!Utils.isEmpty(timerUtil)) {
             timerUtil.onDestroy();
             timerUtil = null;
-        }
-        if (!Utils.isEmpty(inter)) {
-            inter = null;
         }
     }
 
@@ -330,12 +315,6 @@ public class RedEnvelopesLayout extends FrameLayout {
                     redPacketHelper.setRedPacketLister(new RedEnvelopesHelper.RedPacketLister() {
                         @Override
                         public void clickRedPacket(RedEnvelopesHelper bean) {
-                            if (Utils.isEmpty(sb)) {
-                                sb = new StringBuffer();
-                            }
-                            sb.append(String.valueOf(bean.getIndex()));
-                            sb.append(",");
-
                             addMoney(bean.getMoney());
                             changeMoneyTextAnim();
                         }
@@ -417,25 +396,6 @@ public class RedEnvelopesLayout extends FrameLayout {
         return bitmap.getHeight();
     }
 
-    public void autoReceiveMoney() {
-        if (isExit()) {
-            return;
-        }
-        if (Utils.isEmpty(sb) || Utils.trimToEmpty(sb.toString())) {
-            finish();
-            return;
-        }
-        int lastIndexOf = sb.lastIndexOf(",");
-        if (lastIndexOf != -1 && lastIndexOf == sb.length() - 1) {
-            sb.deleteCharAt(lastIndexOf);
-        }
-    }
-
-    public void finish() {
-        if (inter != null) {
-            inter.finish();
-        }
-    }
 
     //获取金币数量改变动画
     private void changeMoneyTextAnim() {
