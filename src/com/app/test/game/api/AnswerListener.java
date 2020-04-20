@@ -12,13 +12,13 @@ public interface AnswerListener {
     /**
      * 填字游戏正确填入的字数
      */
-    void onRightCharacter(int count);
+    void onRightCount(int count);
 
     /**
      * 填字游戏 填写错误
      */
 
-    void onErrorCharacter();
+    void onPutError();
 
     /**
      * 用户答完单题
@@ -35,9 +35,4 @@ public interface AnswerListener {
      * 正确答案所在view
      */
     void onRightCharacterViews(View... views);
-
-    /**
-     * 是否宝箱位置的题目
-     */
-    boolean isPbRewardBoxSite();
 }

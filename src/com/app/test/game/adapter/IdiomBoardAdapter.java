@@ -11,14 +11,13 @@ import android.widget.TextView;
 import com.app.test.R;
 import com.app.test.game.api.CheckIdiomListener;
 import com.app.test.game.api.ItemTypeListener;
-import com.app.test.game.api.NoDoubleClickListener;
 import com.app.test.game.bean.CharacterTips;
+import com.app.test.game.bean.Idiom;
+import com.app.test.game.bean.IdiomDisturbWord;
 import com.app.test.game.bean.IdiomFillState;
 import com.app.test.game.bean.IdiomViewPosition;
-import com.app.test.game.bean.Idiom;
 import com.app.test.game.bean.IdiomWord;
 import com.app.test.game.bean.IdiomWrapper;
-import com.app.test.game.bean.IdiomDisturbWord;
 import com.app.test.game.bean.SuperType;
 import com.app.test.game.helper.IdiomHelper;
 import com.app.test.game.source.IdiomType;
@@ -222,9 +221,9 @@ public class IdiomBoardAdapter extends BaseQuickAdapter<Integer, BaseViewHolder>
         }
 
 
-        vSelectIdiomWord.setOnClickListener(new NoDoubleClickListener() {
+        vSelectIdiomWord.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNoDoubleClick(View v) {
+            public void onClick(View v) {
                 if (Utils.isEmpty(character) || characterWrapper.isAllRight()) {
                     return;
                 }

@@ -163,16 +163,7 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                         case IdiomType.ALL_FILL_RIGHT:
                             if (!Utils.isEmpty(answerListener)) {
                                 setUploadData(intoQuestion);
-                                if (answerListener.isPbRewardBoxSite()) {
-                                    answerListener.onUserAnswer(intoPosition, intoQuestion, "0", true);
-                                } else {
-                                    postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            answerListener.onUserAnswer(intoPosition, intoQuestion, "0", true);
-                                        }
-                                    }, 400);
-                                }
+                                answerListener.onUserAnswer(intoPosition, intoQuestion, "0", true);
                             }
                             break;
                         case IdiomType.EACH_PROVERB_RIGHT_COUNT:
@@ -180,7 +171,7 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                             if (!Utils.isEmpty(answerListener)) {
                                 if (obj instanceof Integer) {
                                     int rightCount = ((Integer) obj).intValue();
-                                    answerListener.onRightCharacter(rightCount);
+                                    answerListener.onRightCount(rightCount);
                                 }
                             }
                             break;
@@ -214,7 +205,7 @@ public class IdiomView extends FrameLayout implements AnswerControl<AnswerListen
                         case IdiomType.PROVERB_FILL_ERROR:
 
                             if (!Utils.isEmpty(answerListener)) {
-                                answerListener.onErrorCharacter();
+                                answerListener.onPutError();
                             }
                             break;
                         case IdiomType.SHOW_TOAST:

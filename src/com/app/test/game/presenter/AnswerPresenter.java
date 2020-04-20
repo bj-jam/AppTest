@@ -125,22 +125,17 @@ public class AnswerPresenter implements AnswerListener {
 
 
     @Override
-    public void onRightCharacter(int count) {
+    public void onRightCount(int count) {
     }
 
 
     @Override
-    public void onErrorCharacter() {
+    public void onPutError() {
     }
 
 
     @Override
     public void onRightCharacterViews(View... views) {
-    }
-
-    @Override
-    public boolean isPbRewardBoxSite() {
-        return false;
     }
 
     private boolean isAnswerEnd() {

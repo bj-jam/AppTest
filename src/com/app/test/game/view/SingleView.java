@@ -14,11 +14,11 @@ import android.widget.TextView;
 
 import com.app.test.R;
 import com.app.test.game.adapter.SingleAdapter;
-import com.app.test.game.api.AnswerListener;
 import com.app.test.game.api.AnswerControl;
+import com.app.test.game.api.AnswerListener;
 import com.app.test.game.bean.Question;
-import com.app.test.util.DensityUtil;
 import com.app.test.game.presenter.SinglePresenter;
+import com.app.test.util.DensityUtil;
 import com.app.test.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -153,16 +153,7 @@ public class SingleView extends LinearLayout implements AnswerControl<AnswerList
             question.setClicks(clicks);
             if (!Utils.isEmpty(sb))
                 question.setDiomicosttime(sb.toString());
-            if (answerListener.isPbRewardBoxSite()) {
-                answerListener.onUserAnswer(currentPosition, question, "100", isAnswerRight);
-            } else {
-                postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        answerListener.onUserAnswer(currentPosition, question, "100", isAnswerRight);
-                    }
-                }, 400);
-            }
+            answerListener.onUserAnswer(currentPosition, question, "100", isAnswerRight);
             answerListener.onRightCharacterViews(view);
         }
     }

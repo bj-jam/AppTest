@@ -133,13 +133,13 @@ public class OpenDoorView extends LinearLayout {
         public void openAnimStart() {
         }
 
-        public void openAnimEnd() {
+        void openAnimEnd() {
         }
 
-        public void closeAnimStart() {
+        void closeAnimStart() {
         }
 
-        public void closeAnimEnd() {
+        void closeAnimEnd() {
         }
     }
 }
