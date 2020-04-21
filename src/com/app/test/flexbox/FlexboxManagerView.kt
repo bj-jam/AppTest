@@ -35,7 +35,7 @@ class FlexboxManagerView : FrameLayout {
         initView()
     }
 
-    private val width = intArrayOf(  40, 43,45,48, 50, 55, 60, 65, 70,72, 75, 80, 85, 90)
+    private val width = intArrayOf(40, 43, 45, 48, 50, 55, 60, 65, 70, 72, 75, 80, 85, 90)
     private val image = intArrayOf(
             R.drawable.ic_01,
             R.drawable.ic_02,
@@ -124,7 +124,7 @@ class FlexboxManagerView : FrameLayout {
         }
     }
 
-//    private val imgs = arrayOf(
+    //    private val imgs = arrayOf(
 //            R.drawable.share_fb,
 //            R.drawable.ic_game_gold_10,
 //            R.drawable.icon_pic3,
@@ -229,5 +229,10 @@ class FlexboxManagerView : FrameLayout {
 //            R.drawable.ic_game_gold_17,
 //            R.drawable.share_weibo
 //    )
-
+    companion object {
+        const val type = 1
+        fun toOpen(): BoxBean? {
+            return null
+        }
+    }
 }

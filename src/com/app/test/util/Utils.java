@@ -255,12 +255,7 @@ public class Utils {
             // 文字左边距
             x = (viewW + disW - textRect.width()) / 2;
             // 文字右边距
-            y = disH
-                    * 2
-                    / 5
-                    + viewH
-                    + ((disH * 3 / 5 - textRect.height()) / 2 + textRect
-                    .height());
+            y = disH * 2 / 5 + viewH + ((disH * 3 / 5 - textRect.height()) / 2 + textRect.height());
             canvas.drawText(text, x, y, paint);
 
             // 保存图片
