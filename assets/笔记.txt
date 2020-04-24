@@ -779,3 +779,104 @@
    startAngle：圆弧起始角度，单位为度 （0~360）
    sweepAngle：圆弧扫过的角度，顺时针方向，单位为度 （0~360）
    forceMoveTo：false代表弧线起点与上个绘制的最后一个点连接，true代表不连接。
+
+66、有四种：第一种AbortPolicy:不执行新任务，直接抛出异常，提示线程池已满
+
+                第二种DisCardPolicy:不执行新任务，也不抛出异常
+
+                第三种DisCardOldSetPolicy:将消息队列中的第一个任务替换为当前新进来的任务执行
+
+                第四种CallerRunsPolicy:直接调用execute来执行当前任务
+
+   五，四种常见的线程池：
+
+   CachedThreadPool:可缓存的线程池，该线程池中没有核心线程，非核心线程的数量为Integer.max_value，就是无限大，当有需要时创建线程来执行任务，没有需要时回收线程，适用于耗时少，任务量大的情况。
+
+   SecudleThreadPool:周期性执行任务的线程池，按照某种特定的计划执行线程中的任务，有核心线程，但也有非核心线程，非核心线程的大小也为无限大。适用于执行周期性的任务。
+
+   SingleThreadPool:只有一条线程来执行任务，适用于有顺序的任务的应用场景。
+
+   FixedThreadPool:定长的线程池，有核心线程，核心线程的即为最大的线程数量，没有非核心线程
+
+
+67、final Dispatcher dispatcher;  //重要：分发器,分发执行和关闭由request构成的Call
+       final Proxy proxy;  //代理
+       final List<Protocol> protocols; //协议
+       final List<ConnectionSpec> connectionSpecs; //传输层版本和连接协议
+       final List<Interceptor> interceptors; //重要：拦截器
+       final List<Interceptor> networkInterceptors; //网络拦截器
+       final ProxySelector proxySelector; //代理选择
+       final CookieJar cookieJar; //cookie
+       final Cache cache; //缓存
+       final InternalCache internalCache;  //内部缓存
+       final SocketFactory socketFactory;  //socket 工厂
+       final SSLSocketFactory sslSocketFactory; //安全套接层socket 工厂，用于HTTPS
+       final CertificateChainCleaner certificateChainCleaner; // 验证确认响应证书 适用 HTTPS 请求连接的主机名。
+       final HostnameVerifier hostnameVerifier;    //  主机名字确认
+       final CertificatePinner certificatePinner;  //  证书链
+       final Authenticator proxyAuthenticator;     //代理身份验证
+       final Authenticator authenticator;      // 本地身份验证
+       final ConnectionPool connectionPool;    //连接池,复用连接
+       final Dns dns;  //域名
+       final boolean followSslRedirects;  //安全套接层重定向
+       final boolean followRedirects;  //本地重定向
+       final boolean retryOnConnectionFailure; //重试连接失败
+       final int connectTimeout;    //连接超时
+       final int readTimeout; //read 超时
+       final int writeTimeout; //write 超时
+       pingInterval :这个就和WebSocket有关了。为了保持长连接，我们必须间隔一段时间发送一个ping指令进行保活；
+
+
+       //最大的请求数量
+         private int maxRequests = 64;
+         //每个主机的请求数量，默认在摸个主机上同时请求5个
+         private int maxRequestsPerHost = 5;
+         private @Nullable Runnable idleCallback;
+
+         /** Executes calls. Created lazily. */
+        //执行异步call时的线程池，就在这儿
+         private @Nullable ExecutorService executorService;
+
+         /** Ready async calls in the order they'll be run. */
+        //即将被执行的异步call队列
+         private final Deque<AsyncCall> readyAsyncCalls = new ArrayDeque<>();
+
+         /** Running asynchronous calls. Includes canceled calls that haven't finished yet. */
+        //正在运行的异步call，包括被取消的还没有完成的
+         private final Deque<AsyncCall> runningAsyncCalls = new ArrayDeque<>();
+
+         /** Running synchronous calls. Includes canceled calls that haven't finished yet. */
+        //正在运行的同步call。包括被取消的还没有完成的
+         private final Deque<RealCall> runningSyncCalls = new ArrayDeque<>();
+        //可以执行自定义线程池，传进来
+         public Dispatcher(ExecutorService executorService) {
+           this.executorService = executorService;
+         }
+
+
+（1）在配置 OkHttpClient时设置的interceptors；
+（2）负责失败重试以及重定向的 RetryAndFollowUpInterceptor；
+（3）负责把用户构造的请求转换为发送到服务器的请求、把服务器返回的响应转换为用户友好的响应的BridgeInterceptor；
+（4）负责读取缓存直接返回、更新缓存的 CacheInterceptor
+（5）负责和服务器建立连接的ConnectInterceptor；
+（6）配置 OkHttpClient 时设置的 networkInterceptors；
+（7）负责向服务器发送请求数据、从服务器读取响应数据的 CallServerInterceptor
+
+
+Android OkHttp（三）源码解析:https://blog.csdn.net/zxw136511485/article/details/52872724 （这是我第一篇看的okhttp的源码解析，根据这篇文章和自己查看okhtttp 源码，看okhttp内部，这篇文章大概讲清楚okhttp 内部构造，虽然有些语言表达上的错误，这篇也是针对okhttp的.建议可以先看这篇，先了解大概）
+
+okhttp源码解析：https://blog.csdn.net/json_it/article/details/78404010 （这是第二篇，也是最近在看的一篇，大神分析的比较全，也比较准确，详细解析的okhttp3）
+
+OkHttp3源码分析[综述]:https://blog.csdn.net/json_it/article/details/78404010 (这篇是将源码分析，拆成了5个部分，分析也很很好，适合看)
+
+Android okhttp3 创建Socket的底层实现追踪 ：https://blog.csdn.net/hello2mao/article/details/53159151 （这篇描述了OKhttp3 socket底层的实现）
+OkHttp3源码和设计模式：
+
+https://www.imooc.com/article/24025?block_id=tuijian_wz （这篇从设计模式的角度分析OKhttp3）
+
+OkHttp3对RealCall的注释及上篇是Dispatcher
+
+https://blog.csdn.net/dingding_android/article/details/51942000
+————————————————
+版权声明：本文为CSDN博主「茶卡y」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u012881042/article/details/79759203
