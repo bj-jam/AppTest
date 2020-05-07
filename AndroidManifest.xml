@@ -88,6 +88,9 @@
         <activity android:name="com.app.test.flexbox.FlexboxActivity" />
         <activity android:name="com.app.test.jbox.JBoxActivity" />
         <activity android:name="com.app.test.paint.PaintActivity" />
+        <activity android:name="com.app.test.pickcrop.PickCropActivity" />
+        <activity android:name="com.app.test.pickcrop.MediaPickerActivity" />
+        <activity android:name="com.app.test.williamchart.williamchartdemo.CharActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />
@@ -98,6 +101,10 @@
         <activity
             android:name="com.app.test.keyboard.KeyboardActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Theme.AppCompat" />
+        <!-- Use your package name + ".pncfileprovider" as authorities -->
 
         <provider
             android:name="android.support.v4.content.FileProvider"

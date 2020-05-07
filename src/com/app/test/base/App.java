@@ -31,8 +31,8 @@ public class App extends Application {
         sWidth = DensityUtil.getScreenWidth(this);// 屏幕宽度
         sHeight = DensityUtil.getScreenHeight(this);// 屏幕高度
         // hook
-        AMSPHookHelper.hookAMSP();
-        AMSPHookHelper.hookActivityThread();
+//        AMSPHookHelper.hookAMSP();
+//        AMSPHookHelper.hookActivityThread();
 //        AMSPHookHelper.hookInstrumentation(getBaseContext());
     }
 }

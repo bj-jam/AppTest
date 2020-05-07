@@ -101,6 +101,9 @@ dependencies {
     //新功能引导
     implementation 'com.binioter:guideview:1.0.0'
     implementation 'com.isanwenyu.highlight:highlight:1.8.0'
+    //图片裁剪库
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+//    implementation 'com.hannesdorfmann.parcelableplease:annotation:1.0.2'
 
 }
 
@@ -146,7 +149,7 @@ android {
 
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-
+        applicationId 'com.app.test'
         //支持的最低版本
         minSdkVersion 19
         //支持的目标版本

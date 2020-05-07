@@ -248,7 +248,7 @@ public native String stringByEvaluatingJavaScriptFromString(String script)
 	
 	
 	
-	public class ZhongWenComparator implements Comparator<School> {
+	public class ZWComparator implements Comparator<School> {
 
 	@Override
 	public int compare(School one, School two) {

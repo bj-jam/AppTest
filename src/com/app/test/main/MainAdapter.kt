@@ -37,6 +37,7 @@ import com.app.test.notice.NoticeActivity
 import com.app.test.numberprogressbar.NumberProgressActivity
 import com.app.test.paint.PaintActivity
 import com.app.test.path.PathActivity
+import com.app.test.pickcrop.PickCropActivity
 import com.app.test.radar.RadarActivity
 import com.app.test.recyclerview.Damping1Activity
 import com.app.test.recyclerview.DampingActivity
@@ -59,6 +60,7 @@ import com.app.test.viewflipper.ViewFlipperActivity
 import com.app.test.viewpager.ViewPagerActivity
 import com.app.test.wave.WaveActivity
 import com.app.test.webview.WebViewActivity
+import com.app.test.williamchart.williamchartdemo.CharActivity
 
 class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
     private val texts: MutableList<Int> = ArrayList()
@@ -153,6 +155,8 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.FlexboxActivity)
         texts.add(R.string.JBoxActivity)
         texts.add(R.string.PaintActivity)
+        texts.add(R.string.PickCropActivity)
+        texts.add(R.string.CharActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -208,6 +212,8 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(FlexboxActivity::class.java) //
         clzs.add(JBoxActivity::class.java) //
         clzs.add(PaintActivity::class.java) //
+        clzs.add(PickCropActivity::class.java) //
+        clzs.add(CharActivity::class.java) //
     }
 
     interface OnLister {

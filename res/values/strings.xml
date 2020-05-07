@@ -17,6 +17,19 @@
         <item>@string/CustomSelectorSample</item>
     </array>
 
+    <string name="pick_media">Pick media</string>
+    <string name="take_photo">Take photo</string>
+    <string name="capture_video">Capture video</string>
+    <string name="pick_and_crop">Pick and crop</string>
+
+    <string name="pnc__source_camera">Camera</string>
+    <string name="pnc__source_camcorder">Video recorder</string>
+    <string name="pnc__source_gallery">Gallery</string>
+    <string name="pnc__source_clipboard">Clipboard</string>
+    <string name="pnc__please_wait">Please wait</string>
+    <string name="pnc__error_cannot_open_file">Can\'t open file</string>
+    <string name="pnc__label_media">Media</string>
+
     <string name="app_name">AppTest</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -88,4 +101,6 @@
     <string name="FlexboxActivity">Flexbox</string>
     <string name="JBoxActivity">JBox</string>
     <string name="PaintActivity">Paint</string>
+    <string name="PickCropActivity">图片裁剪</string>
+    <string name="CharActivity">折线</string>
 </resources>

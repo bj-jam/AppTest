@@ -50,9 +50,20 @@ class TeachTalkTogetherView : RelativeLayout {
             R.color.green,
             R.color.color_primary_dark)
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    //  @JvmOverloads相当于
+// public MyLayout(Context context) {
+//        this(context, null);
+//    }
+//
+//    public MyLayout(Context context, AttributeSet attrs) {
+//        this(context, attrs, 0);
+//    }
+//
+//    public MyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+//        super(context, attrs, defStyleAttr);
+//    }
+    @JvmOverloads
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
 
     init {
         isChildrenDrawingOrderEnabled = true

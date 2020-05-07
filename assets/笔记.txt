@@ -863,6 +863,11 @@
 （7）负责向服务器发送请求数据、从服务器读取响应数据的 CallServerInterceptor
 
 
+StreamAllocation是用来协调Connections、Streams和Calls这三个实体的
+HTTP通信 执行 网络请求Call 需要在 连接Connection 上建立一个新的 流Stream，我们将 StreamAllocation 称之 流 的桥梁
+，它负责为一次 请求 寻找 连接 并建立 流，从而完成远程通信。
+
+
 Android OkHttp（三）源码解析:https://blog.csdn.net/zxw136511485/article/details/52872724 （这是我第一篇看的okhttp的源码解析，根据这篇文章和自己查看okhtttp 源码，看okhttp内部，这篇文章大概讲清楚okhttp 内部构造，虽然有些语言表达上的错误，这篇也是针对okhttp的.建议可以先看这篇，先了解大概）
 
 okhttp源码解析：https://blog.csdn.net/json_it/article/details/78404010 （这是第二篇，也是最近在看的一篇，大神分析的比较全，也比较准确，详细解析的okhttp3）
