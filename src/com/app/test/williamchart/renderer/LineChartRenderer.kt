@@ -8,8 +8,8 @@ import com.app.test.williamchart.extensions.maxValueBy
 import com.app.test.williamchart.extensions.toDataPoints
 import com.app.test.williamchart.extensions.toLabels
 import com.app.test.williamchart.extensions.toScale
-import com.db.williamchart.renderer.executor.DebugWithLabelsFrame
-import com.db.williamchart.renderer.executor.MeasureLineChartPaddings
+import com.app.test.williamchart.renderer.executor.DebugWithLabelsFrame
+import com.app.test.williamchart.renderer.executor.MeasureLineChartPaddings
 
 class LineChartRenderer(
         private val view: ChartContract.LineView,

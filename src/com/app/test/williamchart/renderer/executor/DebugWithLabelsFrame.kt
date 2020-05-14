@@ -1,4 +1,4 @@
-package com.db.williamchart.renderer.executor
+package com.app.test.williamchart.renderer.executor
 
 import com.app.test.williamchart.data.*
 import com.app.test.williamchart.Painter

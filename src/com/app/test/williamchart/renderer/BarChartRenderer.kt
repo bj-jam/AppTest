@@ -8,8 +8,8 @@ import com.app.test.williamchart.extensions.toDataPoints
 import com.app.test.williamchart.extensions.toLabels
 import com.app.test.williamchart.ChartContract
 import com.app.test.williamchart.Painter
-import com.db.williamchart.renderer.executor.DebugWithLabelsFrame
-import com.db.williamchart.renderer.executor.MeasureBarChartPaddings
+import com.app.test.williamchart.renderer.executor.DebugWithLabelsFrame
+import com.app.test.williamchart.renderer.executor.MeasureBarChartPaddings
 import kotlin.math.max
 
 class BarChartRenderer(

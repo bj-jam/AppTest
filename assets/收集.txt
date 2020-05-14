@@ -1,4 +1,87 @@
+//获取setting包的的Context
+            Context mmsCtx = createPackageContext("com.android.settings",
+                    Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
+            //使用setting的classloader加载com.android.settings.ManageApplications类
+            Class<?> maClass = Class.forName("com.android.settings.ManageApplications",true, mmsCtx.getClassLoader());
+            //创建它的一个对象
+            Object maObject = maClass.newInstance();
 
+            /*
+             * 将私有域mPm赋值。因为mPm在SizeObserver的invokeGetSize中用到了，
+             * 却因为没有执行onCreate而没有初始化，所以要在此处初始化。
+             */
+            Field f_mPm = maClass.getDeclaredField("mPm");
+            f_mPm.setAccessible(true);
+            f_mPm.set(maObject, mmsCtx.getPackageManager());
+//定义被访问
+
+public class LockScreenActivity extendsActivity {
+
+    privateString TAG = "LockScreenActivity";
+    //private LockScreen mScreen = new LockScreen(LockScreenActivity.this);
+
+    privateLockScreen getLockScreenView(Context context){
+
+        Log.i(TAG,"context:"+context);
+        returnnew LockScreen(context);
+    }
+
+}
+//访问方法
+//访问
+try {
+            Context mmsCtx = createPackageContext("com.android.lockscreen",
+                    Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
+            Class<?> maClass = Class.forName("com.android.lockscreen.LockScreenActivity",true, mmsCtx.getClassLoader());
+
+            Object maObject = maClass.newInstance();
+            Field f_mPm = maClass.getDeclaredField("TAG");
+
+            //maClass.getDeclaredMethod("", parameterTypes);
+            f_mPm.setAccessible(true);
+            Log.i(LOG_TAG,"obj:"+f_mPm.get(maObject));
+
+
+                Class[] resource =new Class[]{Context.class};
+                resourceObj =new Object[]{mmsCtx};
+
+                Method addsMethod = maClass.getDeclaredMethod("getLockScreenView", resource);
+                addsMethod.setAccessible(true);
+
+                View addsResult = (View)addsMethod.invoke(maObject, resourceObj);
+                Log.i(LOG_TAG,"addsResult:"+addsResult);
+
+        }catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+//访问某个属性
+
+Context mmsCtx = createPackageContext("com.android.lockscreen",
+        Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
+Class<?> maClass = Class.forName("com.android.lockscreen.LockScreenActivity",true, mmsCtx.getClassLoader());
+
+Object maObject = maClass.newInstance();
+Field f_mPm = maClass.getDeclaredField("TAG");
+f_mPm.setAccessible(true);
+    Log.i(LOG_TAG,"obj:"+f_mPm.get(maObject));
+
+
+InputStream inputStream = getAssets().open("boliu123.png");
+Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+if(bitmap.getConfig()!=null){
+	Config config = bitmap.getConfig();
+	Log.i("config", config.name());
+	if(bitmap.getConfig()==Config.ARGB_8888){
+		int width = bitmap.getWidth();
+		int height = bitmap.getHeight();
+		int piexl[] = new int[width*height];
+		bitmap.getPixels(piexl, 0, width, 0, 0, width, height);
+		Bitmap bitmap1 = Bitmap.createBitmap(piexl, width, height, Config.ARGB_4444);//一切为了内存
+		bitmap1.compress(CompressFormat.PNG, 100, os)
+	}
+}
      * 获取圆形的图片
      *
      * @param bitmap

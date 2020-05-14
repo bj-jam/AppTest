@@ -8,8 +8,8 @@ import com.app.test.williamchart.extensions.limits
 import com.app.test.williamchart.extensions.maxValueBy
 import com.app.test.williamchart.extensions.toDataPoints
 import com.app.test.williamchart.extensions.toLabels
-import com.db.williamchart.renderer.executor.DebugWithLabelsFrame
-import com.db.williamchart.renderer.executor.MeasureHorizontalBarChartPaddings
+import com.app.test.williamchart.renderer.executor.DebugWithLabelsFrame
+import com.app.test.williamchart.renderer.executor.MeasureHorizontalBarChartPaddings
 import kotlin.math.max
 
 class HorizontalBarChartRenderer(
