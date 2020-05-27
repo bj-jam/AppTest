@@ -91,6 +91,7 @@
         <activity android:name="com.app.test.pickcrop.PickCropActivity" />
         <activity android:name="com.app.test.pickcrop.MediaPickerActivity" />
         <activity android:name="com.app.test.williamchart.williamchartdemo.CharActivity" />
+        <activity android:name="com.app.test.citypicker.CityPickerActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

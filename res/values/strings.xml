@@ -103,4 +103,5 @@
     <string name="PaintActivity">Paint</string>
     <string name="PickCropActivity">图片裁剪</string>
     <string name="CharActivity">折线</string>
+    <string name="CityPickerActivity">城市选择器</string>
 </resources>
