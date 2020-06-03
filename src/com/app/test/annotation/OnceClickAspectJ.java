@@ -19,7 +19,6 @@ public class OnceClickAspectJ {
 
     @Pointcut("execution(@com.example.myapplication.AOnceClick * *(..))")
     public void executionAOnceClick() {
-//        OnceClickLogger.e(TAG, "找到处理的切点>>executionAOnceClick");
     }
 
     @Around("executionAOnceClick()")
@@ -35,12 +34,10 @@ public class OnceClickAspectJ {
             var6.printStackTrace();
         }
 
-//        OnceClickLogger.e(TAG, "(realMethod == null)>>" + (realMethod == null));
         if (realMethod == null) {
             this._proceed(joinPoint, OnceClickConfig.getDuring());
         } else {
             AOnceClick aOnceClick = (AOnceClick) realMethod.getAnnotation(AOnceClick.class);
-//            OnceClickLogger.e(TAG, "(aOnceClick == null)>>" + (aOnceClick == null));
             if (aOnceClick == null) {
                 this._proceed(joinPoint, OnceClickConfig.getDuring());
             } else {
@@ -57,13 +54,9 @@ public class OnceClickAspectJ {
     private void _proceed(ProceedingJoinPoint joinPoint, long value) throws Throwable {
         if (joinPoint != null) {
             long currentTimeMillis = System.currentTimeMillis();
-//            OnceClickLogger.e(TAG, "currentTimeMillis>>" + currentTimeMillis + "\nsLastClick>>" + sLastClick + "\nvalue>>" + value + "\nMath.abs(currentTimeMillis - sLastClick)>>" + Math.abs(currentTimeMillis - sLastClick));
             if (Math.abs(currentTimeMillis - sLastClick) >= value) {
-//                OnceClickLogger.e(TAG, "currentTimeMillis - sLastClick>>" + (currentTimeMillis - sLastClick));
                 sLastClick = currentTimeMillis;
                 joinPoint.proceed();
-            } else {
-//                OnceClickLogger.e(TAG, "重复点击,已过滤");
             }
         }
     }

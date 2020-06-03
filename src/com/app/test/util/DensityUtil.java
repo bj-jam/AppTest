@@ -13,7 +13,7 @@ public class DensityUtil {
     private static float density;
 
     static {
-        density = App.getContext().getResources().getDisplayMetrics().density;
+        density = App.context.getResources().getDisplayMetrics().density;
     }
 
     public static int dp2px(int dp) {

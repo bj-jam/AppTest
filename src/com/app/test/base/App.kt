@@ -1,41 +1,40 @@
-package com.app.test.base;
+package com.app.test.base
 
-import android.app.Application;
-import android.content.Context;
+import android.app.Application
+import android.content.Context
+import com.app.test.util.DensityUtil
+import com.app.test.util.FileUtil
 
-import com.app.test.hook.AMSPHookHelper;
-import com.app.test.util.DensityUtil;
-import com.app.test.util.FileUtil;
-
-public class App extends Application {
-    /**
-     * 屏幕的宽
-     */
-    public static int sWidth;
-    /**
-     * 屏幕的高
-     */
-    public static int sHeight;
-    public static Context context;
-
-    public static Context getContext() {
-        return context;
-    }
-
-    @Override
-    public void onCreate() {
+class App : Application() {
+    override fun onCreate() {
         // TODO Auto-generated method stub
-        super.onCreate();
-        context = this;
-        FileUtil.init();
-        sWidth = DensityUtil.getScreenWidth(this);// 屏幕宽度
-        sHeight = DensityUtil.getScreenHeight(this);// 屏幕高度
+        super.onCreate()
+        context = this
+        FileUtil.init()
+        sWidth = DensityUtil.getScreenWidth(this) // 屏幕宽度
+        sHeight = DensityUtil.getScreenHeight(this) // 屏幕高度
         // hook
 //        AMSPHookHelper.hookAMSP();
 //        AMSPHookHelper.hookActivityThread();
 //        AMSPHookHelper.hookInstrumentation(getBaseContext());
     }
-}
+
+    companion object {
+        /**
+         * 屏幕的宽
+         */
+        @JvmField
+        var sWidth = 0
+
+        /**
+         * 屏幕的高
+         */
+        @JvmField
+        var sHeight = 0
+
+        @JvmField
+        var context: Context? = null
+    }
 
 
 //public class App extends DefaultApplicationLike {
@@ -86,4 +85,4 @@ public class App extends Application {
 //    }
 //
 //}
-
+}

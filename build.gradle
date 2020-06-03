@@ -151,7 +151,7 @@ android {
     defaultConfig {
         applicationId 'com.app.test'
         //支持的最低版本
-        minSdkVersion 19
+        minSdkVersion 21
         //支持的目标版本
         targetSdkVersion 26
         multiDexEnabled true
