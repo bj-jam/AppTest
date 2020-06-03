@@ -124,12 +124,12 @@ open class SingleView @JvmOverloads constructor(context: Context, attrs: Attribu
         optionAdapter.setProblemData(question?.answerList, selectData, answerData)
     }
 
-    override fun onNextQuestion(position: Int, question: Question?) {
+    override fun onNextQuestion(position: Int, question: Question) {
         if (Utils.isEmpty(question) || Utils.isEmpty(presenter)) return
         clearInfo()
         currentPosition = position
         fitHeight()
-        setProblemTitle(question?.title)
+        setProblemTitle(question.title)
         presenter.setNewProblem(question)
     }
 
