@@ -28,7 +28,7 @@ class AnswerPresenter(private val answerActivity: AnswerActivity) : AnswerListen
     /**
      * 题目集合
      */
-    private var questionList: ArrayList<Question?>? = null
+    private var questionList: ArrayList<Question>? = null
 
     /**
      * 关卡

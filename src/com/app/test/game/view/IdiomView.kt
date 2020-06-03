@@ -260,16 +260,16 @@ open class IdiomView @JvmOverloads constructor(context: Context, attrs: Attribut
                                 continue
                             }
                             //如果不是需要填写的字，直接忽略
-                            if (idiomWord.isShow) {
+                            if (idiomWord?.isShow == true) {
                                 continue
                             }
-                            val boardFillWord = idiomWord.shortTitle
+                            val boardFillWord = idiomWord?.shortTitle
                             if (StringUtils.equals(title, boardFillWord)) {
                                 //假设棋盘需要自动填写的地方需要A ，但是A在B处，则把B处的字隐藏掉，然后把A拿到此处，把此处错误的字放到备选面板
                                 /*下面分两步完成，第一部，取下备选词，更改备选词未被选中属性，第二部，自动填充，将刚刚取下的词，替换上去*/
-                                idiomWord.isFilled = false
-                                idiomWord.shortTitle = ""
-                                it.notifyByXY(idiomWord.relativeX, idiomWord.relativeY)
+                                idiomWord?.isFilled = false
+                                idiomWord?.shortTitle = ""
+                                it.notifyByXY(idiomWord?.relativeX ?: 0, idiomWord?.relativeY ?: 0)
                                 val needRetrieveFreeWord = it.getNeedRetrieveFreeWord(idiomWord)
                                 if (!Utils.isEmpty(needRetrieveFreeWord)) {
                                     //设置备选面板未被选中属性，方便下面的补充

@@ -9,8 +9,10 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.ScaleAnimation
 import android.view.animation.TranslateAnimation
 import com.app.test.game.api.CheckIdiomListener
-import com.app.test.game.bean.*
-import com.app.test.game.source.AnswerType
+import com.app.test.game.bean.Idiom
+import com.app.test.game.bean.IdiomFillState
+import com.app.test.game.bean.IdiomWord
+import com.app.test.game.bean.SuperType
 import com.app.test.util.DensityUtil.dp2px
 import com.app.test.util.DensityUtil.getScreenWidth
 import com.app.test.util.Utils
@@ -104,85 +106,85 @@ class IdiomHelper private constructor() {
     }
 
     /*生成测试数据*/
-    fun produceTestData(): Array<Array<IdiomWord?>>? {
-        val question = Question()
-        question.questionType = AnswerType.PROVER
-        question.relativeRow = 4
-        question.relativeColumn = 5
-        val idiomList = ArrayList<Idiom>()
-        var idiom = Idiom()
-        idiom.title = "聚沙成塔"
-        idiom.isHorizontal = true
-        idiom.startIndex = 39
-        idiomList.add(idiom)
-        var title = idiom.title
-        var strings = arrayOf("聚", "沙", "成", "塔")
-        var show = arrayOf(true, true, false, true)
-        var y = arrayOf(0, 1, 2, 3)
-        var x = arrayOf(1, 1, 1, 1)
-        var charList = getCharList(
-                title,
-                strings,
-                show,
-                x,
-                y
-        )
-        idiom.proverbCharacterList = charList
-        idiom = Idiom()
-        idiom.title = "飞沙走石"
-        idiom.isHorizontal = false
-        idiom.startIndex = 31
-        idiomList.add(idiom)
-        title = idiom.title
-        strings = arrayOf("飞", "沙", "走", "石")
-        show = arrayOf(true, true, true, false)
-        y = arrayOf(1, 1, 1, 1)
-        x = arrayOf(0, 1, 2, 3)
-        charList = getCharList(
-                title,
-                strings,
-                show,
-                x,
-                y
-        )
-        idiom.proverbCharacterList = charList
-        idiom = Idiom()
-        idiom.title = "石破天惊"
-        idiom.isHorizontal = true
-        idiom.startIndex = 58
-        idiomList.add(idiom)
-        title = idiom.title
-        strings = arrayOf("石", "破", "天", "惊")
-        show = arrayOf(false, true, false, true)
-        y = arrayOf(1, 2, 3, 4)
-        x = arrayOf(3, 3, 3, 3)
-        charList = getCharList(
-                title,
-                strings,
-                show,
-                x,
-                y
-        )
-        idiom.proverbCharacterList = charList
-        question.proverbList = idiomList
-        if (question.proverbList == null) {
-            return null
-        }
-        val strArray = Array(question.relativeRow) { arrayOfNulls<IdiomWord>(question.relativeColumn) }
-        for (i in question.proverbList.indices) {
-            val idiom1 = question.proverbList[i]
-            for (j in idiom1.proverbCharacterList.indices) {
-                val proverbList1 = idiom1.proverbCharacterList[j]
-                val relativeX = proverbList1.relativeX
-                val relativeY = proverbList1.relativeY
-                strArray[relativeX][relativeY] = proverbList1
-            }
-        }
-        return strArray
-    }
+//    fun produceTestData(): Array<Array<IdiomWord>>? {
+//        val question = Question()
+//        question.questionType = AnswerType.PROVER
+//        question.relativeRow = 4
+//        question.relativeColumn = 5
+//        val idiomList = ArrayList<Idiom>()
+//        var idiom = Idiom()
+//        idiom.title = "聚沙成塔"
+//        idiom.isHorizontal = true
+//        idiom.startIndex = 39
+//        idiomList.add(idiom)
+//        var title = idiom.title
+//        var strings = arrayOf("聚", "沙", "成", "塔")
+//        var show = arrayOf(true, true, false, true)
+//        var y = arrayOf(0, 1, 2, 3)
+//        var x = arrayOf(1, 1, 1, 1)
+//        var charList = getCharList(
+//                title,
+//                strings,
+//                show,
+//                x,
+//                y
+//        )
+//        idiom.proverbCharacterList = charList
+//        idiom = Idiom()
+//        idiom.title = "飞沙走石"
+//        idiom.isHorizontal = false
+//        idiom.startIndex = 31
+//        idiomList.add(idiom)
+//        title = idiom.title
+//        strings = arrayOf("飞", "沙", "走", "石")
+//        show = arrayOf(true, true, true, false)
+//        y = arrayOf(1, 1, 1, 1)
+//        x = arrayOf(0, 1, 2, 3)
+//        charList = getCharList(
+//                title,
+//                strings,
+//                show,
+//                x,
+//                y
+//        )
+//        idiom.proverbCharacterList = charList
+//        idiom = Idiom()
+//        idiom.title = "石破天惊"
+//        idiom.isHorizontal = true
+//        idiom.startIndex = 58
+//        idiomList.add(idiom)
+//        title = idiom.title
+//        strings = arrayOf("石", "破", "天", "惊")
+//        show = arrayOf(false, true, false, true)
+//        y = arrayOf(1, 2, 3, 4)
+//        x = arrayOf(3, 3, 3, 3)
+//        charList = getCharList(
+//                title,
+//                strings,
+//                show,
+//                x,
+//                y
+//        )
+//        idiom.proverbCharacterList = charList
+//        question.proverbList = idiomList
+//        if (question.proverbList == null) {
+//            return null
+//        }
+//        val strArray: Array<Array<IdiomWord>> = Array(question.relativeRow) { Array(0) }
+//        for (i in question.proverbList.indices) {
+//            val idiom1 = question.proverbList[i]
+//            for (j in idiom1.proverbCharacterList.indices) {
+//                val proverbList1 = idiom1.proverbCharacterList[j]
+//                val relativeX = proverbList1.relativeX
+//                val relativeY = proverbList1.relativeY
+//                strArray[relativeX][relativeY] = proverbList1
+//            }
+//        }
+//        return strArray
+//    }
 
-    fun getCharList(pro: String?, strings: Array<String>?, show: Array<Boolean>?, x: Array<Int>, y: Array<Int>): ArrayList<IdiomWord?> {
-        val charList = ArrayList<IdiomWord?>()
+    fun getCharList(pro: String?, strings: Array<String>?, show: Array<Boolean>?, x: Array<Int>, y: Array<Int>): ArrayList<IdiomWord> {
+        val charList = ArrayList<IdiomWord>()
         if (strings == null || show == null) {
             return charList
         }
