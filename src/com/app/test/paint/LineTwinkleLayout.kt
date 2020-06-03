@@ -5,8 +5,8 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.Interpolator
 import android.widget.FrameLayout
 import com.app.test.R
 import com.app.test.util.DensityUtil.dp2px
@@ -15,6 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
+import kotlin.math.pow
 
 /**
  * @author lcx
@@ -170,7 +171,7 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         }
         insideAnim!!.cancel()
         insideAnim!!.repeatMode = ValueAnimator.REVERSE
-//        insideAnim!!.interpolator = myInterpolator
+        insideAnim!!.interpolator = myInterpolator
         insideAnim!!.repeatCount = -1
         insideAnim!!.setDuration((during * 1f).toLong())
         insideAnim!!.addUpdateListener { animation ->
@@ -307,14 +308,11 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         path!!.addRoundRect(rectF, strokeRadius, strokeRadius, Path.Direction.CW)
     }
 
-//    var myInterpolator: Interpolator =object :Interpolator() {
-//        override  fun getInterpolation(input: Float): Float {
-//            if (input < 0.4) {
-//                return 0f
-//            }
-//            return Math.pow(input.toDouble(), 2.0).toFloat()
-//        }
-//    }
+    var myInterpolator: Interpolator = Interpolator { input ->
+        if (input < 0.4) {
+            0f
+        } else input.toDouble().pow(2.0).toFloat()
+    }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
