@@ -57,7 +57,7 @@ public class FileUtil {
     public static final String imagePath = SDCardPath + "/AppTest/ImageFile/";
 
     public static void init() {
-        FileUtil.makeFile(LocalCache.getInstance().getCache(FileKey.ABOAT_PICTURE, Key.imageDir));
+        FileUtil.makeFile(LocalCache.getInstance().getCache(FileKey.ABORT_PICTURE, Key.imageDir));
     }
 
     public static boolean isSDCard() {
