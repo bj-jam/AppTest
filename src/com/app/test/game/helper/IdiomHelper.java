@@ -114,7 +114,7 @@ public class IdiomHelper {
         }
         return point;
     }
-    
+
 
     public int getItemWidth(Context context, int column) {
         int ignore = 15 * 2 + 5 * 2 + column;
