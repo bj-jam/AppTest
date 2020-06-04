@@ -15,6 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 import kotlin.math.pow
 
 /**
@@ -45,11 +46,11 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
     private var outsideRadius = 0f
     private var outsideColor = 0
     private var outsideShadowColor = 0
-    private var paint: Paint? = null
-    private var outsidePaint: Paint? = null
-    private var insidePaint: Paint? = null
-    private var shadowPaint: Paint? = null
-    private var path: Path? = null
+    private lateinit var paint: Paint
+    private lateinit var outsidePaint: Paint
+    private lateinit var insidePaint: Paint
+    private lateinit var shadowPaint: Paint
+    private lateinit var path: Path
     private var next: Long = 0
     private var colorList: List<Int> = CopyOnWriteArrayList()
     private var shadowColorList: List<Int> = CopyOnWriteArrayList()
@@ -116,11 +117,11 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
         outsidePaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
-        outsidePaint!!.style = Paint.Style.STROKE
+        outsidePaint.style = Paint.Style.STROKE
         insidePaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
-        insidePaint!!.style = Paint.Style.STROKE
+        insidePaint.style = Paint.Style.STROKE
         shadowPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
-        shadowPaint!!.style = Paint.Style.STROKE
+        shadowPaint.style = Paint.Style.STROKE
         path = Path()
         colorList = getColorList(defaultColors, defaultColors)
         shadowColorList = getColorList(defaultShadowColors, defaultShadowColors)
@@ -149,12 +150,12 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         if (Utils.isEmpty(outsideAnim)) {
             outsideAnim = ValueAnimator.ofInt(0, 255)
         }
-        outsideAnim!!.cancel()
-        outsideAnim!!.repeatMode = ValueAnimator.REVERSE
-        outsideAnim!!.repeatCount = -1
-        outsideAnim!!.interpolator = DecelerateInterpolator()
-        outsideAnim!!.setDuration((during * 1f).toLong())
-        outsideAnim!!.addUpdateListener { animation ->
+        outsideAnim?.cancel()
+        outsideAnim?.repeatMode = ValueAnimator.REVERSE
+        outsideAnim?.repeatCount = -1
+        outsideAnim?.interpolator = DecelerateInterpolator()
+        outsideAnim?.duration = (during * 1f).toLong()
+        outsideAnim?.addUpdateListener { animation ->
             outsideAlpha = if (isShow) {
                 animation.animatedValue as Int
             } else {
@@ -162,19 +163,19 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
             }
             postInvalidate()
         }
-        outsideAnim!!.start()
+        outsideAnim?.start()
     }
 
     private fun startInsideAnim() {
         if (Utils.isEmpty(insideAnim)) {
             insideAnim = ValueAnimator.ofInt(0, 255)
         }
-        insideAnim!!.cancel()
-        insideAnim!!.repeatMode = ValueAnimator.REVERSE
-        insideAnim!!.interpolator = myInterpolator
-        insideAnim!!.repeatCount = -1
-        insideAnim!!.setDuration((during * 1f).toLong())
-        insideAnim!!.addUpdateListener { animation ->
+        insideAnim?.cancel()
+        insideAnim?.repeatMode = ValueAnimator.REVERSE
+        insideAnim?.interpolator = myInterpolator
+        insideAnim?.repeatCount = -1
+        insideAnim?.duration = (during * 1f).toLong()
+        insideAnim?.addUpdateListener { animation ->
             insideAlpha = if (isShow) {
                 animation.animatedValue as Int
             } else {
@@ -182,7 +183,7 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
             }
             postInvalidate()
         }
-        insideAnim!!.start()
+        insideAnim?.start()
     }
 
     private fun getColorList(colors: IntArray, defaultColors: IntArray): List<Int> {
@@ -198,9 +199,9 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
     }
 
     private fun updateDraw(canvas: Canvas) {
-        paint!!.color = strokeColor
-        paint!!.strokeWidth = strokeW
-        paint!!.style = Paint.Style.STROKE
+        paint.color = strokeColor
+        paint.strokeWidth = strokeW
+        paint.style = Paint.Style.STROKE
         canvas.drawPath(path, paint)
         drawDoubleLine(canvas)
     }
@@ -227,8 +228,8 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         }
         val gbCenter = outsideStrokeW + lineSpace + insideBgWidth / 2
         val bgRect = RectF(gbCenter, gbCenter, width - gbCenter, height - gbCenter)
-        shadowPaint!!.color = insideBgColor
-        shadowPaint!!.strokeWidth = insideBgWidth
+        shadowPaint.color = insideBgColor
+        shadowPaint.strokeWidth = insideBgWidth
         canvas.drawRoundRect(bgRect, insideBgRadius, insideBgRadius, shadowPaint)
     }
 
@@ -237,16 +238,16 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         val height = height
         val widthSpace = outsideStrokeW / 2
         val out = RectF(widthSpace, widthSpace, width - widthSpace, height - widthSpace)
-        outsidePaint!!.color = getFitColor(colorList, next, outsideColor)
+        outsidePaint.color = getFitColor(colorList, next, outsideColor)
         if (outsideStrokeW * outsideBlurMaskRatio > 0) {
-            outsidePaint!!.maskFilter = BlurMaskFilter(outsideStrokeW * outsideBlurMaskRatio, BlurMaskFilter.Blur.INNER)
+            outsidePaint.maskFilter = BlurMaskFilter(outsideStrokeW * outsideBlurMaskRatio, BlurMaskFilter.Blur.INNER)
         }
-        outsidePaint!!.strokeWidth = outsideStrokeW
-        outsidePaint!!.alpha = outsideAlpha
+        outsidePaint.strokeWidth = outsideStrokeW
+        outsidePaint.alpha = outsideAlpha
         canvas.drawRoundRect(out, outsideRadius, outsideRadius, outsidePaint)
-        shadowPaint!!.color = getFitColor(shadowColorList, next, outsideShadowColor)
-        shadowPaint!!.alpha = outsideAlpha
-        shadowPaint!!.strokeWidth = outsideStrokeW * outsideShadowWidthRatio
+        shadowPaint.color = getFitColor(shadowColorList, next, outsideShadowColor)
+        shadowPaint.alpha = outsideAlpha
+        shadowPaint.strokeWidth = outsideStrokeW * outsideShadowWidthRatio
         canvas.drawRoundRect(RectF(widthSpace, widthSpace, width - widthSpace, height - widthSpace)
                 , outsideRadius, outsideRadius, shadowPaint)
     }
@@ -257,17 +258,17 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         val widthSpace = lineSpace + outsideStrokeW + insideStrokeW / 2
         val index = next + 1
         val inner = RectF(widthSpace, widthSpace, width - widthSpace, height - widthSpace)
-        insidePaint!!.color = getFitColor(colorList, index, insideColor)
+        insidePaint.color = getFitColor(colorList, index, insideColor)
         if (insideStrokeW * insideBlurMaskRatio > 0) {
-            insidePaint!!.maskFilter = BlurMaskFilter(insideStrokeW * insideBlurMaskRatio, BlurMaskFilter.Blur.INNER)
+            insidePaint.maskFilter = BlurMaskFilter(insideStrokeW * insideBlurMaskRatio, BlurMaskFilter.Blur.INNER)
         }
-        insidePaint!!.strokeWidth = insideStrokeW
-        insidePaint!!.alpha = insideAlpha
+        insidePaint.strokeWidth = insideStrokeW
+        insidePaint.alpha = insideAlpha
         canvas.drawRoundRect(inner, insideRadius, insideRadius, insidePaint)
         val fitColor = getFitColor(shadowColorList, index, insideShadowColor)
-        shadowPaint!!.color = fitColor
-        shadowPaint!!.strokeWidth = insideStrokeW * insideShadowWidthRatio
-        shadowPaint!!.alpha = insideAlpha
+        shadowPaint.color = fitColor
+        shadowPaint.strokeWidth = insideStrokeW * insideShadowWidthRatio
+        shadowPaint.alpha = insideAlpha
         canvas.drawRoundRect(RectF(widthSpace, widthSpace, width - widthSpace, height - widthSpace)
                 , insideRadius, insideRadius, shadowPaint)
     }
@@ -283,8 +284,8 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
             return defaultColor
         }
         val n = colorList.size
-        var innerColorIndex = Math.abs((next % n).toInt())
-        innerColorIndex = Math.max(0, innerColorIndex)
+        var innerColorIndex = abs((next % n).toInt())
+        innerColorIndex = 0.coerceAtLeast(innerColorIndex)
         return colorList[innerColorIndex]
     }
 
@@ -302,13 +303,13 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         if (width <= 0 || height <= 0) {
             return
         }
-        path!!.reset()
+        path.reset()
         val v = strokeW / 2
         val rectF = RectF(v, v, width - v, height - v)
-        path!!.addRoundRect(rectF, strokeRadius, strokeRadius, Path.Direction.CW)
+        path.addRoundRect(rectF, strokeRadius, strokeRadius, Path.Direction.CW)
     }
 
-    var myInterpolator: Interpolator = Interpolator { input ->
+    private var myInterpolator: Interpolator = Interpolator { input ->
         if (input < 0.4) {
             0f
         } else input.toDouble().pow(2.0).toFloat()
@@ -319,13 +320,13 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
         stopAnim()
     }
 
-    fun stopAnim() {
+    private fun stopAnim() {
         if (!Utils.isEmpty(outsideAnim)) {
-            outsideAnim!!.cancel()
+            outsideAnim?.cancel()
             outsideAnim = null
         }
         if (!Utils.isEmpty(insideAnim)) {
-            insideAnim!!.cancel()
+            insideAnim?.cancel()
             insideAnim = null
         }
         stopTimer()
@@ -336,8 +337,8 @@ class LineTwinkleLayout(context: Context, attributeSet: AttributeSet?, defStyleA
             if (Utils.isEmpty(executor)) {
                 return
             }
-            if (!executor!!.isShutdown) {
-                executor!!.shutdownNow()
+            if (executor?.isShutdown != true) {
+                executor?.shutdownNow()
             }
             executor = null
         } catch (e: Exception) {

@@ -3,13 +3,13 @@ package com.app.test.paint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import com.app.test.R
 import com.app.test.util.DensityUtil.dp2px
 import com.app.test.util.Utils
 import java.util.concurrent.CopyOnWriteArrayList
+import kotlin.math.abs
 
 /**
  * @author lcx
@@ -29,11 +29,11 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
     private var ballInnerRadius = 0f
     private var ballInnerColor = 0
     private var isBallInnerColorFellowOut = false
-    private var paint: Paint? = null
-    private var ballPaint: Paint? = null
-    private var ballInnerPaint: Paint? = null
-    private var path: Path? = null
-    private var pathMeasure: PathMeasure? = null
+    private lateinit var paint: Paint
+    private lateinit var ballPaint: Paint
+    private lateinit var ballInnerPaint: Paint
+    private lateinit var path: Path
+    private lateinit var pathMeasure: PathMeasure
     private val pointList: MutableList<Point?> = CopyOnWriteArrayList()
     private var point: Point? = null
     private var next: Long = 0
@@ -76,11 +76,11 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
         ballPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
         ballInnerPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
         path = Path()
-        colorList = getColorList(defaultColors)
+        colorList = defaultColors.getColorList()
     }
 
-    private fun getColorList(colors: IntArray): List<Int> {
-        var colors = colors
+    private fun IntArray.getColorList(): List<Int> {
+        var colors = this
         if (Utils.isEmpty(colors)) {
             colors = defaultColors
         }
@@ -96,16 +96,16 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
             next = 0
         }
         ++next
-        paint!!.color = strokeColor
-        paint!!.strokeWidth = strokeWidth
-        paint!!.style = Paint.Style.STROKE
+        paint.color = strokeColor
+        paint.strokeWidth = strokeWidth
+        paint.style = Paint.Style.STROKE
         canvas.drawPath(path, paint)
         if (Utils.isEmpty(pointList)) {
             return
         }
         val n = colorList.size
-        var colorIndex = Math.abs((next % n).toInt())
-        colorIndex = Math.max(0, colorIndex)
+        var colorIndex = abs((next % n).toInt())
+        colorIndex = 0.coerceAtLeast(colorIndex)
         val color = colorList[colorIndex]
         drawBallStroke(canvas, color)
         drawBall(canvas, color)
@@ -130,13 +130,13 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
         val height = height
         val outStrokeWidthSpace = lineWidth / 2
         val out = RectF(outStrokeWidthSpace, outStrokeWidthSpace, width - outStrokeWidthSpace, height - outStrokeWidthSpace)
-        paint!!.color = lineColor
-        paint!!.strokeWidth = lineWidth
+        paint.color = lineColor
+        paint.strokeWidth = lineWidth
         canvas.drawRoundRect(out, strokeRadius, strokeRadius, paint)
         val innerStrokeWidthSpace = strokeWidth - lineWidth / 2 + 1
         val inner = RectF(innerStrokeWidthSpace, innerStrokeWidthSpace, width - innerStrokeWidthSpace, height - innerStrokeWidthSpace)
-        paint!!.color = lineColor
-        paint!!.strokeWidth = lineWidth
+        paint.color = lineColor
+        paint.strokeWidth = lineWidth
         canvas.drawRoundRect(inner, innerStrokeRadius, innerStrokeRadius, paint)
     }
 
@@ -147,14 +147,16 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
         var i = if (next % 2 == 0L) 0 else 1
         while (i < pointList.size) {
             point = pointList[i]
-            ballPaint!!.color = color
-            ballPaint!!.style = Paint.Style.FILL
-            ballPaint!!.maskFilter = BlurMaskFilter(ballRadius / 4, BlurMaskFilter.Blur.NORMAL)
-            canvas.drawCircle(point!!.x.toFloat(), point!!.y.toFloat(), ballRadius, ballPaint)
+            ballPaint.color = color
+            ballPaint.style = Paint.Style.FILL
+            ballPaint.maskFilter = BlurMaskFilter(ballRadius / 4, BlurMaskFilter.Blur.NORMAL)
+            canvas.drawCircle(point?.x?.toFloat() ?: 0f, point?.y?.toFloat()
+                    ?: 0f, ballRadius, ballPaint)
             if (!isBallInnerColorFellowOut) {
-                ballInnerPaint!!.color = ballInnerColor
-                ballInnerPaint!!.style = Paint.Style.FILL
-                canvas.drawCircle(point!!.x.toFloat(), point!!.y.toFloat(), ballInnerRadius, ballInnerPaint)
+                ballInnerPaint.color = ballInnerColor
+                ballInnerPaint.style = Paint.Style.FILL
+                canvas.drawCircle(point?.x?.toFloat()
+                        ?: 0f, point?.y?.toFloat() ?: 0f, ballInnerRadius, ballInnerPaint)
             }
             i += 2
         }
@@ -173,13 +175,13 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
         if (width <= 0 || height <= 0) {
             return
         }
-        path!!.reset()
+        path.reset()
         pointList.clear()
         val ballStrokeWidthSpace = strokeWidth / 2
         val localRectf = RectF(ballStrokeWidthSpace, ballStrokeWidthSpace, width - ballStrokeWidthSpace, height - ballStrokeWidthSpace)
-        path!!.addRoundRect(localRectf, strokeRadius, strokeRadius, Path.Direction.CW)
+        path.addRoundRect(localRectf, strokeRadius, strokeRadius, Path.Direction.CW)
         pathMeasure = PathMeasure(path, false)
-        val pathLength = pathMeasure!!.length
+        val pathLength = pathMeasure.length
         if (ballSpace <= 0) {
             ballSpace = pathLength * 1.0f / (pathLength / (ballRadius * 2))
         }
@@ -190,21 +192,19 @@ class SpotMoveLayout(context: Context, attributeSet: AttributeSet?, defStyleAttr
         val pos = FloatArray(2)
         var distance = 0f
         while (distance <= pathLength) {
-            if (pathMeasure!!.getPosTan(distance, pos, null)) {
+            if (pathMeasure.getPosTan(distance, pos, null)) {
                 if (pathLength - distance >= tempBallSpace) {
                     pointList.add(Point(pos[0].toInt(), pos[1].toInt()))
                 }
             }
             distance += tempBallSpace
         }
-        Log.e(TAG, "pointList>>$pointList")
     }
 
     private val avaBallSpace: Float
-        private get() = (ballSpace - 2 * ballRadius) / 2
+        get() = (ballSpace - 2 * ballRadius) / 2
 
     companion object {
-        private const val TAG = "SpotMoveLayout"
         const val DEFAULT_DURING = 300
         private val defaultColors = intArrayOf(
                 Color.parseColor("#ff0012")

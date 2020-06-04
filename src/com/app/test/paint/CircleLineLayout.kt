@@ -24,13 +24,13 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
     private var lineWidth = 0f
     private var avaBallSpace = 0f
     private var ballRadius = 0f
-    private var paint: Paint? = null
-    private var path: Path? = null
+    private lateinit var paint: Paint
+    private lateinit var path: Path
     private var pathMeasure: PathMeasure? = null
     private val pointList: MutableList<Point> = CopyOnWriteArrayList()
     private var point: Point? = null
     private var next: Long = 0
-    private var colorList: List<Int?> = CopyOnWriteArrayList()
+    private var colorList: List<Int> = CopyOnWriteArrayList()
 
     @JvmOverloads
     constructor(context: Context, paramAttributeSet: AttributeSet? = null) : this(context, paramAttributeSet, 0) {
@@ -55,33 +55,33 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
         }
         paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.DITHER_FLAG)
         path = Path()
-        colorList = getColorList(defaultColors)
+        colorList = defaultColors.getColorList()
     }
 
-    private fun getColorList(colors: IntArray): List<Int?> {
-        var colors = colors
-        if (Utils.isEmpty(colors)) {
-            colors = defaultColors
+    private fun IntArray.getColorList(): List<Int> {
+        var c = this
+        if (Utils.isEmpty(c)) {
+            c = defaultColors
         }
-        val colorList: MutableList<Int?> = CopyOnWriteArrayList()
-        for (i in colors.indices) {
-            colorList.add(colors[i])
+        val colorList: MutableList<Int> = CopyOnWriteArrayList()
+        for (i in c.indices) {
+            colorList.add(c[i])
         }
         return colorList
     }
 
     private fun drawBallStroke(canvas: Canvas) {
-        paint!!.color = strokeColor
-        paint!!.strokeWidth = strokeWidth
-        paint!!.style = Paint.Style.STROKE
+        paint.color = strokeColor
+        paint.strokeWidth = strokeWidth
+        paint.style = Paint.Style.STROKE
         canvas.drawPath(path, paint)
-        paint!!.color = lineColor
-        paint!!.strokeWidth = lineWidth
+        paint.color = lineColor
+        paint.strokeWidth = lineWidth
         canvas.drawPath(path, paint)
     }
 
     private fun drawBall(canvas: Canvas) {
-        paint!!.style = Paint.Style.FILL
+        paint.style = Paint.Style.FILL
         if (Utils.isEmpty(colorList)) {
             return
         }
@@ -93,8 +93,9 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
         for (i in pointList.indices) {
             point = pointList[i]
             val color = abs(((i + next) % n).toInt())
-            paint!!.color = colorList[color]!!
-            canvas.drawCircle(point!!.x.toFloat(), point!!.y.toFloat(), ballRadius, paint)
+            paint.color = colorList[color]
+            canvas.drawCircle(point?.x?.toFloat() ?: 0f, point?.y?.toFloat()
+                    ?: 0f, ballRadius, paint)
         }
     }
 
@@ -120,13 +121,13 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
         if (width <= 0 || height <= 0) {
             return
         }
-        path!!.reset()
+        path.reset()
         pointList.clear()
         val ballStrokeWidthSpace = strokeWidth / 2
         val localRectf = RectF(ballStrokeWidthSpace, ballStrokeWidthSpace, width - ballStrokeWidthSpace, height - ballStrokeWidthSpace)
-        path!!.addRoundRect(localRectf, strokeRadius, strokeRadius, Path.Direction.CW)
+        path.addRoundRect(localRectf, strokeRadius, strokeRadius, Path.Direction.CW)
         pathMeasure = PathMeasure(path, false)
-        val pathLength = pathMeasure!!.length
+        val pathLength = pathMeasure?.length ?: 0f
         if (avaBallSpace <= 0) {
             avaBallSpace = pathLength * 1.0f / (pathLength / (ballRadius * 2))
         }
@@ -137,7 +138,7 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
         val pos = FloatArray(2)
         var distance = 0f
         while (distance <= pathLength) {
-            if (pathMeasure!!.getPosTan(distance, pos, null)) {
+            if (pathMeasure?.getPosTan(distance, pos, null) == true) {
                 if (pathLength - distance >= tempBallSpace) {
                     pointList.add(Point(pos[0].toInt(), pos[1].toInt()))
                 }
@@ -152,7 +153,6 @@ class CircleLineLayout(context: Context, attributeSet: AttributeSet?, defStyleAt
     }
 
     companion object {
-        private const val TAG = "CircleLineLayout"
         private const val DEFAULT_DURING = 300
         private val defaultColors = intArrayOf(
                 Color.parseColor("#f63a0c")
