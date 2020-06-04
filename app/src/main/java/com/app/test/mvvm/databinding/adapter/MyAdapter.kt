@@ -1,5 +1,6 @@
 package com.app.test.mvvm.databinding.adapter
 
+import android.databinding.DataBindingUtil
 import android.view.View
 import com.app.test.R
 import com.app.test.databinding.ItemCommentDetialBinding
@@ -22,12 +23,31 @@ class MyAdapter(data: List<CommentBean>) : BaseQuickAdapter<CommentBean, MyAdapt
 
     class CustomHolder private constructor(view: View) : BaseViewHolder(view) {
 
-        private val mBinding: ItemCommentDetialBinding = ItemCommentDetialBinding.bind(view)
-
+        private val mBinding: ItemCommentDetialBinding? = DataBindingUtil.bind(view)
 
         fun bindTo(dto: CommentBean) {
-            mBinding.commentDto = dto
-            mBinding.executePendingBindings()
+            mBinding?.commentDto = dto
+            mBinding?.executePendingBindings()
         }
     }
 }
+
+
+//class MyAdapter(data: List<CommentBean>) : BaseQuickAdapter<CommentBean, MyAdapter.CustomHolder>(data) {
+//
+//
+//    override fun onCreateDefViewHolder(parent: ViewGroup?, viewType: Int): CustomHolder {
+//        val mBinding: ItemCommentDetialBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.item_comment_detial, parent, false)
+//
+//        return CustomHolder(mBinding.root);
+//    }
+//
+//    override fun convert(helper: CustomHolder, item: CommentBean) {
+//        val mBinding: ItemCommentDetialBinding? = DataBindingUtil.getBinding(helper.itemView)
+//        mBinding?.commentDto = item
+//        mBinding?.executePendingBindings()
+//    }
+//
+//
+//    class CustomHolder(view: View?) : BaseViewHolder(view)
+//}
