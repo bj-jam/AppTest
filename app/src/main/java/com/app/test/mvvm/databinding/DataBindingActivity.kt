@@ -116,6 +116,9 @@ class DataBindingActivity : Activity(), LifecycleOwner {
             dto.commentId = i.toString() + ""
             dto.userName = i.toString() + "name"
             dto.userAvatar = urlData[random.nextInt(urlData.size - 1)]
+            if (i % 2 == 0) {
+                dto.isShowAll = true
+            }
             dataList.add(dto)
         }
 
