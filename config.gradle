@@ -1,0 +1,14 @@
+def build_app = [:]
+// app version 修改版本号时与app strings同步
+build_app.version_name = "5.0.0"
+build_app.version_code = 50
+// sdk version
+build_app.compile_sdk = 28
+build_app.build_tools = "28.0.3"
+build_app.min_sdk = 21
+build_app.target_sdk = 26
+
+
+ext.build_app = build_app
+
+

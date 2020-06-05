@@ -73,18 +73,18 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '28.0.3'
-    sourceSets.main {
-        jniLibs.srcDirs = ['libs']
-        manifest.srcFile 'AndroidManifest.xml'
-        java.srcDirs = ['src']
-        resources.srcDirs = ['src']
-        aidl.srcDirs = ['src']
-        renderscript.srcDirs = ['src']
-        res.srcDirs = ['res']
-        assets.srcDirs = ['assets']
-    }
+    compileSdkVersion build_app.compile_sdk
+    buildToolsVersion build_app.build_tools
+//    sourceSets.main {
+//        jniLibs.srcDirs = ['libs']
+//        manifest.srcFile 'AndroidManifest.xml'
+//        java.srcDirs = ['src']
+//        resources.srcDirs = ['src']
+//        aidl.srcDirs = ['src']
+//        renderscript.srcDirs = ['src']
+//        res.srcDirs = ['res']
+//        assets.srcDirs = ['assets']
+//    }
 
     repositories {
         flatDir {
@@ -116,12 +116,12 @@ android {
     defaultConfig {
         applicationId 'com.app.test'
         //支持的最低版本
-        minSdkVersion 21
+        minSdkVersion build_app.min_sdk
         //支持的目标版本
-        targetSdkVersion 26
+        targetSdkVersion build_app.target_sdk
         multiDexEnabled true
-        versionCode 126
-        versionName "4.0.2"
+        versionCode build_app.version_code
+        versionName build_app.version_name
 
 //        ndk {
 //            abiFilters "armeabi-v7a", "x86"
