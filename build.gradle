@@ -9,8 +9,9 @@ allprojects {
 }
 
 
+// 获取当前时间
 def releaseTime() {
-    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+    return new Date().format("yyyy-MM-dd-HHmm", TimeZone.getTimeZone("Asia/Shanghai"))
 }
 
 buildscript {
