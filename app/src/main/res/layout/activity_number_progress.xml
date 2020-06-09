@@ -70,4 +70,8 @@
         android:layout_margin="20dp"
         custom:progress_current="80" />
 
+    <com.app.test.numberprogressbar.ObliqueProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
 </LinearLayout>
