@@ -881,7 +881,4 @@ https://www.imooc.com/article/24025?block_id=tuijian_wz （这篇从设计模式
 
 OkHttp3对RealCall的注释及上篇是Dispatcher
 
-https://blog.csdn.net/dingding_android/article/details/51942000
-————————————————
-版权声明：本文为CSDN博主「茶卡y」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/u012881042/article/details/79759203
+68、git 生成证书 ssh-keygen -t rsa
