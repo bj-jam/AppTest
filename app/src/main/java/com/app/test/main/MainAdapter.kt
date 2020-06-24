@@ -17,6 +17,7 @@ import com.app.test.circularprogress.CircularProgressActivity
 import com.app.test.citypicker.CityPickerActivity
 import com.app.test.column.ColumnActivity
 import com.app.test.date.DateActivity
+import com.app.test.edittext.PasswordActivity
 import com.app.test.expandablelist.ExpandableListViewActivity
 import com.app.test.flexbox.FlexboxActivity
 import com.app.test.floatbutton.FloatButtonActivity
@@ -159,6 +160,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.PickCropActivity)
         texts.add(R.string.CharActivity)
         texts.add(R.string.CityPickerActivity)
+        texts.add(R.string.PasswordActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -217,6 +219,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(PickCropActivity::class.java) //
         clzs.add(CharActivity::class.java) //
         clzs.add(CityPickerActivity::class.java) //
+        clzs.add(PasswordActivity::class.java) //
     }
 
     interface OnLister {

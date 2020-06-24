@@ -326,4 +326,32 @@
         <attr name="chart_donutRoundCorners" format="boolean" />
         <attr name="chart_donutTotal" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="PasswordEditText">
+        <!-- 密码的个数 -->
+        <attr name="passwordNumber" format="integer" />
+        <!-- 密码圆点的半径 -->
+        <attr name="passwordRadius" format="dimension" />
+        <!-- 密码圆点的颜色 -->
+        <attr name="passwordColor" format="color" />
+        <!-- 下划线的厚度 -->
+        <attr name="underlineSize" format="dimension" />
+        <!-- 下划线的颜色 -->
+        <attr name="textUnderlineColor" format="color" />
+        <!-- 分割线的颜色 -->
+        <attr name="divisionLineColor" format="color" />
+        <!-- 分割线的大小 -->
+        <attr name="divisionLineSize" format="color" />
+        <!-- 背景边框的颜色 -->
+        <attr name="bgColor" format="color" />
+        <!-- 背景边框的大小 -->
+        <attr name="bgSize" format="dimension" />
+        <!-- 背景边框的圆角大小 -->
+        <attr name="bgCorner" format="dimension" />
+        <!-- -->
+        <attr name="bgStyle" format="integer">
+            <enum name="border" value="0" />
+            <enum name="underline" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

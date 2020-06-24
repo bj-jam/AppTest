@@ -69,6 +69,7 @@ dependencies {
     //图片裁剪库
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
 //    implementation 'com.hannesdorfmann.parcelableplease:annotation:1.0.2'
+    implementation 'com.liulishuo.filedownloader:library:1.7.7'
 
 }
 
