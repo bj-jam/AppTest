@@ -1,10 +1,6 @@
 package com.app.test.main
 
 import android.content.Intent
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.TextView
 import com.app.test.R
 import com.app.test.anim.AnimActivity
 import com.app.test.appinfo.AppInfoActivity
@@ -64,44 +60,25 @@ import com.app.test.viewpager.ViewPagerActivity
 import com.app.test.wave.WaveActivity
 import com.app.test.webview.WebViewActivity
 import com.app.test.williamchart.williamchartdemo.CharActivity
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
 
-class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
+class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseViewHolder>(R.layout.view_main_item) {
     private val texts: MutableList<Int> = ArrayList()
     private val clzs: ArrayList<Class<*>> = ArrayList()
 
-    override fun getCount(): Int {
-        return texts.size
-    }
-
-    override fun getItem(position: Int): Any {
-        return texts[position]
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getView(position: Int, view: View?, parent: ViewGroup?): View? {
-        var v = view
-        val holder: Holder?
-        if (v == null) {
-            v = View.inflate(parent?.context, R.layout.view_main_item, null)
-            holder = Holder()
-            holder.textView = v.findViewById<View>(R.id.textView) as TextView
-            v.tag = holder
-        } else {
-            holder = v.tag as Holder
+    override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
+        holder?.also {
+            it.setText(R.id.textView, it.itemView?.context?.resources?.getString(texts[position]))
+            it.itemView?.setOnClickListener {
+                holder.itemView?.context?.startActivity(
+                        Intent(holder.itemView?.context, clzs[position]))
+            }
         }
-        holder.textView?.text = parent?.context?.resources?.getString(texts[position])
-        v?.setOnClickListener {
-            parent?.context?.startActivity(
-                    Intent(parent?.context, clzs[position]))
-        }
-        return v
     }
 
-    private inner class Holder {
-        var textView: TextView? = null
+    override fun convert(helper: BaseViewHolder, item: Int?) {
+
     }
 
     private fun setData() {
@@ -231,5 +208,8 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
 
     init {
         setData()
+        setNewData(texts)
     }
+
+
 }

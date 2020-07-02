@@ -23,8 +23,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.app.test.R;
@@ -42,7 +45,7 @@ import java.io.OutputStreamWriter;
 public class MainActivity extends Activity implements MainAdapter.OnLister {
     // http://www.smaxe.com/order.jsf#request_evaluation_key
 
-    private ListView listView;
+    private RecyclerView recyclerView;
     private MainAdapter adapter;
 
     // private SmsBroadcastReceiver recevier;
@@ -54,12 +57,11 @@ public class MainActivity extends Activity implements MainAdapter.OnLister {
 
         initData();
         initView();
-        // FileUtil.queryPicture(this);
-        Log.e("jam", "onCreate: " + Build.DEVICE);
+//        FileUtil.queryPicture(this);
 //        BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
-//        Log.e("jam", "onCreate: " +  myDevice.getName());
-        // isOPen(this);
-        // openGPS(this);
+//        Log.e("jam", "onCreate: " + myDevice.getName());
+//         isOPen(this);
+//         openGPS(this);
         checkPermission();
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -74,13 +76,6 @@ public class MainActivity extends Activity implements MainAdapter.OnLister {
         }
         fileOutput("com.app.test", "jdfkajdsfkasjdfk");
         fileInput("com.app.test");
-
-        Log.e("jam", "120.27.148.181/appstudent/student/tutorialV2/getStudyingCourseListV2?osVersion=2&page=1&pageSize=500&secretStr=MMaHAJ3%2BL4nm6oEolHN8rQ==&userId=153920 ");
-        try {
-//            Log.e("jam", EUtil.eString(this, "sdfasdf", 2, true, 1));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -220,10 +215,12 @@ public class MainActivity extends Activity implements MainAdapter.OnLister {
 
     private void initView() {
 
-        listView = (ListView) findViewById(R.id.listView);
-
+        recyclerView = findViewById(R.id.listView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
         adapter = new MainAdapter(this);
-        listView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
     /**
