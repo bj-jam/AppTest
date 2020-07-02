@@ -7,6 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.app.test.R
 import com.app.test.anim.AnimActivity
+import com.app.test.appinfo.AppInfoActivity
 import com.app.test.bezier.NewUiActivity
 import com.app.test.bubble.BubbleActivity
 import com.app.test.camera.CameraActivity
@@ -161,6 +162,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         texts.add(R.string.CharActivity)
         texts.add(R.string.CityPickerActivity)
         texts.add(R.string.PasswordActivity)
+        texts.add(R.string.AppInfoActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -220,6 +222,7 @@ class MainAdapter(private val onLister: OnLister) : BaseAdapter() {
         clzs.add(CharActivity::class.java) //
         clzs.add(CityPickerActivity::class.java) //
         clzs.add(PasswordActivity::class.java) //
+        clzs.add(AppInfoActivity::class.java) //
     }
 
     interface OnLister {
