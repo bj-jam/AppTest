@@ -94,6 +94,7 @@
         <activity android:name="com.app.test.citypicker.CityPickerActivity" />
         <activity android:name="com.app.test.edittext.PasswordActivity" />
         <activity android:name="com.app.test.appinfo.AppInfoActivity" />
+        <activity android:name="com.app.test.vector.VectorActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

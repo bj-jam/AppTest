@@ -55,6 +55,7 @@ import com.app.test.spannable.SpannableActivity
 import com.app.test.timelytextview.TimelyActivity
 import com.app.test.titanic.TitanicActivity
 import com.app.test.transition.activity.TransitionActivity
+import com.app.test.vector.VectorActivity
 import com.app.test.viewflipper.ViewFlipperActivity
 import com.app.test.viewpager.ViewPagerActivity
 import com.app.test.wave.WaveActivity
@@ -140,6 +141,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.CityPickerActivity)
         texts.add(R.string.PasswordActivity)
         texts.add(R.string.AppInfoActivity)
+        texts.add(R.string.VectorActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -200,6 +202,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(CityPickerActivity::class.java) //
         clzs.add(PasswordActivity::class.java) //
         clzs.add(AppInfoActivity::class.java) //
+        clzs.add(VectorActivity::class.java) //
     }
 
     interface OnLister {
