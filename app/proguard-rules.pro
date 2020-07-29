@@ -379,7 +379,6 @@ public static java.lang.String TABLENAME;
   **[] $VALUES;
   public *;
 }
--keep class com.maiya.suixingou.common.glide.** { *; }
 
 # for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
@@ -488,16 +487,6 @@ public static final int *;
 -keepclassmembers class ** {
     @com.gx.dfttsdk.news.core_framework.bus.Subscribe <methods>;
 }
--keep class com.maiya.core.common.widget.loading_indicator_view.** { *; }
-
--keep enum com.gx.dfttsdk.news.core_framework.bus.ThreadMode { *; }
--keep class com.songwo.luckycat.business.manager.UserWrapper {
-*;
-}
-
--keep class com.songheng.library.app.util.** { *; }
--keep class com.maiya.core.common.dsbridge.** { *; }
--keep class com.maiya.core.common.widget.imagepicker.bean.ImageItem { *; }
 
 
 -keep public class * implements com.bumptech.glide.module.GlideModule
@@ -505,9 +494,6 @@ public static final int *;
 -keep class com.songwo.luckycat.business.serverbean.** { *; }
 -keep class com.songwo.luckycat.common.bean.** { *; }
 -keep public class * implements java.io.Serializable {*;}
-
--keep class com.mop.assassin.**.bean.** { *; }
-
 
 #---------------bugly-------------------------
 -dontwarn com.tencent.bugly.**
