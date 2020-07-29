@@ -76,16 +76,6 @@ dependencies {
 android {
     compileSdkVersion build_app.compile_sdk
     buildToolsVersion build_app.build_tools
-//    sourceSets.main {
-//        jniLibs.srcDirs = ['libs']
-//        manifest.srcFile 'AndroidManifest.xml'
-//        java.srcDirs = ['src']
-//        resources.srcDirs = ['src']
-//        aidl.srcDirs = ['src']
-//        renderscript.srcDirs = ['src']
-//        res.srcDirs = ['res']
-//        assets.srcDirs = ['assets']
-//    }
 
     repositories {
         flatDir {
@@ -138,10 +128,12 @@ android {
             abi {
                 enable true
                 reset()
-                include  "armeabi-v7a"
+                include "armeabi-v7a"
                 universalApk true
             }
         }
+        // 必须要保证所有的flavor 都属于同一个维度
+        flavorDimensions "default"
     }
     // 打包配置
     // 解决jar内容重复
@@ -162,14 +154,51 @@ android {
         javaMaxHeapSize "4g"
         jumboMode false
     }
-//    signingConfigs {
-//        release {
-//            storeFile file("F:/debug.keystore")
-//            storePassword "test"//密钥文件密码
-//            keyAlias "test"//key别名
-//            keyPassword "test"//key密码
-//        }
-//    }
+    signingConfigs {
+        debug {
+            storeFile file("key/appsign.jks")
+            storePassword "android"
+            keyAlias "signkey"
+            keyPassword "android"
+        }
+        release {
+            storeFile file("key/appsign.jks")
+            storePassword "android"
+            keyAlias "signkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            // 移除无用的resource文件
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        appOne {
+            dimension "default"
+            signingConfig signingConfigs.release
+        }
+        appTwo {
+            dimension "default"
+            signingConfig signingConfigs.release
+        }
+    }
+
 
     //    externalNativeBuild {
 //        cmake {
