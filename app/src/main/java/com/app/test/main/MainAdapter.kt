@@ -142,6 +142,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.PasswordActivity)
         texts.add(R.string.AppInfoActivity)
         texts.add(R.string.VectorActivity)
+        texts.add(R.string.ViewPagerActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -203,6 +204,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(PasswordActivity::class.java) //
         clzs.add(AppInfoActivity::class.java) //
         clzs.add(VectorActivity::class.java) //
+        clzs.add(com.app.test.viewpager.viewpager.ViewPagerActivity::class.java) //
     }
 
     interface OnLister {

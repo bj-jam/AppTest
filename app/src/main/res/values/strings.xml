@@ -107,4 +107,5 @@
     <string name="PasswordActivity">自动以输入框</string>
     <string name="AppInfoActivity">app信息</string>
     <string name="VectorActivity">矢量图</string>
+    <string name="ViewPagerActivity">ViewPager</string>
 </resources>
