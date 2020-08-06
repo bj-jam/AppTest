@@ -30,7 +30,6 @@ import com.app.test.loading.LoadingActivity
 import com.app.test.lottie.LottieActivity
 import com.app.test.matrix.MatrixActivity
 import com.app.test.mirrorimage.MirrorImageActivity
-import com.app.test.move.MoveActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
 import com.app.test.numberprogressbar.NumberProgressActivity
@@ -111,7 +110,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.transition_activity)
         texts.add(R.string.data_binding_activity)
         texts.add(R.string.smart_refresh_activity)
-        texts.add(R.string.move_activity)
         texts.add(R.string.lottie_activity)
         texts.add(R.string.red_envelopes_activity)
         texts.add(R.string.new_ui_activity)
@@ -173,7 +171,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(TransitionActivity::class.java) //
         clzs.add(DataBindingActivity::class.java) //
         clzs.add(SmartRefreshActivity::class.java) //
-        clzs.add(MoveActivity::class.java) //
         clzs.add(LottieActivity::class.java) //
         clzs.add(RedEnvelopesActivity::class.java) //
         clzs.add(NewUiActivity::class.java) //

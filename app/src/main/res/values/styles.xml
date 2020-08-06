@@ -1,52 +1,10 @@
 <resources>
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
-
     <style name="TeachingAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="mediacontroller_seekbar" parent="android:Widget.SeekBar">
-        <item name="android:progressDrawable">@drawable/scrubber_progress_horizontal_holo_dark
-        </item>
-        <item name="android:indeterminateDrawable">
-            @drawable/scrubber_progress_horizontal_holo_dark
-        </item>
-        <item name="android:minHeight">5dp</item>
-        <item name="android:maxHeight">5dp</item>
-        <item name="android:thumb">@drawable/icon_playing</item>
-    </style>
 
-    <style name="dialogStyle" parent="@android:style/Theme.NoTitleBar.Fullscreen">
-        <item name="android:windowFullscreen">true</item>
-        <!-- 边框 -->
-        <item name="android:windowFrame">@null</item>
-        <!-- 是否浮现在activity之上 -->
-        <item name="android:windowIsFloating">true</item>
-        <!-- 半透明 -->
-        <item name="android:windowIsTranslucent">false</item>
-        <!-- 无标题 -->
-        <item name="android:windowNoTitle">true</item>
-        <!-- 背景透明 -->
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <!-- 模糊 -->
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
     <!-- 学习进度选择日期DatePicker的样式 -->
     <style name="ProgressDatePicker" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">true</item>
@@ -79,21 +37,6 @@
 
     </style>
 
-    <style name="SwitchCompat.Control" parent="Theme.AppCompat.Light">
-        <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">#FFEB3B</item>
-        <item name="colorSwitchThumbNormal">@color/red</item>
-        <item name="android:colorForeground">#ff00ff</item>
-    </style>
-
-    <style name="SwitchCompat.Text" parent="Theme.AppCompat.Light">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">9dp</item>
-    </style>
-
-    <style name="SwitchStyle" parent="AppTheme">
-        <item name="colorAccent">@color/green</item>
-    </style>
 
     <style name="menu_labels_style">
         <item name="android:background">@drawable/fab_label_background</item>

@@ -22,20 +22,9 @@ public class HorizonAdapter extends PagerAdapter {
     private List<String> mdata;
     private VerticalViewPager mViewPager;
 
-    public interface OnImgClickListener {
-        void onImgClick(View view);
-    }
-
-    private OnImgClickListener mOnImageClikListener;
-
-    public void setmOnImageClikListener(OnImgClickListener mOnImageClikListener) {
-        this.mOnImageClikListener = mOnImageClikListener;
-    }
-
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mOnImageClikListener.onImgClick(v);
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
     };

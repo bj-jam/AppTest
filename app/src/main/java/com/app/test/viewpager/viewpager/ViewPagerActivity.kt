@@ -1,15 +1,9 @@
 package com.app.test.viewpager.viewpager
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.Window
-import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TextView
 import com.app.test.R
 
 class ViewPagerActivity : AppCompatActivity() {
@@ -34,40 +28,17 @@ class ViewPagerActivity : AppCompatActivity() {
             "http://b.hiphotos.baidu.com/image/pic/item/e824b899a9014c08878b2c4c0e7b02087af4f4a3.jpg"
     )
     private var mAdapter: HorizonAdapter? = null
-    private var mImgClick: ImageView? = null
-    private var mImgAdd: ImageView? = null
-    private var mTvAdd: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_viewpager1)
         initView()
         initData()
-        initEvent()
     }
 
-    private fun initEvent() {
-        mAdapter?.setmOnImageClikListener {
-            mImgClick?.visibility = View.VISIBLE
-            val imgClickAnimation = AnimationUtils.loadAnimation(this@ViewPagerActivity
-                    , R.anim.collect_click)
-            mImgClick?.startAnimation(imgClickAnimation)
-            val bigAnimationX: Animator = ObjectAnimator.ofFloat(mImgAdd, "scaleX", 1.0f, 1.3f, 1.0f)
-            val bigAnimationY: Animator = ObjectAnimator.ofFloat(mImgAdd, "scaleY", 1.0f, 1.3f, 1.0f)
-            val set = AnimatorSet()
-            set.play(bigAnimationX).with(bigAnimationY)
-            set.start()
-            val tvClickAnimation = AnimationUtils.loadAnimation(this@ViewPagerActivity, R.anim.tv_collect_add)
-            mTvAdd?.visibility = View.VISIBLE
-            mTvAdd?.startAnimation(tvClickAnimation)
-        }
-    }
 
     private fun initView() {
         mViewPager = findViewById<View>(R.id.viewpager) as VerticalViewPager
-        mImgClick = findViewById<View>(R.id.iv_collect_click) as ImageView
-        mImgAdd = findViewById<View>(R.id.iv_collect_add) as ImageView
-        mTvAdd = findViewById<View>(R.id.tv_collect_add) as TextView
     }
 
     private fun initData() {
