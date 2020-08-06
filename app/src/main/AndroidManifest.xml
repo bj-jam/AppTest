@@ -52,10 +52,8 @@
         <activity android:name="com.app.test.wave.WaveActivity" />
         <activity android:name="com.app.test.webview.WebViewActivity" />
         <activity android:name="com.app.test.cardview.CardViewActivity" />
-        <activity android:name="com.app.test.listview.LiseViewActivity" />
         <activity android:name="com.app.test.anim.AnimActivity" />
         <activity android:name="com.app.test.recyclerview.DampingActivity" />
-        <activity android:name="com.app.test.recyclerview.Damping1Activity" />
         <activity android:name="com.app.test.smartrefresh.SmartRefreshActivity" />
         <activity android:name="com.app.test.lottie.LottieActivity" />
         <activity android:name="com.app.test.redenveloped.RedEnvelopesActivity" />
@@ -67,7 +65,7 @@
         <activity android:name="com.app.test.circularprogress.Sample3Activity" />
         <activity android:name="com.app.test.circularprogress.Sample4Activity" />
         <activity android:name="com.app.test.circularprogress.Sample5Activity" />
-        <activity android:name="com.app.test.numberprogressbar.NumberProgressActivity" />
+        <activity android:name="com.app.test.progressbar.ProgressActivity" />
         <activity android:name="com.app.test.titanic.TitanicActivity" />
         <activity android:name="com.app.test.scrollview.ScrollViewActivity" />
         <activity android:name="com.app.test.ring.anim.CircleBankActivity" />
@@ -75,10 +73,8 @@
         <activity android:name="com.app.test.ring.anim.CircleActivity" />
         <activity android:name="com.app.test.sortlist.SortListActivity" />
         <activity android:name="com.app.test.matrix.MatrixActivity" />
-        <activity android:name="com.app.test.viewflipper.ViewFlipperActivity" />
         <activity android:name="com.app.test.timelytextview.TimelyActivity" />
         <activity android:name="com.app.test.radar.RadarActivity" />
-        <activity android:name="com.app.test.loading.LoadingActivity" />
         <activity android:name="com.app.test.bubble.BubbleActivity" />
         <activity android:name="com.app.test.likesougou.LikeSouGouActivity" />
         <activity android:name="com.app.test.game.ui.AnswerActivity" />

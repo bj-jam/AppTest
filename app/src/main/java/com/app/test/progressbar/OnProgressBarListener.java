@@ -1,4 +1,4 @@
-package com.app.test.numberprogressbar;
+package com.app.test.progressbar;
 
 /**
  */

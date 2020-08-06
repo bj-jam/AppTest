@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.app.test.loading;
+package com.app.test.progressbar;
 
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;

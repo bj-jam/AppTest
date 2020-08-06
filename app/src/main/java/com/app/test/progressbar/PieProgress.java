@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.app.test.loading;
+package com.app.test.progressbar;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -35,7 +35,7 @@ import com.app.test.R;
  * Class used internally by {@link RefreshActionItem} to show a determinate
  * progress indicator. Two display modes are supported "wheel" and "pie"
  */
-class PieProgress extends View {
+public class PieProgress extends View {
     private final RectF mRect = new RectF();
     private final RectF mRectInner = new RectF();
     private final Paint mPaintForeground = new Paint();

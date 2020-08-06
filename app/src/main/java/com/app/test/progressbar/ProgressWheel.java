@@ -1,4 +1,4 @@
-package com.app.test.loading;
+package com.app.test.progressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;

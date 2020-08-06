@@ -1,14 +1,24 @@
-package com.app.test.loading;
+package com.app.test.progressbar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.app.test.R;
 
-public class LoadingActivity extends Activity {
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+public class ProgressActivity extends Activity implements OnProgressBarListener {
+    private Timer timer;
+
+    private NumberProgressBar bnp;
+
 
     private ProgressWheel pwOne, pwTwo;
     private PieProgress mPieProgress1, mPieProgress2;
@@ -18,7 +28,23 @@ public class LoadingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading);
+        setContentView(R.layout.activity_number_progress);
+
+        bnp = (NumberProgressBar) findViewById(R.id.numberbar1);
+        bnp.setOnProgressBarListener(this);
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        bnp.incrementProgressBy(1);
+                    }
+                });
+            }
+        }, 1000, 100);
+
 
         pwOne = (ProgressWheel) findViewById(R.id.progress_bar_one);
         pwOne.spin();
@@ -30,7 +56,7 @@ public class LoadingActivity extends Activity {
         new Thread(indicatorRunnable).start();
 
         Button startBtn = (Button) findViewById(R.id.btn_start);
-        startBtn.setOnClickListener(new OnClickListener() {
+        startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!wheelRunning) {
                     wheelProgress = 0;
@@ -41,7 +67,7 @@ public class LoadingActivity extends Activity {
         });
 
         Button pieStartBtn = (Button) findViewById(R.id.btn_start2);
-        pieStartBtn.setOnClickListener(new OnClickListener() {
+        pieStartBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!pieRunning) {
                     pieProgress = 0;
@@ -50,6 +76,7 @@ public class LoadingActivity extends Activity {
             }
         });
     }
+
 
     final Runnable r = new Runnable() {
         public void run() {
@@ -84,4 +111,34 @@ public class LoadingActivity extends Activity {
             pieRunning = false;
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+    }
+
+    @Override
+    public void onProgressChange(int current, int max) {
+        if (current == max) {
+            Toast.makeText(getApplicationContext(), "结束", Toast.LENGTH_SHORT).show();
+            bnp.setProgress(0);
+        }
+    }
 }

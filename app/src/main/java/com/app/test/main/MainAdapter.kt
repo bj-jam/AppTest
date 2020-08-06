@@ -25,18 +25,15 @@ import com.app.test.jbox.JBoxActivity
 import com.app.test.keyboard.KeyboardActivity
 import com.app.test.likesougou.LikeSouGouActivity
 import com.app.test.line.LineActivity
-import com.app.test.listview.LiseViewActivity
-import com.app.test.loading.LoadingActivity
 import com.app.test.lottie.LottieActivity
 import com.app.test.matrix.MatrixActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
-import com.app.test.numberprogressbar.NumberProgressActivity
+import com.app.test.progressbar.ProgressActivity
 import com.app.test.paint.PaintActivity
 import com.app.test.path.PathActivity
 import com.app.test.pickcrop.PickCropActivity
 import com.app.test.radar.RadarActivity
-import com.app.test.recyclerview.Damping1Activity
 import com.app.test.recyclerview.DampingActivity
 import com.app.test.recyclerview.RecyclerViewActivity
 import com.app.test.redenveloped.RedEnvelopesActivity
@@ -54,7 +51,6 @@ import com.app.test.timelytextview.TimelyActivity
 import com.app.test.titanic.TitanicActivity
 import com.app.test.transition.activity.TransitionActivity
 import com.app.test.vector.VectorActivity
-import com.app.test.viewflipper.ViewFlipperActivity
 import com.app.test.viewpager.ViewPagerActivity
 import com.app.test.wave.WaveActivity
 import com.app.test.webview.WebViewActivity
@@ -100,11 +96,9 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.wave_activity)
         texts.add(R.string.webview_activity)
         texts.add(R.string.cardView_activity)
-        texts.add(R.string.list_view_activity)
         texts.add(R.string.keyboard_activity)
         texts.add(R.string.anim_activity)
         texts.add(R.string.damping_activity)
-        texts.add(R.string.damping1_activity)
         texts.add(R.string.transition_activity)
         texts.add(R.string.data_binding_activity)
         texts.add(R.string.smart_refresh_activity)
@@ -120,11 +114,9 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.SortListActivity)
         texts.add(R.string.SpannableActivity)
         texts.add(R.string.MatrixActivity)
-        texts.add(R.string.ViewFlipperActivity)
         texts.add(R.string.TimelyActivity)
         texts.add(R.string.TargetActivity)
         texts.add(R.string.RadarActivity)
-        texts.add(R.string.LoadingActivity)
         texts.add(R.string.BubbleActivity)
         texts.add(R.string.LikeSouGouActivity)
         texts.add(R.string.GameReviewModeActivity)
@@ -160,11 +152,9 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(WaveActivity::class.java) //
         clzs.add(WebViewActivity::class.java) //
         clzs.add(CardViewActivity::class.java) //
-        clzs.add(LiseViewActivity::class.java) //
         clzs.add(KeyboardActivity::class.java) //
         clzs.add(AnimActivity::class.java) //
         clzs.add(DampingActivity::class.java) //
-        clzs.add(Damping1Activity::class.java) //
         clzs.add(TransitionActivity::class.java) //
         clzs.add(DataBindingActivity::class.java) //
         clzs.add(SmartRefreshActivity::class.java) //
@@ -173,18 +163,16 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(NewUiActivity::class.java) //
         clzs.add(FloatButtonActivity::class.java) //
         clzs.add(CircularProgressActivity::class.java) //
-        clzs.add(NumberProgressActivity::class.java) //
+        clzs.add(ProgressActivity::class.java) //
         clzs.add(TitanicActivity::class.java) //
         clzs.add(ScrollViewActivity::class.java) //
         clzs.add(CircleMenuActivity::class.java) //
         clzs.add(SortListActivity::class.java) //
         clzs.add(SpannableActivity::class.java) //
         clzs.add(MatrixActivity::class.java) //
-        clzs.add(ViewFlipperActivity::class.java) //
         clzs.add(TimelyActivity::class.java) //
         clzs.add(TargetActivity::class.java) //
         clzs.add(RadarActivity::class.java) //
-        clzs.add(LoadingActivity::class.java) //
         clzs.add(BubbleActivity::class.java) //
         clzs.add(LikeSouGouActivity::class.java) //
         clzs.add(AnswerActivity::class.java) //

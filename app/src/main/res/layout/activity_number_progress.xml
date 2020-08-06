@@ -1,77 +1,184 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/dp16">
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar1"
-        style="@style/NumberProgressBar_Default"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        custom:progress_current="0" />
-
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar2"
-        style="@style/NumberProgressBar_Passing_Green"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        custom:progress_current="20" />
+        android:orientation="vertical"
+        android:padding="@dimen/dp16">
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar3"
-        style="@style/NumberProgressBar_Relax_Blue"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="30" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar1"
+            style="@style/NumberProgressBar_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            custom:progress_current="0" />
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar4"
-        style="@style/NumberProgressBar_Grace_Yellow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="40" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar2"
+            style="@style/NumberProgressBar_Passing_Green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            custom:progress_current="20" />
+
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar3"
+            style="@style/NumberProgressBar_Relax_Blue"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="30" />
+
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar4"
+            style="@style/NumberProgressBar_Grace_Yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="40" />
 
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar5"
-        style="@style/NumberProgressBar_Warning_Red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="50" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar5"
+            style="@style/NumberProgressBar_Warning_Red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="50" />
 
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar6"
-        style="@style/NumberProgressBar_Funny_Orange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="60" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar6"
+            style="@style/NumberProgressBar_Funny_Orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="60" />
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar7"
-        style="@style/NumberProgressBar_Beauty_Red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="70" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar7"
+            style="@style/NumberProgressBar_Beauty_Red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="70" />
 
-    <com.app.test.numberprogressbar.NumberProgressBar
-        android:id="@+id/numberbar8"
-        style="@style/NumberProgressBar_Twinkle_Night"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        custom:progress_current="80" />
+        <com.app.test.progressbar.NumberProgressBar
+            android:id="@+id/numberbar8"
+            style="@style/NumberProgressBar_Twinkle_Night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            custom:progress_current="80" />
 
-    <com.app.test.numberprogressbar.ObliqueProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        <com.app.test.progressbar.ObliqueProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
-</LinearLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/frame_loading" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/rotate_loading_360"
+                android:indeterminateDuration="1800" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/rotate_loading_github"
+                android:indeterminateDuration="1800" />
+        </LinearLayout>
+
+        <com.app.test.progressbar.CustomClipLoading
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="start" />
+
+            <com.app.test.progressbar.ProgressWheel xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/progress_bar_two"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                ProgressWheel:barColor="#339BB9"
+                ProgressWheel:barWidth="4dp"
+                ProgressWheel:rimColor="#44000000"
+                ProgressWheel:rimWidth="4dp"
+                ProgressWheel:spinSpeed="3dp"
+                ProgressWheel:textString="click"
+                ProgressWheel:textStringColor="#222222"
+                ProgressWheel:textStringSize="14sp" />
+
+            <com.app.test.progressbar.ProgressWheel xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/progress_bar_one"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                ProgressWheel:barColor="#222"
+                ProgressWheel:barLength="30dp"
+                ProgressWheel:barWidth="6dp"
+                ProgressWheel:delayMillis="75"
+                ProgressWheel:rimColor="#4000"
+                ProgressWheel:rimWidth="2dp"
+                ProgressWheel:spinSpeed="20dp"
+                ProgressWheel:textStringColor="#222222"
+                ProgressWheel:textStringSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_start2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="start" />
+
+            <!-- default style -->
+
+            <com.app.test.progressbar.PieProgress xmlns:PieProgress="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pie_progress1"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <!-- custom style -->
+
+            <com.app.test.progressbar.PieProgress xmlns:PieProgress="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pie_progress2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                PieProgress:backgroundColor="#FF4444"
+                PieProgress:foregroundColor="#339BB9" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
