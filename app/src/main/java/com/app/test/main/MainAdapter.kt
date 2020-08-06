@@ -29,15 +29,14 @@ import com.app.test.lottie.LottieActivity
 import com.app.test.matrix.MatrixActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
-import com.app.test.progressbar.ProgressActivity
 import com.app.test.paint.PaintActivity
 import com.app.test.path.PathActivity
 import com.app.test.pickcrop.PickCropActivity
+import com.app.test.progressbar.ProgressActivity
 import com.app.test.radar.RadarActivity
 import com.app.test.recyclerview.DampingActivity
 import com.app.test.recyclerview.RecyclerViewActivity
 import com.app.test.redenveloped.RedEnvelopesActivity
-import com.app.test.ring.anim.CircleAnimActivity
 import com.app.test.ring.anim.CircleMenuActivity
 import com.app.test.ring.anim.color.RingAnimColorActivity
 import com.app.test.scrollview.ScrollViewActivity
@@ -82,7 +81,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.line_activity)
         texts.add(R.string.expandablelist_activity)
         texts.add(R.string.showimage_activity)
-        texts.add(R.string.circle_anim_activity)
         texts.add(R.string.column_activity)
         texts.add(R.string.ColorCircleActivity)
         texts.add(R.string.ColorRingActivity)
@@ -138,7 +136,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(LineActivity::class.java) //
         clzs.add(ExpandableListViewActivity::class.java) //
         clzs.add(ShowIamgeActivity::class.java) //
-        clzs.add(CircleAnimActivity::class.java) //
         clzs.add(ColumnActivity::class.java) //
         clzs.add(ColorCircleActivity::class.java) //
         clzs.add(RingAnimColorActivity::class.java) //

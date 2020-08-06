@@ -31,7 +31,6 @@
         <activity android:name="com.app.test.expandablelist.ExpandableListViewActivity" />
         <activity android:name="com.app.test.test.CirclePieActivity" />
         <activity android:name="com.app.test.showimage.ShowIamgeActivity" />
-        <activity android:name="com.app.test.ring.anim.CircleAnimActivity" />
         <activity android:name="com.app.test.ring.anim.color.RingAnimColorActivity" />
         <activity android:name="com.app.test.circle.anim.color.ColorCircleActivity" />
         <activity android:name="com.app.test.column.ColumnActivity" />

@@ -38,7 +38,6 @@
     <string name="line_activity">折线形图</string>
     <string name="expandablelist_activity">expandelistview</string>
     <string name="showimage_activity">图片放大</string>
-    <string name="circle_anim_activity">有动画的圆圈</string>
     <string name="column_activity">有动画的柱状</string>
     <string name="ColorCircleActivity">有动画的饼形图</string>
     <string name="ColorRingActivity">有动画边上的圆环</string>
