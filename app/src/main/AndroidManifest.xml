@@ -35,7 +35,6 @@
         <activity android:name="com.app.test.ring.anim.color.RingAnimColorActivity" />
         <activity android:name="com.app.test.circle.anim.color.ColorCircleActivity" />
         <activity android:name="com.app.test.column.ColumnActivity" />
-        <activity android:name="com.app.test.mirrorimage.MirrorImageActivity" />
         <activity android:name="com.app.test.glide.img.GlideLoadImgAcitvity" />
         <activity android:name="com.app.test.viewpager.ViewPagerActivity" />
         <activity android:name="com.app.test.service.ServiceActivity" />
@@ -58,7 +57,6 @@
         <activity android:name="com.app.test.recyclerview.DampingActivity" />
         <activity android:name="com.app.test.recyclerview.Damping1Activity" />
         <activity android:name="com.app.test.smartrefresh.SmartRefreshActivity" />
-        <activity android:name="com.app.test.move.MoveActivity" />
         <activity android:name="com.app.test.lottie.LottieActivity" />
         <activity android:name="com.app.test.redenveloped.RedEnvelopesActivity" />
         <activity android:name="com.app.test.bezier.NewUiActivity" />

@@ -29,7 +29,6 @@ import com.app.test.listview.LiseViewActivity
 import com.app.test.loading.LoadingActivity
 import com.app.test.lottie.LottieActivity
 import com.app.test.matrix.MatrixActivity
-import com.app.test.mirrorimage.MirrorImageActivity
 import com.app.test.mvvm.databinding.DataBindingActivity
 import com.app.test.notice.NoticeActivity
 import com.app.test.numberprogressbar.NumberProgressActivity
@@ -89,7 +88,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.showimage_activity)
         texts.add(R.string.circle_anim_activity)
         texts.add(R.string.column_activity)
-        texts.add(R.string.mirror_activity)
         texts.add(R.string.ColorCircleActivity)
         texts.add(R.string.ColorRingActivity)
         texts.add(R.string.glide_load_activity)
@@ -150,7 +148,6 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(ShowIamgeActivity::class.java) //
         clzs.add(CircleAnimActivity::class.java) //
         clzs.add(ColumnActivity::class.java) //
-        clzs.add(MirrorImageActivity::class.java) //
         clzs.add(ColorCircleActivity::class.java) //
         clzs.add(RingAnimColorActivity::class.java) //
         clzs.add(GlideLoadImgAcitvity::class.java) //
