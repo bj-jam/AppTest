@@ -26,6 +26,7 @@ class PaintActivity : Activity() {
     private fun initDate() {
         dataList.clear()
         dataList.add(PaintView(this))
+        dataList.add(XfermodeView(this))
         adapter = ViewAdapter(dataList);
 
         viewPager = findViewById(R.id.vp_view)
