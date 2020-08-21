@@ -86,4 +86,5 @@
     <string name="AppInfoActivity">app信息</string>
     <string name="VectorActivity">矢量图</string>
     <string name="ViewPagerActivity">ViewPager</string>
+    <string name="AllActivity">功能集合</string>
 </resources>

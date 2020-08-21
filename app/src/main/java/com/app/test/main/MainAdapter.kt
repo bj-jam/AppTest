@@ -2,6 +2,7 @@ package com.app.test.main
 
 import android.content.Intent
 import com.app.test.R
+import com.app.test.all.AllActivity
 import com.app.test.anim.AnimActivity
 import com.app.test.appinfo.AppInfoActivity
 import com.app.test.bezier.NewUiActivity
@@ -61,7 +62,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
     private val texts: MutableList<Int> = ArrayList()
     private val clzs: ArrayList<Class<*>> = ArrayList()
 
-    override fun onBindViewHolder(holder: BaseViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder?.also {
             it.setText(R.id.textView, it.itemView?.context?.resources?.getString(texts[position]))
             it.itemView?.setOnClickListener {
@@ -129,6 +130,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.AppInfoActivity)
         texts.add(R.string.VectorActivity)
         texts.add(R.string.ViewPagerActivity)
+        texts.add(R.string.AllActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -184,6 +186,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(AppInfoActivity::class.java) //
         clzs.add(VectorActivity::class.java) //
         clzs.add(com.app.test.viewpager.viewpager.ViewPagerActivity::class.java) //
+        clzs.add(AllActivity::class.java) //
     }
 
     interface OnLister {

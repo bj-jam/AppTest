@@ -89,6 +89,7 @@
         <activity android:name="com.app.test.appinfo.AppInfoActivity" />
         <activity android:name="com.app.test.vector.VectorActivity" />
         <activity android:name="com.app.test.viewpager.viewpager.ViewPagerActivity" />
+        <activity android:name=".all.AllActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />

@@ -17,6 +17,7 @@ dependencies {
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:design:27.1.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     //圆形ImageView
     implementation 'de.hdodenhof:circleimageview:2.1.0'
