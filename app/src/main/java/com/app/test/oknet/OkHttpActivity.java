@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -31,7 +32,10 @@ public class OkHttpActivity extends Activity {
     public void toGet() {
         String url = "https://www.baidu.com";
         //1,创建okHttpClient对象
-        OkHttpClient mOkHttpClient = new OkHttpClient();
+        OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
+                .readTimeout(20, TimeUnit.SECONDS)//设置读取超时时间
+                .build();;
 
         //URL带的参数
         HashMap<String, String> params = new HashMap<>();

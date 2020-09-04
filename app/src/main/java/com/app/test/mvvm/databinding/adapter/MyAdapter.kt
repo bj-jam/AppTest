@@ -13,7 +13,7 @@ import com.chad.library.adapter.base.BaseViewHolder
  *
  * @describe date binding 配合BaseQuickAdapter使用
  */
-class MyAdapter(data: List<CommentBean>) : BaseQuickAdapter<CommentBean, MyAdapter.CustomHolder>(R.layout.item_comment_detial, data) {
+class MyAdapter(data: List<CommentBean?>) : BaseQuickAdapter<CommentBean, MyAdapter.CustomHolder>(R.layout.item_comment_detial, data) {
 
 
     override fun convert(helper: CustomHolder, item: CommentBean) {

@@ -29,7 +29,7 @@ object ImageViewLoadUtil {
 
     @JvmStatic
     @BindingAdapter("imageUrl")
-    fun setSrc(imageView: ImageView, url: String) {
+    fun setSrc(imageView: ImageView, url: String?) {
         Glide.with(imageView.context).load(url)
                 .asBitmap()
                 .placeholder(R.drawable.icon_pic2)

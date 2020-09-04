@@ -12,8 +12,10 @@ class DataBean<T> {
 
     constructor() {}
 
-    constructor(data: T, mInfo: String, isSuccess: Boolean) {
-
+    constructor(data: T, info: String, status: Boolean) {
+        mData = data
+        mInfo = info
+        isSuccess = status
     }
 
     fun getmData(): T? {

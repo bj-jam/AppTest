@@ -1,19 +1,16 @@
 package com.app.test.mvvm.databinding
 
-import android.app.Activity
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.app.test.R
 import com.app.test.mvvm.databinding.adapter.MyAdapter
 import com.app.test.mvvm.databinding.bean.CommentBean
 import com.app.test.mvvm.databinding.bean.DataBean
-import com.app.test.mvvm.databinding.viewmodel.DataModel
+import com.app.test.mvvm.databinding.viewmodel.DataViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_data_binding.*
@@ -25,33 +22,25 @@ import kotlin.collections.ArrayList
  *
  * @describe
  */
-class DataBindingActivity : Activity(), LifecycleOwner {
+class DataBindingActivity : FragmentActivity() {
 
     private val urlData: ArrayList<String> = ArrayList()
     private val random = Random();
 
-    override fun getLifecycle(): Lifecycle {
-        return LifecycleRegistry(this)
-    }
-
     val adapter: MyAdapter by lazy {
         MyAdapter(dataList).also {
             it.setOnLoadMoreListener({
-                mDataModel.LoadImage()
-                it.loadMoreComplete()
+                mDataViewModel.loadImage()
             }, data_recyclerView)
         }
     }
     internal var uuid: String? = null
     internal var courseId: String? = null
 
-    private val dataList = ArrayList<CommentBean>()
+    private val dataList = ArrayList<CommentBean?>()
 
-    val mDataModel: DataModel by lazy {
-        ViewModelProvider.AndroidViewModelFactory.getInstance(this.application).create(DataModel::class.java)
-                .also {
-
-                }
+    val mDataViewModel: DataViewModel by lazy {
+        ViewModelProviders.of(this).get(DataViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +49,7 @@ class DataBindingActivity : Activity(), LifecycleOwner {
         initView()
         initDate()
         handleData()
+        mDataViewModel.getSmsCode("d")
     }
 
     private fun handleData() {
@@ -69,16 +59,21 @@ class DataBindingActivity : Activity(), LifecycleOwner {
 //            }
 //
 //        })
-        mDataModel.commentData.observe(this, Observer<DataBean<List<CommentBean>>> {
+        mDataViewModel.commentData.observe(this, Observer<DataBean<List<CommentBean?>?>> {
             it?.also {
                 if (it.isSuccess) {
                     it.getmData()?.let { it1 -> dataList.addAll(it1) }
                     adapter.setNewData(dataList)
+                    adapter.loadMoreComplete()
                 } else {
                     Toast.makeText(this, it.getmInfo(), Toast.LENGTH_LONG).show()
                 }
             }
-
+        })
+        mDataViewModel.smsCode.observe(this, Observer<String> {
+            it?.also {
+                tv_title.text = it;
+            }
         })
     }
 
@@ -123,7 +118,7 @@ class DataBindingActivity : Activity(), LifecycleOwner {
         }
 
         adapter.setNewData(dataList)
-        Observable.fromIterable(dataList).subscribe(object : io.reactivex.Observer<CommentBean> {
+        Observable.fromIterable(dataList).subscribe(object : io.reactivex.Observer<CommentBean?> {
             override fun onComplete() {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
