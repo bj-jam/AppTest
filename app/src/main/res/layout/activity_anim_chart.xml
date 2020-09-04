@@ -77,7 +77,7 @@
         android:layout_gravity="center"
         app:animation="false"
         app:mBackground="#ffffff"
-        app:round="false"
+        app:mc_round="false"
         app:shadow="true"
         app:shadowColor="#F2F2F2"
         app:showTitle="false" />
