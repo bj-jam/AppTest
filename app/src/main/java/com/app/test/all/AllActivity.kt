@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.app.test.R
+import com.app.test.all.view.LoginView
 import com.app.test.all.view.TextInputLayout
 import com.app.test.path.ViewAdapter
 import kotlinx.android.synthetic.main.activity_all.*
@@ -28,6 +29,7 @@ class AllActivity : AppCompatActivity() {
     private fun initDate() {
         dataList.clear()
         dataList.add(TextInputLayout(this))
+        dataList.add(LoginView(this))
         adapter = ViewAdapter(dataList);
 
         mViewPager?.adapter = adapter;

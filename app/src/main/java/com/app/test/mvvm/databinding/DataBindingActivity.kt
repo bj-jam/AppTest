@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Toast
 import com.app.test.R
 import com.app.test.mvvm.databinding.adapter.MyAdapter
@@ -116,7 +117,16 @@ class DataBindingActivity : FragmentActivity() {
             }
             dataList.add(dto)
         }
+        dataList.forEach {
+            Log.e("jam", it?.userAvatar)
+        }
 
+        dataList.forEachIndexed { index, commentBean ->
+            Log.e("jam", index.toString())
+        }
+        dataList.take(3).forEach {
+
+        }
         adapter.setNewData(dataList)
         Observable.fromIterable(dataList).subscribe(object : io.reactivex.Observer<CommentBean?> {
             override fun onComplete() {
