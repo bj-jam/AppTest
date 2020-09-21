@@ -1,4 +1,4 @@
-package me.sweetll.tucao.extension
+package com.app.test.extension
 
 import android.content.SharedPreferences
 
