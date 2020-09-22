@@ -28,7 +28,7 @@ class AllActivity : AppCompatActivity() {
 
     private fun initDate() {
         dataList.clear()
-//        dataList.add(TextInputLayout(this))
+        dataList.add(TextInputLayout(this))
         dataList.add(LoginView(this))
         adapter = ViewAdapter(dataList);
 

@@ -11,7 +11,8 @@
         android:layout_marginTop="20dp"
         app:counterEnabled="true"
         app:counterMaxLength="5"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        app:errorTextAppearance="@color/_0e9ef9">
 
         <EditText
             android:layout_width="match_parent"
@@ -29,7 +30,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="请输入邮箱" />
+            android:hint="请输入邮箱"
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>
