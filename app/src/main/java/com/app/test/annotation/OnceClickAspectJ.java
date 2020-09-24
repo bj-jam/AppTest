@@ -17,7 +17,7 @@ public class OnceClickAspectJ {
     public OnceClickAspectJ() {
     }
 
-    @Pointcut("execution(@com.example.myapplication.AOnceClick * *(..))")
+    @Pointcut("execution(@com.app.test.annotation.AOnceClick * *(..))")
     public void executionAOnceClick() {
     }
 

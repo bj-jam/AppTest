@@ -4,6 +4,7 @@ import android.databinding.BaseObservable
 import android.support.v4.app.FragmentActivity
 import android.util.Log
 import android.view.View
+import com.app.test.annotation.net.CheckNetAnnotation
 import com.app.test.extension.NonNullObservableField
 import kotlin.random.Random
 
@@ -18,6 +19,7 @@ class LoginModel(activity: FragmentActivity) : BaseObservable() {
     val info = NonNullObservableField("")
     val visibility = NonNullObservableField(View.GONE)
 
+    @CheckNetAnnotation
     fun loginClick(view: View) {
         Log.e("jam", "loginClick: ")
         val count = Random.nextInt(100);
