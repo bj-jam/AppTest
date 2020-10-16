@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.app.test.R
+import com.app.test.all.scrollview.MoveScrollView
 import com.app.test.all.view.LoginView
 import com.app.test.all.view.TextInputLayout
 import com.app.test.path.ViewAdapter
@@ -30,6 +31,7 @@ class AllActivity : AppCompatActivity() {
         dataList.clear()
         dataList.add(TextInputLayout(this))
         dataList.add(LoginView(this))
+        dataList.add(MoveScrollView(this))
         adapter = ViewAdapter(dataList);
 
         mViewPager?.adapter = adapter;

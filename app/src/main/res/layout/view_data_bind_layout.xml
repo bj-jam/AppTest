@@ -42,6 +42,13 @@
             android:onClick="@{viewModel::loginClick}"
             android:text="登录" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center"
+            android:onClick="@{viewModel::add}"
+            android:text="添加" />
+
 
         <TextView
             android:layout_width="wrap_content"

@@ -344,6 +344,8 @@
 	scaleX，scaleY缩放
 	rotationX，rotationY旋转
 	alpha透明度
+
+
 	SharedPreferences
 45、SharedPreferences获取所有内容
 	/** 获取批阅缓存的信息 */
@@ -882,3 +884,9 @@ https://www.imooc.com/article/24025?block_id=tuijian_wz （这篇从设计模式
 OkHttp3对RealCall的注释及上篇是Dispatcher
 
 68、git 生成证书 ssh-keygen -t rsa
+
+69、在Android中，一个APP的的代码都在baiDex文件中。当Android启动应用的时候，只会在第一次加载Dex时使用DexOpt的工具优化Dex。
+但是在Android系统中，DexOpt会把方法数，属性数和类数的id检索起来，存在一个链表结构里面。可是这个链表的长度是用一个short类型来保存的，
+这就使得方法数id不能超过65535。
+为解决该问题，Android5.0时Google推出了官方解决方案：MultiDex。打包时，把一个应用分成多个dex，例：classes.dex、classes2.dex、
+classes3.dex…，加载的时候把这些dex都追加到DexPathList对应的数组中，这样就解决了方法数的限制。
