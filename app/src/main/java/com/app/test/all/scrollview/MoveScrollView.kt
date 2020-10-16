@@ -24,7 +24,7 @@ open class MoveScrollView : FrameLayout {
     private lateinit var icon: ImageView
     private var layer: View? = null
     private var currentPercentage = 0f
-    private val radioGroupListener = RadioGroup.OnCheckedChangeListener { group, checkedId ->
+    private val radioGroupListener = RadioGroup.OnCheckedChangeListener { _, _ ->
         for (i in 0 until radioGroup.childCount) {
             val radioButton = radioGroup.getChildAt(i) as RadioButton
             radioButton.setTextColor(if (radioButton.isChecked) getRadioCheckedAlphaColor(currentPercentage) else getRadioAlphaColor(currentPercentage))
