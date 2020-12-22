@@ -87,4 +87,5 @@
     <string name="VectorActivity">矢量图</string>
     <string name="ViewPagerActivity">ViewPager</string>
     <string name="AllActivity">功能集合</string>
+    <string name="PDFMainActivity">PDF功能</string>
 </resources>

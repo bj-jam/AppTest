@@ -90,6 +90,9 @@
         <activity android:name="com.app.test.vector.VectorActivity" />
         <activity android:name="com.app.test.viewpager.viewpager.ViewPagerActivity" />
         <activity android:name=".all.AllActivity" />
+        <activity android:name=".all.pdf.activity.RecyclerViewActivity" />
+        <activity android:name=".all.pdf.activity.PDFMainActivity" />
+        <activity android:name=".all.pdf.activity.ViewPagerActivity" />
         <activity
             android:name="com.app.test.spannable.SpannableActivity"
             android:hardwareAccelerated="false" />
