@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.doodle">
+
+    <application>
+        <activity
+            android:name="com.app.doodle.DoodleActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation|keyboard" />
+        <activity
+            android:name="com.app.doodle.imageselector.ImageSelectorActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation|keyboard" />
+    </application>
+
+</manifest>

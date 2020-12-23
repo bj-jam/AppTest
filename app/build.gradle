@@ -31,6 +31,7 @@ dependencies {
 //    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     //获取权限
     implementation 'com.lovedise:permissiongen:0.0.6'
+    implementation project(path: ':doodle')
     annotationProcessor 'com.zhy:mpermission-compiler:1.0.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
     implementation 'com.zhy:mpermission-api:1.0.0'
