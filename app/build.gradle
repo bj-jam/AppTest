@@ -169,6 +169,7 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'com/itextpdf/text/pdf/fonts/cmap_info.txt'
     }
     // java版本
     compileOptions {

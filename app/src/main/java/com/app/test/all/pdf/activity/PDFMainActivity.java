@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 
 import com.app.test.R;
+import com.app.test.util.ThreadManager;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -35,11 +36,22 @@ public class PDFMainActivity extends Activity implements android.view.View.OnCli
         switch (view.getId()) {
             case R.id.tv_list:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
-                try {
-                    downloadBigActivity();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+                ThreadManager.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            downloadBigActivity("第1页\n正品大牌假一赔十\n11百亿补贴\n" +
+                                    "100\n" +
+                                    "立即抢购\n\n" +
+                                    "第2页\n感恩月福利\n送好友3期免息神券\n我赚100元\n领85\n" + new Random().nextInt(100));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
 //                fileOutput("test.doc", "测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word测试生成word");
                 break;
             case R.id.tv_viewpager:
@@ -79,21 +91,29 @@ public class PDFMainActivity extends Activity implements android.view.View.OnCli
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public void downloadBigActivity() throws Exception {
-        XWPFDocument doc = new XWPFDocument();// 创建Word文件
-        XWPFParagraph p = doc.createParagraph();// 新建段落
-        p.setAlignment(ParagraphAlignment.LEFT);// 设置段落的对齐方式
-        XWPFRun r = p.createRun();//创建标题
-
-        r.setText("dfasdfasdfasdfasdfasdfas\ndjfladjflkasdjfkajds\tkdjflajdfklajsdf\n" + new Random().nextInt(100));
-        r.setFontSize(21); //设置字体大小
-
-
+    public void downloadBigActivity(String value) throws Exception {
+        // 创建Word文件
+        XWPFDocument doc = new XWPFDocument();
+        // 新建段落
+        XWPFParagraph p = doc.createParagraph();
+        // 设置段落的对齐方式
+        p.setAlignment(ParagraphAlignment.LEFT);
+        XWPFRun run = p.createRun();//创建标题
+        if (value.indexOf("\n") > 0) {
+            //设置换行
+            String[] text = value.split("\n");
+            for (int f = 0; f < text.length; f++) {
+                if (f != 0) {
+                    run.addCarriageReturn();//硬回车
+                }
+                run.setText(text[f]);
+            }
+        } else {
+            run.setText(value);
+        }
         OutputStream os = new FileOutputStream(Environment.getExternalStorageDirectory() + "/test.docx");
-        //workbook将Excel写入到response的输出流中，供页面下载该Excel文件
         doc.write(os);
         os.close();
     }
