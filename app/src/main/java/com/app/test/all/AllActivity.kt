@@ -1,7 +1,7 @@
 package com.app.test.all
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.app.test.R
 import com.app.test.all.scrollview.MoveScrollView

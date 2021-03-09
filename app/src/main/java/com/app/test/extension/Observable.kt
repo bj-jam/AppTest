@@ -1,8 +1,8 @@
 package com.app.test.extension
 
-import android.databinding.Observable
-import android.databinding.ObservableField
-import android.support.annotation.NonNull
+import androidx.databinding.Observable
+import androidx.databinding.ObservableField
+import androidx.annotation.NonNull
 
 class NonNullObservableField<T : Any>(
         value: T, vararg dependencies: Observable

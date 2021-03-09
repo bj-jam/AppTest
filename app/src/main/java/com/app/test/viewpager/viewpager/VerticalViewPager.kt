@@ -1,7 +1,7 @@
 package com.app.test.viewpager.viewpager
 
 import android.content.Context
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -13,7 +13,7 @@ import android.view.View
  *
  * Requires API 11+
  */
-class VerticalViewPager : ViewPager {
+class VerticalViewPager : androidx.viewpager.widget.ViewPager {
 
     constructor(context: Context?) : super(context!!) {
         init()

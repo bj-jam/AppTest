@@ -3,9 +3,9 @@ package com.app.test.viewpager
 import android.app.Activity
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v4.view.ViewPager.PageTransformer
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.PageTransformer
 import android.view.View
 import android.view.ViewGroup
 import com.app.test.R
@@ -15,7 +15,7 @@ import com.app.test.util.DensityUtil.dp2px
  * Created by jam on 16/9/29.
  */
 class ViewPagerActivity : Activity() {
-    private lateinit var mViewPager: ViewPager
+    private lateinit var mViewPager: androidx.viewpager.widget.ViewPager
     private lateinit var studyTopCenter: StudyTopCenterView
     private lateinit var adapter: ViewPagerAdapter
     private lateinit var date: Array<String?>
@@ -28,7 +28,7 @@ class ViewPagerActivity : Activity() {
     }
 
     private fun intView() {
-        mViewPager = findViewById<View>(R.id.mViewPager) as ViewPager
+        mViewPager = findViewById<View>(R.id.mViewPager) as androidx.viewpager.widget.ViewPager
         studyTopCenter = findViewById<View>(R.id.studyTopCenter) as StudyTopCenterView
         mViewPager.offscreenPageLimit = 3
         mViewPager.pageMargin = dp2px(-70)
@@ -54,7 +54,7 @@ class ViewPagerActivity : Activity() {
         viewList[1] = view
     }
 
-    private inner class ViewPagerAdapter : PagerAdapter() {
+    private inner class ViewPagerAdapter : androidx.viewpager.widget.PagerAdapter() {
         override fun isViewFromObject(view: View, o: Any): Boolean {
             return view === o
         }

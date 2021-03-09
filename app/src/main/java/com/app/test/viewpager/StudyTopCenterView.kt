@@ -1,9 +1,9 @@
 package com.app.test.viewpager
 
 import android.content.Context
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v4.view.ViewPager.OnPageChangeListener
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.app.test.util.DensityUtil.dp2px
 
 class StudyTopCenterView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : RelativeLayout(context, attrs, defStyleAttr), OnPageChangeListener {
     private var views: Array<View?>? = null
-    private lateinit var viewPager: ViewPager
+    private lateinit var viewPager: androidx.viewpager.widget.ViewPager
 
     /**
      * 圆点的父容器
@@ -39,7 +39,7 @@ class StudyTopCenterView @JvmOverloads constructor(context: Context, attrs: Attr
     private fun initView() {
         View.inflate(context, R.layout.view_video_exam, this)
         pointLayout = findViewById<View>(R.id.pointLayout) as LinearLayout
-        viewPager = findViewById<View>(R.id.examViewPager) as ViewPager
+        viewPager = findViewById<View>(R.id.examViewPager) as androidx.viewpager.widget.ViewPager
         viewPager.setOnPageChangeListener(this)
     }
 
@@ -99,7 +99,7 @@ class StudyTopCenterView @JvmOverloads constructor(context: Context, attrs: Attr
     /**
      * pagerView的适配器
      */
-    private inner class ViewPagerAdapter : PagerAdapter() {
+    private inner class ViewPagerAdapter : androidx.viewpager.widget.PagerAdapter() {
         override fun getCount(): Int {
             return if (viewList == null) 0 else viewList!!.size
         }

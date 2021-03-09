@@ -1,8 +1,8 @@
 package com.app.test.all.view
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.support.v4.app.FragmentActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -26,7 +26,7 @@ class LoginView constructor(context: Context, attrs: AttributeSet? = null, defSt
 
     init {
         val factory = LayoutInflater.from(context)
-        viewModel = LoginModel(context as FragmentActivity)
+        viewModel = LoginModel(context as androidx.fragment.app.FragmentActivity)
         binding = DataBindingUtil.inflate(factory, R.layout.view_data_bind_layout, this, true)
         binding.viewModel = viewModel
     }

@@ -1,6 +1,6 @@
 package com.app.test.mvvm.databinding.adapter
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

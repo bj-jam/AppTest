@@ -7,9 +7,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.annotation.ArrayRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
+import androidx.annotation.ArrayRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 import android.view.View;
 
 import com.app.test.R;

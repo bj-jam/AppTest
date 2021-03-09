@@ -5,8 +5,8 @@ import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
-import android.support.annotation.DrawableRes
-import android.support.annotation.Size
+import androidx.annotation.DrawableRes
+import androidx.annotation.Size
 import android.util.AttributeSet
 import com.app.test.R
 import com.app.test.williamchart.ChartContract

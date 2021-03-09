@@ -2,7 +2,7 @@ package com.app.test.game.adapter;
 
 
 import android.graphics.Point;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;

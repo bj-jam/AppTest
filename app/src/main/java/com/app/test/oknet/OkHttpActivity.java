@@ -2,7 +2,7 @@ package com.app.test.oknet;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.util.HashMap;

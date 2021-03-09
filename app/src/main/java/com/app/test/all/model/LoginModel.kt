@@ -1,7 +1,7 @@
 package com.app.test.all.model
 
-import android.databinding.BaseObservable
-import android.support.v4.app.FragmentActivity
+import androidx.databinding.BaseObservable
+import androidx.fragment.app.FragmentActivity
 import android.util.Log
 import android.view.View
 import com.app.test.annotation.net.CheckNetAnnotation
@@ -14,7 +14,7 @@ import java.util.*
  * Created at 2020.9.21
  * Describe:
  */
-class LoginModel(activity: FragmentActivity) : BaseObservable() {
+class LoginModel(activity: androidx.fragment.app.FragmentActivity) : BaseObservable() {
     val name = NonNullObservableField("")
     val info = NonNullObservableField("")
     val visibility = NonNullObservableField(View.GONE)

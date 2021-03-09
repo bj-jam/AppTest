@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.app.test.R;
 import com.app.test.util.ThreadManager;

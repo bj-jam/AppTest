@@ -3,7 +3,7 @@ package com.app.test.wave;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.widget.CompoundButtonCompat;
+import androidx.core.widget.CompoundButtonCompat;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;

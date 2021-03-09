@@ -1,8 +1,8 @@
 package com.app.test.mvvm.databinding.adapter
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.TextUtils
 import android.view.MotionEvent
 import android.view.View
@@ -110,9 +110,9 @@ class DiscussAdapter(data: List<CommentBean>?, private val context: Context) : B
                 //recyclerView
                 if (helper.childAdapter == null) {
                     helper.childAdapter = DiscussReplyAdapter(helper.itemView.context)
-                    val recyclerView = helper.getView<RecyclerView>(R.id.recyclerView)
-                    recyclerView.layoutManager = LinearLayoutManager(recyclerView.context,
-                            LinearLayoutManager.VERTICAL,
+                    val recyclerView = helper.getView<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
+                    recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(recyclerView.context,
+                            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
                             false)
                     recyclerView.setOnTouchListener { v, event ->
                         if (event.action == MotionEvent.ACTION_UP) {

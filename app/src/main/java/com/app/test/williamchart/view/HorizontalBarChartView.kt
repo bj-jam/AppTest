@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Paint
 import android.graphics.RectF
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.util.AttributeSet
 import com.app.test.R
 import com.app.test.williamchart.ChartContract

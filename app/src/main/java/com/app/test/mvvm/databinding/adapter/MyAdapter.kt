@@ -1,6 +1,6 @@
 package com.app.test.mvvm.databinding.adapter
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.view.View
 import com.app.test.R
 import com.app.test.databinding.ItemCommentDetialBinding

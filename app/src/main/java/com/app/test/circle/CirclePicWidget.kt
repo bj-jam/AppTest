@@ -1,7 +1,7 @@
 package com.app.test.circle
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.AttributeSet
 import android.view.View
 import com.app.test.R
@@ -12,7 +12,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 /**
  * 圆形布局
  */
-class CirclePicWidget : ConstraintLayout {
+class CirclePicWidget : androidx.constraintlayout.widget.ConstraintLayout {
     private var circleImageView: CircleImageView? = null
     private var circleImageView1: CircleImageView? = null
     private var circleImageView2: CircleImageView? = null

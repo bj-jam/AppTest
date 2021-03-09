@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.os.Build;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import com.app.test.util.Utils;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

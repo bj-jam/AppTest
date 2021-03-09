@@ -1,7 +1,7 @@
 package com.app.test.mvvm.databinding.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.app.test.mvvm.databinding.bean.CommentBean
 import com.app.test.mvvm.databinding.bean.DataBean
 import com.app.test.mvvm.databinding.model.BeanModel

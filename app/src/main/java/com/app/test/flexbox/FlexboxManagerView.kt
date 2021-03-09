@@ -1,7 +1,7 @@
 package com.app.test.flexbox
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.View.OnClickListener
@@ -19,7 +19,7 @@ import java.util.*
  * Describe:
  */
 class FlexboxManagerView : FrameLayout {
-    private var recyclerView: RecyclerView? = null
+    private var recyclerView: androidx.recyclerview.widget.RecyclerView? = null
     private var tvPosition: TextView? = null
     private var adapter: ViewAdapter? = null
 

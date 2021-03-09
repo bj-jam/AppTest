@@ -1,6 +1,6 @@
 package com.app.test.all.viewmodel
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 /**
  *

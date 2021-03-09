@@ -2,8 +2,8 @@ package com.app.test.vector
 
 import android.graphics.drawable.Animatable
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import android.view.View
 import android.widget.ImageView
 import com.app.test.R

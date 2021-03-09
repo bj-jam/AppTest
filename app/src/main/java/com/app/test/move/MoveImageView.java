@@ -12,7 +12,7 @@ import com.app.test.util.Utils;
  * Created at 2020.1.2
  * Describe:
  */
-public class MoveImageView extends android.support.v7.widget.AppCompatImageView {
+public class MoveImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private AnimUtils animUtils;
 

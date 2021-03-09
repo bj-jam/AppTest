@@ -2,7 +2,8 @@ package com.app.test.all.pdf.activity;
 
 import android.app.Activity;
 import android.os.Environment;
-import android.support.v4.view.ViewPager;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.app.test.R;
 import com.app.test.all.pdf.adapter.PDFPagerAdapter;

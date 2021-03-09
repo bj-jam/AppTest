@@ -5,7 +5,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator

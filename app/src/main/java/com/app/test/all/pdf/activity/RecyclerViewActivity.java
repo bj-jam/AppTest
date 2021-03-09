@@ -2,8 +2,8 @@ package com.app.test.all.pdf.activity;
 
 import android.app.Activity;
 import android.os.Environment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.test.R;
 import com.app.test.all.pdf.adapter.PDFListAdapter;

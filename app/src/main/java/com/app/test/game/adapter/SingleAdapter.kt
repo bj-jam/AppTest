@@ -1,6 +1,6 @@
 package com.app.test.game.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.RelativeLayout
 import com.app.test.R
 import com.app.test.util.DensityUtil.dp2px
@@ -26,7 +26,7 @@ class SingleAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_sin
     override fun onBindViewHolder(helper: BaseViewHolder, position: Int) {
         if (finalHeight > 0) {
             val view = helper.getView<RelativeLayout>(R.id.rl_option_layout)
-            val params = view.layoutParams as RecyclerView.LayoutParams
+            val params = view.layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams
             params.height = finalHeight - 10
             params.topMargin = 10
             view.layoutParams = params

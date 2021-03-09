@@ -11,7 +11,7 @@ import com.app.test.R;
  * Created at 2020.1.2
  * Describe: 单选答题正确答案指示
  */
-public class TanImageView extends android.support.v7.widget.AppCompatImageView {
+public class TanImageView extends androidx.appcompat.widget.AppCompatImageView {
     ObjectAnimator anim;
 
 

@@ -2,8 +2,8 @@ package com.app.test.game.view
 
 import android.content.Context
 import android.os.Build
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.view.View
@@ -29,7 +29,7 @@ import java.util.*
 open class SingleView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr), AnswerControl<AnswerListener> {
     private val presenter: SinglePresenter by lazy { SinglePresenter(this) }
     private var tvSingleContent: TextView
-    private var rvSingleOption: RecyclerView
+    private var rvSingleOption: androidx.recyclerview.widget.RecyclerView
     private val optionAdapter: SingleAdapter by lazy { SingleAdapter() }
     private var currentPosition = 0
     private var answerListener: AnswerListener? = null
@@ -54,7 +54,7 @@ open class SingleView @JvmOverloads constructor(context: Context, attrs: Attribu
         View.inflate(context, R.layout.view_single_answer, this)
         tvSingleContent = findViewById(R.id.tv_single_content)
         rvSingleOption = findViewById(R.id.rv_single_option)
-        rvSingleOption.layoutManager = LinearLayoutManager(context)
+        rvSingleOption.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         tvSingleContent.movementMethod = ScrollingMovementMethod.getInstance()
         rvSingleOption.adapter = optionAdapter
         setViewListener()

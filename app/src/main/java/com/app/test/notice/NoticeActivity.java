@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.view.View;
 import android.widget.ImageView;
 

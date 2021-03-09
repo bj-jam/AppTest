@@ -1,8 +1,8 @@
 package com.app.test.annotation.permission;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 import android.util.Log;
 
 public class PermissionManager {

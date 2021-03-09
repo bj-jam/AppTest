@@ -1,10 +1,10 @@
 package com.app.test.mvvm.databinding
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
 import com.app.test.R
@@ -23,7 +23,7 @@ import kotlin.collections.ArrayList
  *
  * @describe
  */
-class DataBindingActivity : FragmentActivity() {
+class DataBindingActivity : androidx.fragment.app.FragmentActivity() {
 
     private val urlData: ArrayList<String> = ArrayList()
     private val random = Random();
@@ -84,7 +84,7 @@ class DataBindingActivity : FragmentActivity() {
             initDate()
             data_swipeRefreshLayout?.isRefreshing = false
         }
-        data_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        data_recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         data_recyclerView.adapter = adapter
     }
 

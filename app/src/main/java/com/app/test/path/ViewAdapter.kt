@@ -1,6 +1,6 @@
 package com.app.test.path
 
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 
@@ -10,7 +10,7 @@ import android.view.ViewGroup
  * Created at 2020.3.31
  * Describe:
  */
-class ViewAdapter() : PagerAdapter() {
+class ViewAdapter() : androidx.viewpager.widget.PagerAdapter() {
     private var dataList: ArrayList<View>? = null;
 
     constructor(list: ArrayList<View>?) : this() {

@@ -2,7 +2,7 @@ package com.app.test.paint
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import com.app.test.R
 import com.app.test.path.ViewAdapter
@@ -15,7 +15,7 @@ import com.app.test.path.ViewAdapter
  */
 class PaintActivity : Activity() {
     var adapter: ViewAdapter? = null
-    var viewPager: ViewPager? = null
+    var viewPager: androidx.viewpager.widget.ViewPager? = null
     val dataList: ArrayList<View> by lazy { ArrayList<View>() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -2,9 +2,10 @@ package com.app.test.all.scrollview;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.WindowManager;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by idea on 2018/2/24.

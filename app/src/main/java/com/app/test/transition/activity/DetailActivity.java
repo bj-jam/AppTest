@@ -2,7 +2,7 @@ package com.app.test.transition.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.widget.ImageView;
 import android.widget.TextView;
 

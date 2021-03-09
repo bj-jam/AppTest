@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.Point
 import android.os.Handler
 import android.os.Looper
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -30,8 +30,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
  * Describe:
  */
 open class IdiomView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr), AnswerControl<AnswerListener?> {
-    private var rvSelectIdiomBoard: RecyclerView
-    private var rvSelectIdiomFreeWord: RecyclerView
+    private var rvSelectIdiomBoard: androidx.recyclerview.widget.RecyclerView
+    private var rvSelectIdiomFreeWord: androidx.recyclerview.widget.RecyclerView
     private var answerListener: AnswerListener? = null
 
     /*备选词适配器*/
@@ -93,7 +93,7 @@ open class IdiomView @JvmOverloads constructor(context: Context, attrs: Attribut
                     }
                 }
                 val spanSize = data.size.coerceAtMost(6)
-                rvSelectIdiomFreeWord.layoutManager = GridLayoutManager(context, spanSize)
+                rvSelectIdiomFreeWord.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, spanSize)
                 rvSelectIdiomFreeWord.adapter = freeWordAdapter
             }
             if (!Utils.isEmpty(rvSelectIdiomBoard)) {
@@ -146,7 +146,7 @@ open class IdiomView @JvmOverloads constructor(context: Context, attrs: Attribut
                         }
                     }
                 })
-                rvSelectIdiomBoard.layoutManager = GridLayoutManager(context, column)
+                rvSelectIdiomBoard.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, column)
                 rvSelectIdiomBoard.adapter = idiomBoardAdapter
             }
         }

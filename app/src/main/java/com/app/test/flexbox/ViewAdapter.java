@@ -1,7 +1,7 @@
 package com.app.test.flexbox;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.app.test.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;

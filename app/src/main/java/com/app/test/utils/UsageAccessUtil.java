@@ -3,7 +3,7 @@ package com.app.test.utils;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by able on 2019/8/26.
