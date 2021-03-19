@@ -4,6 +4,7 @@ import android.content.Intent
 import com.app.doodle.imageselector.ImageSelectorActivity
 import com.app.test.R
 import com.app.test.all.AllActivity
+import com.app.test.all.UiEntryActivity
 import com.app.test.all.pdf.activity.PDFMainActivity
 import com.app.test.anim.AnimActivity
 import com.app.test.appinfo.AppInfoActivity
@@ -135,6 +136,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         texts.add(R.string.AllActivity)
         texts.add(R.string.PDFMainActivity)
         texts.add(R.string.ToddleActivity)
+        texts.add(R.string.UiEntryActivity)
 
 
         clzs.add(DateActivity::class.java) //
@@ -193,6 +195,7 @@ class MainAdapter(private val onLister: OnLister) : BaseQuickAdapter<Int, BaseVi
         clzs.add(AllActivity::class.java) //
         clzs.add(PDFMainActivity::class.java) //
         clzs.add(ImageSelectorActivity::class.java) //
+        clzs.add(UiEntryActivity::class.java) //
     }
 
     interface OnLister {

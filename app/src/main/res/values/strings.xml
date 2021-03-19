@@ -89,4 +89,5 @@
     <string name="AllActivity">功能集合</string>
     <string name="PDFMainActivity">PDF功能</string>
     <string name="ToddleActivity">涂鸦功能</string>
+    <string name="UiEntryActivity">新的UI</string>
 </resources>

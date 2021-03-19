@@ -19,7 +19,7 @@ public class RecyclerViewActivity extends Activity {
 
         pdfRecyclerView = findViewById(R.id.listView);
         pdfRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PDFListAdapter(this, Environment.getExternalStorageDirectory() + "/test.pdf");
+        adapter = new PDFListAdapter(this, Environment.getExternalStorageDirectory() + "/test(1).pdf");
         pdfRecyclerView.setAdapter(adapter);
     }
 

@@ -41,10 +41,7 @@ public class PDFMainActivity extends Activity implements android.view.View.OnCli
                     @Override
                     public void run() {
                         try {
-                            downloadBigActivity("第1页\n正品大牌假一赔十\n11百亿补贴\n" +
-                                    "100\n" +
-                                    "立即抢购\n\n" +
-                                    "第2页\n感恩月福利\n送好友3期免息神券\n我赚100元\n领85\n" + new Random().nextInt(100));
+                            downloadBigActivity("第1页\n正品大牌假一赔十\n11百亿补贴\n100\n立即抢购\n\n第2页\n感恩月福利\n送好友3期免息神券\n我赚100元\n领85\n" + new Random().nextInt(100));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
