@@ -13,7 +13,7 @@ import com.app.test.R
  * Created at 2020.1.20
  * Describe:
  */
-class MatrixImageView(context: Context?) : AppCompatImageView(context) {
+class MatrixImageView(context: Context) : AppCompatImageView(context) {
     private val mMatrix: Matrix = Matrix()
     private val mBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.icon_pic17)
     override fun onDraw(canvas: Canvas) {

@@ -90,4 +90,12 @@
     <string name="PDFMainActivity">PDF功能</string>
     <string name="ToddleActivity">涂鸦功能</string>
     <string name="UiEntryActivity">新的UI</string>
+
+    <string name="PathAnimActivity">线条动画</string>
+    <string name="LiveMainActivity">直播</string>
+    <string name="RecyclerViewActivity">RecyclerView</string>
+    <string name="VideoActivity">滑动播放视频</string>
+    <string name="SysUiActivity">系统控件使用</string>
+
+
 </resources>

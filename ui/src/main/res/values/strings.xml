@@ -1,3 +1,51 @@
 <resources>
-    <string name="app_name">HxSvg</string>
+    <string name="main_toolbar">toolbar 基本使用</string>
+    <string name="custom">clock</string>
+    <string name="menu_search">搜索</string>
+    <string name="menu_notifications">通知</string>
+    <string name="item02">item02</string>
+    <string name="item01">item01</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="toolbar_1">toolbar与DrawerLayout结合使用1</string>
+    <string name="toolbar_3">toolbar与DrawerLayout结合使用2</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="side_slip">侧滑菜单内容</string>
+    <string name="custom_tab_layout">tabLayout自定义tab样式</string>
+    <string name="display_icon">tab上显示图标</string>
+    <string name="fab_study">FloatingActionButton</string>
+    <string name="appbar_study">AppBarLayout</string>
+    <string name="info_text">有句网络用语叫“认真你就输了”，意思是别跟不值当的人，不值当的事较真，很多事情较真不得。如果拿这句话当成劝和打圆场的话，倒也没错。但是切莫滥用在做事上，做事做人，有时就要认真。
+
+　　做事认真，认真是一种态度。有人说：做成大事的人，往往做小事也认真，而做小事不认真的人，往往也做不成大事。这话很对，但还不够。认真，不是为了做大事，而是为了做一个大写的人。只有认真做事，才能显示出你对工作的尊重，对别人的敬重，对自己的爱重。随随便便，差不多就行了，虽然省力，但长此以往，终究会丢失别人的信任，自己的气场也会变化，自由散漫，缺乏自律。
+
+　　做人认真，认真是一种能力。认真，意味着能够集中注意力。很多人从小成绩不好，并不是笨，就是因为专注力不够。能够静心做好一件事，是了不起的才能，不管一时是成是败，有专注力，就意味着拥有了成功的先决条件。认真的能力需要培养和训练，只有做人认真，态度端正，集中注意力，才能做好事，做好人。认真的人，不去糊弄别人，更不会糊弄自己，确保自己的每分进益，都是最好的。
+
+　　ldquo;认真你就输了”，是无可奈何之际的劝慰之语，是不与小人计较争辩的息事宁人之语。但当你工作上想要精益求精，别人说“认真你就输了”，千万别信；当你求知欲旺盛想要探寻某个问题的答案时，别人说“认真你就输了”，千万别信；当你受到伤害想要讨回公道时，别人说“认真你就输了”，千万别信。你可以不执着，但不可不认真。认真做事，认真做人作，认真生活，认真成长，认真是成就的根本。那些注定要消散的东西，那些无所谓的小人谗言，可以不认真。但世界上还有很多坚固的，美好的，值得你奋斗的东西，一定要认真。
+
+　　做事愈接近成功愈困难，愈要认真对待，善始善终。如果你真正能做到认真，那就是有了善巧方便，也可以说是具足了无碍的智慧。读书要求甚解，做事应懂认真。认真的对待别人，真诚地与人交往，珍惜亲情的可贵，尊重别人的情谊，无愧天地，无愧于心，方是正道。</string>
+    <string name="s_name">阳春白雪</string>
+    <string-array name="menu_title">
+        <item>立即欣赏</item>
+        <item>我的乐库</item>
+        <item>播放列表</item>
+    </string-array>
+
+    <string name="tip_drag">长按可以拖拽排序,点击删除</string>
+    <string name="my_channel">我的频道</string>
+    <string name="other_channel">点击添加更多频道</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
+
+    <string name="recyclerview_click_delete">RecyclerView的拖拽排序、点击删除</string>
+    <string name="rv_add_remove_item">RecyclerView实现item的添加和删除</string>
+    <string name="with_snackbar">结合SnackBar使用</string>
+    <string name="with_appbar_layout">结合AppBarLayout使用</string>
+    <string name="ali_home">支付宝首页</string>
+    <string name="copy_airbnb_home">Airbnb首页导航</string>
+    <string name="tab_coordinator_layout">TabLayout和CoordinatorLayout相结合</string>
+    <string name="delete">删除</string>
 </resources>

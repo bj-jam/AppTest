@@ -82,7 +82,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_radius_bottom_pink"
+            android:background="@drawable/button_shape_pressed"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingTop="2dp"
@@ -91,7 +91,7 @@
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -163,6 +163,7 @@
                 android:id="@+id/tv_chat"
                 android:layout_width="40dp"
                 android:layout_height="70dp"
+                android:background="@null"
                 android:gravity="center"
                 android:text="聊天"
                 android:textColor="#333"
@@ -178,6 +179,7 @@
                 android:layout_width="40dp"
                 android:layout_height="70dp"
                 android:layout_marginRight="5dp"
+                android:background="@null"
                 android:gravity="center"
                 android:text="送香皂"
                 android:textColor="#333"
@@ -188,6 +190,7 @@
                 android:layout_width="40dp"
                 android:layout_height="70dp"
                 android:layout_marginRight="5dp"
+                android:background="@null"
                 android:gravity="center"
                 android:text="送玫瑰"
                 android:textColor="#333"
@@ -198,6 +201,7 @@
                 android:layout_width="40dp"
                 android:layout_height="70dp"
                 android:layout_marginRight="5dp"
+                android:background="@null"
                 android:gravity="center"
                 android:text="送爱心"
                 android:textColor="#333"
@@ -208,6 +212,7 @@
                 android:layout_width="40dp"
                 android:layout_height="70dp"
                 android:layout_marginRight="5dp"
+                android:background="@null"
                 android:gravity="center"
                 android:text="送蛋糕"
                 android:textColor="#333"

@@ -16,7 +16,7 @@ import android.view.animation.OvershootInterpolator;
 import com.app.ui.R;
 
 /**
- * Created by barry on 2018/7/10.
+ *
  */
 
 public class SplashView extends View {
@@ -62,7 +62,7 @@ public class SplashView extends View {
     }
 
     public SplashView(Context context, AttributeSet attrs) {
-        super(context,attrs);
+        super(context, attrs);
         init(context);
     }
 

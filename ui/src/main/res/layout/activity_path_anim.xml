@@ -9,11 +9,11 @@
         android:layout_height="wrap_content"
         android:src="@drawable/xl_anim" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/imageView_1"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@+id/imageView"-->
-    <!--        android:src="@drawable/xl_anim_2" />-->
+    <ImageView
+        android:id="@+id/imageView_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:src="@drawable/xl_anim_2" />
 
 </RelativeLayout>

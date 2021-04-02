@@ -22,4 +22,41 @@
         <item>@color/aqua</item>
         <item>@color/yellow</item>
     </array>
+
+
+    <color name="color_31c27c">#31c27c</color>
+    <color name="color_0176da">#0176da</color>
+    <color name="color_005eaa">#005eaa</color>
+    <color name="color_red">#ff0000</color>
+    <color name="color_43d28d">#47b4ec</color>
+    <color name="color_f5f5f5">#f5f5f5</color>
+    <color name="color_e81d62">#e81d62</color>
+    <color name="color_4bae4f">#4bae4f</color>
+    <color name="color_2095f2">#2095f2</color>
+    <color name="color_512da8">#512da8</color>
+    <color name="color_cd3e3a">#cd3e3a</color>
+
+    <color name="material_blue_500">#f163aa</color>
+    <!--<color name="material_blue_500">#009688</color>-->
+    <color name="material_blue_700">#00796B</color>
+    <color name="material_green_A200">#FD87A9</color>
+    <color name="state_menu_item_selected">#97029789</color>
+    <color name="color_96c1ec">#96c1ec</color>
+    <color name="color_c6cace">#c6cace</color>
+    <color name="color_content">#47b4ec</color>
+
+    <color name="theme_color">#17a6f4</color>
+    <color name="strong">#FF5B26</color>
+    <color name="gray">#ddd</color>
+
+    <color name="black">#060306</color>
+    <color name="DarkCyan">#028a89</color>
+    <color name="white">#fff</color>
+    <color name="colorHint">#bcb8b8</color>
+    <color name="color_blue">#1E8AE8</color>
+    <color name="channel_item_color">#7e7e7f</color>
+    <color name="red_500">#ef4836</color>
+    <color name="tip">#9c9c9c</color>
+    <color name="bg_focus">#DDDDDD</color>
+    <color name="itemDocrationColor">#b8baba</color>
 </resources>

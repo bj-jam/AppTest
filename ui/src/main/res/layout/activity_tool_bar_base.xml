@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_zhifu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.app.ui.material.activity.ToolBarBaseActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_0176da"
+        toolbar:logo="@mipmap/ic_launcher"
+        toolbar:navigationIcon="@mipmap/ic_drawer_home"
+        toolbar:popupTheme="@style/Theme.ToolBar.Base"
+        toolbar:subtitle="123"
+        toolbar:title="112">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/custom" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
     <dimen name="size_default_height">160dp</dimen>
+
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="d16">16dp</dimen>
 </resources>

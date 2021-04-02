@@ -7,6 +7,39 @@
 
         <activity android:name=".zhibo.LiveMainActivity" />
         <activity android:name=".zhibo.MagicTextViewActivity" />
+        <activity android:name=".video.VideoActivity" />
+
+
+        <activity android:name="com.app.ui.material.SysUiActivity" />
+        <activity android:name="com.app.ui.material.activity.ToolBarBaseActivity" />
+        <activity
+            android:name="com.app.ui.material.activity.ToolbarFirstActivity"
+            android:theme="@style/Theme.Toolbar.ZhiHu" />
+        <activity
+            android:name="com.app.ui.material.activity.ToolbarSecondActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.app.ui.material.activity.CustomTabViewActivity" />
+        <activity android:name="com.app.ui.material.activity.SnackBarActivity" />
+        <activity
+            android:name="com.app.ui.material.activity.AppBarToolBarActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.app.ui.material.activity.FabActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.app.ui.material.activity.AppbarLayoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.app.ui.material.activity.DragRecyclerViewActivity" />
+        <activity
+            android:name="com.app.ui.material.activity.AliHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.app.ui.material.activity.ItemOperationActivity" />
+        <activity
+            android:name="com.app.ui.material.activity.AirbnbHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.app.ui.material.activity.Instance3Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
